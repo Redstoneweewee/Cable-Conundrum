@@ -45,6 +45,8 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
         }
         
         RenewObstacleGrid();
+        intersectionDetector.RenewAllObstaclesGrid();
+        intersectionDetector.TestForCableIntersection();
     }
     
     
@@ -81,6 +83,8 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
             transform.position = new Vector3(transform.position.x - Constants.tableSnapDistance, transform.position.y, transform.position.z);
         }
         RenewObstacleGrid();
+        intersectionDetector.RenewAllObstaclesGrid();
+        intersectionDetector.TestForCableIntersection();
     }
 
     private void RenewObstacleGrid() {
