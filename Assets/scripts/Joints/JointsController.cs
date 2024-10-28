@@ -9,6 +9,7 @@ using UnityEngine.UI;
 //[ExecuteInEditMode]
 public class JointsController : MonoBehaviour, IDebugC  {
     public DebugC DebugC { get ; set; }
+    private ControlsManager controlsManager;
     private JointsOpacityController jointsOpacityController;
     private ElectricalStripValues electricalStripValues;
     [SerializeField] private GameObject jointPrefab;
@@ -26,6 +27,7 @@ public class JointsController : MonoBehaviour, IDebugC  {
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
+        controlsManager = FindObjectOfType<ControlsManager>();
         jointsOpacityController = GetComponent<JointsOpacityController>();
         electricalStripValues = Utilities.GetElectricalStripValues();
         cachedScreenSize = new Vector2(Screen.width, Screen.height);
@@ -34,8 +36,9 @@ public class JointsController : MonoBehaviour, IDebugC  {
     }
 
     private IEnumerator startDelayed() {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForEndOfFrame();
         RenewJoints();
+        jointsEnabled = controlsManager.MasterJointsEnabled;
     }
 
     // Update is called once per frame
@@ -69,6 +72,8 @@ public class JointsController : MonoBehaviour, IDebugC  {
     private void RenewJoints() {
         float step = Constants.jointDistance;
         if(electricalStripValues.ElectricalStripController.SocketsGrid == null) { electricalStripValues.ElectricalStripSizeController.RenewSockets(); }
+        if(electricalStripValues.ElectricalStripController.SocketsGrid[0,0] == null) { electricalStripValues.ElectricalStripSizeController.RenewSockets(); }
+        
         Vector2 topLeft = electricalStripValues.ElectricalStripController.SocketsGrid[0,0].position;
         while(topLeft.x > step)                 { topLeft.x -= step; }
         while(topLeft.y < Screen.height - step) { topLeft.y += step; }

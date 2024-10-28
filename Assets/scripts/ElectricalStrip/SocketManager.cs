@@ -13,7 +13,7 @@ public class SocketManager : MonoBehaviour, IPointerDownHandler {
     public Transform[] ChildrenTransforms {get{return childrenTransforms;} set{childrenTransforms = value;}}
     public bool IsActive {get{return isActive;} set{isActive = value;}}
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         childrenTransforms = GetComponentsInChildren<Transform>();
         electricalStripSizeController = GetComponentInParent<ElectricalStripSizeController>();
     }
