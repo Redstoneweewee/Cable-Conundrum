@@ -137,7 +137,7 @@ public class LevelController : LevelStart {
                         Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x + Constants.jointDistance*((plug.PlugSize.y-1)/2),
                                                           jointsGrid[index.x, index.y].position.y - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
                                                           jointsGrid[index.x, index.y].position.z);
-                        plug.transform.position = newPosition;
+                        plug.transform.position = newPosition - (Vector3)plug.Center;
                         Debug.Log($"Plug {plug.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x, index.y + (int)plug.PlugSize.y);
                     }
@@ -149,7 +149,7 @@ public class LevelController : LevelStart {
                         Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x + Constants.jointDistance*((plug.PlugSize.y-1)/2),
                                                           jointsGrid[index.x, index.y].position.y + (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
                                                           jointsGrid[index.x, index.y].position.z);
-                        plug.transform.position = newPosition;
+                        plug.transform.position = newPosition - (Vector3)plug.Center;
                         Debug.Log($"Plug {plug.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x, index.y + (int)plug.PlugSize.y);
                     }
@@ -161,7 +161,7 @@ public class LevelController : LevelStart {
                         Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x,
                                                           jointsGrid[index.x, index.y].position.y - Constants.jointDistance*((levelPlug.plugs[i].PlugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
                                                           jointsGrid[index.x, index.y].position.z);
-                        levelPlug.plugs[i].transform.position = newPosition;
+                        levelPlug.plugs[i].transform.position = newPosition - (Vector3)levelPlug.plugs[i].Center;
                         Debug.Log($"Plug {levelPlug.plugs[i].name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x + (int)levelPlug.plugs[i].PlugSize.x, index.y);
                     }
@@ -173,7 +173,7 @@ public class LevelController : LevelStart {
                         Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x,
                                                           jointsGrid[index.x, index.y].position.y - Constants.jointDistance*((levelPlug.plugs[i].PlugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
                                                           jointsGrid[index.x, index.y].position.z);
-                        levelPlug.plugs[i].transform.position = newPosition;
+                        levelPlug.plugs[i].transform.position = newPosition - (Vector3)levelPlug.plugs[i].Center;
                         Debug.Log($"Plug {levelPlug.plugs[i].name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x + (int)levelPlug.plugs[i].PlugSize.x, index.y);
                     }

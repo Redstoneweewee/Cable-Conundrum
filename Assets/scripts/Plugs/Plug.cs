@@ -24,6 +24,8 @@ public class Plug : MonoBehaviour {
     "These values are used to determine whether the plug can snap onto a socket & whether there is enough space on the electrical strip. "+
     "These values are used in PlugInteractions.")]
     [SerializeField] private List<Vector2> localSnapPositions = new List<Vector2>();
+    [Tooltip("This is the location that the level will place the plugs relative to when the level is first initialized.")]
+    [SerializeField] private Vector2 center;
 
     public int             Id                         {get{return id;                        } set{id                         = value;}}
     public CableGeneration CableGeneration            {get{return cableGeneration;           } set{cableGeneration            = value;}}
@@ -32,6 +34,7 @@ public class Plug : MonoBehaviour {
     public Vector2         PlugSize                   {get{return plugSize;                  } set{plugSize                   = value;}}
     public List<Vector2>   LocalSnapPositions         {get{return localSnapPositions;        } set{localSnapPositions         = value;}}
     public List<Vector2>   LocalJointPositionsTakenUp {get{return localJointPositionsTakenUp;} set{localJointPositionsTakenUp = value;}}
+    public Vector2         Center                     {get{return center;                    } set{center                     = value;}}
     public bool            IsPluggedIn                {get{return isPluggedIn;               } set{isPluggedIn                = value;}}
 
 
