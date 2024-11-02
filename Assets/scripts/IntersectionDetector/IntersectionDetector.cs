@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class IntersectionDetector : MonoBehaviour {
+    private bool hasIntersection = false;
     ElectricalStripController electricalStripController;
     JointsController jointsController;
     private bool[,] allObstaclesGrid;
 
+    public bool    HasIntersection  {get{return hasIntersection;}  set{hasIntersection  = value;}}
     public bool[,] AllObstaclesGrid {get{return allObstaclesGrid;} set{allObstaclesGrid = value;}}
 
     // Start is called before the first frame update
@@ -60,8 +62,11 @@ public class IntersectionDetector : MonoBehaviour {
         for(int i=0; i<electricalStripController.AllCablesGrid.GetLength(0); i++) {
             for(int j=0; j<electricalStripController.AllCablesGrid.GetLength(1); j++) {
                 //if it is greater or equal to 2, there are intersections at that joint position
-                if(electricalStripController.AllCablesGrid[i,j] >= 2 || allObstaclesGrid[i,j] == true) {
-                    DetermineTypeOfIntersection(i, j);
+                if(electricalStripController.PlugsGrid[i,j] > 0) {
+                    DetermineTypeOfIntersection(i, j, electricalStripController.PlugsGrid[i,j]);
+                }
+                else if(electricalStripController.AllCablesGrid[i,j] >= 2 || allObstaclesGrid[i,j] == true) {
+                    DetermineTypeOfIntersection(i, j, 0);
                 }
             }
         }
@@ -77,9 +82,10 @@ public class IntersectionDetector : MonoBehaviour {
                 else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
             }
         }
+        hasIntersection = false;
     }
 
-    private void DetermineTypeOfIntersection(int i, int j) {
+    private void DetermineTypeOfIntersection(int i, int j, int plugId) {
         Plug[] plugs = FindObjectsOfType<Plug>();
         //CableGridAttributes[] allCablesAtPosition = new CableGridAttributes[cableGenerations.Length];
         //populates allCablesAtPosition to find out how the cables are overlapping
@@ -88,6 +94,7 @@ public class IntersectionDetector : MonoBehaviour {
             if(cableGeneration.CableGrid == null) { continue; }
             //allCablesAtPosition[a] = cableGeneration.CableGrid[i,j];
             if(!cableGeneration.CableGrid[i,j].hasCable) { continue; }
+            if(plugId != 0 && plug.Id == plugId) { continue; }
             foreach(int index1 in cableGeneration.CableGrid[i,j].numbers) {
                 Image cableImage1 = cableGeneration.Cables[index1].GetComponentInChildren<Image>();
                 if(!plug.IsObstacle) {
@@ -119,6 +126,7 @@ public class IntersectionDetector : MonoBehaviour {
                                                   Constants.obstacleCableIntersectionColor.b,
                                                   cableImage2.color.a);
                 }
+                hasIntersection = true;
             }
 
         }

@@ -67,7 +67,7 @@ MonoBehaviour:
   localJointPositionsTakenUp:
   - {x: 0, y: 85}
   - {x: 0, y: 0}
-  - {x: 0, y: 85}
+  - {x: 0, y: -85}
   localSnapPositions:
   - {x: 0, y: 85}
   - {x: 0, y: -85}
