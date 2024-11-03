@@ -45,6 +45,8 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
         }
         
         RenewObstacleGrid();
+        intersectionDetector.RenewAllObstaclesGrid();
+        intersectionDetector.TestForCableIntersection();
     }
     
     
@@ -81,6 +83,8 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
             transform.position = new Vector3(transform.position.x - Constants.tableSnapDistance, transform.position.y, transform.position.z);
         }
         RenewObstacleGrid();
+        intersectionDetector.RenewAllObstaclesGrid();
+        intersectionDetector.TestForCableIntersection();
     }
 
     private void RenewObstacleGrid() {
@@ -90,7 +94,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
         Vector2 bottomRight = new Vector2(transform.position.x + rectTransform.sizeDelta.x/2, transform.position.y - rectTransform.sizeDelta.y/2);
 
         Index2D startingIndex = new Index2D(0, (int)((topLeft.x - jointsGrid[0,0].position.x)/Constants.jointDistance)+1);
-        Index2D endingIndex = new Index2D(obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-math.EPSILON - jointsGrid[0,0].position.x)/Constants.jointDistance));
+        Index2D endingIndex = new Index2D(obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-0.1f - jointsGrid[0,0].position.x)/Constants.jointDistance));
         startingIndex = Utilities.ClampIndex2D(startingIndex, 0, jointsGrid.GetLength(0), 0, jointsGrid.GetLength(1));
         endingIndex   = Utilities.ClampIndex2D(endingIndex, 0, jointsGrid.GetLength(0), 0, jointsGrid.GetLength(1));
         Debug.Log($"startingIndex: ({startingIndex.x}, {startingIndex.y})");

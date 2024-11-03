@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.Mathematics;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -134,9 +131,7 @@ public class ElectricalStripSizeController : MonoBehaviour, IDebugC, IDragHandle
 
 
         for(int i=0; i<socketsParent.transform.childCount; i++) {
-            foreach(Transform child in socketsParent.transform.GetChild(i).GetComponent<SocketManager>().ChildrenTransforms) {
-                child.gameObject.SetActive(false);
-            }
+            socketsParent.transform.GetChild(i).gameObject.SetActive(false);
         }
 
         int childCount = socketsParent.transform.childCount;

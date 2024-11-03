@@ -11,7 +11,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     IBeginDragHandler, IDragHandler, IEndDragHandler {
     public DebugC DebugC {set; get;}
     private ControlsManager controlsManager;
-    [SerializeField] private InputActionReference deleteAction;
+    private InputActionReference deleteAction;
 
     [SerializeField] private GameObject plugVisual;
     private Plug plug;
