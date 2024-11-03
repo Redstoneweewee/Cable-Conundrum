@@ -6,18 +6,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public enum ObstacleType { Plug, LeftTableLeg, RightTableLeg, TableTop }
 
 public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointerDownHandler, IPointerUpHandler {
     private IntersectionDetector intersectionDetector;
     [SerializeField] private bool temporarilyModifiable;
-    [SerializeField] private ObstacleType obstacleType;
+    [SerializeField] private ObstacleTypes obstacleType;
     private bool isDragging;
     private bool[,] obstacleGrid;
-    public bool         IsDragging            { get { return isDragging;            } set { isDragging            = value; } }
-    public bool         TemporarilyModifiable { get { return temporarilyModifiable; } set { temporarilyModifiable = value; } }
-    public ObstacleType ObstacleType          { get { return obstacleType;          } set { obstacleType          = value; } }
-    public bool[,]      ObstacleGrid          { get { return obstacleGrid;          } set { obstacleGrid          = value; } }
+    public bool          IsDragging            { get { return isDragging;            } set { isDragging            = value; } }
+    public bool          TemporarilyModifiable { get { return temporarilyModifiable; } set { temporarilyModifiable = value; } }
+    public ObstacleTypes ObstacleType          { get { return obstacleType;          } set { obstacleType          = value; } }
+    public bool[,]       ObstacleGrid          { get { return obstacleGrid;          } set { obstacleGrid          = value; } }
     private RectTransform rectTransform;
     private Mouse   mouse = Mouse.current;
     private Vector2 cachedMousePosition;
@@ -28,19 +27,19 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     void Start() {
         intersectionDetector = FindObjectOfType<IntersectionDetector>();
         rectTransform = GetComponentInChildren<RectTransform>();
-        if(obstacleType == ObstacleType.LeftTableLeg ||
-           obstacleType == ObstacleType.RightTableLeg ||
-           obstacleType == ObstacleType.TableTop) { StartCoroutine(InitializeTable()); }
+        if(obstacleType == ObstacleTypes.LeftTableLeg ||
+           obstacleType == ObstacleTypes.RightTableLeg ||
+           obstacleType == ObstacleTypes.TableTop) { StartCoroutine(InitializeTable()); }
     }   
 
     private IEnumerator InitializeTable() {
         yield return new WaitForSeconds(0.01f);
         Transform [,] jointsGrid = FindObjectOfType<JointsController>().JointsGrid;
         
-        if(obstacleType == ObstacleType.LeftTableLeg) {
+        if(obstacleType == ObstacleTypes.LeftTableLeg) {
             transform.position = new Vector3(jointsGrid[0, 1].position.x + Constants.jointDistance/2 + rectTransform.sizeDelta.x/2, rectTransform.sizeDelta.y/2, 0);
         }
-        else if(obstacleType == ObstacleType.RightTableLeg) {
+        else if(obstacleType == ObstacleTypes.RightTableLeg) {
             transform.position = new Vector3(jointsGrid[0, jointsGrid.GetLength(1)-2].position.x - Constants.jointDistance/2 - rectTransform.sizeDelta.x/2, rectTransform.sizeDelta.y/2, 0);
         }
         
@@ -56,7 +55,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     }
     public void OnDrag(PointerEventData eventData) {
         if(!TemporarilyModifiable) { return; }
-        if(obstacleType != ObstacleType.LeftTableLeg && obstacleType != ObstacleType.RightTableLeg && obstacleType != ObstacleType.TableTop) { return; }
+        if(obstacleType != ObstacleTypes.LeftTableLeg && obstacleType != ObstacleTypes.RightTableLeg && obstacleType != ObstacleTypes.TableTop) { return; }
         //Debug.Log("Drag Begin");
         if(math.abs(cachedMousePosition.x - mouse.position.value.x) > Constants.tableSnapDistance) {
             if(mouse.position.value.x > cachedMousePosition.x) { ModifyTablePosition(Directions.Right); }
@@ -118,7 +117,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
         //                                 cableImage.color.b,
         //                                 opacity);
         //}
-        if(obstacleType == ObstacleType.Plug) {
+        if(obstacleType == ObstacleTypes.Plug) {
             Image plugImage = GetComponent<PlugInteractions>().PlugVisual.GetComponent<Image>();
             plugImage.color = new Color(plugImage.color.r,
                                         plugImage.color.g,

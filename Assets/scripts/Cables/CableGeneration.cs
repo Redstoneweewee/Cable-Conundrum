@@ -7,42 +7,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public struct Index2D {
-    public int x;
-    public int y;
-    public Index2D(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-    // Overload the == operator
-    public static bool operator ==(Index2D a, Index2D b) { return a.x == b.x && a.y == b.y; }
-    // Overload the != operator
-    public static bool operator !=(Index2D a, Index2D b) { return !(a == b); }
-    // It's still a good practice to override Equals and GetHashCode
-    public override bool Equals(object obj) {
-        if (!(obj is Index2D))
-            return false;
-
-        Index2D other = (Index2D)obj;
-        return this == other;
-    }
-    public override int GetHashCode() { return (x, y).GetHashCode(); }
-}
-
-public class CableGridAttributes {
-    public bool hasCable;
-    public List<int> numbers;
-    public CableGridAttributes() {
-        hasCable = false;
-        numbers = new List<int>();
-    }
-    public void ChangeAttributes(bool hasCable, int number) {
-        this.hasCable = hasCable;
-        this.numbers.Add(number);
-    }
-}
-
-
 public class CableGeneration : MonoBehaviour, IDebugC {
     private Mouse mouse = Mouse.current;
     public DebugC DebugC {set; get;}
@@ -65,8 +29,8 @@ public class CableGeneration : MonoBehaviour, IDebugC {
     public List<Transform> Cables {get{return cables;} set{cables = value;}}
     //doesn't get used/generated until the player plugs the plug into a socket
     //numbers always contain 0; keep going up to find the next cable until the size of the grid
-    private CableGridAttributes[,] cableGrid; 
-    public CableGridAttributes[,] CableGrid {get{return cableGrid;} set{cableGrid = value;}}
+    private CablesGridAttributes[,] cableGrid; 
+    public CablesGridAttributes[,] CableGrid {get{return cableGrid;} set{cableGrid = value;}}
     [SerializeField] private Directions startingDirection = Directions.Down;
     public Directions StartingDirection {get{return startingDirection;} set{startingDirection = value;}}
     [SerializeField] private Directions endingDirection   = Directions.Down;
@@ -126,9 +90,9 @@ public class CableGeneration : MonoBehaviour, IDebugC {
     }
     public void InitializeCableGrid() {
         if(cachedJointsGrid == null || cachedJointsGrid != jointsController.JointsGrid) {
-            cableGrid = new CableGridAttributes[jointsController.JointsGrid.GetLength(0), jointsController.JointsGrid.GetLength(1)];
+            cableGrid = new CablesGridAttributes[jointsController.JointsGrid.GetLength(0), jointsController.JointsGrid.GetLength(1)];
             for(int i=0; i<cableGrid.GetLength(0); i++) {
-                for(int j=0; j<cableGrid.GetLength(1); j++) { cableGrid[i,j] = new CableGridAttributes(); }
+                for(int j=0; j<cableGrid.GetLength(1); j++) { cableGrid[i,j] = new CablesGridAttributes(); }
             }
         }
         else {
@@ -208,14 +172,14 @@ public class CableGeneration : MonoBehaviour, IDebugC {
                 else if(deltaGridIndex.x == 1)  { endingDirection = Directions.Down; }
                 else if(deltaGridIndex.y == -1) { endingDirection = Directions.Left; }
                 else if(deltaGridIndex.y == 1)  { endingDirection = Directions.Right; }
-                Directions startDirection = cables[previousIndex].GetComponent<CableTypes>().EndingDirection;
+                Directions startDirection = cables[previousIndex].GetComponent<CableAttributes>().EndingDirection;
                 Index2D gridIntersectionIndex = TestForIntersections(cachedMouseGridIndex, endingDirection);
                 if(gridIntersectionIndex != new Index2D(-1, -1)) {
                     DebugC.Log($"tried to create a loop. stopping cable generation. starting index: ({mouseGridIndex.x}, {mouseGridIndex.y}), direction: {endingDirection}, intersectionindex: ({gridIntersectionIndex.x}, {gridIntersectionIndex.y})");
                     int resetToIndex = cableGrid[gridIntersectionIndex.x, gridIntersectionIndex.y].numbers[0];
                     if(resetToIndex < initialCables.Length) { resetToIndex = initialCables.Length; }
                     Transform resetToCable = cables[resetToIndex];
-                    endingDirection = resetToCable.GetComponent<CableTypes>().EndingDirection;
+                    endingDirection = resetToCable.GetComponent<CableAttributes>().EndingDirection;
                     GenerateEndingCables(resetToIndex);
                     RenewRotationAndIntersectionCables();
                     cachedMouseGridIndex = mouseGridIndex;
@@ -246,7 +210,7 @@ public class CableGeneration : MonoBehaviour, IDebugC {
                     Debug.LogWarning($"Impossible directions. Starting: {startDirection}, Ending: {endingDirection}");
                     for(int i=cables.Count-1; i>=0; i--) {
                         if(cables[i].gameObject.activeSelf) { 
-                            endingDirection = cables[i].GetComponent<CableTypes>().EndingDirection; 
+                            endingDirection = cables[i].GetComponent<CableAttributes>().EndingDirection; 
                             break;
                         }
                     }
@@ -273,7 +237,7 @@ public class CableGeneration : MonoBehaviour, IDebugC {
                     if(index < initialCables.Length) { Debug.Log("trying to change an initial cable. Stopped loop.");yield break; }
                     Debug.Log("index: "+index);
                     Transform previousCable = cables[index-1];
-                    endingDirection = previousCable.GetComponent<CableTypes>().EndingDirection;
+                    endingDirection = previousCable.GetComponent<CableAttributes>().EndingDirection;
                     GenerateEndingCables(index);
                 }
                 RenewRotationAndIntersectionCables();
@@ -350,25 +314,25 @@ public class CableGeneration : MonoBehaviour, IDebugC {
     }
     private void RenewInitialCable() {
         if(cables.Count > 0) {
-            CableTypes prefabCableType;
+            CableAttributes prefabAttributes;
             switch(startingDirection) {
                 case Directions.Up:
-                    prefabCableType = cablePrefabs[6].GetComponent<CableTypes>(); break;
+                    prefabAttributes = cablePrefabs[6].GetComponent<CableAttributes>(); break;
                 case Directions.Down:
-                    prefabCableType = cablePrefabs[7].GetComponent<CableTypes>(); break;
+                    prefabAttributes = cablePrefabs[7].GetComponent<CableAttributes>(); break;
                 case Directions.Left:
-                    prefabCableType = cablePrefabs[2].GetComponent<CableTypes>(); break;
+                    prefabAttributes = cablePrefabs[2].GetComponent<CableAttributes>(); break;
                 case Directions.Right:
-                    prefabCableType = cablePrefabs[3].GetComponent<CableTypes>(); break;
+                    prefabAttributes = cablePrefabs[3].GetComponent<CableAttributes>(); break;
                 default:
                     Debug.LogError("RenewInitialCable function did not work correctly. None of the conditions were met.");
-                    prefabCableType = cablePrefabs[3].GetComponent<CableTypes>(); break;
+                    prefabAttributes = cablePrefabs[3].GetComponent<CableAttributes>(); break;
             }
 
-            Sprite  prefabSprite    = prefabCableType.CableImage.sprite;
-            float   prefabZRotation = prefabCableType.ZRotation;
-            Vector2 prefabPivot     = prefabCableType.Pivot;
-            ModifyCableValues(cables[0], prefabCableType, false, 
+            Sprite  prefabSprite    = prefabAttributes.CableImage.sprite;
+            float   prefabZRotation = prefabAttributes.ZRotation;
+            Vector2 prefabPivot     = prefabAttributes.Pivot;
+            ModifyCableValues(cables[0], prefabAttributes, false, 
                               prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
         }
         else {
@@ -408,7 +372,7 @@ public class CableGeneration : MonoBehaviour, IDebugC {
             //finds the next rotation cable and sets nextIndex to its index
             for(int i=index; i<cables.Count; i++) {
                 
-                if((cables[i].GetComponent<CableTypes>().IsRotationCable || cables[i].GetComponent<CableTypes>().IsIntersectionCable ) && cables[i].gameObject.activeSelf) { 
+                if((cables[i].GetComponent<CableAttributes>().IsRotationCable || cables[i].GetComponent<CableAttributes>().IsIntersectionCable ) && cables[i].gameObject.activeSelf) { 
                     nextRotationCableIndex = i; 
                     lastRotationCableIndex = i;
                     cables[i].SetSiblingIndex(i+1);
@@ -431,23 +395,23 @@ public class CableGeneration : MonoBehaviour, IDebugC {
     private void TryGenerateCable(int previousIndex, Directions newDirection) {
         //Debug.Log("previousIndex: "+previousIndex);
         Transform previousCable;
-        CableTypes previousCableType;
-        if(!cables[previousIndex].GetComponent<CableTypes>().IsRotationCable) {
+        CableAttributes previousAttributes;
+        if(!cables[previousIndex].GetComponent<CableAttributes>().IsRotationCable) {
             previousCable = cables[previousIndex];
-            previousCableType = previousCable.GetComponent<CableTypes>();
+            previousAttributes = previousCable.GetComponent<CableAttributes>();
         }
         else {
             previousIndex -= 1;
             previousCable = cables[previousIndex];
-            previousCableType = previousCable.GetComponent<CableTypes>();
+            previousAttributes = previousCable.GetComponent<CableAttributes>();
         }
         //going straight
-        if(previousCableType.EndingDirection == newDirection) {
+        if(previousAttributes.EndingDirection == newDirection) {
             TryRenewStraightCable(previousIndex+1);
         }
         //turning
-        else if(previousCableType.EndingDirection != newDirection) {
-            TryRenewRotationCable(previousIndex+1, previousCableType.EndingDirection, newDirection);
+        else if(previousAttributes.EndingDirection != newDirection) {
+            TryRenewRotationCable(previousIndex+1, previousAttributes.EndingDirection, newDirection);
             DebugC.Log("renewed rotation cable, direction: "+newDirection);
             //TryRenewStraightCable(previousIndex+2);
             //generate rotation cable
@@ -496,7 +460,7 @@ public class CableGeneration : MonoBehaviour, IDebugC {
         if((!plug.IsObstacle && plug.isPluggedIn) || (plug.IsObstacle && !plug.Obstacle.TemporarilyModifiable)) { SetCablesOpacity(1f); }
         else if((!plug.IsObstacle && !plug.isPluggedIn) || (plug.IsObstacle && plug.Obstacle.TemporarilyModifiable)) {  SetCablesOpacity(Constants.cableOpacity); }
         for(int i=cables.Count-1; i>=0; i--) {
-            if(cables[i].gameObject.activeSelf) { endingDirection = cables[i].GetComponent<CableTypes>().EndingDirection; break; }
+            if(cables[i].gameObject.activeSelf) { endingDirection = cables[i].GetComponent<CableAttributes>().EndingDirection; break; }
         }
         if(plug.IsObstacle) { ModifyCableColorsToObstacle(); }
     }
@@ -504,23 +468,23 @@ public class CableGeneration : MonoBehaviour, IDebugC {
 
     private void TryRenewStraightCable(int index) {
         Transform  previousCable = cables[index-1];
-        CableTypes previousCableType = previousCable.GetComponent<CableTypes>();
-        Directions previousEndingDirection = previousCableType.EndingDirection;
-        ShadowDirections shadowDirection = GetShadowDirectionForStraightCables(previousCableType.ShadowDirection, previousCableType.StartingDirection, previousCableType.IsRotationCable);
+        CableAttributes previousAttributes = previousCable.GetComponent<CableAttributes>();
+        Directions previousEndingDirection = previousAttributes.EndingDirection;
+        ShadowDirections shadowDirection = GetShadowDirectionForStraightCables(previousAttributes.ShadowDirection, previousAttributes.StartingDirection, previousAttributes.IsRotationCable);
         
         GameObject cablePrefab = GetStraightCablePrefab(shadowDirection, previousEndingDirection);
-        CableTypes prefabCableType = cablePrefab.GetComponent<CableTypes>();
+        CableAttributes prefabAttributes = cablePrefab.GetComponent<CableAttributes>();
         Vector3    deltaPosition;
-        if(!previousCableType.IsRotationCable) { DebugC.Log("previous is not rotation node"); deltaPosition = Constants.jointDistance*prefabCableType.DirectionMultiple; }
-        else                                   { DebugC.Log("previous is rotation node"); deltaPosition = Vector3.zero; }//////////////Constants.jointDistance/2*prefabCableType.DirectionMultiple; }
+        if(!previousAttributes.IsRotationCable) { DebugC.Log("previous is not rotation node"); deltaPosition = Constants.jointDistance*prefabAttributes.DirectionMultiple; }
+        else                                   { DebugC.Log("previous is rotation node"); deltaPosition = Vector3.zero; }
         
         
         if(cables.Count > index) {
             cables[index].position = previousCable.position + deltaPosition;
-            Sprite     prefabSprite = prefabCableType.CableImage.sprite;
-            float      prefabZRotation = prefabCableType.ZRotation;
-            Vector2    prefabPivot = prefabCableType.Pivot;
-            ModifyCableValues(cables[index], prefabCableType, false, 
+            Sprite     prefabSprite = prefabAttributes.CableImage.sprite;
+            float      prefabZRotation = prefabAttributes.ZRotation;
+            Vector2    prefabPivot = prefabAttributes.Pivot;
+            ModifyCableValues(cables[index], prefabAttributes, false, 
                             prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
             cables[index].gameObject.SetActive(true);
         }
@@ -533,19 +497,19 @@ public class CableGeneration : MonoBehaviour, IDebugC {
 
     private void TryRenewRotationCable(int index, Directions startingDirection, Directions endingDirection) {
         Transform previousCable = cables[index-1];
-        CableTypes previousCableType = previousCable.GetComponent<CableTypes>();
-        ShadowDirections shadowDirection = GetShadowDirectionForRotationCables(previousCableType.ShadowDirection, endingDirection);
+        CableAttributes previousAttributes = previousCable.GetComponent<CableAttributes>();
+        ShadowDirections shadowDirection = GetShadowDirectionForRotationCables(previousAttributes.ShadowDirection, endingDirection);
         GameObject rotationCablePrefab = GetRotationCablePrefab(shadowDirection, startingDirection, endingDirection);
-        Vector3 deltaPosition = Constants.jointDistance*previousCableType.DirectionMultiple;
+        Vector3 deltaPosition = Constants.jointDistance*previousAttributes.DirectionMultiple;
         Vector2 placePosition = previousCable.position + deltaPosition;
         if(cables.Count > index) {
-            CableTypes prefabCableType = rotationCablePrefab.GetComponent<CableTypes>();
-            Sprite     prefabSprite = prefabCableType.CableImage.sprite;
-            float      prefabZRotation = prefabCableType.ZRotation;
-            Vector2    prefabPivot = prefabCableType.Pivot;
+            CableAttributes prefabAttributes = rotationCablePrefab.GetComponent<CableAttributes>();
+            Sprite     prefabSprite = prefabAttributes.CableImage.sprite;
+            float      prefabZRotation = prefabAttributes.ZRotation;
+            Vector2    prefabPivot = prefabAttributes.Pivot;
 
             cables[index].position = placePosition;
-            ModifyCableValues(cables[index], prefabCableType, true, 
+            ModifyCableValues(cables[index], prefabAttributes, true, 
                               prefabZRotation, Constants.rotationCableSize, prefabPivot, prefabSprite);
         }
         else {
@@ -668,7 +632,7 @@ public class CableGeneration : MonoBehaviour, IDebugC {
     }
 
 
-    private void ModifyCableValues(Transform currentCable, CableTypes newCableType, bool isRotationCable,
+    private void ModifyCableValues(Transform currentCable, CableAttributes newAttributes, bool isRotationCable,
                                    float newZRotation, Vector2 newSize, Vector2 newPivot, Sprite newSprite) {
         
         currentCable.GetComponentInChildren<Image>().overrideSprite = newSprite;
@@ -678,11 +642,11 @@ public class CableGeneration : MonoBehaviour, IDebugC {
         RectTransform cableRectTransform = currentCable.GetComponentInChildren<RectTransform>();
         cableRectTransform.pivot = newPivot;
 
-        CableTypes currentCableType = currentCable.GetComponent<CableTypes>();
-        InheritCableTypeValues(currentCableType, newCableType, isRotationCable);
+        CableAttributes currentAttributes = currentCable.GetComponent<CableAttributes>();
+        InheritCableAttributes(currentAttributes, newAttributes, isRotationCable);
     }
 
-    private void InheritCableTypeValues(CableTypes receiver, CableTypes provider, bool isRotationCable) {
+    private void InheritCableAttributes(CableAttributes receiver, CableAttributes provider, bool isRotationCable) {
         receiver.IsRotationCable   = isRotationCable;
         receiver.CableType         = provider.CableType;
         receiver.CableImage        = provider.CableImage;

@@ -34,7 +34,7 @@ public class IntersectionDetector : MonoBehaviour {
         allObstaclesGrid = new bool[jointsController.JointsGrid.GetLength(0), jointsController.JointsGrid.GetLength(1)];
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
         foreach(Obstacle obstacle in obstacles) {
-            if(obstacle.ObstacleType == ObstacleType.Plug) { continue; }
+            if(obstacle.ObstacleType == ObstacleTypes.Plug) { continue; }
             if(obstacle.ObstacleGrid == null) { Debug.LogWarning($"{obstacle.name}'s obstaclesGrid not defined."); continue; }
 
             for(int i=0; i<allObstaclesGrid.GetLength(0); i++) {
@@ -110,7 +110,7 @@ public class IntersectionDetector : MonoBehaviour {
                                                   cableImage1.color.a);
                 }
                 
-                if(cableGeneration.Cables[index1].GetComponent<CableTypes>().IsInitialCable) { continue; }
+                if(cableGeneration.Cables[index1].GetComponent<CableAttributes>().IsInitialCable) { continue; }
                 int index2 = cableGeneration.CableGrid[i,j].numbers[0]-1;
                 if(index2 < 0) { continue; }
                 Image cableImage2 = cableGeneration.Cables[index2].GetComponentInChildren<Image>();

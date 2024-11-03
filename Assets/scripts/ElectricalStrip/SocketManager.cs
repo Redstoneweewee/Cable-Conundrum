@@ -23,12 +23,12 @@ public class SocketManager : MonoBehaviour, IPointerDownHandler {
         isActive = !isActive;
         if(isActive) { 
             foreach(Transform child in childrenTransforms) { child.gameObject.SetActive(true); }
-            electricalStripSizeController.SocketsActiveGrid[id.x].Row[id.y] = true;
+            electricalStripSizeController.SocketsActiveGrid[id.x].row[id.y] = true;
         }
         else { 
             foreach(Transform child in childrenTransforms) { child.gameObject.SetActive(false); }
             gameObject.SetActive(true);
-            electricalStripSizeController.SocketsActiveGrid[id.x].Row[id.y] = false;
+            electricalStripSizeController.SocketsActiveGrid[id.x].row[id.y] = false;
         }
         electricalStripSizeController.RenewSockets();
     }

@@ -5,7 +5,6 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum LoadSceneType { Next, Previous, Menu }
 
 public class ScenesController : MonoBehaviour {
     [SerializeField] private Animator crossFadeTransition;
@@ -44,16 +43,16 @@ public class ScenesController : MonoBehaviour {
         sceneFinishedLoading = true;
     }
 
-    public void LoadLevel(LoadSceneType loadSceneType) {
+    public void LoadLevel(LoadSceneTypes loadSceneType) {
         int nextBuildIndex = SceneManager.GetActiveScene().buildIndex;
         switch(loadSceneType) {
-            case LoadSceneType.Menu:
+            case LoadSceneTypes.Menu:
                 nextBuildIndex = 0;
                 break;
-            case LoadSceneType.Next:
+            case LoadSceneTypes.Next:
                 nextBuildIndex++;
                 break;
-            case LoadSceneType.Previous:
+            case LoadSceneTypes.Previous:
                 nextBuildIndex--;
                 break;
         }
@@ -106,12 +105,12 @@ public class ScenesController : MonoBehaviour {
 
     public void OnPressStartButton() {
         //for now just go to scene 1, which is the "next" level
-        LoadLevel(LoadSceneType.Next);
+        LoadLevel(LoadSceneTypes.Next);
     }
 
 
     public void OnPressExitToMenuButton() {
-        LoadLevel(LoadSceneType.Menu);
+        LoadLevel(LoadSceneTypes.Menu);
     }
 
 

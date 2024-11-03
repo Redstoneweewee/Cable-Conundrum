@@ -5,22 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-[Serializable]
-public class SocketsRow {
-    [SerializeField] private List<bool> row = new List<bool>();
-    public List<bool> Row { get{return row;} set{row = value;} }
-    public SocketsRow(int length) {
-        for(int i=0; i<length; i++) { row.Add(true); }
-    }
-    public SocketsRow(SocketsRow previousSocketsRow, int max) {
-        for(int i=0; i<max; i++) {
-            if(i < previousSocketsRow.Row.Count) { row.Add(previousSocketsRow.Row[i]); }
-            else { row.Add(true); }
-        }
-    }
-}
-
-
 
 [ExecuteInEditMode]
 public class ElectricalStripSizeController : MonoBehaviour, IDebugC, IDragHandler, IBeginDragHandler {
@@ -154,7 +138,7 @@ public class ElectricalStripSizeController : MonoBehaviour, IDebugC, IDragHandle
                     electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().IsActive = true;
                     electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().id = new Index2D(i, j);
                 }
-                if(socketsActiveGrid[i].Row[j] == false) { 
+                if(socketsActiveGrid[i].row[j] == false) { 
                     Debug.Log($"Socket At ({i}, {j}) is inactive."); 
                     foreach(Transform child in electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().ChildrenTransforms) {
                         child.gameObject.SetActive(false);

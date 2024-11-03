@@ -6,17 +6,6 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[Serializable]
-public struct LevelPlugs {
-    public Directions startingDirection;
-    public List<Plug> plugs;
-    public LevelPlugs(Directions startingDirection) {
-        this.startingDirection = startingDirection;
-        plugs = new List<Plug>();
-    }
-}
-
-
 public class LevelController : LevelStart {
     public DebugC DebugC {set; get;}
     [SerializeField] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();

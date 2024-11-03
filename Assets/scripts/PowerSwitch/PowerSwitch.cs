@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public enum LevelFailureTypes { None, Plugs, Cables, Obstacles }
-
 public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
     public DebugC DebugC {set; get;}
     [SerializeField] private GameObject offVisual;

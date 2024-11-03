@@ -7,20 +7,18 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public enum PlugSelectorType { Plug, PermaPlug, Table }
-
 [Serializable]
 public class PlugSelectorAtributes {
     private GameObject buttonGameObject;
     [SerializeField] private GameObject plugPrefab;
     [SerializeField] private GameObject plugImage;
-    [SerializeField] private PlugSelectorType type;
+    [SerializeField] private PlugSelectorTypes type;
     private Button   button;
-    public GameObject       ButtonGameObject {get{return buttonGameObject;}         set{buttonGameObject = value;}}
-    public GameObject       PlugPrefab       {get{return plugPrefab;}       private set{plugPrefab       = value;}}
-    public GameObject       PlugImage        {get{return plugImage;}        private set{plugImage        = value;}}
-    public PlugSelectorType Type             {get{return type;}             private set{type             = value;}}
-    public Button           Button           {get{return button;}                   set{button           = value;}}
+    public GameObject        ButtonGameObject {get{return buttonGameObject;}         set{buttonGameObject = value;}}
+    public GameObject        PlugPrefab       {get{return plugPrefab;}       private set{plugPrefab       = value;}}
+    public GameObject        PlugImage        {get{return plugImage;}        private set{plugImage        = value;}}
+    public PlugSelectorTypes Type             {get{return type;}             private set{type             = value;}}
+    public Button            Button           {get{return button;}                   set{button           = value;}}
 }
 
 
@@ -156,18 +154,18 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
         Debug.Log("A button was pressed.");
         Debug.Log($"buttonId: {buttonId}");
         PlugSelectorAtributes attribute = allSelectablePlugs[buttonId];
-        if(attribute.Type == PlugSelectorType.Plug) {
+        if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
             plug.GetComponent<PlugInteractions>().InitialCreateDrag();
         }
-        else if(attribute.Type == PlugSelectorType.PermaPlug) {
+        else if(attribute.Type == PlugSelectorTypes.PermaPlug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
             plug.GetComponent<Obstacle>().TemporarilyModifiable = controlsManager.ObstaclesModifiable;
             plug.GetComponent<PlugInteractions>().InitialCreateDrag();
         }
-        else if(attribute.Type == PlugSelectorType.Table) {
+        else if(attribute.Type == PlugSelectorTypes.Table) {
             GameObject table = Instantiate(attribute.PlugPrefab, obstaclesParent.transform);
             table.GetComponent<Obstacle>().TemporarilyModifiable = controlsManager.ObstaclesModifiable;
             if(controlsManager.ObstaclesModifiable) { table.GetComponent<Obstacle>().SetOpacity(0.8f); }
