@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b541a2886d83935499846f8995586c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  cableParentAttributes: {fileID: 0}
   isPluggedIn: 0
   isObstacle: 0
   obstacle: {fileID: 0}
@@ -157,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2272469213828403106}
   - component: {fileID: 9121782649800716119}
+  - component: {fileID: 2611733313154902105}
   - component: {fileID: 5447463096067010012}
   m_Layer: 0
   m_Name: Cables
@@ -201,6 +204,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6896fee49b0c8d243a554481a0d31bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2611733313154902105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932422443188743115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugC: {fileID: 0}
+  plug: {fileID: 0}
+  plugInteractions: {fileID: 0}
+  intersectionDetector: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  jointsController: {fileID: 0}
   cablePrefabs:
   - {fileID: 5551953224207516642, guid: e27c0bdf972d4cc43a45b32d9d0f6779, type: 3}
   - {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
@@ -236,8 +257,22 @@ MonoBehaviour:
   - {fileID: 9019911373207713058}
   - {fileID: 3682763653705718314}
   - {fileID: 8305643961249828306}
+  cachedPosition: {x: 0, y: 0, z: 0}
+  cables: []
+  lastRotationCableIndex: 0
+  cachedStartingDirection: 0
+  cachedEndingDirection: 0
+  isInitialCable: 0
+  isRotationCable: 0
+  isIntersectionCable: 0
+  cableType: 0
+  cableImage: {fileID: 0}
+  zRotation: 0
+  pivot: {x: 0, y: 0}
+  shadowDirection: 0
   startingDirection: 2
   endingDirection: 2
+  directionMultiple: {x: 0, y: 0}
 --- !u!225 &5447463096067010012
 CanvasGroup:
   m_ObjectHideFlags: 0

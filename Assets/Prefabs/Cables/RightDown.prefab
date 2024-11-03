@@ -48,14 +48,14 @@ MonoBehaviour:
   isInitialCable: 0
   isRotationCable: 0
   isIntersectionCable: 0
-  cableType: 0
-  cableImage: {fileID: 0}
+  cableType: 7
+  cableImage: {fileID: 4623917333229002755}
   zRotation: 0
-  pivot: {x: 0, y: 0}
-  shadowDirection: 0
-  startingDirection: 0
-  endingDirection: 0
-  directionMultiple: {x: 0, y: 0}
+  pivot: {x: 0.5, y: 1}
+  shadowDirection: 3
+  startingDirection: 1
+  endingDirection: 1
+  directionMultiple: {x: 0, y: -1}
 --- !u!1 &7255271851008922511
 GameObject:
   m_ObjectHideFlags: 0
