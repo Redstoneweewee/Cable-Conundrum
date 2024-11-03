@@ -16,7 +16,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     [SerializeField] private GameObject plugVisual;
     private Plug plug;
     private IntersectionDetector intersectionDetector;
-    private CableAttributes cableAttributes;
+    private CableParentAttributes cableParentAttribute;
     private CableHandler cableHandler;
     private IEnumerator dragCoroutine;
     private IEnumerator modifyCableCoroutine;
@@ -42,7 +42,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         electricalStripController = FindObjectOfType<ElectricalStripController>();
         plug = GetComponent<Plug>();
         jointsController = FindObjectOfType<JointsController>();
-        cableAttributes = GetComponentInChildren<CableAttributes>();
+        cableParentAttribute = GetComponentInChildren<CableParentAttributes>();
         cableHandler = GetComponentInChildren<CableHandler>();
 
         DebugC.Log(electricalStripController);

@@ -62,15 +62,15 @@ public class ElectricalStripController : MonoBehaviour, IDebugC {
     }
 
     public void RenewAllCableGrids() {
-        CableAttributes[] allCableAttributes = FindObjectsOfType<CableAttributes>();
+        CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
 
         AllCablesGrid = new int[jointsController.JointsGrid.GetLength(0), jointsController.JointsGrid.GetLength(1)];
-        foreach(CableAttributes cableAttribute in allCableAttributes) {
-            if(cableAttribute.cableGrid == null) { DebugC.Log($"CableGrid of {cableAttribute.transform.name} is null."); continue; }
-            if(cableAttribute.cableGrid[0,0] == null) { DebugC.Log($"CableGrid of {cableAttribute.transform.name} is null."); continue; }
-            for(int i=0; i<cableAttribute.cableGrid.GetLength(0); i++) {
-                for(int j=0; j<cableAttribute.cableGrid.GetLength(1); j++) {
-                    if(cableAttribute.cableGrid[i,j].hasCable) { AllCablesGrid[i,j] += 1; }
+        foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
+            if(cableParentAttribute.cableGrid == null) { DebugC.Log($"CableGrid of {cableParentAttribute.transform.name} is null."); continue; }
+            if(cableParentAttribute.cableGrid[0,0] == null) { DebugC.Log($"CableGrid of {cableParentAttribute.transform.name} is null."); continue; }
+            for(int i=0; i<cableParentAttribute.cableGrid.GetLength(0); i++) {
+                for(int j=0; j<cableParentAttribute.cableGrid.GetLength(1); j++) {
+                    if(cableParentAttribute.cableGrid[i,j].hasCable) { AllCablesGrid[i,j] += 1; }
                 }
             }
         }

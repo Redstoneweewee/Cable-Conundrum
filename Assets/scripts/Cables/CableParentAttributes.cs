@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CableAttributes : MonoBehaviour {
+public class CableParentAttributes : MonoBehaviour {
 
     [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public DebugC debugC;

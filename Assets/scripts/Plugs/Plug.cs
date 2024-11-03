@@ -9,7 +9,7 @@ public class Plug : MonoBehaviour {
     public static int idIncrement = 1;
     public DebugC DebugC {set; get;}
     [HideInInspector] public int id;
-    [HideInInspector] public CableAttributes cableAttributes;
+    [HideInInspector] public CableParentAttributes cableParentAttributes;
 
 
     public bool isPluggedIn = false;
@@ -30,7 +30,7 @@ public class Plug : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        cableAttributes = GetComponentInChildren<CableAttributes>();
+        cableParentAttributes = GetComponentInChildren<CableParentAttributes>();
         if(isObstacle) { obstacle = GetComponent<Obstacle>(); }
         DebugC = DebugC.Get();
         DebugC.Log("initialized "+transform.name);

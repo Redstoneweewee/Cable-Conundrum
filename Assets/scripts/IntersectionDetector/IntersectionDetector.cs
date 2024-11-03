@@ -75,8 +75,8 @@ public class IntersectionDetector : MonoBehaviour {
     public void ClearAllCableIntersections() {
         Plug[] plugs = FindObjectsOfType<Plug>();
         foreach(Plug plug in plugs) {
-            CableAttributes cableAttributes = plug.cableAttributes;
-            foreach(Transform cable in cableAttributes.cables) {
+            CableParentAttributes cableParentAttributes = plug.cableParentAttributes;
+            foreach(Transform cable in cableParentAttributes.cables) {
                 Image cableImage = cable.GetComponentInChildren<Image>();
                 if(!plug.isObstacle) { cableImage.color = new Color(1, 1, 1, cableImage.color.a); }
                 else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
@@ -90,12 +90,12 @@ public class IntersectionDetector : MonoBehaviour {
         //CableGridAttributes[] allCablesAtPosition = new CableGridAttributes[cableGenerations.Length];
         //populates allCablesAtPosition to find out how the cables are overlapping
         foreach(Plug plug in plugs) {
-            CableAttributes cableAttributes = plug.cableAttributes;
-            if(cableAttributes.cableGrid == null) { continue; }
-            if(!cableAttributes.cableGrid[i,j].hasCable) { continue; }
+            CableParentAttributes cableParentAttributes = plug.cableParentAttributes;
+            if(cableParentAttributes.cableGrid == null) { continue; }
+            if(!cableParentAttributes.cableGrid[i,j].hasCable) { continue; }
             if(plugId != 0 && plug.id == plugId) { continue; }
-            foreach(int index1 in cableAttributes.cableGrid[i,j].numbers) {
-                Image cableImage1 = cableAttributes.cables[index1].GetComponentInChildren<Image>();
+            foreach(int index1 in cableParentAttributes.cableGrid[i,j].numbers) {
+                Image cableImage1 = cableParentAttributes.cables[index1].GetComponentInChildren<Image>();
                 if(!plug.isObstacle) {
                     cableImage1.color = new Color(Constants.cableIntersectionColor.r,
                                                   Constants.cableIntersectionColor.g,
@@ -109,10 +109,10 @@ public class IntersectionDetector : MonoBehaviour {
                                                   cableImage1.color.a);
                 }
                 
-                if(cableAttributes.cables[index1].GetComponent<CableAttributes>().isInitialCable) { continue; }
-                int index2 = cableAttributes.cableGrid[i,j].numbers[0]-1;
+                if(cableParentAttributes.cables[index1].GetComponent<CableChildAttributes>().isInitialCable) { continue; }
+                int index2 = cableParentAttributes.cableGrid[i,j].numbers[0]-1;
                 if(index2 < 0) { continue; }
-                Image cableImage2 = cableAttributes.cables[index2].GetComponentInChildren<Image>();
+                Image cableImage2 = cableParentAttributes.cables[index2].GetComponentInChildren<Image>();
                 if(!plug.isObstacle) {
                     cableImage2.color = new Color(Constants.cableIntersectionColor.r,
                                                   Constants.cableIntersectionColor.g,
