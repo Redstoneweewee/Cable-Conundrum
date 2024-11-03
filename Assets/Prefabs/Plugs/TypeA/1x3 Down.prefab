@@ -297,6 +297,10 @@ PrefabInstance:
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3367230049586527254, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -369,6 +373,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
     - target: {fileID: -3261277785496600335, guid: 94187321732935941b4364eec285e76b, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 104875181134094271, guid: 94187321732935941b4364eec285e76b, type: 3}
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
@@ -447,6 +455,10 @@ PrefabInstance:
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3367230049586527254, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: m_LocalPosition.x
       value: 85
@@ -514,6 +526,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
+    - target: {fileID: 3534087248237919762, guid: 10861dffd8853f94cacdc1938d688975, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702777388921839916, guid: 10861dffd8853f94cacdc1938d688975, type: 3}
       propertyPath: m_Name
       value: InitialCable4
@@ -629,6 +645,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 7952554902454019921, guid: 54876201ac2076f4bbab8fa019e84dcc, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8342147578661601924, guid: 54876201ac2076f4bbab8fa019e84dcc, type: 3}
       propertyPath: m_Name
       value: InitialRotationCable3
@@ -663,6 +683,10 @@ PrefabInstance:
     - target: {fileID: 2698305703646795225, guid: 3d5dcefcd8922a547b3f8f0847086180, type: 3}
       propertyPath: m_Name
       value: InitialRotationCable5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977195872237073731, guid: 3d5dcefcd8922a547b3f8f0847086180, type: 3}
+      propertyPath: isInitialCable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8385765176343251016, guid: 3d5dcefcd8922a547b3f8f0847086180, type: 3}
       propertyPath: m_LocalPosition.x
@@ -728,6 +752,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
     - target: {fileID: -6537853198203547065, guid: f9079b4deb427144597cdc9ebf3dba0d, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255225651616039280, guid: f9079b4deb427144597cdc9ebf3dba0d, type: 3}
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
@@ -798,6 +826,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
+    - target: {fileID: 4530992939098068061, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702777388921839916, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
       propertyPath: m_Name
       value: InitialCable6
@@ -870,6 +902,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
     - target: {fileID: -3261277785496600335, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}

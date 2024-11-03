@@ -314,9 +314,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3821490801822744090, guid: 0e2cb3e85aad31542b5e3c0055655bed, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6187662638159900740, guid: 0e2cb3e85aad31542b5e3c0055655bed, type: 3}
       propertyPath: m_Name
-      value: RightUp
+      value: InitialCable0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

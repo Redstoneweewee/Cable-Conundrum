@@ -281,6 +281,10 @@ PrefabInstance:
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1255225651616039280, guid: f9079b4deb427144597cdc9ebf3dba0d, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2123226544648262142, guid: f9079b4deb427144597cdc9ebf3dba0d, type: 3}
       propertyPath: m_Name
       value: InitialCable0

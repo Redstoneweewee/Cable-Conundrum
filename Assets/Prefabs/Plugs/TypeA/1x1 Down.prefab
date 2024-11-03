@@ -378,6 +378,10 @@ PrefabInstance:
       propertyPath: cablePrefabs.Array.data[23]
       value: 
       objectReference: {fileID: 3325671832225026162, guid: 08920192d842760478bf6d57e3acc8fc, type: 3}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3367230049586527254, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
