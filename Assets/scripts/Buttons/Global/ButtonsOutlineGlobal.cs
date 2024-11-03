@@ -4,20 +4,21 @@ using Nobi.UiRoundedCorners;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class Outline : MonoBehaviour {
-    [SerializeField] private GameObject outline;
+public class ButtonsOutlineGlobal : MonoBehaviour {
+    [SerializeField]          private GameObject outline;
     [SerializeField] [Min(0)] private float width = 10f;
+
     private ImageWithRoundedCorners imageWithRoundedCorners;
-    private RectTransform rectTransform;
+    private RectTransform           rectTransform;
 
     private Vector3 cachedPosition = Vector2.zero;
-    private float cachedWidth = 0f;
-    private Vector2 cachedSize = Vector2.zero;
-    private float cachedRadius = 0f;
+    private float   cachedWidth    = 0f;
+    private Vector2 cachedSize     = Vector2.zero;
+    private float   cachedRadius   = 0f;
 
     void Awake() {
         imageWithRoundedCorners = GetComponent<ImageWithRoundedCorners>();
-        rectTransform = GetComponent<RectTransform>();
+        rectTransform           = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame

@@ -28,14 +28,14 @@ public class ElectricalStripController : MonoBehaviour, IDebugC {
         PlugsGrid = new int[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
         Plug[] allPlugs = FindObjectsOfType<Plug>();
         foreach(Plug plug in allPlugs) {
-            if(plug.IsPluggedIn) {
-                foreach(Vector2 localPlugPositionsTakenUp in plug.LocalJointPositionsTakenUp) {
+            if(plug.isPluggedIn) {
+                foreach(Vector2 localPlugPositionsTakenUp in plug.localJointPositionsTakenUp) {
                     Vector3 actualPosition = plug.transform.position + new Vector3(localPlugPositionsTakenUp.x, localPlugPositionsTakenUp.y, 0);
                     float   subJointLength  = Constants.jointDistance/2;
                     Vector2 distanceFromTopLeftJoint = new Vector2(actualPosition.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - actualPosition.y);
                     Index2D gridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
                     gridIndex          = new Index2D(Math.Clamp(gridIndex.y, 0, jointsGrid.GetLength(0)-1), Math.Clamp(gridIndex.x, 0, jointsGrid.GetLength(1)-1));
-                    PlugsGrid[gridIndex.x, gridIndex.y] = plug.Id;
+                    PlugsGrid[gridIndex.x, gridIndex.y] = plug.id;
                 }
             }
         }
@@ -62,15 +62,15 @@ public class ElectricalStripController : MonoBehaviour, IDebugC {
     }
 
     public void RenewAllCableGrids() {
-        CableGeneration[] allCableGenerations = FindObjectsOfType<CableGeneration>();
+        CableAttributes[] allCableAttributes = FindObjectsOfType<CableAttributes>();
 
         AllCablesGrid = new int[jointsController.JointsGrid.GetLength(0), jointsController.JointsGrid.GetLength(1)];
-        foreach(CableGeneration cableGeneration in allCableGenerations) {
-            if(cableGeneration.CableGrid == null) { DebugC.Log($"CableGrid of {cableGeneration.transform.name} is null."); continue; }
-            if(cableGeneration.CableGrid[0,0] == null) { DebugC.Log($"CableGrid of {cableGeneration.transform.name} is null."); continue; }
-            for(int i=0; i<cableGeneration.CableGrid.GetLength(0); i++) {
-                for(int j=0; j<cableGeneration.CableGrid.GetLength(1); j++) {
-                    if(cableGeneration.CableGrid[i,j].hasCable) { AllCablesGrid[i,j] += 1; }
+        foreach(CableAttributes cableAttribute in allCableAttributes) {
+            if(cableAttribute.cableGrid == null) { DebugC.Log($"CableGrid of {cableAttribute.transform.name} is null."); continue; }
+            if(cableAttribute.cableGrid[0,0] == null) { DebugC.Log($"CableGrid of {cableAttribute.transform.name} is null."); continue; }
+            for(int i=0; i<cableAttribute.cableGrid.GetLength(0); i++) {
+                for(int j=0; j<cableAttribute.cableGrid.GetLength(1); j++) {
+                    if(cableAttribute.cableGrid[i,j].hasCable) { AllCablesGrid[i,j] += 1; }
                 }
             }
         }

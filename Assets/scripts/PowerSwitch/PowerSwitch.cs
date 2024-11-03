@@ -36,7 +36,7 @@ public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
     private LevelFailureTypes TestForLevelSuccess() {
         Plug[] allPlugs = FindObjectsOfType<Plug>();
         foreach(Plug plug in allPlugs) {
-            if(plug.IsObstacle) { continue; }
+            if(plug.isObstacle) { continue; }
             if(!plug.isPluggedIn) { return LevelFailureTypes.Plugs; }
         }
 

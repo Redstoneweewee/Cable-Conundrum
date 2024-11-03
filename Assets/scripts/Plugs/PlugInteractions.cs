@@ -16,7 +16,8 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     [SerializeField] private GameObject plugVisual;
     private Plug plug;
     private IntersectionDetector intersectionDetector;
-    private CableGeneration cableGeneration;
+    private CableAttributes cableAttributes;
+    private CableHandler cableHandler;
     private IEnumerator dragCoroutine;
     private IEnumerator modifyCableCoroutine;
     private bool    isDragging         = false;
@@ -41,7 +42,8 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         electricalStripController = FindObjectOfType<ElectricalStripController>();
         plug = GetComponent<Plug>();
         jointsController = FindObjectOfType<JointsController>();
-        cableGeneration = GetComponentInChildren<CableGeneration>();
+        cableAttributes = GetComponentInChildren<CableAttributes>();
+        cableHandler = GetComponentInChildren<CableHandler>();
 
         DebugC.Log(electricalStripController);
     }
@@ -65,7 +67,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        if(plug.IsObstacle && !plug.Obstacle.TemporarilyModifiable) { return; }
+        if(plug.isObstacle && !plug.obstacle.TemporarilyModifiable) { return; }
         plug.transform.SetAsLastSibling();
         if(eventData.pointerCurrentRaycast.gameObject != plugVisual) { 
             TryModifyCables();
@@ -84,7 +86,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        if(plug.IsObstacle && !plug.Obstacle.TemporarilyModifiable) { return; }
+        if(plug.isObstacle && !plug.obstacle.TemporarilyModifiable) { return; }
         plugVisual.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
         TryModifyCables();
         //electricalStripController.RenewAllCableGrids();
@@ -115,13 +117,13 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
             if(firstNearestSocket == null) {
                 transform.position = cachedPlugPositionDynamic;
-                if(plug.IsPluggedIn == true) {
+                if(plug.isPluggedIn == true) {
                     PlugOut();
                 }
             }
             else {
-                transform.position = firstNearestSocket.position - new Vector3(plug.LocalSnapPositions[0].x, plug.LocalSnapPositions[0].y, 0);
-                if(plug.IsPluggedIn == false) {
+                transform.position = firstNearestSocket.position - new Vector3(plug.localSnapPositions[0].x, plug.localSnapPositions[0].y, 0);
+                if(plug.isPluggedIn == false) {
                     PlugIn();
                 }
             }
@@ -142,30 +144,30 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     }
 
     public void PlugIn() {
-        plug.IsPluggedIn = true;
+        plug.isPluggedIn = true;
         electricalStripController.RenewPlugsGrid();
-        cableGeneration.InitializeCableGrid();
+        cableHandler.InitializeCableGrid();
         electricalStripController.RenewAllCableGrids();
-        if(!plug.IsObstacle) { cableGeneration.SetCablesOpacity(1f); }
+        if(!plug.isObstacle) { cableHandler.SetCablesOpacity(1f); }
         intersectionDetector.TestForCableIntersection();
     }
 
     public void PlugOut() {
-        plug.IsPluggedIn = false;
+        plug.isPluggedIn = false;
         electricalStripController.RenewPlugsGrid();
-        cableGeneration.ResetCableGrid();
+        cableHandler.ResetCableGrid();
         electricalStripController.RenewAllCableGrids();
-        if(!plug.IsObstacle) { cableGeneration.SetCablesOpacity(Constants.cableOpacity); }
+        if(!plug.isObstacle) { cableHandler.SetCablesOpacity(Constants.cableOpacity); }
         //intersectionDetector.ClearAllCableIntersections();
         intersectionDetector.TestForCableIntersection();
     }
 
     private void TryModifyCables() {
-        if(!plug.IsPluggedIn) { return; }
+        if(!plug.isPluggedIn) { return; }
         isModifyingCables = true;
-        cableGeneration.InitializeCableGrid();
-        cableGeneration.InitializeCachedMouseGridIndex();
-        modifyCableCoroutine = cableGeneration.ModifyCablesOnInteract();
+        cableHandler.InitializeCableGrid();
+        cableHandler.InitializeCachedMouseGridIndex();
+        modifyCableCoroutine = cableHandler.ModifyCablesOnInteract();
         StartCoroutine(modifyCableCoroutine);
     }
 
@@ -182,8 +184,8 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
         Transform nearestSocket = socketsGrid[0, 0]; //This is just here to make the error go away. Doesn't actually do anything.
 
-        for(int a=0; a<plug.LocalSnapPositions.Count; a++) {
-            Vector3 position = cachedPlugPositionDynamic + plug.LocalSnapPositions[a];
+        for(int a=0; a<plug.localSnapPositions.Count; a++) {
+            Vector3 position = cachedPlugPositionDynamic + plug.localSnapPositions[a];
 
             Vector2 distanceFromTopLeftJoint = new Vector2(position.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - position.y);
             Index2D jointsGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
@@ -241,13 +243,13 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
             if(firstNearestSocket == null) {
                 transform.position = cachedPlugPositionDynamic;
-                if(plug.IsPluggedIn == true) {
+                if(plug.isPluggedIn == true) {
                     PlugOut();
                 }
             }
             else {
-                transform.position = firstNearestSocket.position - new Vector3(plug.LocalSnapPositions[0].x, plug.LocalSnapPositions[0].y, 0);
-                if(plug.IsPluggedIn == false) {
+                transform.position = firstNearestSocket.position - new Vector3(plug.localSnapPositions[0].x, plug.localSnapPositions[0].y, 0);
+                if(plug.isPluggedIn == false) {
                     PlugIn();
                 }
             }

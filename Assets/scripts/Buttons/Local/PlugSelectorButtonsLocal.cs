@@ -4,8 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonId : MonoBehaviour, IPointerDownHandler {
-    public int id;
+public class PlugSelectorButtonsLocal : MonoBehaviour, IPointerDownHandler {
+    [HideInInspector] public int id;
 
     public void OnPointerDown(PointerEventData eventData) {
         GetComponentInParent<PlugSelectorController>().OnClickPlugSelectorButton(id);

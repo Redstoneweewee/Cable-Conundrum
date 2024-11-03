@@ -8,15 +8,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ButtonsController : MonoBehaviour {
-    private ScenesController scenesController;
-    [SerializeField] private List<ButtonAtributes> buttonAttributes = new List<ButtonAtributes>();
+public class ButtonsGlobal : MonoBehaviour {
+    [HideInInspector] public ScenesController scenesController;
+    [SerializeField]  public List<ButtonAtributes> buttonAttributes = new List<ButtonAtributes>();
 
-
-    public List<ButtonAtributes> ButtonAttributes { get{return buttonAttributes;} private set{buttonAttributes = value;} }
-    // Start is called before the first frame update
     void Awake() {
         scenesController = FindObjectOfType<ScenesController>();
+    }
+
+    void Start() {
         foreach(ButtonAtributes buttonAttribute in buttonAttributes) {
             buttonAttribute.Button = buttonAttribute.ButtonGameObject.GetComponentInChildren<Button>();
 

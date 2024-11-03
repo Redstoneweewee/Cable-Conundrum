@@ -98,10 +98,10 @@ public class ControlsManager : MonoBehaviour {
 
         if(plugSelectorEnabled) { plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(true); }
         else { 
-            if(plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorController>().ScrollCoroutine != null) {
-                StopCoroutine(plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorController>().ScrollCoroutine);
+            if(plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorData>().scrollCoroutine != null) {
+                StopCoroutine(plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorData>().scrollCoroutine);
             }
-            plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorController>().ScrollCoroutine = null;
+            plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorData>().scrollCoroutine = null;
             plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(false); 
         }
     }
