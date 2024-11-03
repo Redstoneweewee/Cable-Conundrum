@@ -9,7 +9,7 @@ using UnityEngine.UI;
 //[ExecuteInEditMode]
 public class JointsController : MonoBehaviour, IDebugC  {
     public DebugC DebugC { get ; set; }
-    private ControlsManager controlsManager;
+    private ControlsData controlsData;
     private JointsOpacityController jointsOpacityController;
     private ElectricalStripValues electricalStripValues;
     [SerializeField] private GameObject jointPrefab;
@@ -27,7 +27,7 @@ public class JointsController : MonoBehaviour, IDebugC  {
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
-        controlsManager = FindObjectOfType<ControlsManager>();
+        controlsData = FindObjectOfType<ControlsData>();
         jointsOpacityController = GetComponent<JointsOpacityController>();
         electricalStripValues = Utilities.GetElectricalStripValues();
         cachedScreenSize = new Vector2(Screen.width, Screen.height);
@@ -38,7 +38,7 @@ public class JointsController : MonoBehaviour, IDebugC  {
     private IEnumerator startDelayed() {
         yield return new WaitForEndOfFrame();
         RenewJoints();
-        jointsEnabled = controlsManager.MasterJointsEnabled;
+        jointsEnabled = controlsData.masterJointsEnabled;
     }
 
     // Update is called once per frame

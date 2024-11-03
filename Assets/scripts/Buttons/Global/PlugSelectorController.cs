@@ -110,13 +110,13 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
         else if(attribute.Type == PlugSelectorTypes.PermaPlug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
-            plug.GetComponent<Obstacle>().TemporarilyModifiable = D.controlsManager.ObstaclesModifiable;
+            plug.GetComponent<Obstacle>().TemporarilyModifiable = D.controlsData.obstaclesModifiable;
             plug.GetComponent<PlugInteractions>().InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.Table) {
             GameObject table = Instantiate(attribute.PlugPrefab, D.obstaclesParent.transform);
-            table.GetComponent<Obstacle>().TemporarilyModifiable = D.controlsManager.ObstaclesModifiable;
-            if(D.controlsManager.ObstaclesModifiable) { table.GetComponent<Obstacle>().SetOpacity(0.8f); }
+            table.GetComponent<Obstacle>().TemporarilyModifiable = D.controlsData.obstaclesModifiable;
+            if(D.controlsData.obstaclesModifiable) { table.GetComponent<Obstacle>().SetOpacity(0.8f); }
         }
     }
 }

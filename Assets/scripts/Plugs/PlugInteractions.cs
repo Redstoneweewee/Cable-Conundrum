@@ -10,7 +10,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler,
     IBeginDragHandler, IDragHandler, IEndDragHandler {
     public DebugC DebugC {set; get;}
-    private ControlsManager controlsManager;
+    private ControlsData controlsData;
     private InputActionReference deleteAction;
 
     [SerializeField] private GameObject plugVisual;
@@ -37,7 +37,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
     void Start() {
         DebugC = DebugC.Get();
-        controlsManager = FindObjectOfType<ControlsManager>();
+        controlsData = FindObjectOfType<ControlsData>();
         intersectionDetector = FindObjectOfType<IntersectionDetector>();
         electricalStripController = FindObjectOfType<ElectricalStripController>();
         plug = GetComponent<Plug>();
@@ -71,7 +71,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         plug.transform.SetAsLastSibling();
         if(eventData.pointerCurrentRaycast.gameObject != plugVisual) { 
             TryModifyCables();
-            if(controlsManager.MasterJointsEnabled) { jointsController.JointsEnabled = true; }
+            if(controlsData.masterJointsEnabled) { jointsController.JointsEnabled = true; }
             return;
         }
         StartDrag();
@@ -92,7 +92,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         //electricalStripController.RenewAllCableGrids();
         isDragging = false;
         isModifyingCables = false;
-        if(!controlsManager.MasterJointsEnabled) { jointsController.JointsEnabled = false; }
+        if(!controlsData.masterJointsEnabled) { jointsController.JointsEnabled = false; }
     }
 
     private void StartDrag() {

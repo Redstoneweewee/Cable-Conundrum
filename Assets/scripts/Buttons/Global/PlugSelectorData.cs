@@ -9,8 +9,8 @@ using UnityEngine.UI;
 
 
 public class PlugSelectorData : MonoBehaviour {
-    [HideInInspector] public ControlsController   controlsController;
-    [HideInInspector] public ControlsManager      controlsManager;
+    [HideInInspector] public ControlsData   controlsData;
+    [HideInInspector] public ControlsController      controlsController;
     [HideInInspector] public InputActionReference mouseScrollAction;
 
     //buttons will be automatically generated
@@ -29,8 +29,8 @@ public class PlugSelectorData : MonoBehaviour {
 
 
     void Awake() {
+        controlsData = FindObjectOfType<ControlsData>();
         controlsController = FindObjectOfType<ControlsController>();
-        controlsManager = FindObjectOfType<ControlsManager>();
-        mouseScrollAction = controlsController.MouseScrollAction;
+        mouseScrollAction = controlsData.mouseScrollAction;
     }
 }
