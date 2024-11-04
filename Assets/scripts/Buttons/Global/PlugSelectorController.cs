@@ -11,12 +11,8 @@ using UnityEngine.UI;
 public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     private PlugSelectorData D;
 
-    void Awake() {
-        D = GetComponent<PlugSelectorData>();
-    }
-
-
     void Start() {
+        D = GetComponent<PlugSelectorData>();
         InitializeButtons();
     }
 

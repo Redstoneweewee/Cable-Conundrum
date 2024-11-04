@@ -10,10 +10,8 @@ using UnityEngine.UI;
 public class CableHandler : MonoBehaviour {
     CableParentAttributes A;
 
-    void Awake() {
-        A = GetComponent<CableParentAttributes>();
-    }
     void Start() {
+        A = GetComponent<CableParentAttributes>();
         Initialize();
         RenewRotationAndIntersectionCables();
     }
@@ -196,7 +194,7 @@ public class CableHandler : MonoBehaviour {
     }
 
     private Index2D TestForIntersections(Index2D index2D, Directions direction) {
-        int[,] plugsGrid = A.electricalStripController.PlugsGrid;
+        int[,] plugsGrid = A.electricalStripData.plugsGrid;
         switch(direction) {
             case Directions.Up:
                 for(int i=index2D.x-1; i>=0; i--) {

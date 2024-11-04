@@ -124,11 +124,11 @@ public class ControlsController : MonoBehaviour {
         
         if(D.electricalStripEnabled) {
             electricalStrip.GetComponent<CanvasGroup>().alpha = 0.8f;
-            D.electricalStripSizeController.TemporarilyModifiable = true;
+            D.electricalStripData.temporarilyModifiable = true;
         }
         else {
             electricalStrip.GetComponent<CanvasGroup>().alpha = 1f;
-            D.electricalStripSizeController.TemporarilyModifiable = false;
+            D.electricalStripData.temporarilyModifiable = false;
         }
     
     }

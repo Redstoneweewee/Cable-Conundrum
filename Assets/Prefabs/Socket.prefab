@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399777447409993296}
+  - component: {fileID: -8707535213943055998}
   - component: {fileID: 1858699576397386140}
   - component: {fileID: 6806528145704270392}
   - component: {fileID: 1279515191535577537}
@@ -40,6 +41,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 133, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &-8707535213943055998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762091182818808380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266304a2cf38b2048ba9a38fc5c739d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electricalStripData: {fileID: 0}
+  childrenTransforms: []
+  isActive: 1
 --- !u!114 &1858699576397386140
 MonoBehaviour:
   m_ObjectHideFlags: 0

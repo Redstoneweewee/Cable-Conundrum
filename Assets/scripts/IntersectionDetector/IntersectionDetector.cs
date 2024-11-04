@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class IntersectionDetector : MonoBehaviour {
     private bool hasIntersection = false;
-    ElectricalStripController electricalStripController;
+    ElectricalStripData electricalStripData;
     JointsController jointsController;
     private bool[,] allObstaclesGrid;
 
@@ -14,7 +14,7 @@ public class IntersectionDetector : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
+        electricalStripData = FindObjectOfType<ElectricalStripData>();
         jointsController = FindObjectOfType<JointsController>();
         StartCoroutine(InitialWaitUntilUpdate(0.02f));
     }
@@ -59,13 +59,13 @@ public class IntersectionDetector : MonoBehaviour {
 
     public void TestForCableIntersection() {
         ClearAllCableIntersections();
-        for(int i=0; i<electricalStripController.AllCablesGrid.GetLength(0); i++) {
-            for(int j=0; j<electricalStripController.AllCablesGrid.GetLength(1); j++) {
+        for(int i=0; i<electricalStripData.allCablesGrid.GetLength(0); i++) {
+            for(int j=0; j<electricalStripData.allCablesGrid.GetLength(1); j++) {
                 //if it is greater or equal to 2, there are intersections at that joint position
-                if(electricalStripController.PlugsGrid[i,j] > 0) {
-                    DetermineTypeOfIntersection(i, j, electricalStripController.PlugsGrid[i,j]);
+                if(electricalStripData.plugsGrid[i,j] > 0) {
+                    DetermineTypeOfIntersection(i, j, electricalStripData.plugsGrid[i,j]);
                 }
-                else if(electricalStripController.AllCablesGrid[i,j] >= 2 || allObstaclesGrid[i,j] == true) {
+                else if(electricalStripData.allCablesGrid[i,j] >= 2 || allObstaclesGrid[i,j] == true) {
                     DetermineTypeOfIntersection(i, j, 0);
                 }
             }

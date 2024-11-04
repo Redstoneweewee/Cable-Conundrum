@@ -6,54 +6,22 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
-[ExecuteInEditMode]
-public class ElectricalStripSizeController : MonoBehaviour, IDebugC, IDragHandler, IBeginDragHandler {
-    public DebugC DebugC { get ; set; }
-    private ElectricalStripValues electricalStripValues;
-    private ElectricalStripController electricalStripController;
-
-    float r = Constants.electricalStripBaseSize.x;
-    float s = Constants.electricalStripSeparatorSize;
-    [SerializeField] private bool resetBoard = false;
-    public bool ResetBoard { get{ return resetBoard; } set{ resetBoard = value; } }
-    [SerializeField] private GameObject socketPrefab;
-    [SerializeField] [Range(1, 10)] private int width = 1;
-    [SerializeField] [Range(1, 10)] private int height = 2;
-    [SerializeField] List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>();
-    [SerializeField] List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
-    [SerializeField] private GameObject backgroundVisual;
-    [SerializeField] private GameObject socketsParent;
-    [SerializeField] private GameObject powerSwitch;
-
-    public List<SocketsRow> SocketsActiveGrid {get{return socketsActiveGrid;} set{socketsActiveGrid = value;}}
-
-    private bool temporarilyModifiable = false;
-    private RectTransform rectTransform;
-    private Mouse   mouse = Mouse.current;
-    private Vector2 cachedMousePosition;
-
-    public bool TemporarilyModifiable {get{return temporarilyModifiable;} set{temporarilyModifiable = value;}}
-    //private List<Transform> sockets = new List<Transform>();
-    //private int socketCount = 2;
-    RectTransform rectangularTransform;
-    Vector2 size;
+//[ExecuteInEditMode]
+public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBeginDragHandler {
+    private ElectricalStripData D;
 
     // Start is called before the first frame update
     void Start() {
-        DebugC = DebugC.Get();
-        electricalStripValues     = GetComponent<ElectricalStripValues>();
-        electricalStripController = electricalStripValues.ElectricalStripController;
-        rectangularTransform = backgroundVisual.GetComponent<RectTransform>();
-        size = rectangularTransform.sizeDelta;
+        D = GetComponent<ElectricalStripData>();
     }
 
     // Update is called once per frame
     void Update() {
         //DebugC.Log(Mouse.current.position.value);
-        rectangularTransform = backgroundVisual.GetComponent<RectTransform>();
-        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*width  + Constants.electricalStripSeparatorSize, 
-                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
-        if(size != newSize || resetBoard) {
+        D.rectangularTransform = D.backgroundVisual.GetComponent<RectTransform>();
+        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.width  + Constants.electricalStripSeparatorSize, 
+                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
+        if(D.size != newSize || D.resetBoard) {
             RenewSockets();
             MovePowerSwitch();
         }
@@ -61,20 +29,20 @@ public class ElectricalStripSizeController : MonoBehaviour, IDebugC, IDragHandle
 
 
     public void OnBeginDrag(PointerEventData eventData) {
-        if(!TemporarilyModifiable) { return; }
-        cachedMousePosition = mouse.position.value;
+        if(!D.temporarilyModifiable) { return; }
+        D.cachedMousePosition = D.mouse.position.value;
     }
     public void OnDrag(PointerEventData eventData) {
-        if(!TemporarilyModifiable) { return; }
-        if(math.abs(cachedMousePosition.x - mouse.position.value.x) > Constants.electricalStripBaseSize.x) {
-            if(mouse.position.value.x > cachedMousePosition.x) { ModifySize(Directions.Right); }
+        if(!D.temporarilyModifiable) { return; }
+        if(math.abs(D.cachedMousePosition.x - D.mouse.position.value.x) > Constants.electricalStripBaseSize.x) {
+            if(D.mouse.position.value.x > D.cachedMousePosition.x) { ModifySize(Directions.Right); }
             else                                               { ModifySize(Directions.Left); }
-            cachedMousePosition.x = mouse.position.value.x;
+            D.cachedMousePosition.x = D.mouse.position.value.x;
         }
-        else if(math.abs(cachedMousePosition.y - mouse.position.value.y) > Constants.electricalStripBaseSize.y) {
-            if(mouse.position.value.y > cachedMousePosition.y) { ModifySize(Directions.Up); }
+        else if(math.abs(D.cachedMousePosition.y - D.mouse.position.value.y) > Constants.electricalStripBaseSize.y) {
+            if(D.mouse.position.value.y > D.cachedMousePosition.y) { ModifySize(Directions.Up); }
             else                                               { ModifySize(Directions.Down); }
-            cachedMousePosition.y = mouse.position.value.y;
+            D.cachedMousePosition.y = D.mouse.position.value.y;
         }
     }
 
@@ -82,85 +50,85 @@ public class ElectricalStripSizeController : MonoBehaviour, IDebugC, IDragHandle
     private void ModifySize(Directions direction) {
         switch(direction) {
             case Directions.Up:
-                if(height < 6) { height++; }
+                if(D.height < 6) { D.height++; }
                 break;
             case Directions.Down:
-                if(height > 1) { height--; }
+                if(D.height > 1) { D.height--; }
                 break;
             case Directions.Left:
-                if(width > 1) { width--; }
+                if(D.width > 1) { D.width--; }
                 break;
             case Directions.Right:
-                if(width < 10) { width++; }
+                if(D.width < 10) { D.width++; }
                 break;
         }
     }
 
 
     public void RenewSockets() {
-        rectangularTransform = backgroundVisual.GetComponent<RectTransform>();
-        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*width  + Constants.electricalStripSeparatorSize, 
-                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
-        rectangularTransform.sizeDelta = newSize;
+        D.rectangularTransform = D.backgroundVisual.GetComponent<RectTransform>();
+        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.width  + Constants.electricalStripSeparatorSize, 
+                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
+        D.rectangularTransform.sizeDelta = newSize;
         //socketCount = width * height;
-        size = rectangularTransform.sizeDelta;
-        resetBoard = false;
+        D.size = D.rectangularTransform.sizeDelta;
+        D.resetBoard = false;
 
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
         //DebugC.Log(size);
-        Vector2 topLeft = new Vector2(center.x - size.x/2, center.y + size.y/2);
-        electricalStripController.SocketsGrid = new Transform[height, width];
+        Vector2 topLeft = new Vector2(center.x - D.size.x/2, center.y + D.size.y/2);
+        D.socketsGrid = new Transform[D.height, D.width];
 
         RenewSocketsActiveGrid();
 
 
-        for(int i=0; i<socketsParent.transform.childCount; i++) {
-            socketsParent.transform.GetChild(i).gameObject.SetActive(false);
+        for(int i=0; i<D.socketsParent.transform.childCount; i++) {
+            D.socketsParent.transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        int childCount = socketsParent.transform.childCount;
+        int childCount = D.socketsParent.transform.childCount;
         int index = 0;
         //DebugC.Log("width: "+electricalStripController.SocketsGrid.GetLength(0));
         //DebugC.Log("height: "+electricalStripController.SocketsGrid.GetLength(1));
-        for(int i=0; i<electricalStripController.SocketsGrid.GetLength(0); i++) {
-            for(int j=0; j<electricalStripController.SocketsGrid.GetLength(1); j++) {
+        for(int i=0; i<D.socketsGrid.GetLength(0); i++) {
+            for(int j=0; j<D.socketsGrid.GetLength(1); j++) {
                 if(index >= childCount) {
-                    GameObject newSocket = Instantiate(socketPrefab, socketsParent.transform);
+                    GameObject newSocket = Instantiate(D.socketPrefab, D.socketsParent.transform);
                     newSocket.name = "Socket"+(index+1);
-                    electricalStripController.SocketsGrid[i, j] = newSocket.transform;
-                    newSocket.GetComponent<SocketManager>().id = new Index2D(i, j);
+                    D.socketsGrid[i, j] = newSocket.transform;
+                    newSocket.GetComponent<SocketAttributes>().id = new Index2D(i, j);
                 }
                 else {
-                    electricalStripController.SocketsGrid[i, j] = socketsParent.transform.GetChild(index);
-                    foreach(Transform child in electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().ChildrenTransforms) {
+                    D.socketsGrid[i, j] = D.socketsParent.transform.GetChild(index);
+                    foreach(Transform child in D.socketsGrid[i, j].GetComponent<SocketAttributes>().childrenTransforms) {
                         child.gameObject.SetActive(true);
                     }
-                    electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().IsActive = true;
-                    electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().id = new Index2D(i, j);
+                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().isActive = true;
+                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().id = new Index2D(i, j);
                 }
-                if(socketsActiveGrid[i].row[j] == false) { 
+                if(D.socketsActiveGrid[i].row[j] == false) { 
                     Debug.Log($"Socket At ({i}, {j}) is inactive."); 
-                    foreach(Transform child in electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().ChildrenTransforms) {
+                    foreach(Transform child in D.socketsGrid[i, j].GetComponent<SocketAttributes>().childrenTransforms) {
                         child.gameObject.SetActive(false);
                     }
-                    electricalStripController.SocketsGrid[i, j].gameObject.SetActive(true);
-                    electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().IsActive = false;
-                    electricalStripController.SocketsGrid[i, j].GetComponent<SocketManager>().id = new Index2D(i, j);
+                    D.socketsGrid[i, j].gameObject.SetActive(true);
+                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().isActive = false;
+                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().id = new Index2D(i, j);
                 }
                 index++;
             }
         }
-        DebugC.LogArray2D("", electricalStripController.SocketsGrid);
+        D.debugC.LogArray2D("", D.socketsGrid);
         //Utilities.LogList<Transform>("sockets before: ", sockets);
         //sockets.RemoveAt(0);
         //Utilities.LogList<Transform>("sockets after: ", sockets);
-        for(int i=1; i<=height; i++) {
-            for(int j=1; j<=width; j++) {
+        for(int i=1; i<=D.height; i++) {
+            for(int j=1; j<=D.width; j++) {
                 //sockets[count].position = topLeft;
                 //DebugC.Log(r*(i - 0.5f));
                 //DebugC.Log(r*(i - 0.5f) + s*i);
-                electricalStripController.SocketsGrid[i-1,j-1].position = new Vector2(topLeft.x + r*(j - 0.5f) + s*j,
-                                                                                      topLeft.y - r*(i - 0.5f) - s*i - (Constants.powerSwitchBaseSize.y + s));
+                D.socketsGrid[i-1,j-1].position = new Vector2(topLeft.x + D.r*(j - 0.5f) + D.s*j,
+                                                                                      topLeft.y - D.r*(i - 0.5f) - D.s*i - (Constants.powerSwitchBaseSize.y + D.s));
             }
         }
         //DebugC.Log($"sockets count: {sockets.Count()}, actual count: {socketCount}");
@@ -171,27 +139,27 @@ public class ElectricalStripSizeController : MonoBehaviour, IDebugC, IDragHandle
 
     private void MovePowerSwitch() {
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
-        Vector2 topLeft = new Vector2(center.x - size.x/2, center.y + size.y/2);
-        powerSwitch.transform.position = new Vector2(center.x, topLeft.y - Constants.powerSwitchBaseSize.y/2 - s);
+        Vector2 topLeft = new Vector2(center.x - D.size.x/2, center.y + D.size.y/2);
+        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - Constants.powerSwitchBaseSize.y/2 - D.s);
     }
 
     private void RenewSocketsActiveGrid() {
-        if(socketsActiveGrid == null) {
-            socketsActiveGrid.Clear();
-            for(int i=0; i<height; i++) {
-                socketsActiveGrid.Add(new SocketsRow(width));
+        if(D.socketsActiveGrid == null) {
+            D.socketsActiveGrid.Clear();
+            for(int i=0; i<D.height; i++) {
+                D.socketsActiveGrid.Add(new SocketsRow(D.width));
             }
         }
         else {
             List<SocketsRow> temp = new List<SocketsRow>();
-            for(int i=0; i<socketsActiveGrid.Count; i++) { temp.Add(new SocketsRow(socketsActiveGrid[i], width)); }
+            for(int i=0; i<D.socketsActiveGrid.Count; i++) { temp.Add(new SocketsRow(D.socketsActiveGrid[i], D.width)); }
 
-            socketsActiveGrid.Clear();
-            for(int i=0; i<height; i++) {
-                if(i < temp.Count) { socketsActiveGrid.Add(new SocketsRow(temp[i], width)); }
-                else { socketsActiveGrid.Add(new SocketsRow(width)); }
+            D.socketsActiveGrid.Clear();
+            for(int i=0; i<D.height; i++) {
+                if(i < temp.Count) { D.socketsActiveGrid.Add(new SocketsRow(temp[i], D.width)); }
+                else { D.socketsActiveGrid.Add(new SocketsRow(D.width)); }
             }
         }
-        cachedSocketsActiveGrid = socketsActiveGrid;
+        D.cachedSocketsActiveGrid = D.socketsActiveGrid;
     }
 }

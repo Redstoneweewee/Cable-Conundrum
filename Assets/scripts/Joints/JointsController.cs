@@ -7,11 +7,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //[ExecuteInEditMode]
-public class JointsController : MonoBehaviour, IDebugC  {
+public class JointsController : MonoBehaviour {
     public DebugC DebugC { get ; set; }
     private ControlsData controlsData;
     private JointsOpacityController jointsOpacityController;
-    private ElectricalStripValues electricalStripValues;
+    private ElectricalStripData electricalStripData;
     [SerializeField] private GameObject jointPrefab;
     private bool cachedJointsEnabled = false;
     [SerializeField] private bool jointsEnabled = false;
@@ -29,7 +29,7 @@ public class JointsController : MonoBehaviour, IDebugC  {
         DebugC = DebugC.Get();
         controlsData = FindObjectOfType<ControlsData>();
         jointsOpacityController = GetComponent<JointsOpacityController>();
-        electricalStripValues = Utilities.GetElectricalStripValues();
+        electricalStripData = FindObjectOfType<ElectricalStripData>();
         cachedScreenSize = new Vector2(Screen.width, Screen.height);
         jointMaterial.color = Constants.jointColor;
         StartCoroutine(startDelayed());
@@ -71,10 +71,10 @@ public class JointsController : MonoBehaviour, IDebugC  {
 
     private void RenewJoints() {
         float step = Constants.jointDistance;
-        if(electricalStripValues.ElectricalStripController.SocketsGrid == null) { electricalStripValues.ElectricalStripSizeController.RenewSockets(); }
-        if(electricalStripValues.ElectricalStripController.SocketsGrid[0,0] == null) { electricalStripValues.ElectricalStripSizeController.RenewSockets(); }
+        if(electricalStripData.socketsGrid == null) { electricalStripData.electricalStripSizeController.RenewSockets(); }
+        if(electricalStripData.socketsGrid[0,0] == null) { electricalStripData.electricalStripSizeController.RenewSockets(); }
         
-        Vector2 topLeft = electricalStripValues.ElectricalStripController.SocketsGrid[0,0].position;
+        Vector2 topLeft = electricalStripData.socketsGrid[0,0].position;
         while(topLeft.x > step)                 { topLeft.x -= step; }
         while(topLeft.y < Screen.height - step) { topLeft.y += step; }
         topLeft.x -= step; topLeft.y += step;

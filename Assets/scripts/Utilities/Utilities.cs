@@ -73,8 +73,4 @@ public class Utilities : MonoBehaviour {
         return raycast ? hit.point : ray.GetPoint(maxDistance);
     }
 
-
-    public static ElectricalStripValues GetElectricalStripValues() {
-        return FindFirstObjectByType<ElectricalStripValues>();
-    }
 }

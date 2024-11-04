@@ -13,6 +13,7 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public Plug                      plug;
     [HideInInspector] public PlugInteractions          plugInteractions;
     [HideInInspector] public IntersectionDetector      intersectionDetector;
+    [HideInInspector] public ElectricalStripData       electricalStripData;
     [HideInInspector] public ElectricalStripController electricalStripController;
     [HideInInspector] public JointsController          jointsController;
 
@@ -54,7 +55,8 @@ public class CableParentAttributes : MonoBehaviour {
         plug                      = GetComponentInParent<Plug>();
         plugInteractions          = GetComponentInParent<PlugInteractions>();
         intersectionDetector      = FindObjectOfType<IntersectionDetector>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
+        electricalStripData       = FindObjectOfType<ElectricalStripData>();
+        electricalStripController = electricalStripData.electricalStripController;
         jointsController          = FindObjectOfType<JointsController>();
     }
 }

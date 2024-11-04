@@ -24,6 +24,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     private bool    isModifyingCables  = false;
     private Mouse   mouse              = Mouse.current;
     private JointsController jointsController;
+    private ElectricalStripData electricalStripData;
     private ElectricalStripController electricalStripController;
             //Vector2 cachedPlugPositionActual  = Vector2.zero;
     private Vector2 cachedPlugPositionDynamic = Vector2.zero;
@@ -39,13 +40,14 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         DebugC = DebugC.Get();
         controlsData = FindObjectOfType<ControlsData>();
         intersectionDetector = FindObjectOfType<IntersectionDetector>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
+        electricalStripData = FindObjectOfType<ElectricalStripData>();
+        electricalStripController = electricalStripData.electricalStripController;
         plug = GetComponent<Plug>();
         jointsController = FindObjectOfType<JointsController>();
         cableParentAttribute = GetComponentInChildren<CableParentAttributes>();
         cableHandler = GetComponentInChildren<CableHandler>();
 
-        DebugC.Log(electricalStripController);
+        DebugC.Log(electricalStripData);
     }
     
 
@@ -173,11 +175,11 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
 
     private Transform PlugIntoSocketTest() {
-        int[,] allCablesGrid = electricalStripController.AllCablesGrid;
-        int[,] plugsGrid = electricalStripController.PlugsGrid;
+        int[,] allCablesGrid = electricalStripData.allCablesGrid;
+        int[,] plugsGrid = electricalStripData.plugsGrid;
         bool[,] allObstaclesGrid = intersectionDetector.AllObstaclesGrid;
         
-        Transform[,] socketsGrid = electricalStripController.SocketsGrid;
+        Transform[,] socketsGrid = electricalStripData.socketsGrid;
         Transform[,] jointsGrid = jointsController.JointsGrid;
         float   subSocketLength  = Constants.jointDistance;
         float   subJointLength  = Constants.jointDistance/2;
@@ -208,7 +210,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
             //4. The socket is too far away (distance > Constants.plugLockingDistance)
             //If any of those conditions are true, then the plug cannot be plugged in, therefore return null.
             else if(distance > Constants.plugLockingDistance ||
-                !socketsGrid[socketGridIndex.x,socketGridIndex.y].GetComponent<SocketManager>().IsActive || 
+                !socketsGrid[socketGridIndex.x,socketGridIndex.y].GetComponent<SocketAttributes>().isActive || 
                 allCablesGrid[jointsGridIndex.x, jointsGridIndex.y] != 0 || 
                 allObstaclesGrid[jointsGridIndex.x,jointsGridIndex.y] ||
                 plugsGrid[jointsGridIndex.x,jointsGridIndex.y] > 0) 

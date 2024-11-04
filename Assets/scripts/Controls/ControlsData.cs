@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ControlsData : MonoBehaviour {
-    public IntersectionDetector          intersectionDetector;
-    public ElectricalStripController     electricalStripController;
-    public ElectricalStripSizeController electricalStripSizeController;
+    public IntersectionDetector      intersectionDetector;
+    public ElectricalStripData       electricalStripData;
+    public ElectricalStripController electricalStripController;
 
     public InputActionReference exitAction;
     public InputActionReference jointAction;
@@ -40,8 +40,8 @@ public class ControlsData : MonoBehaviour {
     }
 
     void Awake() {
-        intersectionDetector = FindObjectOfType<IntersectionDetector>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
-        electricalStripSizeController = FindObjectOfType<ElectricalStripSizeController>();
+        intersectionDetector      = FindObjectOfType<IntersectionDetector>();
+        electricalStripData       = FindObjectOfType<ElectricalStripData>();
+        electricalStripController = electricalStripData.electricalStripController;
     }
 }
