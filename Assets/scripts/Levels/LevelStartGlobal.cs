@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelStart : MonoBehaviour {
+public class LevelStartGlobal : MonoBehaviour {
     public bool isFinishedWithAllTasks = false;
 
     public void FinishedWithAllTasks() {

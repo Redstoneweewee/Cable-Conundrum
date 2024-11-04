@@ -6,7 +6,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class LevelController : LevelStart {
+public class LevelGlobal : LevelStartGlobal {
     public DebugC DebugC {set; get;}
     [SerializeField] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     private JointsData jointsData;
@@ -30,10 +30,6 @@ public class LevelController : LevelStart {
         //StartCoroutine(Test());
     }
 
-    private IEnumerator Test() {
-        yield return new WaitForSeconds(1f);
-        base.FinishedWithAllTasks();
-    }
 
     private void RenewAllLevelPlugsList() {
         allLevelPlugs.Clear();

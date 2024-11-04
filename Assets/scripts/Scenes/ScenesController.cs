@@ -79,8 +79,8 @@ public class ScenesController : MonoBehaviour {
         yield return new WaitUntil(() => sceneFinishedLoading);
         
         //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
-        if(FindObjectOfType<LevelStart>()) {
-            yield return new WaitUntil(() => FindObjectOfType<LevelStart>().isFinishedWithAllTasks);
+        if(FindObjectOfType<LevelStartGlobal>()) {
+            yield return new WaitUntil(() => FindObjectOfType<LevelStartGlobal>().isFinishedWithAllTasks);
         }
         
         //End the crossfade transition.
