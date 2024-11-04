@@ -26,7 +26,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     // Start is called before the first frame update
     void Start() {
         intersectionController = FindObjectOfType<IntersectionController>();
-        rectTransform = GetComponentInChildren<RectTransform>();
+        rectTransform = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
         if(obstacleType == ObstacleTypes.LeftTableLeg ||
            obstacleType == ObstacleTypes.RightTableLeg ||
            obstacleType == ObstacleTypes.TableTop) { StartCoroutine(InitializeTable()); }
@@ -108,17 +108,10 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     }
     
     public void SetOpacity(float opacity) {
-        CanvasGroup canvasGroup = GetComponentInChildren<CanvasGroup>();
+        CanvasGroup canvasGroup = Utilities.TryGetComponentInChildren<CanvasGroup>(gameObject);
         canvasGroup.alpha = opacity;
-        //Image[] cableImages = GetComponentsInChildren<Image>();
-        //foreach(Image cableImage in cableImages) {
-        //    cableImage.color = new Color(cableImage.color.r,
-        //                                 cableImage.color.g,
-        //                                 cableImage.color.b,
-        //                                 opacity);
-        //}
         if(obstacleType == ObstacleTypes.Plug) {
-            Image plugImage = GetComponent<PlugInteractions>().PlugVisual.GetComponent<Image>();
+            Image plugImage = Utilities.TryGetComponent<Image>(Utilities.TryGetComponent<PlugInteractions>(gameObject).PlugVisual);
             plugImage.color = new Color(plugImage.color.r,
                                         plugImage.color.g,
                                         plugImage.color.b,

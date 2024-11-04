@@ -12,7 +12,7 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
     private PlugSelectorData D;
 
     void Start() {
-        D = GetComponent<PlugSelectorData>();
+        D = Utilities.TryGetComponent<PlugSelectorData>(gameObject);
         InitializeButtons();
     }
 
@@ -26,17 +26,17 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
             buttonGameObject.transform.position = buttonPosition;
 
             attribute.ButtonGameObject = buttonGameObject;
-            Button button = buttonGameObject.GetComponentInChildren<Button>();
+            Button button = Utilities.TryGetComponentInChildren<Button>(buttonGameObject);
             attribute.Button = button;
 
             Instantiate(attribute.PlugImage, buttonGameObject.transform);
 
-            button.GetComponent<PlugSelectorButtonsLocal>().id = index;
+            Utilities.TryGetComponent<PlugSelectorButtonsLocal>(button.gameObject).id = index;
 
             buttonPosition = new Vector3(buttonPosition.x + D.buttonSize.x + D.offset, buttonPosition.y, buttonPosition.z);
             backgroundLength += D.buttonSize.x + D.offset;
-            if(backgroundLength > D.background.GetComponent<RectTransform>().sizeDelta.x) {
-                D.background.GetComponent<RectTransform>().sizeDelta = new Vector2(backgroundLength, D.background.GetComponent<RectTransform>().sizeDelta.y);
+            if(backgroundLength > Utilities.TryGetComponent<RectTransform>(D.background).sizeDelta.x) {
+                Utilities.TryGetComponent<RectTransform>(D.background).sizeDelta = new Vector2(backgroundLength, Utilities.TryGetComponent<RectTransform>(D.background).sizeDelta.y);
             }
             index++;
         }
@@ -63,7 +63,7 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
         yield return new WaitForEndOfFrame();
 
         Vector2 mouseScroll = D.controlsController.GetActionInputValue<Vector2>(D.mouseScrollAction);
-        RectTransform rectTransform = D.background.GetComponent<RectTransform>();
+        RectTransform rectTransform = Utilities.TryGetComponent<RectTransform>(D.background);
         if(mouseScroll.y > 0) { 
             if(rectTransform.position.x < 0) {
                 transform.position = new Vector3(transform.position.x+D.scrollSpeed, transform.position.y, transform.position.z);
@@ -101,18 +101,18 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
         if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
-            plug.GetComponent<PlugInteractions>().InitialCreateDrag();
+            Utilities.TryGetComponent<PlugInteractions>(plug).InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.PermaPlug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
-            plug.GetComponent<Obstacle>().TemporarilyModifiable = D.controlsData.obstaclesModifiable;
-            plug.GetComponent<PlugInteractions>().InitialCreateDrag();
+            Utilities.TryGetComponent<Obstacle>(plug).TemporarilyModifiable = D.controlsData.obstaclesModifiable;
+            Utilities.TryGetComponent<PlugInteractions>(plug).InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.Table) {
             GameObject table = Instantiate(attribute.PlugPrefab, D.obstaclesParent.transform);
-            table.GetComponent<Obstacle>().TemporarilyModifiable = D.controlsData.obstaclesModifiable;
-            if(D.controlsData.obstaclesModifiable) { table.GetComponent<Obstacle>().SetOpacity(0.8f); }
+            Utilities.TryGetComponent<Obstacle>(table).TemporarilyModifiable = D.controlsData.obstaclesModifiable;
+            if(D.controlsData.obstaclesModifiable) { Utilities.TryGetComponent<Obstacle>(table).SetOpacity(0.8f); }
         }
     }
 }

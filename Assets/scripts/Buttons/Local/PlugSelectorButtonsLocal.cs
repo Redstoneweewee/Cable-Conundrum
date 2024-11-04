@@ -8,6 +8,6 @@ public class PlugSelectorButtonsLocal : MonoBehaviour, IPointerDownHandler {
     [HideInInspector] public int id;
 
     public void OnPointerDown(PointerEventData eventData) {
-        GetComponentInParent<PlugSelectorController>().OnClickPlugSelectorButton(id);
+        Utilities.TryGetComponentInParent<PlugSelectorController>(gameObject).OnClickPlugSelectorButton(id);
     }
 }

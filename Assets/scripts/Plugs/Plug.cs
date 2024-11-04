@@ -30,8 +30,8 @@ public class Plug : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        cableParentAttributes = GetComponentInChildren<CableParentAttributes>();
-        if(isObstacle) { obstacle = GetComponent<Obstacle>(); }
+        cableParentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
+        if(isObstacle) { obstacle = Utilities.TryGetComponent<Obstacle>(gameObject); }
         DebugC = DebugC.Get();
         DebugC.Log("initialized "+transform.name);
         id = idIncrement;

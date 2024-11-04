@@ -17,8 +17,8 @@ public class ButtonsOutlineGlobal : MonoBehaviour {
     private float   cachedRadius   = 0f;
 
     void Awake() {
-        imageWithRoundedCorners = GetComponent<ImageWithRoundedCorners>();
-        rectTransform           = GetComponent<RectTransform>();
+        imageWithRoundedCorners = Utilities.TryGetComponent<ImageWithRoundedCorners>(gameObject);
+        rectTransform = Utilities.TryGetComponent<RectTransform>(gameObject);
     }
 
     // Update is called once per frame
@@ -33,8 +33,8 @@ public class ButtonsOutlineGlobal : MonoBehaviour {
     }
 
     private void RenewOutline() {
-        RectTransform outlineRectTransform = outline.GetComponent<RectTransform>();
-        ImageWithRoundedCorners outlineCorners = outline.GetComponent<ImageWithRoundedCorners>();
+        RectTransform outlineRectTransform = Utilities.TryGetComponent<RectTransform>(outline);
+        ImageWithRoundedCorners outlineCorners = Utilities.TryGetComponent<ImageWithRoundedCorners>(outline);
         outlineRectTransform.sizeDelta = new Vector2(cachedSize.x + cachedWidth*2, cachedSize.y + cachedWidth*2);
         float radiusRatio = cachedRadius / cachedSize.y;
         outlineCorners.radius = outlineRectTransform.sizeDelta.y * radiusRatio;

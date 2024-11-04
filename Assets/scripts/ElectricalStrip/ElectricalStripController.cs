@@ -7,7 +7,7 @@ public class ElectricalStripController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        D = GetComponent<ElectricalStripData>();
+        D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
         D.electricalStripSizeController.RenewSockets();
         StartCoroutine(InitializeAllCableGrids());
         StartCoroutine(InitializePlugsGrid());

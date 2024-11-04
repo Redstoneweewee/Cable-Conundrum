@@ -11,7 +11,7 @@ public class JointsController : MonoBehaviour {
     private JointsData D;
     // Start is called before the first frame update
     void Start() {
-        D = GetComponent<JointsData>();
+        D = Utilities.TryGetComponent<JointsData>(gameObject);
         StartCoroutine(startDelayed());
     }
 

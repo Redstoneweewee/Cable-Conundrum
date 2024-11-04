@@ -18,7 +18,7 @@ public class ButtonsGlobal : MonoBehaviour {
 
     void Start() {
         foreach(ButtonAtributes buttonAttribute in buttonAttributes) {
-            buttonAttribute.Button = buttonAttribute.ButtonGameObject.GetComponentInChildren<Button>();
+            buttonAttribute.Button = Utilities.TryGetComponentInChildren<Button>(buttonAttribute.ButtonGameObject);
 
             switch(buttonAttribute.ButtonType) {
                 case ButtonTypes.StartGame:
@@ -33,13 +33,13 @@ public class ButtonsGlobal : MonoBehaviour {
 
     public void DisableButton(Button button) {
         button.enabled = false;
-        button.GetComponent<Image>().enabled = false;
-        button.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+        Utilities.TryGetComponent<Image>(button.gameObject).enabled = false;
+        Utilities.TryGetComponentInChildren<TextMeshProUGUI>(button.gameObject).enabled = false;
     }
     public void EnableButton(Button button) {
         button.enabled = true;
-        button.GetComponent<Image>().enabled = true;
-        button.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        Utilities.TryGetComponent<Image>(button.gameObject).enabled = true;
+        Utilities.TryGetComponentInChildren<TextMeshProUGUI>(button.gameObject).enabled = true;
     }
 
     public void SubscribeToButton(Button button, System.Action function) {
@@ -47,7 +47,7 @@ public class ButtonsGlobal : MonoBehaviour {
     }
 
     public void SetButtonText(Button button, string text) {
-        TextMeshProUGUI textBox = button.GetComponentInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI textBox = Utilities.TryGetComponentInChildren<TextMeshProUGUI>(button.gameObject);
         textBox.text = text;
     }
 }

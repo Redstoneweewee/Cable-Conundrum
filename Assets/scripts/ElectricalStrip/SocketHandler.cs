@@ -8,7 +8,7 @@ public class SocketHandler : MonoBehaviour, IPointerDownHandler {
     SocketAttributes A;
 
     void Start() {
-        A = GetComponent<SocketAttributes>();
+        A = Utilities.TryGetComponent<SocketAttributes>(gameObject);
     }
 
     public void OnPointerDown(PointerEventData eventData) {

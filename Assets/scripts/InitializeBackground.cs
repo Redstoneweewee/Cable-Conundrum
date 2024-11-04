@@ -7,7 +7,7 @@ public class InitializeBackground : MonoBehaviour {
     RectTransform rectangularTransform;
 
     void Start() {
-        rectangularTransform = GetComponent<RectTransform>();
+        rectangularTransform = Utilities.TryGetComponent<RectTransform>(gameObject);
     }
 
     // Start is called before the first frame update

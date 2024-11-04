@@ -27,7 +27,7 @@ public class JointsData : MonoBehaviour {
     void Awake() {
         debugC = DebugC.Get();
         controlsData = FindObjectOfType<ControlsData>();
-        jointsOpacityGlobal = GetComponent<JointsOpacityGlobal>();
+        jointsOpacityGlobal = Utilities.TryGetComponent<JointsOpacityGlobal>(gameObject);
         electricalStripData = FindObjectOfType<ElectricalStripData>();
         cachedScreenSize = new Vector2(Screen.width, Screen.height);
         jointMaterial.color = Constants.jointColor;

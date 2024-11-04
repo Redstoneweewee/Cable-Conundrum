@@ -7,7 +7,7 @@ public class IntersectionController : MonoBehaviour {
     IntersectionData D;
 
     void Start() {
-        D = GetComponent<IntersectionData>();
+        D = Utilities.TryGetComponent<IntersectionData>(gameObject);
         StartCoroutine(InitialWaitUntilUpdate(0.02f));
     }
 
@@ -69,7 +69,7 @@ public class IntersectionController : MonoBehaviour {
         foreach(Plug plug in plugs) {
             CableParentAttributes cableParentAttributes = plug.cableParentAttributes;
             foreach(Transform cable in cableParentAttributes.cables) {
-                Image cableImage = cable.GetComponentInChildren<Image>();
+                Image cableImage = Utilities.TryGetComponentInChildren<Image>(cable.gameObject);
                 if(!plug.isObstacle) { cableImage.color = new Color(1, 1, 1, cableImage.color.a); }
                 else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
             }
@@ -87,7 +87,7 @@ public class IntersectionController : MonoBehaviour {
             if(!cableParentAttributes.cableGrid[i,j].hasCable) { continue; }
             if(plugId != 0 && plug.id == plugId) { continue; }
             foreach(int index1 in cableParentAttributes.cableGrid[i,j].numbers) {
-                Image cableImage1 = cableParentAttributes.cables[index1].GetComponentInChildren<Image>();
+                Image cableImage1 = Utilities.TryGetComponentInChildren<Image>(cableParentAttributes.cables[index1].gameObject);
                 if(!plug.isObstacle) {
                     cableImage1.color = new Color(Constants.cableIntersectionColor.r,
                                                   Constants.cableIntersectionColor.g,
@@ -101,10 +101,10 @@ public class IntersectionController : MonoBehaviour {
                                                   cableImage1.color.a);
                 }
                 
-                if(cableParentAttributes.cables[index1].GetComponent<CableChildAttributes>().isInitialCable) { continue; }
+                if(Utilities.TryGetComponent<CableChildAttributes>(cableParentAttributes.cables[index1].gameObject).isInitialCable) { continue; }
                 int index2 = cableParentAttributes.cableGrid[i,j].numbers[0]-1;
                 if(index2 < 0) { continue; }
-                Image cableImage2 = cableParentAttributes.cables[index2].GetComponentInChildren<Image>();
+                Image cableImage2 = Utilities.TryGetComponentInChildren<Image>(cableParentAttributes.cables[index2].gameObject);
                 if(!plug.isObstacle) {
                     cableImage2.color = new Color(Constants.cableIntersectionColor.r,
                                                   Constants.cableIntersectionColor.g,

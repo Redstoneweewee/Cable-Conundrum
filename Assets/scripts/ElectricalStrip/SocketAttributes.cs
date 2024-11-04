@@ -11,7 +11,7 @@ public class SocketAttributes : MonoBehaviour {
     public Index2D id;
 
     void Awake() {
-        childrenTransforms = GetComponentsInChildren<Transform>();
-        electricalStripData = GetComponentInParent<ElectricalStripData>();
+        childrenTransforms = Utilities.TryGetComponentsInChildren<Transform>(gameObject);
+        electricalStripData = Utilities.TryGetComponentInParent<ElectricalStripData>(gameObject);
     }
 }

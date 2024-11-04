@@ -44,10 +44,10 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         intersectionData = FindObjectOfType<IntersectionData>();
         electricalStripData = FindObjectOfType<ElectricalStripData>();
         electricalStripController = electricalStripData.electricalStripController;
-        plug = GetComponent<Plug>();
+        plug = Utilities.TryGetComponent<Plug>(gameObject);
         jointsData = FindObjectOfType<JointsData>();
-        cableParentAttribute = GetComponentInChildren<CableParentAttributes>();
-        cableHandler = GetComponentInChildren<CableHandler>();
+        cableParentAttribute = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
+        cableHandler = Utilities.TryGetComponentInChildren<CableHandler>(gameObject);
 
         DebugC.Log(electricalStripData);
     }
@@ -91,7 +91,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
     public void OnPointerUp(PointerEventData eventData) {
         if(plug.isObstacle && !plug.obstacle.TemporarilyModifiable) { return; }
-        plugVisual.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+        Utilities.TryGetComponent<RectTransform>(plugVisual).localScale = new Vector3(1f, 1f, 1f);
         TryModifyCables();
         //electricalStripController.RenewAllCableGrids();
         isDragging = false;
@@ -103,7 +103,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         offset = new Vector2(transform.position.x, transform.position.y) - mouse.position.value;
         //transform.localScale = new Vector3(1f, 1f, 1f);
         //transform.localScale = new Vector3(0.96f, 0.96f, 0.96f);
-        plugVisual.GetComponent<RectTransform>().localScale = new Vector3(0.97f, 0.97f, 0.97f);
+        Utilities.TryGetComponent<RectTransform>(plugVisual).localScale = new Vector3(0.97f, 0.97f, 0.97f);
         cachedPlugPositionDynamic = transform.position;
         isDragging = true;
         dragCoroutine = DragPlug();
@@ -212,7 +212,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
             //4. The socket is too far away (distance > Constants.plugLockingDistance)
             //If any of those conditions are true, then the plug cannot be plugged in, therefore return null.
             else if(distance > Constants.plugLockingDistance ||
-                !socketsGrid[socketGridIndex.x,socketGridIndex.y].GetComponent<SocketAttributes>().isActive || 
+                !Utilities.TryGetComponent<SocketAttributes>(socketsGrid[socketGridIndex.x,socketGridIndex.y].gameObject).isActive || 
                 allCablesGrid[jointsGridIndex.x, jointsGridIndex.y] != 0 || 
                 allObstaclesGrid[jointsGridIndex.x,jointsGridIndex.y] ||
                 plugsGrid[jointsGridIndex.x,jointsGridIndex.y] > 0) 
@@ -228,7 +228,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         offset = new Vector2(transform.position.x, transform.position.y) - mouse.position.value;
         //transform.localScale = new Vector3(1f, 1f, 1f);
         //transform.localScale = new Vector3(0.96f, 0.96f, 0.96f);
-        plugVisual.GetComponent<RectTransform>().localScale = new Vector3(0.97f, 0.97f, 0.97f);
+        Utilities.TryGetComponent<RectTransform>(plugVisual).localScale = new Vector3(0.97f, 0.97f, 0.97f);
         cachedPlugPositionDynamic = transform.position;
         isDragging = true;
         dragCoroutine = InitialCreateDragPlug();

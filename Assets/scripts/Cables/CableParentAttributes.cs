@@ -52,8 +52,8 @@ public class CableParentAttributes : MonoBehaviour {
 
     void Awake() {
         debugC = DebugC.Get();
-        plug                      = GetComponentInParent<Plug>();
-        plugInteractions          = GetComponentInParent<PlugInteractions>();
+        plug                      = Utilities.TryGetComponentInParent<Plug>(gameObject);
+        plugInteractions          = Utilities.TryGetComponentInParent<PlugInteractions>(gameObject);
         intersectionController    = FindObjectOfType<IntersectionController>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = electricalStripData.electricalStripController;

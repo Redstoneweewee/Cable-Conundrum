@@ -12,13 +12,13 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
 
     // Start is called before the first frame update
     void Start() {
-        D = GetComponent<ElectricalStripData>();
+        D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
     }
 
     // Update is called once per frame
     void Update() {
         //DebugC.Log(Mouse.current.position.value);
-        D.rectangularTransform = D.backgroundVisual.GetComponent<RectTransform>();
+        D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
         Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.width  + Constants.electricalStripSeparatorSize, 
                                       (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
         if(D.size != newSize || D.resetBoard) {
@@ -66,7 +66,7 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
 
 
     public void RenewSockets() {
-        D.rectangularTransform = D.backgroundVisual.GetComponent<RectTransform>();
+        D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
         Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.width  + Constants.electricalStripSeparatorSize, 
                                       (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
         D.rectangularTransform.sizeDelta = newSize;
@@ -96,24 +96,24 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
                     GameObject newSocket = Instantiate(D.socketPrefab, D.socketsParent.transform);
                     newSocket.name = "Socket"+(index+1);
                     D.socketsGrid[i, j] = newSocket.transform;
-                    newSocket.GetComponent<SocketAttributes>().id = new Index2D(i, j);
+                    Utilities.TryGetComponent<SocketAttributes>(newSocket).id = new Index2D(i, j);
                 }
                 else {
                     D.socketsGrid[i, j] = D.socketsParent.transform.GetChild(index);
-                    foreach(Transform child in D.socketsGrid[i, j].GetComponent<SocketAttributes>().childrenTransforms) {
+                    foreach(Transform child in Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).childrenTransforms) {
                         child.gameObject.SetActive(true);
                     }
-                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().isActive = true;
-                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().id = new Index2D(i, j);
+                    Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).isActive = true;
+                    Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).id = new Index2D(i, j);
                 }
                 if(D.socketsActiveGrid[i].row[j] == false) { 
                     Debug.Log($"Socket At ({i}, {j}) is inactive."); 
-                    foreach(Transform child in D.socketsGrid[i, j].GetComponent<SocketAttributes>().childrenTransforms) {
+                    foreach(Transform child in Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).childrenTransforms) {
                         child.gameObject.SetActive(false);
                     }
                     D.socketsGrid[i, j].gameObject.SetActive(true);
-                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().isActive = false;
-                    D.socketsGrid[i, j].GetComponent<SocketAttributes>().id = new Index2D(i, j);
+                    Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).isActive = false;
+                    Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).id = new Index2D(i, j);
                 }
                 index++;
             }

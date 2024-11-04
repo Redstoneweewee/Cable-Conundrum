@@ -37,11 +37,11 @@ public class ElectricalStripData : MonoBehaviour {
 
     void Awake() {
         debugC = DebugC.Get();
-        electricalStripController = GetComponent<ElectricalStripController>();
-        electricalStripSizeController = GetComponent<ElectricalStripSizeController>();
+        electricalStripController = Utilities.TryGetComponent<ElectricalStripController>(gameObject);
+        electricalStripSizeController = Utilities.TryGetComponent<ElectricalStripSizeController>(gameObject);
         jointsData = FindObjectOfType<JointsData>();
 
-        rectangularTransform = backgroundVisual.GetComponent<RectTransform>();
+        rectangularTransform = Utilities.TryGetComponent<RectTransform>(backgroundVisual);
         size = rectangularTransform.sizeDelta;
     }
 

@@ -45,7 +45,7 @@ public class LevelController : LevelStart {
         Plug[] plugs = FindObjectsOfType<Plug>();
         foreach(Plug plug in plugs) {
             if(plug.isObstacle) { continue; }
-            Directions startingDirection = plug.GetComponentInChildren<CableChildAttributes>().startingDirection;
+            Directions startingDirection = Utilities.TryGetComponentInChildren<CableChildAttributes>(plug.gameObject).startingDirection;
             switch(startingDirection) {
                 case Directions.Up:
                     allLevelPlugs[0].plugs.Add(plug);

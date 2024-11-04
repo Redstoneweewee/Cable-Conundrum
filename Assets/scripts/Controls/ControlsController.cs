@@ -109,10 +109,10 @@ public class ControlsController : MonoBehaviour {
 
         if(D.plugSelectorEnabled) { D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(true); }
         else { 
-            if(D.plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorData>().scrollCoroutine != null) {
-                StopCoroutine(D.plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorData>().scrollCoroutine);
+            if(Utilities.TryGetComponent<PlugSelectorData>(D.plugSelectorCanvas.transform.GetChild(0).gameObject).scrollCoroutine != null) {
+                StopCoroutine(Utilities.TryGetComponent<PlugSelectorData>(D.plugSelectorCanvas.transform.GetChild(0).gameObject).scrollCoroutine);
             }
-            D.plugSelectorCanvas.transform.GetChild(0).GetComponent<PlugSelectorData>().scrollCoroutine = null;
+            Utilities.TryGetComponent<PlugSelectorData>(D.plugSelectorCanvas.transform.GetChild(0).gameObject).scrollCoroutine = null;
             D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(false); 
         }
     }
@@ -123,11 +123,11 @@ public class ControlsController : MonoBehaviour {
         GameObject electricalStrip = FindObjectOfType<ElectricalStripController>().gameObject;
         
         if(D.electricalStripEnabled) {
-            electricalStrip.GetComponent<CanvasGroup>().alpha = 0.8f;
+            Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 0.8f;
             D.electricalStripData.temporarilyModifiable = true;
         }
         else {
-            electricalStrip.GetComponent<CanvasGroup>().alpha = 1f;
+            Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 1f;
             D.electricalStripData.temporarilyModifiable = false;
         }
     

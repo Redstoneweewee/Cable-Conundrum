@@ -36,7 +36,7 @@ public class JointsOpacityGlobal : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
-        jointsData = GetComponent<JointsData>();
+        jointsData = Utilities.TryGetComponent<JointsData>(gameObject);
         ResetAllVariables();
         //Debug.Log(math.sin((2*math.PI/p)*(0.5+d41) - math.PI/2));
     }
