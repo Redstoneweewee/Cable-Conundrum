@@ -43,8 +43,8 @@ public class CableHandler : MonoBehaviour {
         }
     }
     public void InitializeCableGrid() {
-        if(A.cachedJointsGrid == null || A.cachedJointsGrid != A.jointsController.JointsGrid) {
-            A.cableGrid = new CablesGridAttributes[A.jointsController.JointsGrid.GetLength(0), A.jointsController.JointsGrid.GetLength(1)];
+        if(A.cachedJointsGrid == null || A.cachedJointsGrid != A.jointsData.jointsGrid) {
+            A.cableGrid = new CablesGridAttributes[A.jointsData.jointsGrid.GetLength(0), A.jointsData.jointsGrid.GetLength(1)];
             for(int i=0; i<A.cableGrid.GetLength(0); i++) {
                 for(int j=0; j<A.cableGrid.GetLength(1); j++) { A.cableGrid[i,j] = new CablesGridAttributes(); }
             }
@@ -58,7 +58,7 @@ public class CableHandler : MonoBehaviour {
             }
         }
         
-        Transform[,] jointsGrid = A.jointsController.JointsGrid;
+        Transform[,] jointsGrid = A.jointsData.jointsGrid;
         float   subJointLength  = Constants.jointDistance/2;
         for(int i=0; i<A.cables.Count; i++) {
             if(A.cables[i].gameObject.activeSelf == false) { continue; }
@@ -67,7 +67,7 @@ public class CableHandler : MonoBehaviour {
             if(gridIndex.x >= A.cableGrid.GetLength(0) || gridIndex.x < 0 || gridIndex.y >= A.cableGrid.GetLength(1) || gridIndex.y < 0) { continue; }
             A.cableGrid[gridIndex.x,gridIndex.y].ChangeAttributes(true, i);
         }
-        A.cachedJointsGrid = A.jointsController.JointsGrid;
+        A.cachedJointsGrid = A.jointsData.jointsGrid;
 
         string text = "";
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
@@ -83,7 +83,7 @@ public class CableHandler : MonoBehaviour {
 
     }
     public void InitializeCachedMouseGridIndex() {
-        Transform[,] jointsGrid = A.jointsController.JointsGrid;
+        Transform[,] jointsGrid = A.jointsData.jointsGrid;
         float   subJointLength  = Constants.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - A.mouse.position.value.y);
         A.cachedMouseGridIndex = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
@@ -93,7 +93,7 @@ public class CableHandler : MonoBehaviour {
     public IEnumerator ModifyCablesOnInteract() {
         yield return new WaitForSeconds(0.01f);
 
-        Transform[,] jointsGrid = A.jointsController.JointsGrid;
+        Transform[,] jointsGrid = A.jointsData.jointsGrid;
         float   subJointLength  = Constants.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - A.mouse.position.value.y);
         Index2D mouseGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);

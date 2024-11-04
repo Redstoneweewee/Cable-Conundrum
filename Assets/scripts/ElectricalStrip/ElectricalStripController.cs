@@ -14,7 +14,7 @@ public class ElectricalStripController : MonoBehaviour {
     }
 
     public void RenewPlugsGrid() {
-        Transform[,] jointsGrid = D.jointsController.JointsGrid;
+        Transform[,] jointsGrid = D.jointsData.jointsGrid;
         D.plugsGrid = new int[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
         Plug[] allPlugs = FindObjectsOfType<Plug>();
         foreach(Plug plug in allPlugs) {
@@ -54,7 +54,7 @@ public class ElectricalStripController : MonoBehaviour {
     public void RenewAllCableGrids() {
         CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
 
-        D.allCablesGrid = new int[D.jointsController.JointsGrid.GetLength(0), D.jointsController.JointsGrid.GetLength(1)];
+        D.allCablesGrid = new int[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
             if(cableParentAttribute.cableGrid == null) { D.debugC.Log($"CableGrid of {cableParentAttribute.transform.name} is null."); continue; }
             if(cableParentAttribute.cableGrid[0,0] == null) { D.debugC.Log($"CableGrid of {cableParentAttribute.transform.name} is null."); continue; }

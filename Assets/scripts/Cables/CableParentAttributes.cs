@@ -15,7 +15,7 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public IntersectionController    intersectionController;
     [HideInInspector] public ElectricalStripData       electricalStripData;
     [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public JointsController          jointsController;
+    [HideInInspector] public JointsData          jointsData;
 
     /* Cables:
     * [ [0 ]UpLeft,    [1 ]UpRight,    [2 ]DownLeft,    [3 ]DownRight,    [4 ]LeftUp,    [5 ]LeftDown,    [6 ]RightUp,    [7 ]RightDown,   ]
@@ -54,9 +54,9 @@ public class CableParentAttributes : MonoBehaviour {
         debugC = DebugC.Get();
         plug                      = GetComponentInParent<Plug>();
         plugInteractions          = GetComponentInParent<PlugInteractions>();
-        intersectionController      = FindObjectOfType<IntersectionController>();
+        intersectionController    = FindObjectOfType<IntersectionController>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = electricalStripData.electricalStripController;
-        jointsController          = FindObjectOfType<JointsController>();
+        jointsData                = FindObjectOfType<JointsData>();
     }
 }

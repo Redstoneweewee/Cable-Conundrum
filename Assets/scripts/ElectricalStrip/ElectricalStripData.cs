@@ -10,7 +10,7 @@ public class ElectricalStripData : MonoBehaviour {
 
     [HideInInspector] public ElectricalStripController electricalStripController;
     [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;
-    [HideInInspector] public JointsController jointsController;
+    [HideInInspector] public JointsData jointsData;
 
     [HideInInspector] public Transform[,] socketsGrid;
     [HideInInspector] public int[,] plugsGrid;      //contains the plug ids, starting from 1. A value of 0 means there is no plug.
@@ -39,8 +39,8 @@ public class ElectricalStripData : MonoBehaviour {
         debugC = DebugC.Get();
         electricalStripController = GetComponent<ElectricalStripController>();
         electricalStripSizeController = GetComponent<ElectricalStripSizeController>();
-        jointsController = FindObjectOfType<JointsController>();
-        
+        jointsData = FindObjectOfType<JointsData>();
+
         rectangularTransform = backgroundVisual.GetComponent<RectTransform>();
         size = rectangularTransform.sizeDelta;
     }

@@ -24,7 +24,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     private bool    isDragging         = false;
     private bool    isModifyingCables  = false;
     private Mouse   mouse              = Mouse.current;
-    private JointsController jointsController;
+    private JointsData jointsData;
     private ElectricalStripData electricalStripData;
     private ElectricalStripController electricalStripController;
             //Vector2 cachedPlugPositionActual  = Vector2.zero;
@@ -45,7 +45,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         electricalStripData = FindObjectOfType<ElectricalStripData>();
         electricalStripController = electricalStripData.electricalStripController;
         plug = GetComponent<Plug>();
-        jointsController = FindObjectOfType<JointsController>();
+        jointsData = FindObjectOfType<JointsData>();
         cableParentAttribute = GetComponentInChildren<CableParentAttributes>();
         cableHandler = GetComponentInChildren<CableHandler>();
 
@@ -75,7 +75,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         plug.transform.SetAsLastSibling();
         if(eventData.pointerCurrentRaycast.gameObject != plugVisual) { 
             TryModifyCables();
-            if(controlsData.masterJointsEnabled) { jointsController.JointsEnabled = true; }
+            if(controlsData.masterJointsEnabled) { jointsData.jointsEnabled = true; }
             return;
         }
         StartDrag();
@@ -96,7 +96,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         //electricalStripController.RenewAllCableGrids();
         isDragging = false;
         isModifyingCables = false;
-        if(!controlsData.masterJointsEnabled) { jointsController.JointsEnabled = false; }
+        if(!controlsData.masterJointsEnabled) { jointsData.jointsEnabled = false; }
     }
 
     private void StartDrag() {
@@ -182,7 +182,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         bool[,] allObstaclesGrid = intersectionData.allObstaclesGrid;
         
         Transform[,] socketsGrid = electricalStripData.socketsGrid;
-        Transform[,] jointsGrid = jointsController.JointsGrid;
+        Transform[,] jointsGrid = jointsData.jointsGrid;
         float   subSocketLength  = Constants.jointDistance;
         float   subJointLength  = Constants.jointDistance/2;
 

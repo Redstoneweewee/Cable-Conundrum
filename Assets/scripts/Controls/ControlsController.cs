@@ -80,7 +80,7 @@ public class ControlsController : MonoBehaviour {
     private void OnJointsToggle(InputAction.CallbackContext context) {
         if(IsNotInLevel()) { return; }
         D.masterJointsEnabled = !D.masterJointsEnabled;
-        FindObjectOfType<JointsController>().JointsEnabled = D.masterJointsEnabled;
+        FindObjectOfType<JointsData>().jointsEnabled = D.masterJointsEnabled;
         Debug.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
     }
 

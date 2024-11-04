@@ -9,13 +9,13 @@ using UnityEngine.UIElements;
 public class LevelController : LevelStart {
     public DebugC DebugC {set; get;}
     [SerializeField] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
-    private JointsController jointsController;
+    private JointsData jointsData;
 
     
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
-        jointsController = FindObjectOfType<JointsController>();
+        jointsData = FindObjectOfType<JointsData>();
         StartCoroutine(InitializeDelayed());
     }
 
@@ -113,7 +113,7 @@ public class LevelController : LevelStart {
     }
 
     private void MoveAllPlugsToInitialPositions() {
-        Transform [,] jointsGrid = jointsController.JointsGrid;
+        Transform [,] jointsGrid = jointsData.jointsGrid;
 
         foreach(LevelPlugs levelPlug in allLevelPlugs) {
             Directions direction = levelPlug.startingDirection;

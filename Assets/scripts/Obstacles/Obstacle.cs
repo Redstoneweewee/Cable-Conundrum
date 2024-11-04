@@ -34,7 +34,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
 
     private IEnumerator InitializeTable() {
         yield return new WaitForSeconds(0.01f);
-        Transform [,] jointsGrid = FindObjectOfType<JointsController>().JointsGrid;
+        Transform [,] jointsGrid = FindObjectOfType<JointsData>().jointsGrid;
         
         if(obstacleType == ObstacleTypes.LeftTableLeg) {
             transform.position = new Vector3(jointsGrid[0, 1].position.x + Constants.jointDistance/2 + rectTransform.sizeDelta.x/2, rectTransform.sizeDelta.y/2, 0);
@@ -87,7 +87,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     }
 
     private void RenewObstacleGrid() {
-        Transform [,] jointsGrid = FindObjectOfType<JointsController>().JointsGrid;
+        Transform [,] jointsGrid = FindObjectOfType<JointsData>().jointsGrid;
         obstacleGrid = new bool[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
         Vector2 topLeft     = new Vector2(transform.position.x - rectTransform.sizeDelta.x/2, transform.position.y + rectTransform.sizeDelta.y/2);
         Vector2 bottomRight = new Vector2(transform.position.x + rectTransform.sizeDelta.x/2, transform.position.y - rectTransform.sizeDelta.y/2);

@@ -23,7 +23,7 @@ public class IntersectionController : MonoBehaviour {
     }
 
     public void RenewAllObstaclesGrid() {
-        D.allObstaclesGrid = new bool[D.jointsController.JointsGrid.GetLength(0), D.jointsController.JointsGrid.GetLength(1)];
+        D.allObstaclesGrid = new bool[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
         foreach(Obstacle obstacle in obstacles) {
             if(obstacle.ObstacleType == ObstacleTypes.Plug) { continue; }

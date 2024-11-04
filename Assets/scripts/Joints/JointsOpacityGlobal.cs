@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class JointsOpacityController : MonoBehaviour {
+public class JointsOpacityGlobal : MonoBehaviour {
     public DebugC DebugC { get ; set; }
-    private JointsController jointsController;
+    private JointsData jointsData;
     private IEnumerator opacityCoroutine;
     [SerializeField] private Material jointMaterial;
     [SerializeField] private float opacityLoopPeriod = 1;
@@ -36,7 +36,7 @@ public class JointsOpacityController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
-        jointsController = GetComponent<JointsController>();
+        jointsData = GetComponent<JointsData>();
         ResetAllVariables();
         //Debug.Log(math.sin((2*math.PI/p)*(0.5+d41) - math.PI/2));
     }
@@ -62,7 +62,7 @@ public class JointsOpacityController : MonoBehaviour {
         t += 0.01f;
         //tfd += 0.01f;
 
-        if(jointsController.JointsEnabled) { tf = t; }
+        if(jointsData.jointsEnabled) { tf = t; }
         a3 = math.PI/p*math.cos(math.PI);
         if(previousIsFirstOpacity) { 
             if(isFirstLoop) {
@@ -85,7 +85,7 @@ public class JointsOpacityController : MonoBehaviour {
             }
         }
 
-        if(!jointsController.JointsEnabled) { 
+        if(!jointsData.jointsEnabled) { 
             //td = t; 
             c41 = f31(t);
             c42 = f32(t);
@@ -145,7 +145,7 @@ public class JointsOpacityController : MonoBehaviour {
     
     public IEnumerator ModifyJointsOpacity() {
         yield return new WaitForSeconds(0.01f);
-        bool jointsEnabled = jointsController.JointsEnabled;
+        bool jointsEnabled = jointsData.jointsEnabled;
         ModifyAllVariables();
         float opacityNum;
 
