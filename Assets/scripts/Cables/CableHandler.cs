@@ -161,7 +161,7 @@ public class CableHandler : MonoBehaviour {
             }
             InitializeCableGrid();
             A.electricalStripController.RenewAllCableGrids();
-            A.intersectionDetector.TestForCableIntersection();
+            A.intersectionController.TestForCableIntersection();
         }
         //moving into an already defined cable
         else if(A.cachedMouseGridIndex != mouseGridIndex && A.cableGrid[mouseGridIndex.x, mouseGridIndex.y].hasCable) {
@@ -178,7 +178,7 @@ public class CableHandler : MonoBehaviour {
                 A.cachedMouseGridIndex = mouseGridIndex;
             InitializeCableGrid();
             A.electricalStripController.RenewAllCableGrids();
-            A.intersectionDetector.TestForCableIntersection();
+            A.intersectionController.TestForCableIntersection();
         }
         
 

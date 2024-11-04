@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 
 public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointerDownHandler, IPointerUpHandler {
-    private IntersectionDetector intersectionDetector;
+    private IntersectionController intersectionController;
     [SerializeField] private bool temporarilyModifiable;
     [SerializeField] private ObstacleTypes obstacleType;
     private bool isDragging;
@@ -25,7 +25,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
 
     // Start is called before the first frame update
     void Start() {
-        intersectionDetector = FindObjectOfType<IntersectionDetector>();
+        intersectionController = FindObjectOfType<IntersectionController>();
         rectTransform = GetComponentInChildren<RectTransform>();
         if(obstacleType == ObstacleTypes.LeftTableLeg ||
            obstacleType == ObstacleTypes.RightTableLeg ||
@@ -44,8 +44,8 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
         }
         
         RenewObstacleGrid();
-        intersectionDetector.RenewAllObstaclesGrid();
-        intersectionDetector.TestForCableIntersection();
+        intersectionController.RenewAllObstaclesGrid();
+        intersectionController.TestForCableIntersection();
     }
     
     
@@ -82,8 +82,8 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
             transform.position = new Vector3(transform.position.x - Constants.tableSnapDistance, transform.position.y, transform.position.z);
         }
         RenewObstacleGrid();
-        intersectionDetector.RenewAllObstaclesGrid();
-        intersectionDetector.TestForCableIntersection();
+        intersectionController.RenewAllObstaclesGrid();
+        intersectionController.TestForCableIntersection();
     }
 
     private void RenewObstacleGrid() {
@@ -104,7 +104,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
                 obstacleGrid[i, j] = true;
             }
         }
-        intersectionDetector.RenewAllObstaclesGrid();
+        intersectionController.RenewAllObstaclesGrid();
     }
     
     public void SetOpacity(float opacity) {

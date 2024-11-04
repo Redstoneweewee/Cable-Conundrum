@@ -158,9 +158,9 @@ public class ControlsController : MonoBehaviour {
 
     private IEnumerator RenewGrids() {
         yield return new WaitForEndOfFrame();
-        D.intersectionDetector.RenewAllObstaclesGrid();
+        D.intersectionController.RenewAllObstaclesGrid();
         D.electricalStripController.RenewAllCableGrids();
-        D.intersectionDetector.TestForCableIntersection();
+        D.intersectionController.TestForCableIntersection();
     }
 
 }

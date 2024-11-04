@@ -15,7 +15,8 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
     [SerializeField] private GameObject plugVisual;
     private Plug plug;
-    private IntersectionDetector intersectionDetector;
+    private IntersectionController intersectionController;
+    private IntersectionData intersectionData;
     private CableParentAttributes cableParentAttribute;
     private CableHandler cableHandler;
     private IEnumerator dragCoroutine;
@@ -39,7 +40,8 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     void Start() {
         DebugC = DebugC.Get();
         controlsData = FindObjectOfType<ControlsData>();
-        intersectionDetector = FindObjectOfType<IntersectionDetector>();
+        intersectionController = FindObjectOfType<IntersectionController>();
+        intersectionData = FindObjectOfType<IntersectionData>();
         electricalStripData = FindObjectOfType<ElectricalStripData>();
         electricalStripController = electricalStripData.electricalStripController;
         plug = GetComponent<Plug>();
@@ -151,7 +153,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         cableHandler.InitializeCableGrid();
         electricalStripController.RenewAllCableGrids();
         if(!plug.isObstacle) { cableHandler.SetCablesOpacity(1f); }
-        intersectionDetector.TestForCableIntersection();
+        intersectionController.TestForCableIntersection();
     }
 
     public void PlugOut() {
@@ -161,7 +163,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         electricalStripController.RenewAllCableGrids();
         if(!plug.isObstacle) { cableHandler.SetCablesOpacity(Constants.cableOpacity); }
         //intersectionDetector.ClearAllCableIntersections();
-        intersectionDetector.TestForCableIntersection();
+        intersectionController.TestForCableIntersection();
     }
 
     private void TryModifyCables() {
@@ -177,7 +179,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     private Transform PlugIntoSocketTest() {
         int[,] allCablesGrid = electricalStripData.allCablesGrid;
         int[,] plugsGrid = electricalStripData.plugsGrid;
-        bool[,] allObstaclesGrid = intersectionDetector.AllObstaclesGrid;
+        bool[,] allObstaclesGrid = intersectionData.allObstaclesGrid;
         
         Transform[,] socketsGrid = electricalStripData.socketsGrid;
         Transform[,] jointsGrid = jointsController.JointsGrid;

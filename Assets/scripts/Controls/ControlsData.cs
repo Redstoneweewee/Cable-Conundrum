@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ControlsData : MonoBehaviour {
-    public IntersectionDetector      intersectionDetector;
+    public IntersectionController      intersectionController;
     public ElectricalStripData       electricalStripData;
     public ElectricalStripController electricalStripController;
 
@@ -40,7 +40,7 @@ public class ControlsData : MonoBehaviour {
     }
 
     void Awake() {
-        intersectionDetector      = FindObjectOfType<IntersectionDetector>();
+        intersectionController      = FindObjectOfType<IntersectionController>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = electricalStripData.electricalStripController;
     }

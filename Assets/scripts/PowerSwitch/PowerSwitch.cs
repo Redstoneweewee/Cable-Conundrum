@@ -8,12 +8,12 @@ public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
     [SerializeField] private GameObject offVisual;
     [SerializeField] private GameObject onVisual;
     private ElectricalStripController electricalStripController;
-    private IntersectionDetector intersectionDetector;
+    private IntersectionData intersectionData;
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
         electricalStripController = FindObjectOfType<ElectricalStripController>();
-        intersectionDetector = FindObjectOfType<IntersectionDetector>();
+        intersectionData = FindObjectOfType<IntersectionData>();
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
             if(!plug.isPluggedIn) { return LevelFailureTypes.Plugs; }
         }
 
-        if(intersectionDetector.HasIntersection) {
+        if(intersectionData.hasIntersection) {
             return LevelFailureTypes.Cables;
         }
         return LevelFailureTypes.None;

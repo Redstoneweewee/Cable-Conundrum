@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IntersectionDetector : MonoBehaviour {
-    private bool hasIntersection = false;
-    ElectricalStripData electricalStripData;
-    JointsController jointsController;
-    private bool[,] allObstaclesGrid;
+public class IntersectionController : MonoBehaviour {
+    IntersectionData D;
 
-    public bool    HasIntersection  {get{return hasIntersection;}  set{hasIntersection  = value;}}
-    public bool[,] AllObstaclesGrid {get{return allObstaclesGrid;} set{allObstaclesGrid = value;}}
-
-    // Start is called before the first frame update
     void Start() {
-        electricalStripData = FindObjectOfType<ElectricalStripData>();
-        jointsController = FindObjectOfType<JointsController>();
+        D = GetComponent<IntersectionData>();
         StartCoroutine(InitialWaitUntilUpdate(0.02f));
     }
 
@@ -31,25 +23,25 @@ public class IntersectionDetector : MonoBehaviour {
     }
 
     public void RenewAllObstaclesGrid() {
-        allObstaclesGrid = new bool[jointsController.JointsGrid.GetLength(0), jointsController.JointsGrid.GetLength(1)];
+        D.allObstaclesGrid = new bool[D.jointsController.JointsGrid.GetLength(0), D.jointsController.JointsGrid.GetLength(1)];
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
         foreach(Obstacle obstacle in obstacles) {
             if(obstacle.ObstacleType == ObstacleTypes.Plug) { continue; }
             if(obstacle.ObstacleGrid == null) { Debug.LogWarning($"{obstacle.name}'s obstaclesGrid not defined."); continue; }
 
-            for(int i=0; i<allObstaclesGrid.GetLength(0); i++) {
-                for(int j=0; j<allObstaclesGrid.GetLength(1); j++) {
+            for(int i=0; i<D.allObstaclesGrid.GetLength(0); i++) {
+                for(int j=0; j<D.allObstaclesGrid.GetLength(1); j++) {
                     if(obstacle.ObstacleGrid[i,j] == true) {
-                        allObstaclesGrid[i,j] = true;
+                        D.allObstaclesGrid[i,j] = true;
                     }
                 }
             }
         }
         string text = "";
-        for(int i=0; i<allObstaclesGrid.GetLength(0); i++) {
+        for(int i=0; i<D.allObstaclesGrid.GetLength(0); i++) {
             text += "| ";
-            for(int j=0; j<allObstaclesGrid.GetLength(1); j++) {
-                if(allObstaclesGrid[i,j] == true) { text += "*  "; }
+            for(int j=0; j<D.allObstaclesGrid.GetLength(1); j++) {
+                if(D.allObstaclesGrid[i,j] == true) { text += "*  "; }
                 else { text += "-  "; }
             }
             text += " |\n";
@@ -59,13 +51,13 @@ public class IntersectionDetector : MonoBehaviour {
 
     public void TestForCableIntersection() {
         ClearAllCableIntersections();
-        for(int i=0; i<electricalStripData.allCablesGrid.GetLength(0); i++) {
-            for(int j=0; j<electricalStripData.allCablesGrid.GetLength(1); j++) {
+        for(int i=0; i<D.electricalStripData.allCablesGrid.GetLength(0); i++) {
+            for(int j=0; j<D.electricalStripData.allCablesGrid.GetLength(1); j++) {
                 //if it is greater or equal to 2, there are intersections at that joint position
-                if(electricalStripData.plugsGrid[i,j] > 0) {
-                    DetermineTypeOfIntersection(i, j, electricalStripData.plugsGrid[i,j]);
+                if(D.electricalStripData.plugsGrid[i,j] > 0) {
+                    DetermineTypeOfIntersection(i, j, D.electricalStripData.plugsGrid[i,j]);
                 }
-                else if(electricalStripData.allCablesGrid[i,j] >= 2 || allObstaclesGrid[i,j] == true) {
+                else if(D.electricalStripData.allCablesGrid[i,j] >= 2 || D.allObstaclesGrid[i,j] == true) {
                     DetermineTypeOfIntersection(i, j, 0);
                 }
             }
@@ -82,7 +74,7 @@ public class IntersectionDetector : MonoBehaviour {
                 else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
             }
         }
-        hasIntersection = false;
+        D.hasIntersection = false;
     }
 
     private void DetermineTypeOfIntersection(int i, int j, int plugId) {
@@ -125,9 +117,8 @@ public class IntersectionDetector : MonoBehaviour {
                                                   Constants.obstacleCableIntersectionColor.b,
                                                   cableImage2.color.a);
                 }
-                hasIntersection = true;
+                D.hasIntersection = true;
             }
-
         }
     }
 }
