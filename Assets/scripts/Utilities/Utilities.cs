@@ -5,6 +5,57 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class Utilities : MonoBehaviour {
+
+    public static Object TryGetComponent<Object>(GameObject gameObject) {
+        Object objectTypeOut;
+        if(gameObject.TryGetComponent<Object>(out objectTypeOut)) { return objectTypeOut; }
+        else {
+            Debug.LogWarning($"Utilities.TryGetComponent on {gameObject.name} failed to get for component {typeof(Object)}.");
+            return default;
+        }
+    }
+    public static Object[] TryGetComponents<Object>(GameObject gameObject) {
+        Object[] objectTypeOut = gameObject.GetComponents<Object>();
+        if(objectTypeOut == null) {
+            Debug.LogWarning($"Utilities.TryGetComponents on {gameObject.name} failed to get for component {typeof(Object)}.");
+            return default;
+        }
+        else { return objectTypeOut; }
+    }
+    public static Object TryGetComponentInChildren<Object>(GameObject gameObject) {
+        Object objectTypeOut = gameObject.GetComponentInChildren<Object>();
+        if(objectTypeOut == null) {
+            Debug.LogWarning($"Utilities.TryGetComponentInChildren on {gameObject.name} failed to get for component {typeof(Object)}.");
+            return default;
+        }
+        else { return objectTypeOut; }
+    }
+    public static Object[] TryGetComponentsInChildren<Object>(GameObject gameObject) {
+        Object[] objectTypeOut = gameObject.GetComponentsInChildren<Object>();
+        if(objectTypeOut == null) {
+            Debug.LogWarning($"Utilities.TryGetComponentsInChildren on {gameObject.name} failed to get for component {typeof(Object)}.");
+            return default;
+        }
+        else { return objectTypeOut; }
+    }
+    public static Object TryGetComponentInParent<Object>(GameObject gameObject) {
+        Object objectTypeOut = gameObject.GetComponentInParent<Object>();
+        if(objectTypeOut == null) {
+            Debug.LogWarning($"Utilities.TryGetComponentInParent on {gameObject.name} failed to get for component {typeof(Object)}.");
+            return default;
+        }
+        else { return objectTypeOut; }
+    }
+    public static Object[] TryGetComponentsInParent<Object>(GameObject gameObject) {
+        Object[] objectTypeOut = gameObject.GetComponentsInParent<Object>();
+        if(objectTypeOut == null) {
+            Debug.LogWarning($"Utilities.TryGetComponentsInParent on {gameObject.name} failed to get for component {typeof(Object)}.");
+            return default;
+        }
+        else { return objectTypeOut; }
+    }
+
+
     public static bool IsApproximate(Quaternion q1, Quaternion q2, float precision) {
         return Mathf.Abs(Quaternion.Dot(q1, q2)) >= 1 - precision;
     }
@@ -73,8 +124,4 @@ public class Utilities : MonoBehaviour {
         return raycast ? hit.point : ray.GetPoint(maxDistance);
     }
 
-
-    public static ElectricalStripValues GetElectricalStripValues() {
-        return FindFirstObjectByType<ElectricalStripValues>();
-    }
 }

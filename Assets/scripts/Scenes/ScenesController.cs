@@ -5,18 +5,12 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum LoadSceneType { Next, Previous, Menu }
 
 public class ScenesController : MonoBehaviour {
-    [SerializeField] private Animator crossFadeTransition;
-    [SerializeField] private float crossFadeAnimationStartDuration;
-    [SerializeField] private float crossFadeAnimationEndDuration;
-    [SerializeField] private bool sceneFinishedLoading = false;
-    [SerializeField] private bool animationIsFinished = false;
-
-
+    private ScenesData D;
 
     void Awake() {
+        D = Utilities.TryGetComponent<ScenesData>(gameObject);
         ScenesController[] scenesControllers = FindObjectsOfType<ScenesController>();
         if(scenesControllers.Length > 1) {
             Destroy(gameObject);
@@ -30,7 +24,7 @@ public class ScenesController : MonoBehaviour {
 
 
     void Update() {
-        if(!animationIsFinished) { return; }
+        if(!D.animationIsFinished) { return; }
 
         //if(animationIsFinished && Input.GetMouseButtonDown(0)) {
         //    LoadLevel(LoadLevelType.Next);
@@ -41,19 +35,19 @@ public class ScenesController : MonoBehaviour {
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
-        sceneFinishedLoading = true;
+        D.sceneFinishedLoading = true;
     }
 
-    public void LoadLevel(LoadSceneType loadSceneType) {
+    public void LoadLevel(LoadSceneTypes loadSceneType) {
         int nextBuildIndex = SceneManager.GetActiveScene().buildIndex;
         switch(loadSceneType) {
-            case LoadSceneType.Menu:
+            case LoadSceneTypes.Menu:
                 nextBuildIndex = 0;
                 break;
-            case LoadSceneType.Next:
+            case LoadSceneTypes.Next:
                 nextBuildIndex++;
                 break;
-            case LoadSceneType.Previous:
+            case LoadSceneTypes.Previous:
                 nextBuildIndex--;
                 break;
         }
@@ -62,41 +56,41 @@ public class ScenesController : MonoBehaviour {
             Debug.LogWarning($"No scene at buildIndex {nextBuildIndex}"); 
             return; 
         }
-        sceneFinishedLoading = false;
-        animationIsFinished = false;
+        D.sceneFinishedLoading = false;
+        D.animationIsFinished = false;
         StartCoroutine(LoadLevelCoroutine(nextBuildIndex));
     }
 
 
     private IEnumerator LoadLevelCoroutine(int buildIndex) {
         //Play animation.
-        crossFadeTransition.SetTrigger("StartCrossFade");
+        D.crossFadeTransition.SetTrigger("StartCrossFade");
 
         //Wait for the crossfade to finish (all black screen) to load in the next scene.
-        yield return new WaitForSeconds(crossFadeAnimationStartDuration);
+        yield return new WaitForSeconds(D.crossFadeAnimationStartDuration);
         SceneManager.LoadScene(buildIndex);
 
         //Wait until the scene is finished loading to continue.
-        yield return new WaitUntil(() => sceneFinishedLoading);
+        yield return new WaitUntil(() => D.sceneFinishedLoading);
         
         //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
-        if(FindObjectOfType<LevelStart>()) {
-            yield return new WaitUntil(() => FindObjectOfType<LevelStart>().isFinishedWithAllTasks);
+        if(FindObjectOfType<LevelStartGlobal>()) {
+            yield return new WaitUntil(() => FindObjectOfType<LevelStartGlobal>().isFinishedWithAllTasks);
         }
         
         //End the crossfade transition.
-        crossFadeTransition.SetTrigger("EndCrossFade");
+        D.crossFadeTransition.SetTrigger("EndCrossFade");
         Debug.Log("Is finished with all tasks. Ending Fade.");
 
         //Set animationIsFinished to true after the animation is finished.
-        yield return new WaitForSeconds(crossFadeAnimationEndDuration);
-        animationIsFinished = true;
+        yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
+        D.animationIsFinished = true;
     }
 
 
     private IEnumerator InitialSceneLoad() {
-        yield return new WaitForSeconds(crossFadeAnimationEndDuration);
-        animationIsFinished = true;
+        yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
+        D.animationIsFinished = true;
     }
 
 
@@ -106,12 +100,12 @@ public class ScenesController : MonoBehaviour {
 
     public void OnPressStartButton() {
         //for now just go to scene 1, which is the "next" level
-        LoadLevel(LoadSceneType.Next);
+        LoadLevel(LoadSceneTypes.Next);
     }
 
 
     public void OnPressExitToMenuButton() {
-        LoadLevel(LoadSceneType.Menu);
+        LoadLevel(LoadSceneTypes.Menu);
     }
 
 

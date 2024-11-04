@@ -84,7 +84,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 390603525858259629}
-  - component: {fileID: 2280482076472973530}
   m_Layer: 0
   m_Name: InitialCable8
   m_TagString: Untagged
@@ -108,29 +107,6 @@ Transform:
   - {fileID: 6164483254388220280}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2280482076472973530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183102619473263297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 7
-  cableImage: {fileID: 7930907428066831954}
-  zRotation: 0
-  pivot: {x: 0.5, y: 1}
-  shadowDirection: 3
-  startingDirection: 1
-  endingDirection: 1
-  directionMultiple: {x: 0, y: -1}
 --- !u!1 &1498360873365416453
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +266,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 42206165520334071}
-  - component: {fileID: 55740032853924324}
   m_Layer: 0
   m_Name: InitialCable0
   m_TagString: Untagged
@@ -314,29 +289,6 @@ Transform:
   - {fileID: 6331021723451356240}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!114 &55740032853924324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686321797040602139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 5
-  cableImage: {fileID: 7668963897776693473}
-  zRotation: 180
-  pivot: {x: 0.5, y: 0}
-  shadowDirection: 2
-  startingDirection: 1
-  endingDirection: 1
-  directionMultiple: {x: 0, y: -1}
 --- !u!1 &2247230240398727722
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +298,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5188652747960478886}
-  - component: {fileID: 6942553104657632104}
   m_Layer: 0
   m_Name: InitialCable1
   m_TagString: Untagged
@@ -370,29 +321,6 @@ Transform:
   - {fileID: 6532090130903439722}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6942553104657632104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2247230240398727722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 7
-  cableImage: {fileID: 2449802494396084735}
-  zRotation: 0
-  pivot: {x: 0.5, y: 1}
-  shadowDirection: 3
-  startingDirection: 1
-  endingDirection: 1
-  directionMultiple: {x: 0, y: -1}
 --- !u!1 &3693375418693527373
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +405,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 950648800755793554}
-  - component: {fileID: 2632807101306088454}
   m_Layer: 0
   m_Name: InitialCable6
   m_TagString: Untagged
@@ -501,29 +428,6 @@ Transform:
   - {fileID: 6893574472758815514}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &2632807101306088454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4406282380986856440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 2
-  cableImage: {fileID: 59743433082523374}
-  zRotation: -90
-  pivot: {x: 0.5, y: 1}
-  shadowDirection: 1
-  startingDirection: 2
-  endingDirection: 2
-  directionMultiple: {x: -1, y: 0}
 --- !u!1 &4544630770994754019
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +437,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5640095959813431962}
-  - component: {fileID: 2794361409967935863}
   m_Layer: 0
   m_Name: InitialCable2
   m_TagString: Untagged
@@ -557,29 +460,6 @@ Transform:
   - {fileID: 2049247262561841175}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2794361409967935863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4544630770994754019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 7
-  cableImage: {fileID: 6724704454358241447}
-  zRotation: 0
-  pivot: {x: 0.5, y: 1}
-  shadowDirection: 3
-  startingDirection: 1
-  endingDirection: 1
-  directionMultiple: {x: 0, y: -1}
 --- !u!1 &4754075512274700811
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +544,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5849794773084085750}
-  - component: {fileID: 8598440557140791341}
   m_Layer: 0
   m_Name: InitialRotationCable3
   m_TagString: Untagged
@@ -688,29 +567,6 @@ Transform:
   - {fileID: 3536195633347430406}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &8598440557140791341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5002956740745486518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 1
-  isIntersectionCable: 0
-  cableType: 19
-  cableImage: {fileID: 2362678925448602065}
-  zRotation: -90
-  pivot: {x: 0.5, y: 0.5}
-  shadowDirection: 5
-  startingDirection: 1
-  endingDirection: 3
-  directionMultiple: {x: 1, y: 0}
 --- !u!1 &5039100875146661777
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +779,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401971287339605323}
-  - component: {fileID: 8437706226858542437}
   m_Layer: 0
   m_Name: InitialRotationCable5
   m_TagString: Untagged
@@ -947,29 +802,6 @@ Transform:
   - {fileID: 1593473737187811872}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8437706226858542437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148227790073292280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 1
-  isIntersectionCable: 0
-  cableType: 18
-  cableImage: {fileID: 6604270206168892148}
-  zRotation: 0
-  pivot: {x: 0.5, y: 0.5}
-  shadowDirection: 5
-  startingDirection: 1
-  endingDirection: 2
-  directionMultiple: {x: -1, y: 0}
 --- !u!1 &7162564053065224164
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +811,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7309328350596645066}
-  - component: {fileID: 6620464893997181257}
   m_Layer: 0
   m_Name: InitialCable4
   m_TagString: Untagged
@@ -1003,29 +834,6 @@ Transform:
   - {fileID: 5555287582034792276}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &6620464893997181257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7162564053065224164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 3
-  cableImage: {fileID: 7576391940521908747}
-  zRotation: -90
-  pivot: {x: 0.5, y: 0}
-  shadowDirection: 1
-  startingDirection: 3
-  endingDirection: 3
-  directionMultiple: {x: 1, y: 0}
 --- !u!1 &7853425170766836029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1114,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1768745472557214047}
-  - component: {fileID: 5617909011059237890}
   m_Layer: 0
   m_Name: InitialIntersectionCable7
   m_TagString: Untagged
@@ -1330,26 +1137,3 @@ Transform:
   - {fileID: 3721676511084767635}
   m_Father: {fileID: 440543272432726307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5617909011059237890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9087354799011549821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 1
-  isRotationCable: 0
-  isIntersectionCable: 1
-  cableType: 7
-  cableImage: {fileID: 4157425687685665270}
-  zRotation: 0
-  pivot: {x: 0.5, y: 1}
-  shadowDirection: 3
-  startingDirection: 1
-  endingDirection: 1
-  directionMultiple: {x: 0, y: -1}

@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5988677645357931072}
-  - component: {fileID: 3100752918359451390}
+  - component: {fileID: 7952554902454019921}
   m_Layer: 0
   m_Name: OutDownRight
   m_TagString: Untagged
@@ -108,7 +108,7 @@ Transform:
   - {fileID: 112039417794716394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &3100752918359451390
+--- !u!114 &7952554902454019921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,10 +117,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8342147578661601924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ac9abb4667aa72449eed6f31bf7e106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInitialCable: 0
   isRotationCable: 1
+  isIntersectionCable: 0
   cableType: 19
   cableImage: {fileID: 1188349114201474158}
   zRotation: -90

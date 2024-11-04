@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f4f203cea39ce498b3b1450d00f4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plugVisual: {fileID: 3122753346053774883}
 --- !u!114 &6606008298374603199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,9 +134,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b541a2886d83935499846f8995586c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugC: {fileID: 0}
+  id: 0
+  plugHandler: {fileID: 0}
+  controlsData: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  intersectionData: {fileID: 0}
+  intersectionController: {fileID: 0}
+  jointsData: {fileID: 0}
+  cableParentAttributes: {fileID: 0}
+  cableHandler: {fileID: 0}
   isPluggedIn: 0
   isObstacle: 0
-  obstacle: {fileID: 0}
+  obstacleAttributes: {fileID: 0}
   plugSize: {x: 4, y: 1}
   localJointPositionsTakenUp:
   - {x: 0, y: 85}
@@ -147,6 +157,12 @@ MonoBehaviour:
   - {x: 0, y: 85}
   - {x: 0, y: -85}
   center: {x: 0, y: 0}
+  plugVisual: {fileID: 3122753346053774883}
+  isDragging: 0
+  isModifyingCables: 0
+  cachedPlugPositionDynamic: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
 --- !u!1 &7932422443188743115
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2272469213828403106}
   - component: {fileID: 9121782649800716119}
+  - component: {fileID: 2611733313154902105}
   - component: {fileID: 5447463096067010012}
   m_Layer: 0
   m_Name: Cables
@@ -201,6 +218,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6896fee49b0c8d243a554481a0d31bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2611733313154902105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932422443188743115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cableHandler: {fileID: 0}
+  debugC: {fileID: 0}
+  plugAttributes: {fileID: 0}
+  intersectionController: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  jointsData: {fileID: 0}
   cablePrefabs:
   - {fileID: 5551953224207516642, guid: e27c0bdf972d4cc43a45b32d9d0f6779, type: 3}
   - {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
@@ -236,8 +272,22 @@ MonoBehaviour:
   - {fileID: 9019911373207713058}
   - {fileID: 3682763653705718314}
   - {fileID: 8305643961249828306}
+  cachedPosition: {x: 0, y: 0, z: 0}
+  cables: []
+  lastRotationCableIndex: 0
+  cachedStartingDirection: 0
+  cachedEndingDirection: 0
+  isInitialCable: 0
+  isRotationCable: 0
+  isIntersectionCable: 0
+  cableType: 0
+  cableImage: {fileID: 0}
+  zRotation: 0
+  pivot: {x: 0, y: 0}
+  shadowDirection: 0
   startingDirection: 2
   endingDirection: 2
+  directionMultiple: {x: 0, y: 0}
 --- !u!225 &5447463096067010012
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -302,6 +352,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 7744308955974636733, guid: 67624ece7ff654b4c898c637e0f69ec2, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -325,6 +379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2272469213828403106}
     m_Modifications:
+    - target: {fileID: 4021460344578692494, guid: 76005292385604442b5c88c9c2f7c241, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7717888941554653975, guid: 76005292385604442b5c88c9c2f7c241, type: 3}
       propertyPath: m_Name
       value: InitialRiotationCable3
@@ -392,6 +450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2272469213828403106}
     m_Modifications:
+    - target: {fileID: 2319133284181856978, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
       propertyPath: m_Name
       value: InitialCable2
@@ -459,6 +521,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2272469213828403106}
     m_Modifications:
+    - target: {fileID: 4530992939098068061, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702777388921839916, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
       propertyPath: m_Name
       value: InitialCable8
@@ -570,6 +636,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 7744308955974636733, guid: 67624ece7ff654b4c898c637e0f69ec2, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -593,6 +663,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2272469213828403106}
     m_Modifications:
+    - target: {fileID: 257464256283646878, guid: 1674a9a5d26e573429e24d446e5e444f, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1789527843901632717, guid: 1674a9a5d26e573429e24d446e5e444f, type: 3}
       propertyPath: m_Name
       value: InitialRotationCable6
@@ -660,6 +734,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2272469213828403106}
     m_Modifications:
+    - target: {fileID: 4530992939098068061, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702777388921839916, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
       propertyPath: m_Name
       value: InitialCable7
@@ -767,6 +845,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 5860114686107869865, guid: a14202d2c077d0d4e9e7e2fe5e677eb7, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8730862469813471331, guid: a14202d2c077d0d4e9e7e2fe5e677eb7, type: 3}
       propertyPath: m_Name
       value: InitialRotationCable1
@@ -794,6 +876,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2272469213828403106}
     m_Modifications:
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3367230049586527254, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

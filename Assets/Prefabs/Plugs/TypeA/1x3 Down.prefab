@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f4f203cea39ce498b3b1450d00f4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plugVisual: {fileID: 3276865808016176114}
 --- !u!114 &1799573878184985060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,9 +59,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b541a2886d83935499846f8995586c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugC: {fileID: 0}
+  id: 0
+  plugHandler: {fileID: 0}
+  controlsData: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  intersectionData: {fileID: 0}
+  intersectionController: {fileID: 0}
+  jointsData: {fileID: 0}
+  cableParentAttributes: {fileID: 0}
+  cableHandler: {fileID: 0}
   isPluggedIn: 0
   isObstacle: 0
-  obstacle: {fileID: 0}
+  obstacleAttributes: {fileID: 0}
   plugSize: {x: 1, y: 3}
   localJointPositionsTakenUp:
   - {x: -85, y: 0}
@@ -71,6 +81,13 @@ MonoBehaviour:
   localSnapPositions:
   - {x: -85, y: 0}
   - {x: 85, y: 0}
+  center: {x: 0, y: 0}
+  plugVisual: {fileID: 3276865808016176114}
+  isDragging: 0
+  isModifyingCables: 0
+  cachedPlugPositionDynamic: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
 --- !u!1 &3276865808016176114
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2889825160763677354}
   - component: {fileID: 4351666831960176580}
+  - component: {fileID: 6555746432125351249}
   - component: {fileID: 35641254865148142}
   m_Layer: 0
   m_Name: Cables
@@ -200,6 +218,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6896fee49b0c8d243a554481a0d31bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6555746432125351249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857335087991535362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cableHandler: {fileID: 0}
+  debugC: {fileID: 0}
+  plugAttributes: {fileID: 0}
+  intersectionController: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  jointsData: {fileID: 0}
   cablePrefabs:
   - {fileID: 5551953224207516642, guid: e27c0bdf972d4cc43a45b32d9d0f6779, type: 3}
   - {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
@@ -235,8 +272,22 @@ MonoBehaviour:
   - {fileID: 3561702824125149187}
   - {fileID: 4988764334932657340}
   - {fileID: 5798749412702664138}
+  cachedPosition: {x: 0, y: 0, z: 0}
+  cables: []
+  lastRotationCableIndex: 0
+  cachedStartingDirection: 0
+  cachedEndingDirection: 0
+  isInitialCable: 0
+  isRotationCable: 0
+  isIntersectionCable: 0
+  cableType: 0
+  cableImage: {fileID: 0}
+  zRotation: 0
+  pivot: {x: 0, y: 0}
+  shadowDirection: 0
   startingDirection: 1
   endingDirection: 1
+  directionMultiple: {x: 0, y: 0}
 --- !u!225 &35641254865148142
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -258,6 +309,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
     - target: {fileID: -3261277785496600335, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
@@ -336,6 +391,10 @@ PrefabInstance:
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 104875181134094271, guid: 94187321732935941b4364eec285e76b, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3367230049586527254, guid: 94187321732935941b4364eec285e76b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -411,6 +470,10 @@ PrefabInstance:
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3367230049586527254, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: m_LocalPosition.x
       value: 85
@@ -478,6 +541,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
+    - target: {fileID: 3534087248237919762, guid: 10861dffd8853f94cacdc1938d688975, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702777388921839916, guid: 10861dffd8853f94cacdc1938d688975, type: 3}
       propertyPath: m_Name
       value: InitialCable4
@@ -593,6 +660,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 7952554902454019921, guid: 54876201ac2076f4bbab8fa019e84dcc, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8342147578661601924, guid: 54876201ac2076f4bbab8fa019e84dcc, type: 3}
       propertyPath: m_Name
       value: InitialRotationCable3
@@ -627,6 +698,10 @@ PrefabInstance:
     - target: {fileID: 2698305703646795225, guid: 3d5dcefcd8922a547b3f8f0847086180, type: 3}
       propertyPath: m_Name
       value: InitialRotationCable5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977195872237073731, guid: 3d5dcefcd8922a547b3f8f0847086180, type: 3}
+      propertyPath: isInitialCable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8385765176343251016, guid: 3d5dcefcd8922a547b3f8f0847086180, type: 3}
       propertyPath: m_LocalPosition.x
@@ -692,6 +767,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
     - target: {fileID: -6537853198203547065, guid: f9079b4deb427144597cdc9ebf3dba0d, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255225651616039280, guid: f9079b4deb427144597cdc9ebf3dba0d, type: 3}
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}
@@ -762,6 +841,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
+    - target: {fileID: 4530992939098068061, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702777388921839916, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
       propertyPath: m_Name
       value: InitialCable6
@@ -834,6 +917,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2889825160763677354}
     m_Modifications:
     - target: {fileID: -3261277785496600335, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}

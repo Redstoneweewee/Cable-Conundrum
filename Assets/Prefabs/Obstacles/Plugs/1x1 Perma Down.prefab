@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2915242151377573371}
   - component: {fileID: 8402710214440302130}
+  - component: {fileID: 2009974334305609702}
   - component: {fileID: 7788996895724776185}
   m_Layer: 0
   m_Name: Cables
@@ -46,6 +47,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6896fee49b0c8d243a554481a0d31bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2009974334305609702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954562919140434974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cableHandler: {fileID: 0}
+  debugC: {fileID: 0}
+  plugAttributes: {fileID: 0}
+  intersectionController: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  jointsData: {fileID: 0}
   cablePrefabs:
   - {fileID: 5551953224207516642, guid: e27c0bdf972d4cc43a45b32d9d0f6779, type: 3}
   - {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
@@ -73,8 +93,22 @@ MonoBehaviour:
   - {fileID: 3325671832225026162, guid: 08920192d842760478bf6d57e3acc8fc, type: 3}
   initialCables:
   - {fileID: 5112515956268113197}
+  cachedPosition: {x: 0, y: 0, z: 0}
+  cables: []
+  lastRotationCableIndex: 0
+  cachedStartingDirection: 0
+  cachedEndingDirection: 0
+  isInitialCable: 0
+  isRotationCable: 0
+  isIntersectionCable: 0
+  cableType: 0
+  cableImage: {fileID: 0}
+  zRotation: 0
+  pivot: {x: 0, y: 0}
+  shadowDirection: 0
   startingDirection: 1
   endingDirection: 1
+  directionMultiple: {x: 0, y: 0}
 --- !u!225 &7788996895724776185
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -174,6 +208,7 @@ GameObject:
   - component: {fileID: 7399045360729076210}
   - component: {fileID: 7594151065646704751}
   - component: {fileID: 4159705357010245428}
+  - component: {fileID: 2534635809066956506}
   m_Layer: 0
   m_Name: 1x1 Perma Down
   m_TagString: Untagged
@@ -210,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f4f203cea39ce498b3b1450d00f4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plugVisual: {fileID: 2570743176529743143}
 --- !u!114 &7594151065646704751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,14 +257,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b541a2886d83935499846f8995586c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugC: {fileID: 0}
+  id: 0
+  plugHandler: {fileID: 0}
+  controlsData: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  intersectionData: {fileID: 0}
+  intersectionController: {fileID: 0}
+  jointsData: {fileID: 0}
+  cableParentAttributes: {fileID: 0}
+  cableHandler: {fileID: 0}
   isPluggedIn: 0
   isObstacle: 1
-  obstacle: {fileID: 4159705357010245428}
+  obstacleAttributes: {fileID: 0}
   plugSize: {x: 1, y: 1}
   localJointPositionsTakenUp:
   - {x: 0, y: 0}
   localSnapPositions:
   - {x: 0, y: 0}
+  center: {x: 0, y: 0}
+  plugVisual: {fileID: 2570743176529743143}
+  isDragging: 0
+  isModifyingCables: 0
+  cachedPlugPositionDynamic: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
 --- !u!114 &4159705357010245428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,8 +295,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb79496e3dc045c42be36f133f97c524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2534635809066956506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151729919157773566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338d160b66711c845b5e37aa06f9a4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleHandler: {fileID: 0}
+  intersectionController: {fileID: 0}
   temporarilyModifiable: 0
   obstacleType: 0
+  isDragging: 0
+  rectTransform: {fileID: 0}
+  cachedMousePosition: {x: 0, y: 0}
 --- !u!1001 &1381954509870902633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +323,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2915242151377573371}
     m_Modifications:
     - target: {fileID: -3261277785496600335, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
+      propertyPath: isInitialCable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324343162654518256, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
       propertyPath: isInitialCable
       value: 1
       objectReference: {fileID: 0}

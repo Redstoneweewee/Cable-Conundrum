@@ -250,7 +250,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2399097356811271422}
-  - component: {fileID: 2342968855544922600}
   m_Layer: 0
   m_Name: RightUp
   m_TagString: Untagged
@@ -274,26 +273,3 @@ Transform:
   - {fileID: 3687783929553052733}
   m_Father: {fileID: 2862456556565957061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2342968855544922600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192731681384582868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 0
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 6
-  cableImage: {fileID: 8304627377866748495}
-  zRotation: 0
-  pivot: {x: 0.5, y: 0}
-  shadowDirection: 3
-  startingDirection: 0
-  endingDirection: 0
-  directionMultiple: {x: 0, y: 1}

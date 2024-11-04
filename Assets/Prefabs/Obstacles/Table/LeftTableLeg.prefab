@@ -98,6 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7601433583698415945}
   - component: {fileID: 7593387893141213922}
+  - component: {fileID: -8216600182542348587}
   m_Layer: 0
   m_Name: LeftTableLeg
   m_TagString: Untagged
@@ -133,5 +134,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb79496e3dc045c42be36f133f97c524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8216600182542348587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6676913604227909174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338d160b66711c845b5e37aa06f9a4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleHandler: {fileID: 0}
+  intersectionController: {fileID: 0}
   temporarilyModifiable: 0
   obstacleType: 1
+  isDragging: 0
+  rectTransform: {fileID: 0}
+  cachedMousePosition: {x: 0, y: 0}

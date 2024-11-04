@@ -80,7 +80,3 @@ public class DebugC : MonoBehaviour {
         Debug.Log(startText+text);
     }
 }
-
-public interface IDebugC {
-    public DebugC DebugC { get; set; }
-}

@@ -1,49 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ControlsController : MonoBehaviour {
-    [SerializeField] private InputActionReference exitAction;
-    [SerializeField] private InputActionReference jointAction;
-    [SerializeField] private InputActionReference obstaclesAction;
-    //These are only available for the editor, not the actual game
-    [SerializeField] private InputActionReference plugSelectorAction;
-    [SerializeField] private InputActionReference electricalStripAction;
-    [SerializeField] private InputActionReference mouseScrollAction;
-    [SerializeField] private InputActionReference deleteAction;
-
-    [SerializeField] private GameObject plugSelectorCanvas;
-
+    ControlsData D;
     
-    public InputActionReference ExitAction            { get{ return exitAction;            } set{ exitAction            = value; } }
-    public InputActionReference JointAction           { get{ return jointAction;           } set{ jointAction           = value; } }
-    public InputActionReference ObstaclesAction       { get{ return obstaclesAction;       } set{ obstaclesAction       = value; } }
-    public InputActionReference PlugSelectorAction    { get{ return plugSelectorAction;    } set{ plugSelectorAction    = value; } }
-    public InputActionReference ElectricalStripAction { get{ return electricalStripAction; } set{ electricalStripAction = value; } }
-    public InputActionReference MouseScrollAction     { get{ return mouseScrollAction;     } set{ mouseScrollAction     = value; } }
-    public InputActionReference DeleteAction          { get{ return deleteAction;          } set{ deleteAction          = value; } }
-
-    public GameObject           PlugSelectorCanvas   { get{ return plugSelectorCanvas;   } set{ plugSelectorCanvas   = value; } }
-
-
-
-
-
-    void OnEnable() {
-        exitAction.action.Enable();
-        jointAction.action.Enable();
-        obstaclesAction.action.Enable();
-        plugSelectorAction.action.Enable();
-        electricalStripAction.action.Enable();
-        mouseScrollAction.action.Enable();
-        deleteAction.action.Enable();
-    }
-
     void Awake() {
+        D = FindObjectOfType<ControlsData>();
     }
+    void Start() {
+        SubscribeToActionStart(D.exitAction, OnExit);
+        SubscribeToActionStart(D.jointAction, OnJointsToggle);
+        SubscribeToActionStart(D.obstaclesAction, OnObstaclesToggle);
+        SubscribeToActionStart(D.plugSelectorAction, OnPlugSelectorToggle);
+        SubscribeToActionStart(D.electricalStripAction, OnElectricalStripToggle);
+        SubscribeToActionStart(D.deleteAction, OnTryDeletePlug);
+        SubscribeToActionStart(D.deleteAction, OnTryDeleteObstacle);
+    }
+
+
 
     /// <summary>
     /// Subscribes a function for when Action's button is initially pressed down. 
@@ -81,4 +61,106 @@ public class ControlsController : MonoBehaviour {
             return (VariableType)(object)null;
         }
     }
+
+
+
+
+
+
+    private void OnExit(InputAction.CallbackContext context) {
+        Debug.Log("bring up the pause menu");
+    }
+
+    private bool IsNotInLevel() {
+        if(SceneManager.GetActiveScene().buildIndex == 0) { return true; }
+        //if(SceneManager.GetActiveScene().buildIndex == 1) { return true; }
+        return false;
+    }
+
+    private void OnJointsToggle(InputAction.CallbackContext context) {
+        if(IsNotInLevel()) { return; }
+        D.masterJointsEnabled = !D.masterJointsEnabled;
+        FindObjectOfType<JointsData>().jointsEnabled = D.masterJointsEnabled;
+        Debug.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
+    }
+
+    private void OnObstaclesToggle(InputAction.CallbackContext context) {
+        if(IsNotInLevel()) { return; }
+        D.obstaclesModifiable = !D.obstaclesModifiable;
+        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        if(D.obstaclesModifiable) {
+            foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
+                obstacleAttribute.obstacleHandler.SetOpacity(0.8f);
+                obstacleAttribute.temporarilyModifiable = true;
+            }   
+        }
+        else {
+            foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
+                obstacleAttribute.obstacleHandler.SetOpacity(1);
+                obstacleAttribute.temporarilyModifiable = false;
+            }   
+        }
+        Debug.Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
+    }
+
+    private void OnPlugSelectorToggle(InputAction.CallbackContext context) {
+        if(IsNotInLevel()) { return; }
+        D.plugSelectorEnabled = !D.plugSelectorEnabled;
+
+        if(D.plugSelectorEnabled) { D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(true); }
+        else { 
+            if(Utilities.TryGetComponent<PlugSelectorData>(D.plugSelectorCanvas.transform.GetChild(0).gameObject).scrollCoroutine != null) {
+                StopCoroutine(Utilities.TryGetComponent<PlugSelectorData>(D.plugSelectorCanvas.transform.GetChild(0).gameObject).scrollCoroutine);
+            }
+            Utilities.TryGetComponent<PlugSelectorData>(D.plugSelectorCanvas.transform.GetChild(0).gameObject).scrollCoroutine = null;
+            D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(false); 
+        }
+    }
+
+    private void OnElectricalStripToggle(InputAction.CallbackContext context) {
+        if(IsNotInLevel()) { return; }
+        D.electricalStripEnabled = !D.electricalStripEnabled;
+        GameObject electricalStrip = FindObjectOfType<ElectricalStripController>().gameObject;
+        
+        if(D.electricalStripEnabled) {
+            Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 0.8f;
+            D.electricalStripData.temporarilyModifiable = true;
+        }
+        else {
+            Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 1f;
+            D.electricalStripData.temporarilyModifiable = false;
+        }
+    
+    }
+
+    
+    private void OnTryDeletePlug(InputAction.CallbackContext context) {
+        if(IsNotInLevel()) { return; }
+        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        foreach(PlugAttributes plugAttribute in allPlugAttributes) {
+            if(plugAttribute.isDragging) { 
+                Destroy(plugAttribute.gameObject); 
+                StartCoroutine(RenewGrids());
+            }
+        }
+    }
+
+    private void OnTryDeleteObstacle(InputAction.CallbackContext context) {
+        if(IsNotInLevel()) { return; }
+        ObstacleAttributes[] allObstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        foreach(ObstacleAttributes obstacleAttribute in allObstacleAttributes) {
+            if(obstacleAttribute.temporarilyModifiable && obstacleAttribute.isDragging) { 
+                Destroy(obstacleAttribute.gameObject);
+                StartCoroutine(RenewGrids());
+            }
+        }
+    }
+
+    private IEnumerator RenewGrids() {
+        yield return new WaitForEndOfFrame();
+        D.intersectionController.RenewAllObstaclesGrid();
+        D.electricalStripController.RenewAllCableGrids();
+        D.intersectionController.TestForCableIntersection();
+    }
+
 }

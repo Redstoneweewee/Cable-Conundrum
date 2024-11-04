@@ -84,7 +84,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723617129738427700}
-  - component: {fileID: 7011640857918501257}
   m_Layer: 0
   m_Name: DownRight
   m_TagString: Untagged
@@ -108,29 +107,6 @@ Transform:
   - {fileID: 5402008978708246245}
   m_Father: {fileID: 4448400886360933109}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &7011640857918501257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5320848099589309634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitialCable: 0
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 3
-  cableImage: {fileID: 3427731672807680986}
-  zRotation: -90
-  pivot: {x: 0.5, y: 0}
-  shadowDirection: 1
-  startingDirection: 3
-  endingDirection: 3
-  directionMultiple: {x: 1, y: 0}
 --- !u!1 &6368593163165873272
 GameObject:
   m_ObjectHideFlags: 0

@@ -1267,6 +1267,7 @@ GameObject:
   - component: {fileID: 71596586}
   - component: {fileID: 71596587}
   - component: {fileID: 71596588}
+  - component: {fileID: 71596589}
   m_Layer: 0
   m_Name: PlugSelector
   m_TagString: Untagged
@@ -1314,6 +1315,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3174f5119ff804d98df7685ad9b37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &71596589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71596585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1fd28d00bdc24478c67f6618205c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plugSelectorController: {fileID: 0}
+  controlsData: {fileID: 0}
+  controlsController: {fileID: 0}
+  mouseScrollAction: {fileID: 0}
   obstaclesParent: {fileID: 1862278866}
   plugsParent: {fileID: 957380916}
   background: {fileID: 1359213556}
@@ -1362,6 +1379,7 @@ MonoBehaviour:
   buttonSize: {x: 220, y: 220}
   offset: 30
   scrollSpeed: 70
+  isHoveringOver: 0
 --- !u!1 &73240006
 GameObject:
   m_ObjectHideFlags: 0
@@ -5016,6 +5034,7 @@ GameObject:
   - component: {fileID: 277651738}
   - component: {fileID: 277651739}
   - component: {fileID: 277651740}
+  - component: {fileID: 277651741}
   m_Layer: 0
   m_Name: Joints
   m_TagString: Untagged
@@ -5400,9 +5419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112c2c31805855a4c88cd78a255f7616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jointPrefab: {fileID: 984155574870586781, guid: f59883f5993e0394198030d80d6fbc1e, type: 3}
-  jointsEnabled: 1
-  jointMaterial: {fileID: 2100000, guid: e3f9173bd2553c844b6dc5acf815fee7, type: 2}
 --- !u!114 &277651740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5417,6 +5433,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointMaterial: {fileID: 2100000, guid: e3f9173bd2553c844b6dc5acf815fee7, type: 2}
   opacityLoopPeriod: 0.75
+--- !u!114 &277651741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277651737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6e6e5bff5371e4794e5ec204bb367c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jointsController: {fileID: 0}
+  debugC: {fileID: 0}
+  controlsData: {fileID: 0}
+  jointsOpacityGlobal: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  jointPrefab: {fileID: 984155574870586781, guid: f59883f5993e0394198030d80d6fbc1e, type: 3}
+  cachedJointsEnabled: 0
+  jointsEnabled: 1
+  cachedScreenSize: {x: 0, y: 0}
+  jointMaterial: {fileID: 2100000, guid: e3f9173bd2553c844b6dc5acf815fee7, type: 2}
+  r: 140
+  s: 30
 --- !u!1 &278109754
 GameObject:
   m_ObjectHideFlags: 0
@@ -13904,7 +13944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2101529456}
+  m_Material: {fileID: 2135990804}
   m_Color: {r: 1, g: 0.9647059, b: 0.85490197, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -20803,6 +20843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007985141}
   - component: {fileID: 1007985142}
+  - component: {fileID: 1007985143}
   m_Layer: 0
   m_Name: PowerSwitch
   m_TagString: Untagged
@@ -20839,8 +20880,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603f0e1184b5ecc4da271c2811124a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1007985143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007985140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840790334992b0242a25e01b1568817c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerSwitchController: {fileID: 0}
+  debugC: {fileID: 0}
   offVisual: {fileID: 229279928}
   onVisual: {fileID: 557799712}
+  electricalStripController: {fileID: 0}
+  intersectionData: {fileID: 0}
 --- !u!1 &1011867879
 GameObject:
   m_ObjectHideFlags: 0
@@ -25251,6 +25308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1299106509}
+  - component: {fileID: 1299106513}
   - component: {fileID: 1299106512}
   - component: {fileID: 1299106511}
   - component: {fileID: 1299106510}
@@ -25332,6 +25390,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738d4bcf960f6f14f94aebf3f2487fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1299106513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299106508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266304a2cf38b2048ba9a38fc5c739d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketAttributes: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  childrenTransforms: []
+  isActive: 1
 --- !u!1 &1299925788
 GameObject:
   m_ObjectHideFlags: 0
@@ -31189,19 +31263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaee2b6d5a350294589db45e17d8dae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetBoard: 0
-  socketPrefab: {fileID: 3762091182818808380, guid: 6e3a7a5ccbf04474d81c16a3c9b55585, type: 3}
-  width: 1
-  height: 2
-  cachedSocketsActiveGrid:
-  - row: 01
-  - row: 01
-  socketsActiveGrid:
-  - row: 01
-  - row: 01
-  backgroundVisual: {fileID: 688515345}
-  socketsParent: {fileID: 1683979203}
-  powerSwitch: {fileID: 1007985140}
 --- !u!114 &1655845893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31226,6 +31287,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5c3fb8f96ac0a4e899539f6a2746ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricalStripController: {fileID: 1655845893}
+  debugC: {fileID: 1984881653}
+  electricalStripSizeController: {fileID: 1655845892}
+  jointsData: {fileID: 277651741}
+  r: 140
+  s: 30
+  resetBoard: 0
+  socketPrefab: {fileID: 3762091182818808380, guid: 6e3a7a5ccbf04474d81c16a3c9b55585, type: 3}
+  width: 1
+  height: 2
+  cachedSocketsActiveGrid: []
+  socketsActiveGrid: []
+  backgroundVisual: {fileID: 688515345}
+  socketsParent: {fileID: 1683979203}
+  powerSwitch: {fileID: 1007985140}
+  temporarilyModifiable: 0
+  rectTransform: {fileID: 0}
+  cachedMousePosition: {x: 0, y: 0}
+  rectangularTransform: {fileID: 688515346}
+  size: {x: 200, y: 438}
 --- !u!225 &1655845895
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -34377,6 +34458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1826306385}
+  - component: {fileID: 1826306389}
   - component: {fileID: 1826306388}
   - component: {fileID: 1826306387}
   - component: {fileID: 1826306386}
@@ -34458,6 +34540,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738d4bcf960f6f14f94aebf3f2487fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1826306389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826306384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266304a2cf38b2048ba9a38fc5c739d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketAttributes: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  childrenTransforms: []
+  isActive: 1
 --- !u!1 &1830670720
 GameObject:
   m_ObjectHideFlags: 0
@@ -35503,6 +35601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1880938325}
+  - component: {fileID: 1880938326}
   - component: {fileID: 1880938324}
   m_Layer: 0
   m_Name: IntersectionDetector
@@ -35538,6 +35637,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1168126921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1880938326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880938323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ddacb0897d4fc43a9ca59ef032d957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intersectionController: {fileID: 0}
+  hasIntersection: 0
+  electricalStripData: {fileID: 0}
+  jointsData: {fileID: 0}
 --- !u!1 &1887547302
 GameObject:
   m_ObjectHideFlags: 0
@@ -36543,6 +36658,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a201615e5b8ebe041b93b1f279bd22fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsController: {fileID: 0}
+  intersectionController: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
   exitAction: {fileID: -3481171659038101867, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   jointAction: {fileID: 2717749234729071578, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   obstaclesAction: {fileID: 7372259704417167488, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
@@ -36551,6 +36670,10 @@ MonoBehaviour:
   mouseScrollAction: {fileID: 3307407051992394126, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   deleteAction: {fileID: 1817909988100231902, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   plugSelectorCanvas: {fileID: 137368652}
+  masterJointsEnabled: 0
+  obstaclesModifiable: 0
+  plugSelectorEnabled: 0
+  electricalStripEnabled: 0
 --- !u!4 &1948126511
 Transform:
   m_ObjectHideFlags: 0
@@ -38960,45 +39083,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092668517}
   m_CullTransparentMesh: 1
---- !u!21 &2101529456
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 200, g: 438, b: 36, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &2103270215
 GameObject:
   m_ObjectHideFlags: 0
@@ -39812,6 +39896,45 @@ Transform:
   - {fileID: 1620719841}
   m_Father: {fileID: 277651738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &2135990804
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 200, g: 438, b: 36, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &2140342429
 GameObject:
   m_ObjectHideFlags: 0
