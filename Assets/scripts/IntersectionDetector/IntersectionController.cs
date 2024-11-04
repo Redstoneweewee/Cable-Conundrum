@@ -6,14 +6,12 @@ using UnityEngine.UI;
 public class IntersectionController : MonoBehaviour {
     IntersectionData D;
 
-    void Start() {
+    void Awake() {
         D = Utilities.TryGetComponent<IntersectionData>(gameObject);
-        StartCoroutine(InitialWaitUntilUpdate(0.02f));
     }
 
-    // Update is called once per frame
-    void Update() {
-        //StartCoroutine(InitialWaitUntilUpdate(0.02f));
+    void Start() {
+        StartCoroutine(InitialWaitUntilUpdate(0.02f));
     }
 
     private IEnumerator InitialWaitUntilUpdate(float time) {
@@ -65,12 +63,12 @@ public class IntersectionController : MonoBehaviour {
     }
 
     public void ClearAllCableIntersections() {
-        Plug[] plugs = FindObjectsOfType<Plug>();
-        foreach(Plug plug in plugs) {
-            CableParentAttributes cableParentAttributes = plug.cableParentAttributes;
+        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        foreach(PlugAttributes plugAttribute in allPlugAttributes) {
+            CableParentAttributes cableParentAttributes = plugAttribute.cableParentAttributes;
             foreach(Transform cable in cableParentAttributes.cables) {
                 Image cableImage = Utilities.TryGetComponentInChildren<Image>(cable.gameObject);
-                if(!plug.isObstacle) { cableImage.color = new Color(1, 1, 1, cableImage.color.a); }
+                if(!plugAttribute.isObstacle) { cableImage.color = new Color(1, 1, 1, cableImage.color.a); }
                 else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
             }
         }
@@ -78,17 +76,17 @@ public class IntersectionController : MonoBehaviour {
     }
 
     private void DetermineTypeOfIntersection(int i, int j, int plugId) {
-        Plug[] plugs = FindObjectsOfType<Plug>();
+        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
         //CableGridAttributes[] allCablesAtPosition = new CableGridAttributes[cableGenerations.Length];
         //populates allCablesAtPosition to find out how the cables are overlapping
-        foreach(Plug plug in plugs) {
-            CableParentAttributes cableParentAttributes = plug.cableParentAttributes;
+        foreach(PlugAttributes plugAttribute in allPlugAttributes) {
+            CableParentAttributes cableParentAttributes = plugAttribute.cableParentAttributes;
             if(cableParentAttributes.cableGrid == null) { continue; }
             if(!cableParentAttributes.cableGrid[i,j].hasCable) { continue; }
-            if(plugId != 0 && plug.id == plugId) { continue; }
+            if(plugId != 0 && plugAttribute.id == plugId) { continue; }
             foreach(int index1 in cableParentAttributes.cableGrid[i,j].numbers) {
                 Image cableImage1 = Utilities.TryGetComponentInChildren<Image>(cableParentAttributes.cables[index1].gameObject);
-                if(!plug.isObstacle) {
+                if(!plugAttribute.isObstacle) {
                     cableImage1.color = new Color(Constants.cableIntersectionColor.r,
                                                   Constants.cableIntersectionColor.g,
                                                   Constants.cableIntersectionColor.b,
@@ -105,7 +103,7 @@ public class IntersectionController : MonoBehaviour {
                 int index2 = cableParentAttributes.cableGrid[i,j].numbers[0]-1;
                 if(index2 < 0) { continue; }
                 Image cableImage2 = Utilities.TryGetComponentInChildren<Image>(cableParentAttributes.cables[index2].gameObject);
-                if(!plug.isObstacle) {
+                if(!plugAttribute.isObstacle) {
                     cableImage2.color = new Color(Constants.cableIntersectionColor.r,
                                                   Constants.cableIntersectionColor.g,
                                                   Constants.cableIntersectionColor.b,

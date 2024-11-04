@@ -9,9 +9,12 @@ using UnityEngine.UI;
 //[ExecuteInEditMode]
 public class JointsController : MonoBehaviour {
     private JointsData D;
-    // Start is called before the first frame update
-    void Start() {
+
+    void Awake() {
         D = Utilities.TryGetComponent<JointsData>(gameObject);
+    }
+    
+    void Start() {
         StartCoroutine(startDelayed());
     }
 

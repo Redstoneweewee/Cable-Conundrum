@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     private PlugSelectorData D;
 
-    void Start() {
+    void Awake() {
         D = Utilities.TryGetComponent<PlugSelectorData>(gameObject);
         InitializeButtons();
     }
@@ -101,13 +101,13 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
         if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
-            Utilities.TryGetComponent<PlugInteractions>(plug).InitialCreateDrag();
+            Utilities.TryGetComponent<PlugHandler>(plug).InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.PermaPlug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
             Utilities.TryGetComponent<ObstacleAttributes>(plug).temporarilyModifiable = D.controlsData.obstaclesModifiable;
-            Utilities.TryGetComponent<PlugInteractions>(plug).InitialCreateDrag();
+            Utilities.TryGetComponent<PlugHandler>(plug).InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.Table) {
             GameObject table = Instantiate(attribute.PlugPrefab, D.obstaclesParent.transform);

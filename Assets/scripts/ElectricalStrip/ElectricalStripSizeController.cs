@@ -11,7 +11,7 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
     private ElectricalStripData D;
 
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
     }
 

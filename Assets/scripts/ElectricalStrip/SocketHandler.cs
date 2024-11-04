@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class SocketHandler : MonoBehaviour, IPointerDownHandler {
     SocketAttributes A;
 
-    void Start() {
+    void Awake() {
         A = Utilities.TryGetComponent<SocketAttributes>(gameObject);
     }
 

@@ -10,10 +10,10 @@ using UnityEngine.SceneManagement;
 public class ControlsController : MonoBehaviour {
     ControlsData D;
     
-    // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         D = FindObjectOfType<ControlsData>();
-
+    }
+    void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
         SubscribeToActionStart(D.jointAction, OnJointsToggle);
         SubscribeToActionStart(D.obstaclesAction, OnObstaclesToggle);
@@ -136,10 +136,10 @@ public class ControlsController : MonoBehaviour {
     
     private void OnTryDeletePlug(InputAction.CallbackContext context) {
         if(IsNotInLevel()) { return; }
-        PlugInteractions[] allPlugInteractions = FindObjectsOfType<PlugInteractions>();
-        foreach(PlugInteractions plugInteractions in allPlugInteractions) {
-            if(plugInteractions.IsDragging) { 
-                Destroy(plugInteractions.gameObject); 
+        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        foreach(PlugAttributes plugAttribute in allPlugAttributes) {
+            if(plugAttribute.isDragging) { 
+                Destroy(plugAttribute.gameObject); 
                 StartCoroutine(RenewGrids());
             }
         }

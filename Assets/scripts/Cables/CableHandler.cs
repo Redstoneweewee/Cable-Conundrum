@@ -10,8 +10,11 @@ using UnityEngine.UI;
 public class CableHandler : MonoBehaviour {
     CableParentAttributes A;
 
-    void Start() {
+    void Awake() {
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
+    }
+
+    void Start() {
         Initialize();
         RenewRotationAndIntersectionCables();
     }
@@ -154,8 +157,8 @@ public class CableHandler : MonoBehaviour {
                             break;
                         }
                     }
-                    StopCoroutine(A.plugInteractions.ModifyCableCoroutine);
-                    A.plugInteractions.ModifyCableCoroutine = null;
+                    StopCoroutine(A.plugAttributes.modifyCableCoroutine);
+                    A.plugAttributes.modifyCableCoroutine = null;
                     yield break;
                 }
             }
@@ -183,13 +186,13 @@ public class CableHandler : MonoBehaviour {
         
 
 
-        if(A.plugInteractions.IsModifyingCables) {
-            A.plugInteractions.ModifyCableCoroutine = ModifyCablesOnInteract();
-            StartCoroutine(A.plugInteractions.ModifyCableCoroutine);
+        if(A.plugAttributes.isModifyingCables) {
+            A.plugAttributes.modifyCableCoroutine = ModifyCablesOnInteract();
+            StartCoroutine(A.plugAttributes.modifyCableCoroutine);
         }
         else { 
-            if(A.plugInteractions.ModifyCableCoroutine != null) { StopCoroutine(A.plugInteractions.ModifyCableCoroutine); }
-            A.plugInteractions.ModifyCableCoroutine = null;
+            if(A.plugAttributes.modifyCableCoroutine != null) { StopCoroutine(A.plugAttributes.modifyCableCoroutine); }
+            A.plugAttributes.modifyCableCoroutine = null;
         }
     }
 
@@ -198,25 +201,25 @@ public class CableHandler : MonoBehaviour {
         switch(direction) {
             case Directions.Up:
                 for(int i=index2D.x-1; i>=0; i--) {
-                    if(plugsGrid[i, index2D.y] == A.plug.id) { return index2D; }
+                    if(plugsGrid[i, index2D.y] == A.plugAttributes.id) { return index2D; }
                     if(A.cableGrid[i, index2D.y].hasCable) { return index2D; }
                 }
                 break;
             case Directions.Down:
                 for(int i=index2D.x+1; i<A.cableGrid.GetLength(0); i++) {
-                    if(plugsGrid[i, index2D.y] == A.plug.id) { return index2D; }
+                    if(plugsGrid[i, index2D.y] == A.plugAttributes.id) { return index2D; }
                     if(A.cableGrid[i, index2D.y].hasCable) { return index2D; }
                 }
                 break;
             case Directions.Left:
                 for(int i=index2D.y-1; i>=0; i--) {
-                    if(plugsGrid[index2D.x, i] == A.plug.id) { return index2D; }
+                    if(plugsGrid[index2D.x, i] == A.plugAttributes.id) { return index2D; }
                     if(A.cableGrid[index2D.x, i].hasCable) { return index2D; }
                 }
                 break;
             case Directions.Right:
                 for(int i=index2D.y+1; i<A.cableGrid.GetLength(1); i++) {
-                    if(plugsGrid[index2D.x, i] == A.plug.id) { return index2D; }
+                    if(plugsGrid[index2D.x, i] == A.plugAttributes.id) { return index2D; }
                     if(A.cableGrid[index2D.x, i].hasCable) { return index2D; }
                 }
                 break;
@@ -375,12 +378,12 @@ public class CableHandler : MonoBehaviour {
                 }
                 break;
         }
-        if((!A.plug.isObstacle && A.plug.isPluggedIn) || (A.plug.isObstacle && !A.plug.obstacleAttributes.temporarilyModifiable)) { SetCablesOpacity(1f); }
-        else if((!A.plug.isObstacle && !A.plug.isPluggedIn) || (A.plug.isObstacle && A.plug.obstacleAttributes.temporarilyModifiable)) {  SetCablesOpacity(Constants.cableOpacity); }
+        if((!A.plugAttributes.isObstacle && A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && !A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { SetCablesOpacity(1f); }
+        else if((!A.plugAttributes.isObstacle && !A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && A.plugAttributes.obstacleAttributes.temporarilyModifiable)) {  SetCablesOpacity(Constants.cableOpacity); }
         for(int i=A.cables.Count-1; i>=0; i--) {
             if(A.cables[i].gameObject.activeSelf) { A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[i].gameObject).endingDirection; break; }
         }
-        if(A.plug.isObstacle) { ModifyCableColorsToObstacle(); }
+        if(A.plugAttributes.isObstacle) { ModifyCableColorsToObstacle(); }
     }
 
 

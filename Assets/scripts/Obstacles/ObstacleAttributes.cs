@@ -20,8 +20,8 @@ public class ObstacleAttributes : MonoBehaviour {
     [HideInInspector] public Vector2       cachedMousePosition;
 
     void Awake() {
+        obstacleHandler        = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
         intersectionController = FindObjectOfType<IntersectionController>();
-        rectTransform = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
-        obstacleHandler = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
+        rectTransform          = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
     }
 }

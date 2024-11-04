@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f4f203cea39ce498b3b1450d00f4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plugVisual: {fileID: 3122753346053774883}
 --- !u!114 &6606008298374603199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,11 +134,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b541a2886d83935499846f8995586c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugC: {fileID: 0}
   id: 0
+  plugHandler: {fileID: 0}
+  controlsData: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  intersectionData: {fileID: 0}
+  intersectionController: {fileID: 0}
+  jointsData: {fileID: 0}
   cableParentAttributes: {fileID: 0}
+  cableHandler: {fileID: 0}
   isPluggedIn: 0
   isObstacle: 0
-  obstacle: {fileID: 0}
+  obstacleAttributes: {fileID: 0}
   plugSize: {x: 4, y: 1}
   localJointPositionsTakenUp:
   - {x: 0, y: 85}
@@ -149,6 +157,12 @@ MonoBehaviour:
   - {x: 0, y: 85}
   - {x: 0, y: -85}
   center: {x: 0, y: 0}
+  plugVisual: {fileID: 3122753346053774883}
+  isDragging: 0
+  isModifyingCables: 0
+  cachedPlugPositionDynamic: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
 --- !u!1 &7932422443188743115
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,12 +230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38120cbb8d28dc47963e67a85931d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cableHandler: {fileID: 0}
   debugC: {fileID: 0}
-  plug: {fileID: 0}
-  plugInteractions: {fileID: 0}
-  intersectionDetector: {fileID: 0}
+  plugAttributes: {fileID: 0}
+  intersectionController: {fileID: 0}
+  electricalStripData: {fileID: 0}
   electricalStripController: {fileID: 0}
-  jointsController: {fileID: 0}
+  jointsData: {fileID: 0}
   cablePrefabs:
   - {fileID: 5551953224207516642, guid: e27c0bdf972d4cc43a45b32d9d0f6779, type: 3}
   - {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}

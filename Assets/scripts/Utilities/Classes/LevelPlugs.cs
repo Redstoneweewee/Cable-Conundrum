@@ -6,9 +6,9 @@ using UnityEngine;
 [Serializable]
 public struct LevelPlugs {
     public Directions startingDirection;
-    public List<Plug> plugs;
+    public List<PlugAttributes> plugAttributes;
     public LevelPlugs(Directions startingDirection) {
         this.startingDirection = startingDirection;
-        plugs = new List<Plug>();
+        plugAttributes = new List<PlugAttributes>();
     }
 }

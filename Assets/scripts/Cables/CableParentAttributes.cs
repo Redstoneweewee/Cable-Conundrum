@@ -6,16 +6,16 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class CableParentAttributes : MonoBehaviour {
+    [HideInInspector] public CableHandler cableHandler;
 
     [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public DebugC debugC;
 
-    [HideInInspector] public Plug                      plug;
-    [HideInInspector] public PlugInteractions          plugInteractions;
+    [HideInInspector] public PlugAttributes            plugAttributes;
     [HideInInspector] public IntersectionController    intersectionController;
     [HideInInspector] public ElectricalStripData       electricalStripData;
     [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public JointsData          jointsData;
+    [HideInInspector] public JointsData                jointsData;
 
     /* Cables:
     * [ [0 ]UpLeft,    [1 ]UpRight,    [2 ]DownLeft,    [3 ]DownRight,    [4 ]LeftUp,    [5 ]LeftDown,    [6 ]RightUp,    [7 ]RightDown,   ]
@@ -52,11 +52,11 @@ public class CableParentAttributes : MonoBehaviour {
 
     void Awake() {
         debugC = DebugC.Get();
-        plug                      = Utilities.TryGetComponentInParent<Plug>(gameObject);
-        plugInteractions          = Utilities.TryGetComponentInParent<PlugInteractions>(gameObject);
+        cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
+        plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
         intersectionController    = FindObjectOfType<IntersectionController>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
-        electricalStripController = electricalStripData.electricalStripController;
+        electricalStripController = FindObjectOfType<ElectricalStripController>();
         jointsData                = FindObjectOfType<JointsData>();
     }
 }

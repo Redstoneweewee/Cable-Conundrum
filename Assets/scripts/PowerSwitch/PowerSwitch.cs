@@ -34,10 +34,10 @@ public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
     //all plugs must be plugged in
     //no cables are overlapping
     private LevelFailureTypes TestForLevelSuccess() {
-        Plug[] allPlugs = FindObjectsOfType<Plug>();
-        foreach(Plug plug in allPlugs) {
-            if(plug.isObstacle) { continue; }
-            if(!plug.isPluggedIn) { return LevelFailureTypes.Plugs; }
+        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        foreach(PlugAttributes plugAttributes in allPlugAttributes) {
+            if(plugAttributes.isObstacle) { continue; }
+            if(!plugAttributes.isPluggedIn) { return LevelFailureTypes.Plugs; }
         }
 
         if(intersectionData.hasIntersection) {

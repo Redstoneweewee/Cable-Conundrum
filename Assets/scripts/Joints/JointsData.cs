@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 //[ExecuteInEditMode]
 public class JointsData : MonoBehaviour {
+    [HideInInspector] public JointsController jointsController;
 
     [HideInInspector] public DebugC debugC;
     [HideInInspector] public ControlsData controlsData;
@@ -26,10 +27,11 @@ public class JointsData : MonoBehaviour {
     // Start is called before the first frame update
     void Awake() {
         debugC = DebugC.Get();
-        controlsData = FindObjectOfType<ControlsData>();
+        jointsController    = Utilities.TryGetComponent<JointsController>(gameObject);
+        controlsData        = FindObjectOfType<ControlsData>();
         jointsOpacityGlobal = Utilities.TryGetComponent<JointsOpacityGlobal>(gameObject);
         electricalStripData = FindObjectOfType<ElectricalStripData>();
-        cachedScreenSize = new Vector2(Screen.width, Screen.height);
+        cachedScreenSize    = new Vector2(Screen.width, Screen.height);
         jointMaterial.color = Constants.jointColor;
     }
 }

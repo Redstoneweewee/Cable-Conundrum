@@ -9,9 +9,10 @@ using UnityEngine.UI;
 
 
 public class PlugSelectorData : MonoBehaviour {
-    [HideInInspector] public ControlsData   controlsData;
-    [HideInInspector] public ControlsController      controlsController;
-    [HideInInspector] public InputActionReference mouseScrollAction;
+    [HideInInspector] public PlugSelectorController plugSelectorController;
+    [HideInInspector] public ControlsData           controlsData;
+    [HideInInspector] public ControlsController     controlsController;
+    [HideInInspector] public InputActionReference   mouseScrollAction;
 
     //buttons will be automatically generated
     [SerializeField]  public GameObject obstaclesParent;
@@ -29,6 +30,7 @@ public class PlugSelectorData : MonoBehaviour {
 
 
     void Awake() {
+        plugSelectorController = Utilities.TryGetComponent<PlugSelectorController>(gameObject);
         controlsData = FindObjectOfType<ControlsData>();
         controlsController = FindObjectOfType<ControlsController>();
         mouseScrollAction = controlsData.mouseScrollAction;

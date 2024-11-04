@@ -10,10 +10,11 @@ using UnityEngine.UI;
 public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointerDownHandler, IPointerUpHandler {
     private ObstacleAttributes A;
 
-
-    // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         A = Utilities.TryGetComponent<ObstacleAttributes>(gameObject);
+    }
+
+    void Start() {
         if(A.obstacleType == ObstacleTypes.LeftTableLeg ||
            A.obstacleType == ObstacleTypes.RightTableLeg ||
            A.obstacleType == ObstacleTypes.TableTop) { StartCoroutine(InitializeTable()); }
@@ -98,7 +99,7 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         CanvasGroup canvasGroup = Utilities.TryGetComponentInChildren<CanvasGroup>(gameObject);
         canvasGroup.alpha = opacity;
         if(A.obstacleType == ObstacleTypes.Plug) {
-            Image plugImage = Utilities.TryGetComponent<Image>(Utilities.TryGetComponent<PlugInteractions>(gameObject).PlugVisual);
+            Image plugImage = Utilities.TryGetComponent<Image>(Utilities.TryGetComponent<PlugAttributes>(gameObject).plugVisual);
             plugImage.color = new Color(plugImage.color.r,
                                         plugImage.color.g,
                                         plugImage.color.b,

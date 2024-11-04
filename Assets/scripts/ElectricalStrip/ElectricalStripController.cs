@@ -5,9 +5,11 @@ using UnityEngine;
 public class ElectricalStripController : MonoBehaviour {
     private ElectricalStripData D;
 
-    // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
+    }
+
+    void Start() {
         D.electricalStripSizeController.RenewSockets();
         StartCoroutine(InitializeAllCableGrids());
         StartCoroutine(InitializePlugsGrid());
@@ -16,16 +18,16 @@ public class ElectricalStripController : MonoBehaviour {
     public void RenewPlugsGrid() {
         Transform[,] jointsGrid = D.jointsData.jointsGrid;
         D.plugsGrid = new int[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
-        Plug[] allPlugs = FindObjectsOfType<Plug>();
-        foreach(Plug plug in allPlugs) {
-            if(plug.isPluggedIn) {
-                foreach(Vector2 localPlugPositionsTakenUp in plug.localJointPositionsTakenUp) {
-                    Vector3 actualPosition = plug.transform.position + new Vector3(localPlugPositionsTakenUp.x, localPlugPositionsTakenUp.y, 0);
+        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        foreach(PlugAttributes plugAttribute in allPlugAttributes) {
+            if(plugAttribute.isPluggedIn) {
+                foreach(Vector2 localPlugPositionsTakenUp in plugAttribute.localJointPositionsTakenUp) {
+                    Vector3 actualPosition = plugAttribute.transform.position + new Vector3(localPlugPositionsTakenUp.x, localPlugPositionsTakenUp.y, 0);
                     float   subJointLength  = Constants.jointDistance/2;
                     Vector2 distanceFromTopLeftJoint = new Vector2(actualPosition.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - actualPosition.y);
                     Index2D gridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
                     gridIndex          = new Index2D(Math.Clamp(gridIndex.y, 0, jointsGrid.GetLength(0)-1), Math.Clamp(gridIndex.x, 0, jointsGrid.GetLength(1)-1));
-                    D.plugsGrid[gridIndex.x, gridIndex.y] = plug.id;
+                    D.plugsGrid[gridIndex.x, gridIndex.y] = plugAttribute.id;
                 }
             }
         }
