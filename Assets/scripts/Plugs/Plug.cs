@@ -14,7 +14,7 @@ public class Plug : MonoBehaviour {
 
     public bool isPluggedIn = false;
     [SerializeField] public bool isObstacle = false;
-    [SerializeField] public Obstacle obstacle;
+    [SerializeField] public ObstacleAttributes obstacleAttributes;
     [SerializeField] public Vector2 plugSize = new Vector2(1, 1);
     [Tooltip("This is all the space on the joints grid that this plug takes up."+
     "These values are used in IntersectionDetector. "+
@@ -31,7 +31,7 @@ public class Plug : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         cableParentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
-        if(isObstacle) { obstacle = Utilities.TryGetComponent<Obstacle>(gameObject); }
+        if(isObstacle) { obstacleAttributes = Utilities.TryGetComponent<ObstacleAttributes>(gameObject); }
         DebugC = DebugC.Get();
         DebugC.Log("initialized "+transform.name);
         id = idIncrement;

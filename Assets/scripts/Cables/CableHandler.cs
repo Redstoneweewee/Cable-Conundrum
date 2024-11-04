@@ -375,8 +375,8 @@ public class CableHandler : MonoBehaviour {
                 }
                 break;
         }
-        if((!A.plug.isObstacle && A.plug.isPluggedIn) || (A.plug.isObstacle && !A.plug.obstacle.TemporarilyModifiable)) { SetCablesOpacity(1f); }
-        else if((!A.plug.isObstacle && !A.plug.isPluggedIn) || (A.plug.isObstacle && A.plug.obstacle.TemporarilyModifiable)) {  SetCablesOpacity(Constants.cableOpacity); }
+        if((!A.plug.isObstacle && A.plug.isPluggedIn) || (A.plug.isObstacle && !A.plug.obstacleAttributes.temporarilyModifiable)) { SetCablesOpacity(1f); }
+        else if((!A.plug.isObstacle && !A.plug.isPluggedIn) || (A.plug.isObstacle && A.plug.obstacleAttributes.temporarilyModifiable)) {  SetCablesOpacity(Constants.cableOpacity); }
         for(int i=A.cables.Count-1; i>=0; i--) {
             if(A.cables[i].gameObject.activeSelf) { A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[i].gameObject).endingDirection; break; }
         }

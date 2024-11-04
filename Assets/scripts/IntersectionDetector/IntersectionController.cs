@@ -24,14 +24,14 @@ public class IntersectionController : MonoBehaviour {
 
     public void RenewAllObstaclesGrid() {
         D.allObstaclesGrid = new bool[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
-        Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
-        foreach(Obstacle obstacle in obstacles) {
-            if(obstacle.ObstacleType == ObstacleTypes.Plug) { continue; }
-            if(obstacle.ObstacleGrid == null) { Debug.LogWarning($"{obstacle.name}'s obstaclesGrid not defined."); continue; }
+        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
+            if(obstacleAttribute.obstacleType == ObstacleTypes.Plug) { continue; }
+            if(obstacleAttribute.obstacleGrid == null) { Debug.LogWarning($"{obstacleAttribute.name}'s obstaclesGrid not defined."); continue; }
 
             for(int i=0; i<D.allObstaclesGrid.GetLength(0); i++) {
                 for(int j=0; j<D.allObstaclesGrid.GetLength(1); j++) {
-                    if(obstacle.ObstacleGrid[i,j] == true) {
+                    if(obstacleAttribute.obstacleGrid[i,j] == true) {
                         D.allObstaclesGrid[i,j] = true;
                     }
                 }

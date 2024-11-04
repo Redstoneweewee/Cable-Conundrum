@@ -71,7 +71,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        if(plug.isObstacle && !plug.obstacle.TemporarilyModifiable) { return; }
+        if(plug.isObstacle && !plug.obstacleAttributes.temporarilyModifiable) { return; }
         plug.transform.SetAsLastSibling();
         if(eventData.pointerCurrentRaycast.gameObject != plugVisual) { 
             TryModifyCables();
@@ -90,7 +90,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        if(plug.isObstacle && !plug.obstacle.TemporarilyModifiable) { return; }
+        if(plug.isObstacle && !plug.obstacleAttributes.temporarilyModifiable) { return; }
         Utilities.TryGetComponent<RectTransform>(plugVisual).localScale = new Vector3(1f, 1f, 1f);
         TryModifyCables();
         //electricalStripController.RenewAllCableGrids();

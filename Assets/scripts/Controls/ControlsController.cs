@@ -87,17 +87,17 @@ public class ControlsController : MonoBehaviour {
     private void OnObstaclesToggle(InputAction.CallbackContext context) {
         if(IsNotInLevel()) { return; }
         D.obstaclesModifiable = !D.obstaclesModifiable;
-        Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
+        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         if(D.obstaclesModifiable) {
-            foreach(Obstacle obstacle in obstacles) {
-                obstacle.SetOpacity(0.8f);
-                obstacle.TemporarilyModifiable = true;
+            foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
+                obstacleAttribute.obstacleHandler.SetOpacity(0.8f);
+                obstacleAttribute.temporarilyModifiable = true;
             }   
         }
         else {
-            foreach(Obstacle obstacle in obstacles) {
-                obstacle.SetOpacity(1);
-                obstacle.TemporarilyModifiable = false;
+            foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
+                obstacleAttribute.obstacleHandler.SetOpacity(1);
+                obstacleAttribute.temporarilyModifiable = false;
             }   
         }
         Debug.Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
@@ -147,10 +147,10 @@ public class ControlsController : MonoBehaviour {
 
     private void OnTryDeleteObstacle(InputAction.CallbackContext context) {
         if(IsNotInLevel()) { return; }
-        Obstacle[] allObstacles = FindObjectsOfType<Obstacle>();
-        foreach(Obstacle obstacle in allObstacles) {
-            if(obstacle.TemporarilyModifiable && obstacle.IsDragging) { 
-                Destroy(obstacle.gameObject);
+        ObstacleAttributes[] allObstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        foreach(ObstacleAttributes obstacleAttribute in allObstacleAttributes) {
+            if(obstacleAttribute.temporarilyModifiable && obstacleAttribute.isDragging) { 
+                Destroy(obstacleAttribute.gameObject);
                 StartCoroutine(RenewGrids());
             }
         }
