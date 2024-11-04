@@ -98,6 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2199370199383673406}
   - component: {fileID: 8330202375175370838}
+  - component: {fileID: 7447012123275607744}
   m_Layer: 0
   m_Name: ScenesController
   m_TagString: Untagged
@@ -131,6 +132,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21b5ab7a53c0c604eb9b4bfd6bc8932c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossFadeTransition: {fileID: 5572110462857350773}
+  crossFadeAnimationStartDuration: 1
+  crossFadeAnimationEndDuration: 1
+  sceneFinishedLoading: 0
+  animationIsFinished: 0
+--- !u!114 &7447012123275607744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521725610073942834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a453d98304e6f44b96a6bbae1b31d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   crossFadeTransition: {fileID: 5572110462857350773}

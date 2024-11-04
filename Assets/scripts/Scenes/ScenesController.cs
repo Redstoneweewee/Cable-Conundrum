@@ -7,15 +7,10 @@ using UnityEngine.UI;
 
 
 public class ScenesController : MonoBehaviour {
-    [SerializeField] private Animator crossFadeTransition;
-    [SerializeField] private float crossFadeAnimationStartDuration;
-    [SerializeField] private float crossFadeAnimationEndDuration;
-    [SerializeField] private bool sceneFinishedLoading = false;
-    [SerializeField] private bool animationIsFinished = false;
-
-
+    private ScenesData D;
 
     void Awake() {
+        D = Utilities.TryGetComponent<ScenesData>(gameObject);
         ScenesController[] scenesControllers = FindObjectsOfType<ScenesController>();
         if(scenesControllers.Length > 1) {
             Destroy(gameObject);
@@ -29,7 +24,7 @@ public class ScenesController : MonoBehaviour {
 
 
     void Update() {
-        if(!animationIsFinished) { return; }
+        if(!D.animationIsFinished) { return; }
 
         //if(animationIsFinished && Input.GetMouseButtonDown(0)) {
         //    LoadLevel(LoadLevelType.Next);
@@ -40,7 +35,7 @@ public class ScenesController : MonoBehaviour {
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
-        sceneFinishedLoading = true;
+        D.sceneFinishedLoading = true;
     }
 
     public void LoadLevel(LoadSceneTypes loadSceneType) {
@@ -61,22 +56,22 @@ public class ScenesController : MonoBehaviour {
             Debug.LogWarning($"No scene at buildIndex {nextBuildIndex}"); 
             return; 
         }
-        sceneFinishedLoading = false;
-        animationIsFinished = false;
+        D.sceneFinishedLoading = false;
+        D.animationIsFinished = false;
         StartCoroutine(LoadLevelCoroutine(nextBuildIndex));
     }
 
 
     private IEnumerator LoadLevelCoroutine(int buildIndex) {
         //Play animation.
-        crossFadeTransition.SetTrigger("StartCrossFade");
+        D.crossFadeTransition.SetTrigger("StartCrossFade");
 
         //Wait for the crossfade to finish (all black screen) to load in the next scene.
-        yield return new WaitForSeconds(crossFadeAnimationStartDuration);
+        yield return new WaitForSeconds(D.crossFadeAnimationStartDuration);
         SceneManager.LoadScene(buildIndex);
 
         //Wait until the scene is finished loading to continue.
-        yield return new WaitUntil(() => sceneFinishedLoading);
+        yield return new WaitUntil(() => D.sceneFinishedLoading);
         
         //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
         if(FindObjectOfType<LevelStartGlobal>()) {
@@ -84,18 +79,18 @@ public class ScenesController : MonoBehaviour {
         }
         
         //End the crossfade transition.
-        crossFadeTransition.SetTrigger("EndCrossFade");
+        D.crossFadeTransition.SetTrigger("EndCrossFade");
         Debug.Log("Is finished with all tasks. Ending Fade.");
 
         //Set animationIsFinished to true after the animation is finished.
-        yield return new WaitForSeconds(crossFadeAnimationEndDuration);
-        animationIsFinished = true;
+        yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
+        D.animationIsFinished = true;
     }
 
 
     private IEnumerator InitialSceneLoad() {
-        yield return new WaitForSeconds(crossFadeAnimationEndDuration);
-        animationIsFinished = true;
+        yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
+        D.animationIsFinished = true;
     }
 
 

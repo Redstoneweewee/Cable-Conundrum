@@ -3,23 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
-    public DebugC DebugC {set; get;}
-    [SerializeField] private GameObject offVisual;
-    [SerializeField] private GameObject onVisual;
-    private ElectricalStripController electricalStripController;
-    private IntersectionData intersectionData;
-    // Start is called before the first frame update
-    void Start() {
-        DebugC = DebugC.Get();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
-        intersectionData = FindObjectOfType<IntersectionData>();
+public class PowerSwitchController : MonoBehaviour, IPointerClickHandler {
+    private PowerSwitchData D;
+
+    void Awake() {
+        D = Utilities.TryGetComponent<PowerSwitchData>(gameObject);
     }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
     public void OnPointerClick(PointerEventData eventData) {
         LevelFailureTypes levelFailureTypes = TestForLevelSuccess();
         if     (levelFailureTypes == LevelFailureTypes.Plugs)     { Debug.Log("Not all plugs are plugged in!"); DidNotWin(); }
@@ -27,7 +17,7 @@ public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
         else if(levelFailureTypes == LevelFailureTypes.Cables)    { Debug.Log("Some cables are overlapping!"); DidNotWin(); }
         else if(levelFailureTypes == LevelFailureTypes.None)      { Debug.Log("You win!"); Win(); }
         else   { Debug.LogError("Undefined level failure type."); }
-        DebugC.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        D.debugC.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     //conditions:
@@ -40,7 +30,7 @@ public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
             if(!plugAttributes.isPluggedIn) { return LevelFailureTypes.Plugs; }
         }
 
-        if(intersectionData.hasIntersection) {
+        if(D.intersectionData.hasIntersection) {
             return LevelFailureTypes.Cables;
         }
         return LevelFailureTypes.None;
@@ -78,12 +68,12 @@ public class PowerSwitch : MonoBehaviour, IPointerClickHandler {
     }
 
     private void Win() {
-        offVisual.SetActive(false);
-        onVisual.SetActive(true);
+        D.offVisual.SetActive(false);
+        D.onVisual.SetActive(true);
     }
 
     private void DidNotWin() {
-        offVisual.SetActive(true);
-        onVisual.SetActive(false);
+        D.offVisual.SetActive(true);
+        D.onVisual.SetActive(false);
     }
 }
