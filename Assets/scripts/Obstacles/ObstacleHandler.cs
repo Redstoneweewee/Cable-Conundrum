@@ -22,7 +22,7 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
 
     private IEnumerator InitializeTable() {
         yield return new WaitForSeconds(0.01f);
-        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
         
         if(A.obstacleType == ObstacleTypes.LeftTableLeg) {
             transform.position = new Vector3(skeletonGrid[0, 1].x + Constants.jointDistance/2 + A.rectTransform.sizeDelta.x/2, A.rectTransform.sizeDelta.y/2, 0);
@@ -75,7 +75,7 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     }
 
     private void RenewObstacleGrid() {
-        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
         A.obstacleGrid = new bool[skeletonGrid.GetLength(0), skeletonGrid.GetLength(1)];
         Vector2 topLeft     = new Vector2(transform.position.x - A.rectTransform.sizeDelta.x/2, transform.position.y + A.rectTransform.sizeDelta.y/2);
         Vector2 bottomRight = new Vector2(transform.position.x + A.rectTransform.sizeDelta.x/2, transform.position.y - A.rectTransform.sizeDelta.y/2);

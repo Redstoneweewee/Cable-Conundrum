@@ -13,7 +13,7 @@ public class CableParentAttributes : MonoBehaviour {
 
     
     [HideInInspector] public GridsData                 gridsData;
-    [HideInInspector] public GridsSizeInitializer      gridsSizeInitializer;
+    [HideInInspector] public GridsSkeleton             gridsSkeleton;
     [HideInInspector] public PlugAttributes            plugAttributes;
     [HideInInspector] public IntersectionController    intersectionController;
     [HideInInspector] public ElectricalStripData       electricalStripData;
@@ -58,7 +58,7 @@ public class CableParentAttributes : MonoBehaviour {
         cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
         plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
         gridsData                 = FindObjectOfType<GridsData>();
-        gridsSizeInitializer      = FindObjectOfType<GridsSizeInitializer>();
+        gridsSkeleton             = FindObjectOfType<GridsSkeleton>();
         intersectionController    = FindObjectOfType<IntersectionController>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = FindObjectOfType<ElectricalStripController>();

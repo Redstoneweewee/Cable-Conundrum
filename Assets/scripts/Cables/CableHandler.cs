@@ -48,7 +48,7 @@ public class CableHandler : MonoBehaviour {
         }
     }
     public void InitializeCableGrid() {
-        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
         A.cableGrid = new CablesGridAttributes[skeletonGrid.GetLength(0), skeletonGrid.GetLength(1)];
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
             for(int j=0; j<A.cableGrid.GetLength(1); j++) { A.cableGrid[i,j] = new CablesGridAttributes(); }
@@ -76,7 +76,7 @@ public class CableHandler : MonoBehaviour {
 
     }
     public void InitializeCachedMouseGridIndex() {
-        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
         float   subJointLength  = Constants.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
         A.cachedMouseGridIndex = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
@@ -86,7 +86,7 @@ public class CableHandler : MonoBehaviour {
     public IEnumerator ModifyCablesOnInteract() {
         yield return new WaitForSeconds(0.01f);
 
-        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
         float   subJointLength  = Constants.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
         Index2D mouseGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);

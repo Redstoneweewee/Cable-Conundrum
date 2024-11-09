@@ -6,42 +6,20 @@ using UnityEngine.UI;
 
 //A script that initialized skeleton grids that determine the positions of each element.
 //Contains Joint-type and Socket-type grid skeletons.
-[ExecuteInEditMode]
-public class GridsSizeInitializer : MonoBehaviour {
-    [HideInInspector] public ElectricalStripData electricalStripData;
+public class GridsSkeleton : MonoBehaviour {
+    [HideInInspector] public GridsModifier gridsModifier;
     [HideInInspector] public Vector2[,] jointsSkeletonGrid;
     [HideInInspector] public Vector2[,] socketsSkeletonGrid;
-    [SerializeField] private bool renewGrids;
-    [SerializeField] private bool testDotsActive;
-    private bool cachedtestDotsActive;
-    [SerializeField] private GameObject TestingDot;
-    [SerializeField] private GameObject GameCanvas;
 
     void Awake() {
-        electricalStripData = FindObjectOfType<ElectricalStripData>();
-        Initialize();
+        gridsModifier = Utilities.TryGetComponent<GridsModifier>(gameObject);
     }
-    void Update() {
-        if(renewGrids || testDotsActive != cachedtestDotsActive) {
-            Initialize();
-            FindObjectOfType<GridsController>().Initialize();
-            renewGrids = false;
-            cachedtestDotsActive = testDotsActive;
-        }
-    }
-
 
     public void Initialize() {
-        DeleteAllTestDots();
+        gridsModifier = Utilities.TryGetComponent<GridsModifier>(gameObject);
+        gridsModifier.DeleteAllTestDots();
         InitializeJointsSkeletonGrid();
-        InitializeSocketsSkeletonGrid(electricalStripData.height, electricalStripData.width);
-    }
-
-    private void DeleteAllTestDots() {
-        GameObject[] allTestDots = GameObject.FindGameObjectsWithTag("TestDot");
-        foreach(GameObject testDot in allTestDots) {
-            DestroyImmediate(testDot);
-        }
+        InitializeSocketsSkeletonGrid(gridsModifier.height, gridsModifier.width);
     }
 
     private void InitializeJointsSkeletonGrid() {
@@ -62,8 +40,8 @@ public class GridsSizeInitializer : MonoBehaviour {
         for(int i=0; i<height; i++) {
             for(int j=0; j<width; j++) {
                 jointsSkeletonGrid[i,j] = new Vector2(topLeft.x + (j*step), topLeft.y - (i*step));
-                if(testDotsActive) {
-                    GameObject newDot = Instantiate(TestingDot, GameCanvas.transform);
+                if(gridsModifier.testDotsActive) {
+                    GameObject newDot = Instantiate(gridsModifier.testingDot, gridsModifier.testingDotCanvas.transform);
                     newDot.GetComponentInChildren<Image>().color = Color.red;
                     newDot.transform.position = new Vector2(jointsSkeletonGrid[i,j].x, jointsSkeletonGrid[i,j].y);
                 }
@@ -84,8 +62,8 @@ public class GridsSizeInitializer : MonoBehaviour {
         for(int i=1; i<=height; i++) {
             for(int j=1; j<=width; j++) {
                 socketsSkeletonGrid[i-1,j-1] = new Vector2(topLeft.x + r*(j - 0.5f) + s*j, topLeft.y - r*(i - 0.5f) - s*i);
-                if(testDotsActive) {
-                    GameObject newDot = Instantiate(TestingDot, GameCanvas.transform);
+                if(gridsModifier.testDotsActive) {
+                    GameObject newDot = Instantiate(gridsModifier.testingDot, gridsModifier.testingDotCanvas.transform);
                     newDot.GetComponentInChildren<Image>().color = Color.blue;
                     newDot.transform.position = new Vector2(socketsSkeletonGrid[i-1,j-1].x, socketsSkeletonGrid[i-1,j-1].y);
                 }

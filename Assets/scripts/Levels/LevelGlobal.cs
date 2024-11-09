@@ -9,13 +9,13 @@ using UnityEngine.UIElements;
 public class LevelGlobal : LevelStartGlobal {
     public DebugC DebugC {set; get;}
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
-    private GridsSizeInitializer gridsSizeInitializer;
+    private GridsSkeleton gridsSkeleton;
 
     
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
-        gridsSizeInitializer = FindObjectOfType<GridsSizeInitializer>();
+        gridsSkeleton = FindObjectOfType<GridsSkeleton>();
         StartCoroutine(InitializeDelayed());
     }
 
@@ -109,7 +109,7 @@ public class LevelGlobal : LevelStartGlobal {
     }
 
     private void MoveAllPlugsToInitialPositions() {
-        Vector2[,] skeletonGrid = gridsSizeInitializer.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = gridsSkeleton.jointsSkeletonGrid;
 
         foreach(LevelPlugs levelPlug in allLevelPlugs) {
             Directions direction = levelPlug.startingDirection;

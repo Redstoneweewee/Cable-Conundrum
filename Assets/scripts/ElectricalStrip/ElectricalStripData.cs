@@ -11,6 +11,7 @@ public class ElectricalStripData : MonoBehaviour {
 
     [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;
     [HideInInspector] public JointsData jointsData;
+    [HideInInspector] public GridsModifier gridsModifier;
 
     //[HideInInspector] public Transform[,] socketsGrid;
     //[HideInInspector] public int[,] plugsGrid;      //contains the plug ids, starting from 1. A value of 0 means there is no plug.
@@ -18,10 +19,7 @@ public class ElectricalStripData : MonoBehaviour {
 
     [HideInInspector] public float r = Constants.electricalStripBaseSize.x;
     [HideInInspector] public float s = Constants.electricalStripSeparatorSize;
-    [SerializeField]  public bool resetBoard = false;
     [SerializeField]  public GameObject socketPrefab;
-    [SerializeField] [Range(1, 10)] public int width = 1;
-    [SerializeField] [Range(1, 10)] public int height = 2;
     //[SerializeField] public List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>();
     //[SerializeField] public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
     [SerializeField] public GameObject backgroundVisual;
@@ -34,11 +32,12 @@ public class ElectricalStripData : MonoBehaviour {
     [HideInInspector] public RectTransform rectangularTransform;
 
 
-    void Awake() {
+    public void Awake() {
         debugC = DebugC.Get();
         electricalStripController     = Utilities.TryGetComponent<ElectricalStripController>(gameObject);
         electricalStripSizeController = Utilities.TryGetComponent<ElectricalStripSizeController>(gameObject);
         jointsData                    = FindObjectOfType<JointsData>();
+        gridsModifier                 = FindObjectOfType<GridsModifier>();
 
         rectangularTransform = Utilities.TryGetComponent<RectTransform>(backgroundVisual);
     }

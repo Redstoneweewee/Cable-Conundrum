@@ -19,8 +19,8 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
     void Update() {
         //DebugC.Log(Mouse.current.position.value);
         D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
-        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.width  + Constants.electricalStripSeparatorSize, 
-                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
+        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.gridsModifier.width  + Constants.electricalStripSeparatorSize, 
+                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.gridsModifier.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
         //if(D.size != newSize || D.resetBoard) {
         //    RenewSockets();
         //    MovePowerSwitch();
@@ -53,24 +53,23 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
     private void ModifySize(Directions direction) {
         switch(direction) {
             case Directions.Up:
-                if(D.height < 6) { D.height++; }
+                if(D.gridsModifier.height < 6) { D.gridsModifier.height++; }
                 break;
             case Directions.Down:
-                if(D.height > 1) { D.height--; }
+                if(D.gridsModifier.height > 1) { D.gridsModifier.height--; }
                 break;
             case Directions.Left:
-                if(D.width > 1) { D.width--; }
+                if(D.gridsModifier.width > 1) { D.gridsModifier.width--; }
                 break;
             case Directions.Right:
-                if(D.width < 10) { D.width++; }
+                if(D.gridsModifier.width < 10) { D.gridsModifier.width++; }
                 break;
         }
     }
 
     public void ModifyBackgroundVisual() {
-
-        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.width  + Constants.electricalStripSeparatorSize, 
-                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
+        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.gridsModifier.width  + Constants.electricalStripSeparatorSize, 
+                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.gridsModifier.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
         D.rectangularTransform.sizeDelta = newSize;
         D.rectangularTransform.position = new Vector3(center.x, center.y+(Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y)/2, 0);
