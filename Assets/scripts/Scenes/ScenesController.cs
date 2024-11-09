@@ -11,11 +11,7 @@ public class ScenesController : MonoBehaviour {
 
     void Awake() {
         D = Utilities.TryGetComponent<ScenesData>(gameObject);
-        ScenesController[] scenesControllers = FindObjectsOfType<ScenesController>();
-        if(scenesControllers.Length > 1) {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+        
         SceneManager.sceneLoaded += OnSceneLoad;
 
         StartCoroutine(InitialSceneLoad());

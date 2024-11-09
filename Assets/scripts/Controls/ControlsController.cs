@@ -9,9 +9,11 @@ using UnityEngine.SceneManagement;
 
 public class ControlsController : MonoBehaviour {
     ControlsData D;
+    AdminToggles adminToggles;
     
     void Awake() {
         D = FindObjectOfType<ControlsData>();
+        adminToggles = FindObjectOfType<AdminToggles>();
     }
     void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
@@ -21,8 +23,29 @@ public class ControlsController : MonoBehaviour {
         SubscribeToActionStart(D.electricalStripAction, OnElectricalStripToggle);
         SubscribeToActionStart(D.deleteAction, OnTryDeletePlug);
         SubscribeToActionStart(D.deleteAction, OnTryDeleteObstacle);
+        ChangeEditorMode();
     }
 
+    void Update() {
+        ChangeEditorMode();
+    }
+
+    private void ChangeEditorMode() {
+        if(!adminToggles.cachedEditorMode && adminToggles.editorMode) {
+            D.obstaclesAction.action.Enable();
+            D.plugSelectorAction.action.Enable();
+            D.electricalStripAction.action.Enable();
+            D.deleteAction.action.Enable();
+            adminToggles.cachedEditorMode = adminToggles.editorMode;
+        }
+        else if(adminToggles.cachedEditorMode && !adminToggles.editorMode) {
+            D.obstaclesAction.action.Disable();
+            D.plugSelectorAction.action.Disable();
+            D.electricalStripAction.action.Disable();
+            D.deleteAction.action.Disable();
+            adminToggles.cachedEditorMode = adminToggles.editorMode;
+        }
+    }
 
 
     /// <summary>
@@ -71,21 +94,21 @@ public class ControlsController : MonoBehaviour {
         Debug.Log("bring up the pause menu");
     }
 
-    private bool IsNotInLevel() {
+    private bool IsNotInALevel() {
         if(SceneManager.GetActiveScene().buildIndex == 0) { return true; }
         //if(SceneManager.GetActiveScene().buildIndex == 1) { return true; }
         return false;
     }
 
     private void OnJointsToggle(InputAction.CallbackContext context) {
-        if(IsNotInLevel()) { return; }
+        if(IsNotInALevel()) { return; }
         D.masterJointsEnabled = !D.masterJointsEnabled;
         FindObjectOfType<JointsData>().jointsEnabled = D.masterJointsEnabled;
         Debug.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
     }
 
     private void OnObstaclesToggle(InputAction.CallbackContext context) {
-        if(IsNotInLevel()) { return; }
+        if(IsNotInALevel()) { return; }
         D.obstaclesModifiable = !D.obstaclesModifiable;
         ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         if(D.obstaclesModifiable) {
@@ -104,7 +127,7 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void OnPlugSelectorToggle(InputAction.CallbackContext context) {
-        if(IsNotInLevel()) { return; }
+        if(IsNotInALevel()) { return; }
         D.plugSelectorEnabled = !D.plugSelectorEnabled;
 
         if(D.plugSelectorEnabled) { D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(true); }
@@ -118,7 +141,7 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void OnElectricalStripToggle(InputAction.CallbackContext context) {
-        if(IsNotInLevel()) { return; }
+        if(IsNotInALevel()) { return; }
         D.electricalStripEnabled = !D.electricalStripEnabled;
         GameObject electricalStrip = FindObjectOfType<ElectricalStripController>().gameObject;
         
@@ -135,7 +158,7 @@ public class ControlsController : MonoBehaviour {
 
     
     private void OnTryDeletePlug(InputAction.CallbackContext context) {
-        if(IsNotInLevel()) { return; }
+        if(IsNotInALevel()) { return; }
         PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isDragging) { 
@@ -146,7 +169,7 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void OnTryDeleteObstacle(InputAction.CallbackContext context) {
-        if(IsNotInLevel()) { return; }
+        if(IsNotInALevel()) { return; }
         ObstacleAttributes[] allObstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         foreach(ObstacleAttributes obstacleAttribute in allObstacleAttributes) {
             if(obstacleAttribute.temporarilyModifiable && obstacleAttribute.isDragging) { 
