@@ -35,7 +35,6 @@ public class Constants {
 
     public static Vector2 startingPlugOffset = new Vector2(2.5f, 3);
 
-
     
     public static Color RemapColorFromRGB(Color color) {
         float4 newColorValues = math.remap(new float4(0.0f, 0.0f, 0.0f, 0.0f), 
