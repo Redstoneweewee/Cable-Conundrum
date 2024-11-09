@@ -12,7 +12,7 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
 
     // Start is called before the first frame update
     void Awake() {
-        D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
+        Initialize();
     }
 
     // Update is called once per frame
@@ -27,6 +27,9 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
         //}
     }
 
+    public void Initialize() {
+        D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
+    }
 
     public void OnBeginDrag(PointerEventData eventData) {
         if(!D.temporarilyModifiable) { return; }
@@ -64,6 +67,21 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
         }
     }
 
+    public void ModifyBackgroundVisual() {
+
+        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*D.width  + Constants.electricalStripSeparatorSize, 
+                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*D.height + 2*Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y);
+        Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
+        D.rectangularTransform.sizeDelta = newSize;
+        D.rectangularTransform.position = new Vector3(center.x, center.y+(Constants.electricalStripSeparatorSize + Constants.powerSwitchBaseSize.y)/2, 0);
+        MovePowerSwitch();
+    }
+
+    private void MovePowerSwitch() {
+        Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
+        Vector2 topLeft = new Vector2(D.rectangularTransform.position.x - D.rectangularTransform.sizeDelta.x/2, D.rectangularTransform.position.y + D.rectangularTransform.sizeDelta.y/2);
+        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - (Constants.powerSwitchBaseSize.y/2 + Constants.electricalStripSeparatorSize));
+    }
     /*
     public void RenewSockets() {
         D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
@@ -125,11 +143,6 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
         }
     }
     */
-    private void MovePowerSwitch() {
-        Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
-        Vector2 topLeft = new Vector2(center.x - D.size.x/2, center.y + D.size.y/2);
-        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - Constants.powerSwitchBaseSize.y/2 - D.s);
-    }
 
 
 

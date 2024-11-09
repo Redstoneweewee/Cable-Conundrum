@@ -23,6 +23,9 @@ public class GridsController : MonoBehaviour {
         RenewPlugsGrid();
         RenewAllCablesGrid();
         RenewAllObstaclesGrid();
+
+        D.electricalStripSizeController.Initialize();
+        D.electricalStripSizeController.ModifyBackgroundVisual();
     }
 
     public void RenewGrids() {
@@ -79,6 +82,9 @@ public class GridsController : MonoBehaviour {
 
         for(int i=0; i<childCount; i++) {
             D.socketsParent.transform.GetChild(i).gameObject.SetActive(true);
+            for(int j=0; j<D.socketsParent.transform.GetChild(i).childCount; j++) {
+                D.socketsParent.transform.GetChild(i).GetChild(j).gameObject.SetActive(true);
+            }
         }
         for(int i=0; i<D.socketsGrid.GetLength(0); i++) {
             for(int j=0; j<D.socketsGrid.GetLength(1); j++) {

@@ -7,6 +7,7 @@ public class GridsData : MonoBehaviour {
     [HideInInspector] public DebugC debugC;
     [HideInInspector] public GridsController gridsController;
 
+    [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;
     //[HideInInspector] public List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>(); //From ELectricalStripSizeController
     [SerializeField]  public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
     [HideInInspector] public Transform[,]     jointsGrid;          //From JointsController
@@ -29,6 +30,7 @@ public class GridsData : MonoBehaviour {
 
     void Awake() {
         debugC = DebugC.Get();
+        electricalStripSizeController = FindObjectOfType<ElectricalStripSizeController>();
         gridsController = Utilities.TryGetComponent<GridsController>(gameObject);
     }
 }

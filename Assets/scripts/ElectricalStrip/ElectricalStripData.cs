@@ -32,7 +32,6 @@ public class ElectricalStripData : MonoBehaviour {
     [HideInInspector] public RectTransform rectTransform;
     [HideInInspector] public Vector2 cachedMousePosition;
     [HideInInspector] public RectTransform rectangularTransform;
-    [HideInInspector] public Vector2 size;
 
 
     void Awake() {
@@ -42,7 +41,6 @@ public class ElectricalStripData : MonoBehaviour {
         jointsData                    = FindObjectOfType<JointsData>();
 
         rectangularTransform = Utilities.TryGetComponent<RectTransform>(backgroundVisual);
-        size = rectangularTransform.sizeDelta;
     }
 
 }

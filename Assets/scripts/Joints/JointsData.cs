@@ -18,7 +18,7 @@ public class JointsData : MonoBehaviour {
     [HideInInspector] public bool cachedJointsEnabled = false;
     [SerializeField]  public bool jointsEnabled = false;
     [HideInInspector] public Vector2 cachedScreenSize;
-    [HideInInspector] public Transform[,] jointsGrid;
+    //[HideInInspector] public Transform[,] jointsGrid;
     
     [SerializeField]  public Material jointMaterial;
     [HideInInspector] public float r = Constants.electricalStripBaseSize.x;
