@@ -24,6 +24,7 @@ public class GridsSizeInitializer : MonoBehaviour {
     void Update() {
         if(renewGrids || testDotsActive != cachedtestDotsActive) {
             Initialize();
+            FindObjectOfType<GridsController>().Initialize();
             renewGrids = false;
             cachedtestDotsActive = testDotsActive;
         }
@@ -57,7 +58,6 @@ public class GridsSizeInitializer : MonoBehaviour {
         int width  = (int)((Screen.width - topLeft.x)/step) + 2;
         int height = (int)(topLeft.y/step) + 2;
         jointsSkeletonGrid = new Vector2[height, width];
-
         //Fill jointsSkeletonGrid with positions & instantiate test dots at each position for testing
         for(int i=0; i<height; i++) {
             for(int j=0; j<width; j++) {

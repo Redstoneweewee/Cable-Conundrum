@@ -4,22 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridsData : MonoBehaviour {
-                     private List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>(); //From ELectricalStripSizeController
-    [SerializeField] private List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
-    private Transform[,]           jointsGrid;          //From JointsController
-    private Transform[,]           socketsGrid;         //From ELectricalStripController
-    private int[,]                 plugsGrid;           //From ELectricalStripController
-    private int[,]                 allCablesGrid;       //From ELectricalStripController
-    private bool[,]                allObstaclesGrid;    //From IntersectionDetector
+    [HideInInspector] public DebugC debugC;
+    [HideInInspector] public GridsController gridsController;
+    
+    //[HideInInspector] public List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>(); //From ELectricalStripSizeController
+    [SerializeField]  public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
+    [HideInInspector] public Transform[,]     jointsGrid;          //From JointsController
+    [HideInInspector] public Transform[,]     socketsGrid;         //From ELectricalStripController
+    [HideInInspector] public int[,]           plugsGrid;           //From ELectricalStripController
+    [HideInInspector] public int[,]           allCablesGrid;       //From ELectricalStripController
+    [HideInInspector] public bool[,]          allObstaclesGrid;    //From IntersectionDetector
 
-
-    public Transform[,]           JointsGrid       {get{return jointsGrid;      } set{jointsGrid       = value;}}
-    public Transform[,]           SocketsGrid      {get{return socketsGrid;     } set{socketsGrid      = value;}}
-    public int[,]                 PlugsGrid        {get{return plugsGrid;       } set{plugsGrid        = value;}}
-    public int[,]                 AllCablesGrid    {get{return allCablesGrid;   } set{allCablesGrid    = value;}}
-    public bool[,]                AllObstaclesGrid {get{return allObstaclesGrid;} set{allObstaclesGrid = value;}}
-
-
+    [SerializeField] public GameObject jointsParent;
+    [SerializeField] public GameObject socketsParent;
+    [SerializeField] public GameObject jointPrefab;
+    [SerializeField] public GameObject socketPrefab;
 
 
     //should be moved back, but referenced here
@@ -27,4 +26,9 @@ public class GridsData : MonoBehaviour {
     private bool[,]                obstaclesGrid;        //From Obstacle
     public CablesGridAttributes[,]  CablesGrid        {get{return cablesGrid;       } set{cablesGrid        = value;}}
     public bool[,]                 ObstaclesGrid     {get{return obstaclesGrid;    } set{obstaclesGrid     = value;}}
+
+    void Awake() {
+        debugC = DebugC.Get();
+        gridsController = Utilities.TryGetComponent<GridsController>(gameObject);
+    }
 }
