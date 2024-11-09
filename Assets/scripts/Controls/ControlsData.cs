@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ControlsData : MonoBehaviour {
-    public ControlsController        controlsController;
-    public IntersectionController    intersectionController;
-    public ElectricalStripData       electricalStripData;
-    public ElectricalStripController electricalStripController;
+    [HideInInspector] public ControlsController        controlsController;
+    [HideInInspector] public IntersectionController    intersectionController;
+    [HideInInspector] public ElectricalStripData       electricalStripData;
+    [HideInInspector] public ElectricalStripController electricalStripController;
 
     public InputActionReference exitAction;
     public InputActionReference jointAction;

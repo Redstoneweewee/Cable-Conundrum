@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class LevelGlobal : LevelStartGlobal {
     public DebugC DebugC {set; get;}
-    [SerializeField] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
+    [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     private JointsData jointsData;
 
     
