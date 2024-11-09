@@ -13,6 +13,8 @@ public class ObstacleAttributes : MonoBehaviour {
     [HideInInspector] public IntersectionController intersectionController;
     [SerializeField]  public bool                   temporarilyModifiable;
 
+    [SerializeField]  public GridsSizeInitializer gridsSizeInitializer;
+    [SerializeField]  public GridsController gridsController;
     [SerializeField]  public ObstacleTypes obstacleType;
     [HideInInspector] public bool          isDragging;
     [HideInInspector] public bool[,]       obstacleGrid;
@@ -21,6 +23,8 @@ public class ObstacleAttributes : MonoBehaviour {
 
     void Awake() {
         obstacleHandler        = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
+        gridsSizeInitializer   = FindObjectOfType<GridsSizeInitializer>();
+        gridsController        = FindObjectOfType<GridsController>();
         intersectionController = FindObjectOfType<IntersectionController>();
         rectTransform          = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
     }

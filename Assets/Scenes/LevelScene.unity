@@ -9064,45 +9064,6 @@ Transform:
   - {fileID: 796932515}
   m_Father: {fileID: 277651738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &437575385
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 200, g: 438, b: 36, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &445280869
 GameObject:
   m_ObjectHideFlags: 0
@@ -11050,7 +11011,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e54b0ab6829d64184c843c1618597c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugC: {fileID: 0}
+  gridsController: {fileID: 0}
   socketsActiveGrid: []
+  jointsParent: {fileID: 2046283027}
+  socketsParent: {fileID: 1683979203}
+  jointPrefab: {fileID: 984155574870586781, guid: f59883f5993e0394198030d80d6fbc1e, type: 3}
+  socketPrefab: {fileID: 3762091182818808380, guid: 6e3a7a5ccbf04474d81c16a3c9b55585, type: 3}
 --- !u!114 &534756584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14090,7 +14057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 437575385}
+  m_Material: {fileID: 1451057346}
   m_Color: {r: 1, g: 0.9647059, b: 0.85490197, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -25550,6 +25517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socketAttributes: {fileID: 0}
+  gridsData: {fileID: 0}
   electricalStripData: {fileID: 0}
   childrenTransforms: []
   isActive: 1
@@ -28377,6 +28345,45 @@ Transform:
   - {fileID: 1374321622}
   m_Father: {fileID: 277651738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1451057346
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 200, g: 438, b: 36, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &1456304075
 GameObject:
   m_ObjectHideFlags: 0
@@ -31395,6 +31402,7 @@ Transform:
   m_Children:
   - {fileID: 688515346}
   - {fileID: 277651738}
+  - {fileID: 2046283028}
   - {fileID: 1007985141}
   - {fileID: 1683979204}
   m_Father: {fileID: 1496068498}
@@ -31445,8 +31453,6 @@ MonoBehaviour:
   socketPrefab: {fileID: 3762091182818808380, guid: 6e3a7a5ccbf04474d81c16a3c9b55585, type: 3}
   width: 1
   height: 2
-  cachedSocketsActiveGrid: []
-  socketsActiveGrid: []
   backgroundVisual: {fileID: 688515345}
   socketsParent: {fileID: 1683979203}
   powerSwitch: {fileID: 1007985140}
@@ -34700,6 +34706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socketAttributes: {fileID: 0}
+  gridsData: {fileID: 0}
   electricalStripData: {fileID: 0}
   childrenTransforms: []
   isActive: 1
@@ -35797,6 +35804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intersectionController: {fileID: 0}
+  gridsData: {fileID: 0}
   hasIntersection: 0
   electricalStripData: {fileID: 0}
   jointsData: {fileID: 0}
@@ -36806,6 +36814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsController: {fileID: 0}
+  gridsController: {fileID: 0}
   intersectionController: {fileID: 0}
   electricalStripData: {fileID: 0}
   electricalStripController: {fileID: 0}
@@ -38362,6 +38371,37 @@ Transform:
   m_Children:
   - {fileID: 130637437}
   m_Father: {fileID: 277651738}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2046283027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2046283028}
+  m_Layer: 0
+  m_Name: JointsTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2046283028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046283027}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1655845891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2050266217
 GameObject:

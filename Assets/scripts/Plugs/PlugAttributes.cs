@@ -12,6 +12,8 @@ public class PlugAttributes : MonoBehaviour {
     [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public int id;
 
+    [HideInInspector] public GridsData                 gridsData;
+    [HideInInspector] public GridsController           gridsController;
     [HideInInspector] public PlugHandler               plugHandler;
     [HideInInspector] public ControlsData              controlsData;
     [HideInInspector] public ElectricalStripData       electricalStripData;
@@ -51,6 +53,8 @@ public class PlugAttributes : MonoBehaviour {
     void Awake() {
         debugC = DebugC.Get();
         plugHandler               = Utilities.TryGetComponent<PlugHandler>(gameObject);
+        gridsData                 = FindObjectOfType<GridsData>();
+        gridsController           = FindObjectOfType<GridsController>();
         controlsData              = FindObjectOfType<ControlsData>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = FindObjectOfType<ElectricalStripController>();

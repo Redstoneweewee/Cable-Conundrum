@@ -11,6 +11,9 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public DebugC debugC;
 
+    
+    [HideInInspector] public GridsData                 gridsData;
+    [HideInInspector] public GridsSizeInitializer      gridsSizeInitializer;
     [HideInInspector] public PlugAttributes            plugAttributes;
     [HideInInspector] public IntersectionController    intersectionController;
     [HideInInspector] public ElectricalStripData       electricalStripData;
@@ -34,7 +37,7 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public Directions   cachedStartingDirection;
     [HideInInspector] public Directions   cachedEndingDirection;
     [HideInInspector] public Index2D      cachedMouseGridIndex;
-    [HideInInspector] public Transform[,] cachedJointsGrid;
+    //[HideInInspector] public Transform[,] cachedJointsGrid;
 
 
     //Are edited when cables are regenerated 
@@ -54,6 +57,8 @@ public class CableParentAttributes : MonoBehaviour {
         debugC = DebugC.Get();
         cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
         plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
+        gridsData                 = FindObjectOfType<GridsData>();
+        gridsSizeInitializer      = FindObjectOfType<GridsSizeInitializer>();
         intersectionController    = FindObjectOfType<IntersectionController>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = FindObjectOfType<ElectricalStripController>();

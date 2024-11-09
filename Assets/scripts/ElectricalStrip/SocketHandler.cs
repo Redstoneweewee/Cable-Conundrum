@@ -5,10 +5,12 @@ using UnityEngine.EventSystems;
 
 
 public class SocketHandler : MonoBehaviour, IPointerDownHandler {
+    private GridsController gridsController;
     SocketAttributes A;
 
     void Awake() {
         A = Utilities.TryGetComponent<SocketAttributes>(gameObject);
+        gridsController = FindObjectOfType<GridsController>();
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -16,14 +18,15 @@ public class SocketHandler : MonoBehaviour, IPointerDownHandler {
         A.isActive = !A.isActive;
         if(A.isActive) { 
             foreach(Transform child in A.childrenTransforms) { child.gameObject.SetActive(true); }
-            A.electricalStripData.socketsActiveGrid[A.id.x].row[A.id.y] = true;
+            A.gridsData.socketsActiveGrid[A.id.x].row[A.id.y] = true;
         }
         else { 
             foreach(Transform child in A.childrenTransforms) { child.gameObject.SetActive(false); }
             gameObject.SetActive(true);
-            A.electricalStripData.socketsActiveGrid[A.id.x].row[A.id.y] = false;
+            A.gridsData.socketsActiveGrid[A.id.x].row[A.id.y] = false;
         }
-        A.electricalStripData.electricalStripSizeController.RenewSockets();
+        //A.electricalStripData.electricalStripSizeController.RenewSockets();
+        gridsController.RenewSocketsGrid();
     }
 
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class GridsData : MonoBehaviour {
     [HideInInspector] public DebugC debugC;
     [HideInInspector] public GridsController gridsController;
-    
+
     //[HideInInspector] public List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>(); //From ELectricalStripSizeController
     [SerializeField]  public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
     [HideInInspector] public Transform[,]     jointsGrid;          //From JointsController
@@ -22,10 +22,10 @@ public class GridsData : MonoBehaviour {
 
 
     //should be moved back, but referenced here
-    private CablesGridAttributes[,] cablesGrid;           //From CableGeneration
-    private bool[,]                obstaclesGrid;        //From Obstacle
-    public CablesGridAttributes[,]  CablesGrid        {get{return cablesGrid;       } set{cablesGrid        = value;}}
-    public bool[,]                 ObstaclesGrid     {get{return obstaclesGrid;    } set{obstaclesGrid     = value;}}
+    //private CablesGridAttributes[,] cablesGrid;           //From CableGeneration
+    //private bool[,]                obstaclesGrid;        //From Obstacle
+    //public CablesGridAttributes[,]  CablesGrid        {get{return cablesGrid;       } set{cablesGrid        = value;}}
+    //public bool[,]                 ObstaclesGrid     {get{return obstaclesGrid;    } set{obstaclesGrid     = value;}}
 
     void Awake() {
         debugC = DebugC.Get();

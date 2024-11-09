@@ -8,9 +8,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class CableHandler : MonoBehaviour {
-    CableParentAttributes A;
+    private GridsController gridsController;
+    private CableParentAttributes A;
 
     void Awake() {
+        gridsController = FindObjectOfType<GridsController>();
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
     }
 
@@ -46,31 +48,19 @@ public class CableHandler : MonoBehaviour {
         }
     }
     public void InitializeCableGrid() {
-        if(A.cachedJointsGrid == null || A.cachedJointsGrid != A.jointsData.jointsGrid) {
-            A.cableGrid = new CablesGridAttributes[A.jointsData.jointsGrid.GetLength(0), A.jointsData.jointsGrid.GetLength(1)];
-            for(int i=0; i<A.cableGrid.GetLength(0); i++) {
-                for(int j=0; j<A.cableGrid.GetLength(1); j++) { A.cableGrid[i,j] = new CablesGridAttributes(); }
-            }
+        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
+        A.cableGrid = new CablesGridAttributes[skeletonGrid.GetLength(0), skeletonGrid.GetLength(1)];
+        for(int i=0; i<A.cableGrid.GetLength(0); i++) {
+            for(int j=0; j<A.cableGrid.GetLength(1); j++) { A.cableGrid[i,j] = new CablesGridAttributes(); }
         }
-        else {
-            for(int i=0; i<A.cableGrid.GetLength(0); i++) {
-                for(int j=0; j<A.cableGrid.GetLength(1); j++) { 
-                    A.cableGrid[i,j].hasCable = false; 
-                    A.cableGrid[i,j].numbers.Clear(); 
-                }
-            }
-        }
-        
-        Transform[,] jointsGrid = A.jointsData.jointsGrid;
         float   subJointLength  = Constants.jointDistance/2;
         for(int i=0; i<A.cables.Count; i++) {
             if(A.cables[i].gameObject.activeSelf == false) { continue; }
-            Vector2 distanceFromTopLeftJoint = new Vector2(A.cables[i].position.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - A.cables[i].position.y);
+            Vector2 distanceFromTopLeftJoint = new Vector2(A.cables[i].position.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.cables[i].position.y);
             Index2D gridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2);
             if(gridIndex.x >= A.cableGrid.GetLength(0) || gridIndex.x < 0 || gridIndex.y >= A.cableGrid.GetLength(1) || gridIndex.y < 0) { continue; }
             A.cableGrid[gridIndex.x,gridIndex.y].ChangeAttributes(true, i);
         }
-        A.cachedJointsGrid = A.jointsData.jointsGrid;
 
         string text = "";
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
@@ -86,21 +76,21 @@ public class CableHandler : MonoBehaviour {
 
     }
     public void InitializeCachedMouseGridIndex() {
-        Transform[,] jointsGrid = A.jointsData.jointsGrid;
+        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
         float   subJointLength  = Constants.jointDistance/2;
-        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - A.mouse.position.value.y);
+        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
         A.cachedMouseGridIndex = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
-        A.cachedMouseGridIndex = new Index2D(Math.Clamp(A.cachedMouseGridIndex.y, 0, jointsGrid.GetLength(0)-1), Math.Clamp(A.cachedMouseGridIndex.x, 0, jointsGrid.GetLength(1)-1));
+        A.cachedMouseGridIndex = new Index2D(Math.Clamp(A.cachedMouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(A.cachedMouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
     }
 
     public IEnumerator ModifyCablesOnInteract() {
         yield return new WaitForSeconds(0.01f);
 
-        Transform[,] jointsGrid = A.jointsData.jointsGrid;
+        Vector2[,] skeletonGrid = A.gridsSizeInitializer.jointsSkeletonGrid;
         float   subJointLength  = Constants.jointDistance/2;
-        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - A.mouse.position.value.y);
+        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
         Index2D mouseGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
-        mouseGridIndex          = new Index2D(Math.Clamp(mouseGridIndex.y, 0, jointsGrid.GetLength(0)-1), Math.Clamp(mouseGridIndex.x, 0, jointsGrid.GetLength(1)-1));
+        mouseGridIndex          = new Index2D(Math.Clamp(mouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(mouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
 
         if(A.cachedMouseGridIndex != mouseGridIndex && !A.cableGrid[mouseGridIndex.x, mouseGridIndex.y].hasCable) {
             InitializeCableGrid();
@@ -163,7 +153,8 @@ public class CableHandler : MonoBehaviour {
                 }
             }
             InitializeCableGrid();
-            A.electricalStripController.RenewAllCableGrids();
+            //A.electricalStripController.RenewAllCableGrids();
+            gridsController.RenewAllCablesGrid();
             A.intersectionController.TestForCableIntersection();
         }
         //moving into an already defined cable
@@ -180,7 +171,8 @@ public class CableHandler : MonoBehaviour {
                 RenewRotationAndIntersectionCables();
                 A.cachedMouseGridIndex = mouseGridIndex;
             InitializeCableGrid();
-            A.electricalStripController.RenewAllCableGrids();
+            //A.electricalStripController.RenewAllCableGrids();
+            gridsController.RenewAllCablesGrid();
             A.intersectionController.TestForCableIntersection();
         }
         
@@ -197,7 +189,7 @@ public class CableHandler : MonoBehaviour {
     }
 
     private Index2D TestForIntersections(Index2D index2D, Directions direction) {
-        int[,] plugsGrid = A.electricalStripData.plugsGrid;
+        int[,] plugsGrid = A.gridsData.plugsGrid;
         switch(direction) {
             case Directions.Up:
                 for(int i=index2D.x-1; i>=0; i--) {

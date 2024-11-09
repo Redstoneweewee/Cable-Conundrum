@@ -9,13 +9,13 @@ using UnityEngine.UIElements;
 public class LevelGlobal : LevelStartGlobal {
     public DebugC DebugC {set; get;}
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
-    private JointsData jointsData;
+    private GridsSizeInitializer gridsSizeInitializer;
 
     
     // Start is called before the first frame update
     void Start() {
         DebugC = DebugC.Get();
-        jointsData = FindObjectOfType<JointsData>();
+        gridsSizeInitializer = FindObjectOfType<GridsSizeInitializer>();
         StartCoroutine(InitializeDelayed());
     }
 
@@ -109,7 +109,7 @@ public class LevelGlobal : LevelStartGlobal {
     }
 
     private void MoveAllPlugsToInitialPositions() {
-        Transform [,] jointsGrid = jointsData.jointsGrid;
+        Vector2[,] skeletonGrid = gridsSizeInitializer.jointsSkeletonGrid;
 
         foreach(LevelPlugs levelPlug in allLevelPlugs) {
             Directions direction = levelPlug.startingDirection;
@@ -119,21 +119,21 @@ public class LevelGlobal : LevelStartGlobal {
                     index = new Index2D((int)Constants.startingPlugOffset.x-1, (int)Constants.startingPlugOffset.y-1);
                     //goes to the right
                     foreach(PlugAttributes plugAttributes in levelPlug.plugAttributes) {
-                        Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x + Constants.jointDistance*((plugAttributes.plugSize.y-1)/2),
-                                                          jointsGrid[index.x, index.y].position.y - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
-                                                          jointsGrid[index.x, index.y].position.z);
+                        Vector3 newPosition = new Vector3(skeletonGrid[index.x, index.y].x + Constants.jointDistance*((plugAttributes.plugSize.y-1)/2),
+                                                          skeletonGrid[index.x, index.y].y - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
+                                                          0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
                         Debug.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x, index.y + (int)plugAttributes.plugSize.y);
                     }
                     break;
                 case Directions.Down:
-                    index = new Index2D(jointsGrid.GetLength(0)-(int)Constants.startingPlugOffset.x, (int)Constants.startingPlugOffset.y-1);
+                    index = new Index2D(skeletonGrid.GetLength(0)-(int)Constants.startingPlugOffset.x, (int)Constants.startingPlugOffset.y-1);
                     //goes to the right
                     foreach(PlugAttributes plugAttributes in levelPlug.plugAttributes) {
-                        Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x + Constants.jointDistance*((plugAttributes.plugSize.y-1)/2),
-                                                          jointsGrid[index.x, index.y].position.y + (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
-                                                          jointsGrid[index.x, index.y].position.z);
+                        Vector3 newPosition = new Vector3(skeletonGrid[index.x, index.y].x + Constants.jointDistance*((plugAttributes.plugSize.y-1)/2),
+                                                          skeletonGrid[index.x, index.y].y + (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
+                                                          0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
                         Debug.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x, index.y + (int)plugAttributes.plugSize.y);
@@ -143,21 +143,21 @@ public class LevelGlobal : LevelStartGlobal {
                     index = new Index2D((int)Constants.startingPlugOffset.x, (int)Constants.startingPlugOffset.y-1);
                     //goes down
                     for(int i=0; i<levelPlug.plugAttributes.Count; i++) {
-                        Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x,
-                                                          jointsGrid[index.x, index.y].position.y - Constants.jointDistance*((levelPlug.plugAttributes[i].plugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
-                                                          jointsGrid[index.x, index.y].position.z);
+                        Vector3 newPosition = new Vector3(skeletonGrid[index.x, index.y].x,
+                                                          skeletonGrid[index.x, index.y].y - Constants.jointDistance*((levelPlug.plugAttributes[i].plugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
+                                                          0);
                         levelPlug.plugAttributes[i].transform.position = newPosition - (Vector3)levelPlug.plugAttributes[i].center;
                         Debug.Log($"Plug {levelPlug.plugAttributes[i].name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x + (int)levelPlug.plugAttributes[i].plugSize.x, index.y);
                     }
                     break;
                 case Directions.Right:
-                    index = new Index2D((int)Constants.startingPlugOffset.x, jointsGrid.GetLength(1)-(int)Constants.startingPlugOffset.y);
+                    index = new Index2D((int)Constants.startingPlugOffset.x, skeletonGrid.GetLength(1)-(int)Constants.startingPlugOffset.y);
                     //goes down
                     for(int i=0; i<levelPlug.plugAttributes.Count; i++) {
-                        Vector3 newPosition = new Vector3(jointsGrid[index.x, index.y].position.x,
-                                                          jointsGrid[index.x, index.y].position.y - Constants.jointDistance*((levelPlug.plugAttributes[i].plugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
-                                                          jointsGrid[index.x, index.y].position.z);
+                        Vector3 newPosition = new Vector3(skeletonGrid[index.x, index.y].x,
+                                                          skeletonGrid[index.x, index.y].y - Constants.jointDistance*((levelPlug.plugAttributes[i].plugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
+                                                          0);
                         levelPlug.plugAttributes[i].transform.position = newPosition - (Vector3)levelPlug.plugAttributes[i].center;
                         Debug.Log($"Plug {levelPlug.plugAttributes[i].name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x + (int)levelPlug.plugAttributes[i].plugSize.x, index.y);

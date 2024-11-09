@@ -20,7 +20,7 @@ public class JointsController : MonoBehaviour {
 
     private IEnumerator startDelayed() {
         yield return new WaitForEndOfFrame();
-        RenewJoints();
+        //RenewJoints();
         D.jointsEnabled = D.controlsData.masterJointsEnabled;
     }
 
@@ -29,7 +29,7 @@ public class JointsController : MonoBehaviour {
 
         //Debug.Log("isFirstOpacity: "+isFirstOpacity);
         if((D.jointsEnabled == true && D.cachedScreenSize.x != Screen.width || D.cachedScreenSize.y != Screen.height) || D.cachedJointsEnabled != D.jointsEnabled) {
-            RenewJoints();
+            //RenewJoints();
             D.cachedScreenSize = new Vector2(Screen.width, Screen.height);
         }
         if(D.cachedJointsEnabled != D.jointsEnabled && D.jointsEnabled == false) {
@@ -52,6 +52,7 @@ public class JointsController : MonoBehaviour {
         }
     }
 
+    /*
     private void RenewJoints() {
         float step = Constants.jointDistance;
         if(D.electricalStripData.socketsGrid == null) { D.electricalStripData.electricalStripSizeController.RenewSockets(); }
@@ -103,5 +104,6 @@ public class JointsController : MonoBehaviour {
             }
         }
     }
+    */
 
 }

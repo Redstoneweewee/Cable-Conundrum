@@ -19,7 +19,7 @@ public class GridsController : MonoBehaviour {
         G = Utilities.TryGetComponent<GridsSizeInitializer>(gameObject);
         InitializeJointsGrid();
         InitializeSocketsActiveGrid();
-        InitializeSocketsGrid();
+        RenewSocketsGrid();
         RenewPlugsGrid();
         RenewAllCablesGrid();
         RenewAllObstaclesGrid();
@@ -71,7 +71,7 @@ public class GridsController : MonoBehaviour {
         }
     }
 
-    private void InitializeSocketsGrid() {
+    public void RenewSocketsGrid() {
         D.socketsGrid = new Transform[G.socketsSkeletonGrid.GetLength(0), G.socketsSkeletonGrid.GetLength(1)];
         
         int childCount = D.socketsParent.transform.childCount;

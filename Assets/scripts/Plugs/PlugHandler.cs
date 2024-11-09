@@ -110,18 +110,18 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
     public void PlugIn() {
         A.isPluggedIn = true;
-        A.electricalStripController.RenewPlugsGrid();
+        A.gridsController.RenewPlugsGrid();
         A.cableHandler.InitializeCableGrid();
-        A.electricalStripController.RenewAllCableGrids();
+        A.gridsController.RenewAllCablesGrid();
         if(!A.isObstacle) { A.cableHandler.SetCablesOpacity(1f); }
         A.intersectionController.TestForCableIntersection();
     }
 
     public void PlugOut() {
         A.isPluggedIn = false;
-        A.electricalStripController.RenewPlugsGrid();
+        A.gridsController.RenewPlugsGrid();
         A.cableHandler.ResetCableGrid();
-        A.electricalStripController.RenewAllCableGrids();
+        A.gridsController.RenewAllCablesGrid();
         if(!A.isObstacle) { A.cableHandler.SetCablesOpacity(Constants.cableOpacity); }
         //intersectionDetector.ClearAllCableIntersections();
         A.intersectionController.TestForCableIntersection();
@@ -138,12 +138,12 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
 
     private Transform PlugIntoSocketTest() {
-        int[,] allCablesGrid = A.electricalStripData.allCablesGrid;
-        int[,] plugsGrid = A.electricalStripData.plugsGrid;
-        bool[,] allObstaclesGrid = A.intersectionData.allObstaclesGrid;
+        int[,] allCablesGrid = A.gridsData.allCablesGrid;
+        int[,] plugsGrid = A.gridsData.plugsGrid;
+        bool[,] allObstaclesGrid = A.gridsData.allObstaclesGrid;
         
-        Transform[,] socketsGrid = A.electricalStripData.socketsGrid;
-        Transform[,] jointsGrid = A.jointsData.jointsGrid;
+        Transform[,] socketsGrid = A.gridsData.socketsGrid;
+        Transform[,] jointsGrid = A.gridsData.jointsGrid;
         float   subSocketLength  = Constants.jointDistance;
         float   subJointLength  = Constants.jointDistance/2;
 

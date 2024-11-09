@@ -16,46 +16,46 @@ public class IntersectionController : MonoBehaviour {
 
     private IEnumerator InitialWaitUntilUpdate(float time) {
         yield return new WaitForSeconds(time);
-        RenewAllObstaclesGrid();
+        //RenewAllObstaclesGrid();
         TestForCableIntersection();
     }
-
+    /*
     public void RenewAllObstaclesGrid() {
-        D.allObstaclesGrid = new bool[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
+        gridsData.allObstaclesGrid = new bool[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
         ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
             if(obstacleAttribute.obstacleType == ObstacleTypes.Plug) { continue; }
             if(obstacleAttribute.obstacleGrid == null) { Debug.LogWarning($"{obstacleAttribute.name}'s obstaclesGrid not defined."); continue; }
 
-            for(int i=0; i<D.allObstaclesGrid.GetLength(0); i++) {
-                for(int j=0; j<D.allObstaclesGrid.GetLength(1); j++) {
+            for(int i=0; i<gridsData.allObstaclesGrid.GetLength(0); i++) {
+                for(int j=0; j<gridsData.allObstaclesGrid.GetLength(1); j++) {
                     if(obstacleAttribute.obstacleGrid[i,j] == true) {
-                        D.allObstaclesGrid[i,j] = true;
+                        gridsData.allObstaclesGrid[i,j] = true;
                     }
                 }
             }
         }
         string text = "";
-        for(int i=0; i<D.allObstaclesGrid.GetLength(0); i++) {
+        for(int i=0; i<gridsData.allObstaclesGrid.GetLength(0); i++) {
             text += "| ";
-            for(int j=0; j<D.allObstaclesGrid.GetLength(1); j++) {
-                if(D.allObstaclesGrid[i,j] == true) { text += "*  "; }
+            for(int j=0; j<gridsData.allObstaclesGrid.GetLength(1); j++) {
+                if(gridsData.allObstaclesGrid[i,j] == true) { text += "*  "; }
                 else { text += "-  "; }
             }
             text += " |\n";
         }
         Debug.Log("allObstaclesGrid: \n"+text);
     }
-
+    */
     public void TestForCableIntersection() {
         ClearAllCableIntersections();
-        for(int i=0; i<D.electricalStripData.allCablesGrid.GetLength(0); i++) {
-            for(int j=0; j<D.electricalStripData.allCablesGrid.GetLength(1); j++) {
+        for(int i=0; i<D.gridsData.allCablesGrid.GetLength(0); i++) {
+            for(int j=0; j<D.gridsData.allCablesGrid.GetLength(1); j++) {
                 //if it is greater or equal to 2, there are intersections at that joint position
-                if(D.electricalStripData.plugsGrid[i,j] > 0) {
-                    DetermineTypeOfIntersection(i, j, D.electricalStripData.plugsGrid[i,j]);
+                if(D.gridsData.plugsGrid[i,j] > 0) {
+                    DetermineTypeOfIntersection(i, j, D.gridsData.plugsGrid[i,j]);
                 }
-                else if(D.electricalStripData.allCablesGrid[i,j] >= 2 || D.allObstaclesGrid[i,j] == true) {
+                else if(D.gridsData.allCablesGrid[i,j] >= 2 || D.gridsData.allObstaclesGrid[i,j] == true) {
                     DetermineTypeOfIntersection(i, j, 0);
                 }
             }

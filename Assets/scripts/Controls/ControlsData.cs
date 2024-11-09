@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class ControlsData : MonoBehaviour {
     [HideInInspector] public ControlsController        controlsController;
+    [HideInInspector] public GridsController           gridsController;
     [HideInInspector] public IntersectionController    intersectionController;
     [HideInInspector] public ElectricalStripData       electricalStripData;
     [HideInInspector] public ElectricalStripController electricalStripController;
@@ -42,6 +43,7 @@ public class ControlsData : MonoBehaviour {
 
     void Awake() {
         controlsController        = Utilities.TryGetComponent<ControlsController>(gameObject);
+        gridsController           = FindObjectOfType<GridsController>();
         intersectionController    = FindObjectOfType<IntersectionController>();
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = FindObjectOfType<ElectricalStripController>();

@@ -9,12 +9,12 @@ public class ElectricalStripController : MonoBehaviour {
         D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
     }
 
+    /*
     void Start() {
         D.electricalStripSizeController.RenewSockets();
         StartCoroutine(InitializeAllCableGrids());
         StartCoroutine(InitializePlugsGrid());
     }
-
     public void RenewPlugsGrid() {
         Transform[,] jointsGrid = D.jointsData.jointsGrid;
         D.plugsGrid = new int[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
@@ -76,4 +76,7 @@ public class ElectricalStripController : MonoBehaviour {
         }
         Debug.Log("AllCablesGrid: \n"+text);
     }
+
+    */
+
 }
