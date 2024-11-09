@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugC: {fileID: 0}
   id: 0
+  gridsData: {fileID: 0}
+  gridsController: {fileID: 0}
   plugHandler: {fileID: 0}
   controlsData: {fileID: 0}
   electricalStripData: {fileID: 0}
@@ -148,7 +150,7 @@ MonoBehaviour:
   isPluggedIn: 0
   isObstacle: 0
   obstacleAttributes: {fileID: 0}
-  plugSize: {x: 4, y: 1}
+  plugSize: {x: 3, y: 1}
   localJointPositionsTakenUp:
   - {x: 0, y: 85}
   - {x: 0, y: 0}
@@ -232,6 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cableHandler: {fileID: 0}
   debugC: {fileID: 0}
+  gridsData: {fileID: 0}
+  gridsSkeleton: {fileID: 0}
   plugAttributes: {fileID: 0}
   intersectionController: {fileID: 0}
   electricalStripData: {fileID: 0}

@@ -16,20 +16,22 @@ public class LevelGlobal : LevelStartGlobal {
     void Start() {
         DebugC = DebugC.Get();
         gridsSkeleton = FindObjectOfType<GridsSkeleton>();
-        StartCoroutine(InitializeDelayed());
+        Initialize();
     }
 
-    private IEnumerator InitializeDelayed() {
-        yield return new WaitForSeconds(0.01f);
-        RenewAllLevelPlugsList();
-        SortAllLevelPlugs();
-        RenewPlugSiblingIndices();
-        MoveAllPlugsToInitialPositions();
-        Log();
+    private void Initialize() {
+        ResetPlugs();
+        //Log();
         base.FinishedWithAllTasks();
         //StartCoroutine(Test());
     }
 
+    public void ResetPlugs() {
+        RenewAllLevelPlugsList();
+        SortAllLevelPlugs();
+        RenewPlugSiblingIndices();
+        MoveAllPlugsToInitialPositions();
+    }
 
     private void RenewAllLevelPlugsList() {
         allLevelPlugs.Clear();
@@ -41,7 +43,7 @@ public class LevelGlobal : LevelStartGlobal {
         PlugAttributes[] plugAttributes = FindObjectsOfType<PlugAttributes>();
         foreach(PlugAttributes plugAttribute in plugAttributes) {
             if(plugAttribute.isObstacle) { continue; }
-            Directions startingDirection = Utilities.TryGetComponentInChildren<CableChildAttributes>(plugAttribute.gameObject).startingDirection;
+            Directions startingDirection = Utilities.TryGetComponentInChildren<CableParentAttributes>(plugAttribute.gameObject).startingDirection;
             switch(startingDirection) {
                 case Directions.Up:
                     allLevelPlugs[0].plugAttributes.Add(plugAttribute);

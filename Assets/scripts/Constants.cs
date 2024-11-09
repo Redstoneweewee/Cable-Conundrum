@@ -33,7 +33,7 @@ public class Constants {
     public static float tableSnapDistance = jointDistance/2;
 
 
-    public static Vector2 startingPlugOffset = new Vector2(2.5f, 3);
+    public static Vector2 startingPlugOffset = new Vector2(3, 3);
 
     
     public static Color RemapColorFromRGB(Color color) {
