@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class ButtonsGlobal : MonoBehaviour {
     [HideInInspector] public ScenesController scenesController;
+    [HideInInspector] public SettingsController settingsController;
     [SerializeField]  public List<ButtonAtributes> buttonAttributes = new List<ButtonAtributes>();
 
     void Awake() {
@@ -21,11 +22,17 @@ public class ButtonsGlobal : MonoBehaviour {
             buttonAttribute.Button = Utilities.TryGetComponentInChildren<Button>(buttonAttribute.ButtonGameObject);
 
             switch(buttonAttribute.ButtonType) {
-                case ButtonTypes.StartGame:
-                    SubscribeToButton(buttonAttribute.Button, scenesController.OnPressStartButton);
+                case ButtonTypes.EnterLevel:
+                    SubscribeToButton(buttonAttribute.Button, scenesController.OnPressEnterLevelButton);
                     break;
-                case ButtonTypes.ExitToMenu:
-                    SubscribeToButton(buttonAttribute.Button, scenesController.OnPressExitToMenuButton);
+                case ButtonTypes.EnterMenu:
+                    SubscribeToButton(buttonAttribute.Button, scenesController.OnPressEnterMenuButton);
+                    break;
+                case ButtonTypes.EnterSettings:
+                    SubscribeToButton(buttonAttribute.Button, settingsController.OnPressEnterSettingsButton);
+                    break;
+                case ButtonTypes.ExitSettings:
+                    SubscribeToButton(buttonAttribute.Button, settingsController.OnPressExitSettingsButton);
                     break;
             }
         }

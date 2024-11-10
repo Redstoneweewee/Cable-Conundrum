@@ -11,7 +11,7 @@ public class ScenesController : MonoBehaviour {
 
     void Awake() {
         D = Utilities.TryGetComponent<ScenesData>(gameObject);
-        
+
         SceneManager.sceneLoaded += OnSceneLoad;
 
         StartCoroutine(InitialSceneLoad());
@@ -94,13 +94,12 @@ public class ScenesController : MonoBehaviour {
 
 
 
-    public void OnPressStartButton() {
+    public void OnPressEnterLevelButton() {
         //for now just go to scene 1, which is the "next" level
         LoadLevel(LoadSceneTypes.Next);
     }
 
-
-    public void OnPressExitToMenuButton() {
+    public void OnPressEnterMenuButton() {
         LoadLevel(LoadSceneTypes.Menu);
     }
 
