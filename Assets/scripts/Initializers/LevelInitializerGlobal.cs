@@ -6,14 +6,15 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class LevelGlobal : LevelStartGlobal {
+public class LevelInitializerGlobal : InitializerBase {
     public DebugC DebugC {set; get;}
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     private GridsSkeleton gridsSkeleton;
 
     
     // Start is called before the first frame update
-    void Start() {
+    new void Start() {
+        base.Start();
         DebugC = DebugC.Get();
         gridsSkeleton = FindObjectOfType<GridsSkeleton>();
         Initialize();

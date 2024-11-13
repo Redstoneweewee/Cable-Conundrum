@@ -9,34 +9,6 @@ using UnityEngine.UI;
 
 
 public class ButtonsGlobal : MonoBehaviour {
-    [HideInInspector] public ScenesController scenesController;
-    [HideInInspector] public SettingsController settingsController;
-    [SerializeField]  public List<ButtonAtributes> buttonAttributes = new List<ButtonAtributes>();
-
-    void Awake() {
-        scenesController = FindObjectOfType<ScenesController>();
-    }
-
-    void Start() {
-        foreach(ButtonAtributes buttonAttribute in buttonAttributes) {
-            buttonAttribute.Button = Utilities.TryGetComponentInChildren<Button>(buttonAttribute.ButtonGameObject);
-
-            switch(buttonAttribute.ButtonType) {
-                case ButtonTypes.EnterLevel:
-                    SubscribeToButton(buttonAttribute.Button, scenesController.OnPressEnterLevelButton);
-                    break;
-                case ButtonTypes.EnterMenu:
-                    SubscribeToButton(buttonAttribute.Button, scenesController.OnPressEnterMenuButton);
-                    break;
-                case ButtonTypes.EnterSettings:
-                    SubscribeToButton(buttonAttribute.Button, settingsController.OnPressEnterSettingsButton);
-                    break;
-                case ButtonTypes.ExitSettings:
-                    SubscribeToButton(buttonAttribute.Button, settingsController.OnPressExitSettingsButton);
-                    break;
-            }
-        }
-    }
 
     public void DisableButton(Button button) {
         button.enabled = false;

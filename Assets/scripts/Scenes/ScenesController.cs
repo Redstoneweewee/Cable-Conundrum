@@ -13,21 +13,7 @@ public class ScenesController : MonoBehaviour {
         D = Utilities.TryGetComponent<ScenesData>(gameObject);
 
         SceneManager.sceneLoaded += OnSceneLoad;
-
         StartCoroutine(InitialSceneLoad());
-    }
-
-
-
-    void Update() {
-        if(!D.animationIsFinished) { return; }
-
-        //if(animationIsFinished && Input.GetMouseButtonDown(0)) {
-        //    LoadLevel(LoadLevelType.Next);
-        //}
-        //else if(animationIsFinished && Input.GetMouseButtonDown(1)) {
-        //    LoadLevel(LoadLevelType.Previous);
-        //}
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
@@ -70,8 +56,9 @@ public class ScenesController : MonoBehaviour {
         yield return new WaitUntil(() => D.sceneFinishedLoading);
         
         //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
-        if(FindObjectOfType<LevelStartGlobal>()) {
-            yield return new WaitUntil(() => FindObjectOfType<LevelStartGlobal>().isFinishedWithAllTasks);
+        if(FindObjectOfType<InitializerBase>()) {
+            yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
+            yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().allButtonsLoaded);
         }
         
         //End the crossfade transition.
