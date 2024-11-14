@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Game enums
-public enum LoadSceneTypes    { Next, Previous, Menu }
-public enum ButtonTypes       { EnterLevel, EnterMenu, EnterSettings, ExitSettings }
+public enum LoadSceneTypes    { Menu, LevelSelector, Level, NextLevel, PreviousLevel }
+public enum ButtonTypes       { EnterLevel, NextLevel, PreviousLevel, EnterLevelSelector, EnterMenu, EnterSettings, ExitSettings }
 public enum LevelFailureTypes { None, Plugs, Cables, Obstacles }
 
 //Editor enums

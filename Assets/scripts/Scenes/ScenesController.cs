@@ -20,27 +20,36 @@ public class ScenesController : MonoBehaviour {
         D.sceneFinishedLoading = true;
     }
 
-    public void LoadLevel(LoadSceneTypes loadSceneType) {
-        int nextBuildIndex = SceneManager.GetActiveScene().buildIndex;
+    public void TryLoadScene(LoadSceneTypes loadSceneType, int levelIndex = 0) {
+        int buildIndex;
         switch(loadSceneType) {
             case LoadSceneTypes.Menu:
-                nextBuildIndex = 0;
+                buildIndex = 0;
                 break;
-            case LoadSceneTypes.Next:
-                nextBuildIndex++;
+            case LoadSceneTypes.LevelSelector:
+                buildIndex = 1;
                 break;
-            case LoadSceneTypes.Previous:
-                nextBuildIndex--;
+            case LoadSceneTypes.Level:
+                buildIndex = levelIndex + 1;
+                break;
+            case LoadSceneTypes.NextLevel:
+                buildIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                break;
+            case LoadSceneTypes.PreviousLevel:
+                buildIndex = SceneManager.GetActiveScene().buildIndex - 1;
+                break;
+            default:
+                buildIndex = 0;
                 break;
         }
 
-        if(nextBuildIndex >= SceneManager.sceneCountInBuildSettings || nextBuildIndex < 0) { 
-            Debug.LogWarning($"No scene at buildIndex {nextBuildIndex}"); 
+        if(buildIndex >= SceneManager.sceneCountInBuildSettings || buildIndex < 0) { 
+            Debug.LogWarning($"No scene at buildIndex {buildIndex}"); 
             return; 
         }
         D.sceneFinishedLoading = false;
         D.animationIsFinished = false;
-        StartCoroutine(LoadLevelCoroutine(nextBuildIndex));
+        StartCoroutine(LoadLevelCoroutine(buildIndex));
     }
 
 
@@ -78,19 +87,21 @@ public class ScenesController : MonoBehaviour {
 
 
 
-
-
-
-    public void OnPressEnterLevelButton() {
-        //for now just go to scene 1, which is the "next" level
-        LoadLevel(LoadSceneTypes.Next);
+    public void OnPressEnterLevelButton(int levelIndex) {
+        TryLoadScene(LoadSceneTypes.Level, levelIndex);
+    }
+    public void OnPressEnterNextLevelButton() {
+        TryLoadScene(LoadSceneTypes.NextLevel);
+    }
+    public void OnPressEnterPreviousLevelButton() {
+        TryLoadScene(LoadSceneTypes.PreviousLevel);
     }
 
+    public void OnPressEnterLevelSelectorButton() {
+        TryLoadScene(LoadSceneTypes.LevelSelector);
+    }
     public void OnPressEnterMenuButton() {
-        LoadLevel(LoadSceneTypes.Menu);
+        TryLoadScene(LoadSceneTypes.Menu);
     }
-
-
-
 }
 

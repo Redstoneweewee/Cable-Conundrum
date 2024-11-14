@@ -40,7 +40,16 @@ public class InitializerBase : MonoBehaviour {
         foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
             switch(buttonAttribute.buttonType) {
                 case ButtonTypes.EnterLevel:
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelButton);
+                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelButton, buttonAttribute.levelIndex);
+                    break;
+                case ButtonTypes.NextLevel:
+                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterNextLevelButton);
+                    break;
+                case ButtonTypes.PreviousLevel:
+                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterPreviousLevelButton);
+                    break;
+                case ButtonTypes.EnterLevelSelector:
+                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelSelectorButton);
                     break;
                 case ButtonTypes.EnterMenu:
                     buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterMenuButton);

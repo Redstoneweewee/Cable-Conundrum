@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 
@@ -23,6 +24,10 @@ public class ButtonsGlobal : MonoBehaviour {
 
     public void SubscribeToButton(Button button, System.Action function) {
         button.onClick.AddListener(() => function.Invoke());
+    }
+
+    public void SubscribeToButton<T>(Button button, UnityAction<T> function, T argument) {
+        button.onClick.AddListener(() => function.Invoke(argument));
     }
 
     public void SetButtonText(Button button, string text) {
