@@ -5,6 +5,7 @@ using UnityEngine;
 //Game enums
 public enum LoadSceneTypes    { Menu, LevelSelector, Level, NextLevel, PreviousLevel }
 public enum ButtonTypes       { EnterLevel, NextLevel, PreviousLevel, EnterLevelSelector, EnterMenu, EnterSettings, ExitSettings }
+public enum SliderTypes       { Sound, Music }
 public enum LevelFailureTypes { None, Plugs, Cables, Obstacles }
 
 //Editor enums

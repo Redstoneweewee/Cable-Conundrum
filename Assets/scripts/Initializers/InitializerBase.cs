@@ -5,9 +5,8 @@ using UnityEngine;
 public class InitializerBase : MonoBehaviour {
     public bool finishedWithAllTasks = false;
     public bool allButtonsLoaded = false;
-    [HideInInspector] public ButtonsGlobal    buttonsGlobal;
-    [HideInInspector] public ScenesController scenesController;
-    [HideInInspector] public SettingsGlobal   settingsGlobal;
+    [HideInInspector] public ScenesController  scenesController;
+    [HideInInspector] public SettingsGlobal    settingsGlobal;
 
     [SerializeField]  public ButtonAttributes[] buttonAttributes;
 
@@ -18,9 +17,8 @@ public class InitializerBase : MonoBehaviour {
     private IEnumerator WaitToInitializeButtons() {
         yield return new WaitUntil(() => finishedWithAllTasks);
         Debug.Log("buttons waited");
-        buttonsGlobal    = FindObjectOfType<ButtonsGlobal>();
         scenesController = FindObjectOfType<ScenesController>();
-        settingsGlobal   = FindObjectOfType<SettingsGlobal>();
+        settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
         InitializeButtons();
     }
 
@@ -40,33 +38,35 @@ public class InitializerBase : MonoBehaviour {
         foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
             switch(buttonAttribute.buttonType) {
                 case ButtonTypes.EnterLevel:
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelButton, buttonAttribute.levelIndex);
+                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelButton, buttonAttribute.levelIndex);
                     break;
                 case ButtonTypes.NextLevel:
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterNextLevelButton);
+                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterNextLevelButton);
                     break;
                 case ButtonTypes.PreviousLevel:
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterPreviousLevelButton);
+                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterPreviousLevelButton);
                     break;
                 case ButtonTypes.EnterLevelSelector:
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelSelectorButton);
+                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelSelectorButton);
                     break;
                 case ButtonTypes.EnterMenu:
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterMenuButton);
+                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterMenuButton);
                     break;
                 case ButtonTypes.EnterSettings:
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressEnterSettingsButton);
+                    Debug.Log("subscribed to enter settings");
+                    Utilities.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressEnterSettingsButton);
                     break;
                 case ButtonTypes.ExitSettings:
                     Debug.Log($"settingsGlobal: {settingsGlobal.name} ");
-                    buttonsGlobal.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressExitSettingsButton);
+                    Debug.Log("subscribed to exit  settings");
+                    Utilities.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressExitSettingsButton);
                     break;
             }
         }
 
         foreach(GameObjectActivity activity in gameObjectActivities) {
             activity.gameObject.SetActive(activity.isInitiallyActive);
-            Debug.Log($"set {activity.gameObject.name} to {activity.isInitiallyActive}");
+            //Debug.Log($"set {activity.gameObject.name} to {activity.isInitiallyActive}");
         }
         AllButtonsLoaded();
     }

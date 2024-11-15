@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class Utilities : MonoBehaviour {
@@ -54,6 +57,36 @@ public class Utilities : MonoBehaviour {
         }
         else { return objectTypeOut; }
     }
+
+
+    public static void DisableButton(Button button) {
+        button.enabled = false;
+        TryGetComponent<Image>(button.gameObject).enabled = false;
+        TryGetComponentInChildren<TextMeshProUGUI>(button.gameObject).enabled = false;
+    }
+    public static void EnableButton(Button button) {
+        button.enabled = true;
+        TryGetComponent<Image>(button.gameObject).enabled = true;
+        TryGetComponentInChildren<TextMeshProUGUI>(button.gameObject).enabled = true;
+    }
+    public static void SetButtonText(Button button, string text) {
+        TextMeshProUGUI textBox = TryGetComponentInChildren<TextMeshProUGUI>(button.gameObject);
+        textBox.text = text;
+    }
+
+    public static void SubscribeToButton(Button button, System.Action function) {
+        button.onClick.AddListener(() => function.Invoke());
+    }
+
+    public static void SubscribeToButton<T>(Button button, UnityAction<T> function, T argument) {
+        button.onClick.AddListener(() => function.Invoke(argument));
+    }
+
+    public static void SubscribeToSlider(Slider slider, UnityAction<float> function) {
+        slider.onValueChanged.AddListener((value) => function.Invoke(value));
+    }
+
+
 
 
     public static bool IsApproximate(Quaternion q1, Quaternion q2, float precision) {
