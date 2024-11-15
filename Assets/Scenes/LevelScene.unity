@@ -31981,6 +31981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1x1 Perma Down
       objectReference: {fileID: 0}
+    - target: {fileID: 7151729919157773566, guid: 8a260c060bd4a9d4d8de2849ad1adb72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7483217074344320916, guid: 8a260c060bd4a9d4d8de2849ad1adb72, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
