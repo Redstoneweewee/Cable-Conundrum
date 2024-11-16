@@ -10,6 +10,10 @@ public class InitializerBase : MonoBehaviour {
 
     [SerializeField]  public ButtonAttributes[] buttonAttributes;
 
+    public void Awake() {
+        
+    }
+
     public void Start() {
         StartCoroutine(WaitToInitializeButtons());
     }

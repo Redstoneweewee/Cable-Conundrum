@@ -117,16 +117,8 @@ public class Utilities : MonoBehaviour {
         if(index2D.y > highestY) { index2D.y = highestY; }
         return index2D;
     }
-
-
-    public static void InheritAllPlugAttributes(GameObject receiver, SavePlug provider) {
-        Debug.Log($"Inheriting values - receiver: {receiver.name}");
-        Debug.Log($"plugPosition changed: {receiver.name} from ({receiver.transform.position}) to ({provider.plugPosition})");
-        receiver.transform.position = provider.plugPosition;
-        Debug.Log($"isPluggedIn changed: {receiver.name} from ({TryGetComponent<PlugAttributes>(receiver).isPluggedIn}) to ({provider.isPluggedIn})");
-        TryGetComponent<PlugAttributes>(receiver).isPluggedIn = provider.isPluggedIn;
-    }
-
+    
+    
 
 
     public static float Orientation(Vector2 A, Vector2 B, Vector2 C) {

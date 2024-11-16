@@ -49,7 +49,7 @@ MonoBehaviour:
   isRotationCable: 0
   isIntersectionCable: 0
   cableType: 6
-  cableImage: {fileID: 4623917333229002755}
+  cableSprite: {fileID: 21300000, guid: 07913305f32024d419d1ef812599c3fd, type: 3}
   zRotation: 0
   pivot: {x: 0.5, y: 0}
   shadowDirection: 3

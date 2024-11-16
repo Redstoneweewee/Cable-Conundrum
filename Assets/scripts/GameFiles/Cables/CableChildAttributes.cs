@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+[Serializable]
 public class CableChildAttributes : MonoBehaviour {
 
     //Are edited when cables are regenerated 
@@ -12,12 +13,12 @@ public class CableChildAttributes : MonoBehaviour {
     [SerializeField] public bool             isRotationCable;
     [SerializeField] public bool             isIntersectionCable;
     [SerializeField] public CableTypes       cableType;
-    [SerializeField] public Image            cableImage;
+    [SerializeField] public Sprite           cableSprite;
     [SerializeField] public float            zRotation;
     [SerializeField] public Vector2          pivot;
     [SerializeField] public ShadowDirections shadowDirection;
     [SerializeField] public Directions       startingDirection;
     [SerializeField] public Directions       endingDirection;
     [SerializeField] public Vector2          directionMultiple;
-
+    
 }

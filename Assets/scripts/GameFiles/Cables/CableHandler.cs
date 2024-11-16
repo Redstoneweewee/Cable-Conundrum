@@ -239,19 +239,19 @@ public class CableHandler : MonoBehaviour {
             CableChildAttributes prefabAttributes;
             switch(A.startingDirection) {
                 case Directions.Up:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs[6]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[6]); break;
                 case Directions.Down:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs[7]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[7]); break;
                 case Directions.Left:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs[2]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[2]); break;
                 case Directions.Right:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs[3]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[3]); break;
                 default:
                     Debug.LogError("RenewInitialCable function did not work correctly. None of the conditions were met.");
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs[3]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[3]); break;
             }
 
-            Sprite  prefabSprite    = prefabAttributes.cableImage.sprite;
+            Sprite  prefabSprite    = prefabAttributes.cableSprite;
             float   prefabZRotation = prefabAttributes.zRotation;
             Vector2 prefabPivot     = prefabAttributes.pivot;
             ModifyCableValues(A.cables[0], prefabAttributes, false, 
@@ -261,19 +261,19 @@ public class CableHandler : MonoBehaviour {
             Transform newCable;
             switch(A.startingDirection) {
                 case Directions.Up:
-                    newCable = Instantiate(A.cablePrefabs[6], transform).transform;
+                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[6], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Down:
-                    newCable = Instantiate(A.cablePrefabs[7], transform).transform;
+                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[7], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Left:
-                    newCable = Instantiate(A.cablePrefabs[2], transform).transform;
+                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[2], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Right:
-                    newCable = Instantiate(A.cablePrefabs[3], transform).transform;
+                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[3], transform).transform;
                     A.cables.Add(newCable);
                     break;
             }
@@ -394,7 +394,7 @@ public class CableHandler : MonoBehaviour {
         
         if(A.cables.Count > index) {
             A.cables[index].position = previousCable.position + deltaPosition;
-            Sprite     prefabSprite = prefabAttributes.cableImage.sprite;
+            Sprite     prefabSprite = prefabAttributes.cableSprite;
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
             ModifyCableValues(A.cables[index], prefabAttributes, false, 
@@ -417,7 +417,7 @@ public class CableHandler : MonoBehaviour {
         Vector2 placePosition = previousCable.position + deltaPosition;
         if(A.cables.Count > index) {
             CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(rotationCablePrefab);
-            Sprite     prefabSprite = prefabAttributes.cableImage.sprite;
+            Sprite     prefabSprite = prefabAttributes.cableSprite;
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
 
@@ -437,66 +437,66 @@ public class CableHandler : MonoBehaviour {
 
     private GameObject GetStraightCablePrefab(ShadowDirections shadowDirection, Directions startDirection) {
         if(shadowDirection == ShadowDirections.Up) {
-            if(startDirection == Directions.Left)       { return A.cablePrefabs[0]; }
-            else if(startDirection == Directions.Right) { return A.cablePrefabs[1]; }
+            if(startDirection == Directions.Left)       { return A.cablePrefabs.cablePrefabs[0]; }
+            else if(startDirection == Directions.Right) { return A.cablePrefabs.cablePrefabs[1]; }
         }
         else if(shadowDirection == ShadowDirections.Down) {
-            if(startDirection == Directions.Left)       { return A.cablePrefabs[2]; }
-            else if(startDirection == Directions.Right) { return A.cablePrefabs[3]; }
+            if(startDirection == Directions.Left)       { return A.cablePrefabs.cablePrefabs[2]; }
+            else if(startDirection == Directions.Right) { return A.cablePrefabs.cablePrefabs[3]; }
         }
         else if(shadowDirection == ShadowDirections.Left) {
-            if(startDirection == Directions.Up)        { return A.cablePrefabs[4]; }
-            else if(startDirection == Directions.Down) { return A.cablePrefabs[5]; }
+            if(startDirection == Directions.Up)        { return A.cablePrefabs.cablePrefabs[4]; }
+            else if(startDirection == Directions.Down) { return A.cablePrefabs.cablePrefabs[5]; }
         }
         else if(shadowDirection == ShadowDirections.Right) {
-            if(startDirection == Directions.Up)        { return A.cablePrefabs[6]; }
-            else if(startDirection == Directions.Down) { return A.cablePrefabs[7]; }
+            if(startDirection == Directions.Up)        { return A.cablePrefabs.cablePrefabs[6]; }
+            else if(startDirection == Directions.Down) { return A.cablePrefabs.cablePrefabs[7]; }
         }
         Debug.LogError("GetStraightCablePrefab function did not work correctly. None of the conditions were met.");
-        return A.cablePrefabs[0]; //should never get here
+        return A.cablePrefabs.cablePrefabs[0]; //should never get here
     }
     
     private GameObject GetRotationCablePrefab(ShadowDirections shadowDirection, Directions startDirection, Directions endDirection) {
         if(shadowDirection == ShadowDirections.In) {
             if(startDirection == Directions.Up) {
-                if     (endDirection == Directions.Left)  { return A.cablePrefabs[8]; }
-                else if(endDirection == Directions.Right) { return A.cablePrefabs[9]; }
+                if     (endDirection == Directions.Left)  { return A.cablePrefabs.cablePrefabs[8]; }
+                else if(endDirection == Directions.Right) { return A.cablePrefabs.cablePrefabs[9]; }
             }
             else if(startDirection == Directions.Down) { 
-                if     (endDirection == Directions.Left)  { return A.cablePrefabs[10]; }
-                else if(endDirection == Directions.Right) { return A.cablePrefabs[11]; }
+                if     (endDirection == Directions.Left)  { return A.cablePrefabs.cablePrefabs[10]; }
+                else if(endDirection == Directions.Right) { return A.cablePrefabs.cablePrefabs[11]; }
             }
             else if(startDirection == Directions.Left) { 
-                if     (endDirection == Directions.Up)  { return A.cablePrefabs[12]; }
-                else if(endDirection == Directions.Down) { return A.cablePrefabs[13]; }
+                if     (endDirection == Directions.Up)  { return A.cablePrefabs.cablePrefabs[12]; }
+                else if(endDirection == Directions.Down) { return A.cablePrefabs.cablePrefabs[13]; }
             }
             else if(startDirection == Directions.Right) { 
-                if     (endDirection == Directions.Up)  { return A.cablePrefabs[14]; }
-                else if(endDirection == Directions.Down) { return A.cablePrefabs[15]; }
+                if     (endDirection == Directions.Up)  { return A.cablePrefabs.cablePrefabs[14]; }
+                else if(endDirection == Directions.Down) { return A.cablePrefabs.cablePrefabs[15]; }
             }
         }
         else if(shadowDirection == ShadowDirections.Out) {
             if(startDirection == Directions.Up) {
-                if     (endDirection == Directions.Left)  { return A.cablePrefabs[16]; }
-                else if(endDirection == Directions.Right) { return A.cablePrefabs[17]; }
+                if     (endDirection == Directions.Left)  { return A.cablePrefabs.cablePrefabs[16]; }
+                else if(endDirection == Directions.Right) { return A.cablePrefabs.cablePrefabs[17]; }
             }
             else if(startDirection == Directions.Down) { 
-                if     (endDirection == Directions.Left)  { return A.cablePrefabs[18]; }
-                else if(endDirection == Directions.Right) { return A.cablePrefabs[19]; }
+                if     (endDirection == Directions.Left)  { return A.cablePrefabs.cablePrefabs[18]; }
+                else if(endDirection == Directions.Right) { return A.cablePrefabs.cablePrefabs[19]; }
             }
             else if(startDirection == Directions.Left) { 
-                if     (endDirection == Directions.Up)  { return A.cablePrefabs[20]; }
-                else if(endDirection == Directions.Down) { return A.cablePrefabs[21]; }
+                if     (endDirection == Directions.Up)  { return A.cablePrefabs.cablePrefabs[20]; }
+                else if(endDirection == Directions.Down) { return A.cablePrefabs.cablePrefabs[21]; }
             }
             else if(startDirection == Directions.Right) { 
-                if     (endDirection == Directions.Up)  { return A.cablePrefabs[22]; }
-                else if(endDirection == Directions.Down) { return A.cablePrefabs[23]; }
+                if     (endDirection == Directions.Up)  { return A.cablePrefabs.cablePrefabs[22]; }
+                else if(endDirection == Directions.Down) { return A.cablePrefabs.cablePrefabs[23]; }
             }
         }
         Debug.LogError("GetRotationCablePrefab function did not work correctly. None of the conditions were met."+
                        "\nstartDirection: "+startDirection+
                        "\nendingDirection: "+A.endingDirection);
-        return A.cablePrefabs[8]; //should never get here
+        return A.cablePrefabs.cablePrefabs[8]; //should never get here
     }
 
 
@@ -562,7 +562,7 @@ public class CableHandler : MonoBehaviour {
     private void InheritCableAttributes(CableChildAttributes receiver, CableChildAttributes provider, bool isRotationCable) {
         receiver.isRotationCable   = isRotationCable;
         receiver.cableType         = provider.cableType;
-        receiver.cableImage        = provider.cableImage;
+        receiver.cableSprite       = provider.cableSprite;
         receiver.zRotation         = provider.zRotation;
         receiver.pivot             = provider.pivot;
         receiver.shadowDirection   = provider.shadowDirection;

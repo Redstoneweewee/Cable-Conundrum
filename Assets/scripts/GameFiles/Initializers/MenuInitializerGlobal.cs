@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuInitializerGlobal : InitializerBase {
-    void Awake() {
+    new void Awake() {
+        base.Awake();
         finishedWithAllTasks = true;
         StartCoroutine(base.SetMenuButton(false));
         StartCoroutine(base.SetLevelSelectorButton(false));

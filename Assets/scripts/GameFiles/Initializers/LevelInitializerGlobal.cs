@@ -8,9 +8,13 @@ using UnityEngine.UIElements;
 
 public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public DebugC DebugC {set; get;}
+    [SerializeField] private GameObject testingPrefab;
+    [HideInInspector] private CablePrefabs cablePrefabs;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     private GridsSkeleton gridsSkeleton;
     private bool initializationFinished = false;
+
+
 
     public IEnumerator LoadData(GameData data) {
         yield return new WaitUntil(() => initializationFinished);
@@ -19,19 +23,81 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         //Debug.Log($"moved plug {allLevelPlugs[0].plugAttributes[0].transform.name} to {data.testingVector3} ");
         //allLevelPlugs[0].plugAttributes[0].transform.position = data.testingVector3;
         if(data.testingSavePlug != null) {
-            // TODO - set all the necessary data for a plug
-            Utilities.InheritAllPlugAttributes(allLevelPlugs[0].plugAttributes[0].gameObject, data.testingSavePlug);
+            //Set all the necessary data for a plug
+            GameObject plug = allLevelPlugs[0].plugAttributes[0].gameObject;
+            SavePlug savePlug = data.testingSavePlug;
+            
+            Debug.Log($"Inheriting values - receiver: {plug.name}");
+            Debug.Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
+            plug.transform.position = savePlug.plugPosition;
+            Debug.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
+            Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
+
+            //RegenerateCables(plug, savePlug);
         }
 
         //Once all data is loaded, we are finished with all tasks
         base.FinishedWithAllTasks();
     }
+    /*
+    private void RegenerateCables(GameObject plug, SavePlug savePlug) {
+            CableParentAttributes cableParentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(plug);
+            //Excludes initial cables
+            int startingIndex = cableParentAttributes.initialCables.Length;
+            for(int i=startingIndex; i<savePlug.cables.Count; i++) {
+                AttributesAndPosition provider = savePlug.cables[i];
+                if(i < cableParentAttributes.cables.Count) {  //Then there is already an initialized cable at i
+                    cableParentAttributes.cables[i].position = savePlug.cables[i].position;
+                    CableChildAttributes receiver = Utilities.TryGetComponent<CableChildAttributes>(cableParentAttributes.cables[i].gameObject);
+                    
+                    receiver.isRotationCable   = provider.isRotationCable;
+                    receiver.cableType         = provider.cableType;
+                    receiver.cableImage        = provider.cableImage;
+                    receiver.zRotation         = provider.zRotation;
+                    receiver.pivot             = provider.pivot;
+                    receiver.shadowDirection   = provider.shadowDirection;
+                    receiver.startingDirection = provider.startingDirection;
+                    receiver.endingDirection   = provider.endingDirection;
+                    receiver.directionMultiple = provider.directionMultiple;
+                }
+            }
+    }
+    */
+    
     public void SaveData(GameData data) {
-        data.testingSavePlug = new SavePlug(allLevelPlugs[0].plugAttributes[0].transform.position, allLevelPlugs[0].plugAttributes[0].isPluggedIn);
+        GameObject plug = allLevelPlugs[0].plugAttributes[0].gameObject;
+        Vector3 plugPosition = plug.transform.position;
+        bool isPluggedIn = allLevelPlugs[0].plugAttributes[0].isPluggedIn;
+        Debug.Log("Instance id: "+plug.GetInstanceID());
+
+        List<AttributesAndPosition> cablesAndPositions = new List<AttributesAndPosition>();
+        
+        CableChildAttributes[] plugCables = Utilities.TryGetComponentsInChildren<CableChildAttributes>(plug);
+        //Excludes initial cables
+        int startingIndex = allLevelPlugs[0].plugAttributes[0].cableParentAttributes.initialCables.Length;
+
+        for(int i=startingIndex; i<plugCables.Length; i++) {
+            foreach(GameObject prefab in cablePrefabs.cablePrefabs) {
+                CableChildAttributes prefabCable = Utilities.TryGetComponent<CableChildAttributes>(prefab);
+                if(plugCables[i].cableType == prefabCable.cableType) {
+                    cablesAndPositions.Add(new AttributesAndPosition(prefabCable, plugCables[i].transform.position));
+                    break;
+                }
+            }
+        }
+        
+
+        data.testingSavePlug = new SavePlug(plugPosition, isPluggedIn, cablesAndPositions);
     }
 
-    
-    // Start is called before the first frame update
+
+
+
+    new void Awake() {
+        base.Awake();
+        cablePrefabs = FindObjectOfType<CablePrefabs>();
+    }
+
     new void Start() {
         base.Start();
         DebugC = DebugC.Get();

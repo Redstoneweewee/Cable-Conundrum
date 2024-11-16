@@ -12,6 +12,7 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public DebugC debugC;
 
     
+    [HideInInspector] public CablePrefabs              cablePrefabs;
     [HideInInspector] public GridsData                 gridsData;
     [HideInInspector] public GridsSkeleton             gridsSkeleton;
     [HideInInspector] public PlugAttributes            plugAttributes;
@@ -26,7 +27,6 @@ public class CableParentAttributes : MonoBehaviour {
     * [ [16]OutUpLeft, [17]OutUpRight, [18]OutDownLeft, [19]OutDownRight, [20]OutLeftUp, [21]OutLeftDown, [22]OutRightUp, [23]OutRightDown ]
     * Link: https://docs.google.com/document/d/1-T7I-lNiF93s7gjlgOsbJBzwmPMfbWuQ_Jdx-Hd63DM/edit?usp=sharing
     */
-    [SerializeField]  public GameObject[]    cablePrefabs;
     [SerializeField]  public GameObject[]    initialCables;
     [HideInInspector] public Vector3         cachedPosition;
     [HideInInspector] public List<Transform> cables = new List<Transform>();
@@ -57,6 +57,7 @@ public class CableParentAttributes : MonoBehaviour {
         debugC = DebugC.Get();
         cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
         plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
+        cablePrefabs              = FindObjectOfType<CablePrefabs>();
         gridsData                 = FindObjectOfType<GridsData>();
         gridsSkeleton             = FindObjectOfType<GridsSkeleton>();
         intersectionController    = FindObjectOfType<IntersectionController>();

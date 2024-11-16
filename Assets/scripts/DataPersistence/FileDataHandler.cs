@@ -48,10 +48,10 @@ public class FileDataHandler {
 
             //Serialize the C# game data object into Json
             ////string dataToStore = JsonUtility.ToJson(data, true);
-            string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented);
-            //string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings {
-            //    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            //});
+            //string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented);
+            string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
             //Write the serialized data to the file
             using (FileStream stream = new FileStream(fullPath, FileMode.Create)) {

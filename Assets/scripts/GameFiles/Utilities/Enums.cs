@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Game enums
+
 public enum LoadSceneTypes    { Menu, LevelSelector, Level, NextLevel, PreviousLevel }
 public enum ButtonTypes       { EnterLevel, NextLevel, PreviousLevel, EnterLevelSelector, EnterMenu, EnterSettings, ExitSettings, Testing }
 public enum SliderTypes       { Sound, Music }
