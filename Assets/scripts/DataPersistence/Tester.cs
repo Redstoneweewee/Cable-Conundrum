@@ -5,15 +5,13 @@ using UnityEngine;
 public class Tester : MonoBehaviour, IDataPersistence {
     private int testingInt = 0;
 
-    public void LoadData(GameData data) {
+    public IEnumerator LoadData(GameData data) {
+        yield return null;
         this.testingInt = data.testingInt;
+        UpdateVisual();
     }
     public void SaveData(ref GameData data) {
         data.testingInt = this.testingInt;
-    }
-
-    public void Start() {
-        UpdateVisual();
     }
 
     public void OnPressButton() {

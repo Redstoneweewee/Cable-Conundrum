@@ -21,7 +21,6 @@ public class DataPersistenceManager : MonoBehaviour {
         instance = this;
 
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
 
@@ -35,6 +34,8 @@ public class DataPersistenceManager : MonoBehaviour {
     }
 
     public void LoadGame() {
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+
         //Load any saved data from a file using the data handler
         this.gameData = dataHandler.Load();
 
@@ -45,7 +46,7 @@ public class DataPersistenceManager : MonoBehaviour {
         }
         //Push the loaded data to all other scripts that need it
         foreach(IDataPersistence dataPersistenceObject in dataPersistenceObjects) {
-            dataPersistenceObject.LoadData(gameData);
+            StartCoroutine(dataPersistenceObject.LoadData(gameData));
         }
     }
 

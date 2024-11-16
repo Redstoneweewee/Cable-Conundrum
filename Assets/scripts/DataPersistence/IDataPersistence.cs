@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IDataPersistence {
-
-    void LoadData(GameData data);
+    
+    //wait until everything in the scriptis done initializing before loading data
+    IEnumerator LoadData(GameData data);
 
     void SaveData(ref GameData data);
 }

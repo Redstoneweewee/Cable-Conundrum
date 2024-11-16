@@ -119,7 +119,13 @@ public class Utilities : MonoBehaviour {
     }
 
 
-
+    public static void InheritAllPlugAttributes(GameObject receiver, SavePlug provider) {
+        Debug.Log($"Inheriting values - receiver: {receiver.name}");
+        Debug.Log($"plugPosition changed: {receiver.name} from ({receiver.transform.position}) to ({provider.plugPosition})");
+        receiver.transform.position = provider.plugPosition;
+        Debug.Log($"isPluggedIn changed: {receiver.name} from ({TryGetComponent<PlugAttributes>(receiver).isPluggedIn}) to ({provider.isPluggedIn})");
+        TryGetComponent<PlugAttributes>(receiver).isPluggedIn = provider.isPluggedIn;
+    }
 
 
 

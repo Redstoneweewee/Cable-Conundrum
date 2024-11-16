@@ -6,10 +6,29 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class LevelInitializerGlobal : InitializerBase {
+public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public DebugC DebugC {set; get;}
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     private GridsSkeleton gridsSkeleton;
+    private bool initializationFinished = false;
+
+    public IEnumerator LoadData(GameData data) {
+        yield return new WaitUntil(() => initializationFinished);
+
+        //test
+        //Debug.Log($"moved plug {allLevelPlugs[0].plugAttributes[0].transform.name} to {data.testingVector3} ");
+        //allLevelPlugs[0].plugAttributes[0].transform.position = data.testingVector3;
+        if(data.testingSavePlug != null) {
+            // TODO - set all the necessary data for a plug
+            Utilities.InheritAllPlugAttributes(allLevelPlugs[0].plugAttributes[0].gameObject, data.testingSavePlug);
+        }
+
+        //Once all data is loaded, we are finished with all tasks
+        base.FinishedWithAllTasks();
+    }
+    public void SaveData(ref GameData data) {
+        data.testingSavePlug = new SavePlug(allLevelPlugs[0].plugAttributes[0].transform.position, allLevelPlugs[0].plugAttributes[0].isPluggedIn);
+    }
 
     
     // Start is called before the first frame update
@@ -23,10 +42,9 @@ public class LevelInitializerGlobal : InitializerBase {
     private void Initialize() {
         ResetPlugs();
         //Log();
-        base.FinishedWithAllTasks();
         StartCoroutine(base.SetMenuButton(false));
         StartCoroutine(base.SetLevelSelectorButton(true));
-        //StartCoroutine(Test());
+        initializationFinished = true;
     }
 
     public void ResetPlugs() {
