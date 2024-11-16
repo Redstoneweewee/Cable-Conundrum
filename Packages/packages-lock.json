@@ -235,6 +235,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "jillejr.newtonsoft.json-for-unity.converters": {
+      "version": "https://github.com/jilleJr/Newtonsoft.Json-for-Unity.Converters.git#1.0.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1231f5e645d71f60eed4ea51e8ca63d13a09f385"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

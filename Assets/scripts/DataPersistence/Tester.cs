@@ -10,7 +10,7 @@ public class Tester : MonoBehaviour, IDataPersistence {
         this.testingInt = data.testingInt;
         UpdateVisual();
     }
-    public void SaveData(ref GameData data) {
+    public void SaveData(GameData data) {
         data.testingInt = this.testingInt;
     }
 

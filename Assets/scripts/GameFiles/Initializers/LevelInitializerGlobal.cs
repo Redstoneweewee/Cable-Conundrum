@@ -26,7 +26,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         //Once all data is loaded, we are finished with all tasks
         base.FinishedWithAllTasks();
     }
-    public void SaveData(ref GameData data) {
+    public void SaveData(GameData data) {
         data.testingSavePlug = new SavePlug(allLevelPlugs[0].plugAttributes[0].transform.position, allLevelPlugs[0].plugAttributes[0].isPluggedIn);
     }
 
