@@ -61,6 +61,10 @@ public class InitializerBase : MonoBehaviour {
                     Debug.Log("subscribed to exit  settings");
                     Utilities.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressExitSettingsButton);
                     break;
+                case ButtonTypes.Testing:
+                    Debug.Log("subscribed to testing");
+                    Utilities.SubscribeToButton(buttonAttribute.button, FindObjectOfType<Tester>().OnPressButton);
+                    break;
             }
         }
 

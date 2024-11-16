@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[System.Serializable]
+public class GameData {
+    public int testingInt;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    //Defalut values when the game first starts
+    public GameData() {
+        this.testingInt = 0;
     }
 }
