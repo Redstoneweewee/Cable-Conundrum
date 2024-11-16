@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuInitializerGlobal : InitializerBase {
+public class LevelSelectorInitializerGlobal : InitializerBase {
     void Awake() {
         finishedWithAllTasks = true;
-        StartCoroutine(base.SetMenuButton(false));
+        StartCoroutine(base.SetMenuButton(true));
         StartCoroutine(base.SetLevelSelectorButton(false));
     }
 }

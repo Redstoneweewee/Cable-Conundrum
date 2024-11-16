@@ -72,6 +72,23 @@ public class InitializerBase : MonoBehaviour {
     }
 
 
+    public IEnumerator SetMenuButton(bool active) {
+        yield return new WaitUntil(() => allButtonsLoaded);
+        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+            if(buttonAttribute.buttonType == ButtonTypes.EnterMenu) {
+                buttonAttribute.button.gameObject.SetActive(active);
+            }
+        }
+    }
+    public IEnumerator SetLevelSelectorButton(bool active) {
+        yield return new WaitUntil(() => allButtonsLoaded);
+        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+            if(buttonAttribute.buttonType == ButtonTypes.EnterLevelSelector) {
+                buttonAttribute.button.gameObject.SetActive(active);
+            }
+        }
+    }
+
 
     public void FinishedWithAllTasks() {
         finishedWithAllTasks = true;

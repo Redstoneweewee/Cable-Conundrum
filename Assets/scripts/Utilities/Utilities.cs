@@ -87,6 +87,11 @@ public class Utilities : MonoBehaviour {
     }
 
 
+    public static string GetText(GameObject gameObject) {
+        TextMeshProUGUI textBox = TryGetComponent<TextMeshProUGUI>(gameObject);
+        return textBox.text;
+    }
+
 
 
     public static bool IsApproximate(Quaternion q1, Quaternion q2, float precision) {

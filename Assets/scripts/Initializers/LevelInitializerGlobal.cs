@@ -24,6 +24,8 @@ public class LevelInitializerGlobal : InitializerBase {
         ResetPlugs();
         //Log();
         base.FinishedWithAllTasks();
+        StartCoroutine(base.SetMenuButton(false));
+        StartCoroutine(base.SetLevelSelectorButton(true));
         //StartCoroutine(Test());
     }
 
@@ -32,6 +34,16 @@ public class LevelInitializerGlobal : InitializerBase {
         SortAllLevelPlugs();
         RenewPlugSiblingIndices();
         MoveAllPlugsToInitialPositions();
+    }
+
+
+    private IEnumerator EnableMenuButtons() {
+        yield return new WaitUntil(() => allButtonsLoaded);
+        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+            if(buttonAttribute.buttonType == ButtonTypes.EnterMenu) {
+                buttonAttribute.button.gameObject.SetActive(true);
+            }
+        }
     }
 
     private void RenewAllLevelPlugsList() {
