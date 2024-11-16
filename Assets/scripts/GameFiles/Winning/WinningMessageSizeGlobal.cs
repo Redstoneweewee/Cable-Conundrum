@@ -7,9 +7,9 @@ using UnityEngine;
 public class WinningMessageSizeGlobal : MonoBehaviour {
     [SerializeField] private bool reinitialize = false;
     [SerializeField] private float offset = 45f;
-    [SerializeField] private GameObject background;
-    [SerializeField] private GameObject text;
-    [SerializeField] private GameObject button;
+    [SerializeField] public GameObject background;
+    [SerializeField] public GameObject text;
+    [SerializeField] public GameObject button;
                      private RectTransform backgroundRectTransform;
                      private RectTransform buttonRectTransform;
 

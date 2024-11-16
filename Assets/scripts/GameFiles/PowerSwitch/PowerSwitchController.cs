@@ -70,6 +70,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler {
     private void Win() {
         D.offVisual.SetActive(false);
         D.onVisual.SetActive(true);
+        D.winningControllerGlobal.OnWin();
     }
 
     private void DidNotWin() {

@@ -87,6 +87,10 @@ public class Utilities : MonoBehaviour {
     }
 
 
+    public static void SetText(GameObject gameObject, string text) {
+        TextMeshProUGUI textBox = TryGetComponent<TextMeshProUGUI>(gameObject);
+        textBox.text = text;
+    }
     public static string GetText(GameObject gameObject) {
         TextMeshProUGUI textBox = TryGetComponent<TextMeshProUGUI>(gameObject);
         return textBox.text;
