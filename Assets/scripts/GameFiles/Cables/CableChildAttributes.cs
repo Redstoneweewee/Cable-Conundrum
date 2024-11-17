@@ -13,7 +13,8 @@ public class CableChildAttributes : MonoBehaviour {
     [SerializeField] public bool             isRotationCable;
     [SerializeField] public bool             isIntersectionCable;
     [SerializeField] public CableTypes       cableType;
-    [SerializeField] public Sprite           cableSprite;
+    [Range(0, 2)]
+    [SerializeField] public int              cableSpriteIndex;
     [SerializeField] public float            zRotation;
     [SerializeField] public Vector2          pivot;
     [SerializeField] public ShadowDirections shadowDirection;
@@ -21,4 +22,19 @@ public class CableChildAttributes : MonoBehaviour {
     [SerializeField] public Directions       endingDirection;
     [SerializeField] public Vector2          directionMultiple;
     
+    public void Initialize(bool isInitialCable, bool isRotationCable, bool isIntersectionCable, CableTypes cableType,
+                           int cableSpriteIndex, float zRotation, Vector2 pivot, ShadowDirections shadowDirection,
+                           Directions startingDirection, Directions endingDirection, Vector2 directionMultiple) {
+        this.isInitialCable      = isInitialCable;
+        this.isRotationCable     = isRotationCable;
+        this.isIntersectionCable = isIntersectionCable;
+        this.cableType           = cableType;
+        this.cableSpriteIndex    = cableSpriteIndex;
+        this.zRotation           = zRotation;
+        this.pivot               = pivot;
+        this.shadowDirection     = shadowDirection;
+        this.startingDirection   = startingDirection;
+        this.endingDirection     = endingDirection;
+        this.directionMultiple   = directionMultiple;
+    }
 }

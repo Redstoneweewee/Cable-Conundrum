@@ -9,10 +9,12 @@ using UnityEngine.UI;
 
 public class CableHandler : MonoBehaviour {
     private GridsController gridsController;
+    private LevelInitializerGlobal levelInitializerGlobal;
     private CableParentAttributes A;
 
     void Awake() {
         gridsController = FindObjectOfType<GridsController>();
+        levelInitializerGlobal = FindObjectOfType<LevelInitializerGlobal>();
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
     }
 
@@ -37,9 +39,12 @@ public class CableHandler : MonoBehaviour {
         InitializeInitialCables();
         if(A.startingDirection != A.endingDirection) { TryRenewRotationCable(A.initialCables.Length, A.startingDirection, A.endingDirection); endingCablesIndex++; }
         GenerateEndingCables(endingCablesIndex);
+        A.finishedInitialization = true;
+
     }
 
     public void ResetCableGrid() {
+        if(A.cableGrid == null) { return; }
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
             for(int j=0; j<A.cableGrid.GetLength(1); j++) { 
                 A.cableGrid[i,j].hasCable = false; 
@@ -251,11 +256,11 @@ public class CableHandler : MonoBehaviour {
                     prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[3]); break;
             }
 
-            Sprite  prefabSprite    = prefabAttributes.cableSprite;
+            Sprite  prefabSprite    = A.cablePrefabs.cableSprites[prefabAttributes.cableSpriteIndex];
             float   prefabZRotation = prefabAttributes.zRotation;
             Vector2 prefabPivot     = prefabAttributes.pivot;
-            ModifyCableValues(A.cables[0], prefabAttributes, false, 
-                              prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
+            Utilities.ModifyCableValues(A.cables[0], prefabAttributes, false, 
+                                        prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
         }
         else {
             Transform newCable;
@@ -394,11 +399,11 @@ public class CableHandler : MonoBehaviour {
         
         if(A.cables.Count > index) {
             A.cables[index].position = previousCable.position + deltaPosition;
-            Sprite     prefabSprite = prefabAttributes.cableSprite;
+            Sprite     prefabSprite = A.cablePrefabs.cableSprites[prefabAttributes.cableSpriteIndex];
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
-            ModifyCableValues(A.cables[index], prefabAttributes, false, 
-                            prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
+            Utilities.ModifyCableValues(A.cables[index], prefabAttributes, false, 
+                                        prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
             A.cables[index].gameObject.SetActive(true);
         }
         else {
@@ -417,13 +422,13 @@ public class CableHandler : MonoBehaviour {
         Vector2 placePosition = previousCable.position + deltaPosition;
         if(A.cables.Count > index) {
             CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(rotationCablePrefab);
-            Sprite     prefabSprite = prefabAttributes.cableSprite;
+            Sprite     prefabSprite = A.cablePrefabs.cableSprites[prefabAttributes.cableSpriteIndex];
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
 
             A.cables[index].position = placePosition;
-            ModifyCableValues(A.cables[index], prefabAttributes, true, 
-                              prefabZRotation, Constants.rotationCableSize, prefabPivot, prefabSprite);
+            Utilities.ModifyCableValues(A.cables[index], prefabAttributes, true, 
+                                        prefabZRotation, Constants.rotationCableSize, prefabPivot, prefabSprite);
         }
         else {
             Transform newCable = Instantiate(rotationCablePrefab, transform).transform;
@@ -544,32 +549,6 @@ public class CableHandler : MonoBehaviour {
         return ShadowDirections.In; //should never get here
     }
 
-
-    private void ModifyCableValues(Transform currentCable, CableChildAttributes newAttributes, bool isRotationCable,
-                                   float newZRotation, Vector2 newSize, Vector2 newPivot, Sprite newSprite) {
-        
-        Utilities.TryGetComponentInChildren<Image>(currentCable.gameObject).overrideSprite = newSprite;
-        currentCable.rotation = Quaternion.Euler(0, 0, newZRotation);
-        Utilities.TryGetComponentInChildren<RectTransform>(currentCable.gameObject).sizeDelta = newSize;
-        
-        RectTransform cableRectTransform = Utilities.TryGetComponentInChildren<RectTransform>(currentCable.gameObject);
-        cableRectTransform.pivot = newPivot;
-
-        CableChildAttributes currentAttributes = Utilities.TryGetComponent<CableChildAttributes>(currentCable.gameObject);
-        InheritCableAttributes(currentAttributes, newAttributes, isRotationCable);
-    }
-
-    private void InheritCableAttributes(CableChildAttributes receiver, CableChildAttributes provider, bool isRotationCable) {
-        receiver.isRotationCable   = isRotationCable;
-        receiver.cableType         = provider.cableType;
-        receiver.cableSprite       = provider.cableSprite;
-        receiver.zRotation         = provider.zRotation;
-        receiver.pivot             = provider.pivot;
-        receiver.shadowDirection   = provider.shadowDirection;
-        receiver.startingDirection = provider.startingDirection;
-        receiver.endingDirection   = provider.endingDirection;
-        receiver.directionMultiple = provider.directionMultiple;
-    }
 
     public void SetCablesOpacity(float opacity) {
         CanvasGroup canvasGroup = Utilities.TryGetComponent<CanvasGroup>(gameObject);

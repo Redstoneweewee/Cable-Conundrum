@@ -38,20 +38,12 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public Directions   cachedEndingDirection;
     [HideInInspector] public Index2D      cachedMouseGridIndex;
     //[HideInInspector] public Transform[,] cachedJointsGrid;
+    [HideInInspector] public bool         finishedInitialization = false;
 
 
     //Are edited when cables are regenerated 
-    [HideInInspector] public bool             isInitialCable;
-    [HideInInspector] public bool             isRotationCable;
-    [HideInInspector] public bool             isIntersectionCable;
-    [HideInInspector] public CableTypes       cableType;
-    [HideInInspector] public Image            cableImage;
-    [HideInInspector] public float            zRotation;
-    [HideInInspector] public Vector2          pivot;
-    [HideInInspector] public ShadowDirections shadowDirection;
     [SerializeField]  public Directions       startingDirection;
     [SerializeField]  public Directions       endingDirection;
-    [HideInInspector] public Vector2          directionMultiple;
 
     void Awake() {
         debugC = DebugC.Get();

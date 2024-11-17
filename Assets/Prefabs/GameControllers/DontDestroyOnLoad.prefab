@@ -2382,6 +2382,10 @@ MonoBehaviour:
   - {fileID: 1135255591117203442, guid: f1213eab3be31b042a32c89a49a3c9ed, type: 3}
   - {fileID: 2698305703646795225, guid: e6543f9a7117b734882cf3e1fb2acf6a, type: 3}
   - {fileID: 3325671832225026162, guid: 08920192d842760478bf6d57e3acc8fc, type: 3}
+  cableSprites:
+  - {fileID: 21300000, guid: 07913305f32024d419d1ef812599c3fd, type: 3}
+  - {fileID: 21300000, guid: 44295740b3de5a846a4f2beacebc089f, type: 3}
+  - {fileID: 21300000, guid: d109e9f15ac57d34285ea8f8bbe9a8aa, type: 3}
 --- !u!1 &8777336814462748497
 GameObject:
   m_ObjectHideFlags: 0

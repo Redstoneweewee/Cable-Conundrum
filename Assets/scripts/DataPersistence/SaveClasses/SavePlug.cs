@@ -21,7 +21,7 @@ public struct AttributesAndPosition {
     public bool             isRotationCable;
     public bool             isIntersectionCable;
     public CableTypes       cableType;
-    public Sprite           cableSprite;
+    public int              cableSpriteIndex;
     public float            zRotation;
     public Vector2          pivot;
     public ShadowDirections shadowDirection;
@@ -35,7 +35,7 @@ public struct AttributesAndPosition {
         this.isRotationCable     = attributes.isRotationCable;
         this.isIntersectionCable = attributes.isIntersectionCable;
         this.cableType           = attributes.cableType;
-        this.cableSprite         = attributes.cableSprite;
+        this.cableSpriteIndex    = attributes.cableSpriteIndex;
         this.zRotation           = attributes.zRotation;
         this.pivot               = attributes.pivot;
         this.shadowDirection     = attributes.shadowDirection;

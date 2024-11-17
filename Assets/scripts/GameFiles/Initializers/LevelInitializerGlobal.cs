@@ -13,11 +13,13 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     private GridsSkeleton gridsSkeleton;
     private bool initializationFinished = false;
+    public bool allCableHandlersInitializationFinished = false;
 
 
 
     public IEnumerator LoadData(GameData data) {
         yield return new WaitUntil(() => initializationFinished);
+        yield return new WaitUntil(() => allCableHandlersInitializationFinished);
 
         //test
         //Debug.Log($"moved plug {allLevelPlugs[0].plugAttributes[0].transform.name} to {data.testingVector3} ");
@@ -33,36 +35,48 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
             Debug.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
             Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
 
-            //RegenerateCables(plug, savePlug);
+            RegenerateCables(plug, savePlug);
         }
 
         //Once all data is loaded, we are finished with all tasks
         base.FinishedWithAllTasks();
     }
-    /*
     private void RegenerateCables(GameObject plug, SavePlug savePlug) {
-            CableParentAttributes cableParentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(plug);
-            //Excludes initial cables
-            int startingIndex = cableParentAttributes.initialCables.Length;
-            for(int i=startingIndex; i<savePlug.cables.Count; i++) {
-                AttributesAndPosition provider = savePlug.cables[i];
-                if(i < cableParentAttributes.cables.Count) {  //Then there is already an initialized cable at i
-                    cableParentAttributes.cables[i].position = savePlug.cables[i].position;
-                    CableChildAttributes receiver = Utilities.TryGetComponent<CableChildAttributes>(cableParentAttributes.cables[i].gameObject);
-                    
-                    receiver.isRotationCable   = provider.isRotationCable;
-                    receiver.cableType         = provider.cableType;
-                    receiver.cableImage        = provider.cableImage;
-                    receiver.zRotation         = provider.zRotation;
-                    receiver.pivot             = provider.pivot;
-                    receiver.shadowDirection   = provider.shadowDirection;
-                    receiver.startingDirection = provider.startingDirection;
-                    receiver.endingDirection   = provider.endingDirection;
-                    receiver.directionMultiple = provider.directionMultiple;
-                }
+        CableParentAttributes cableParentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(plug);
+        //Excludes initial cables
+        int startingIndex = cableParentAttributes.initialCables.Length;
+        for(int i=0; i<savePlug.cables.Count; i++) {
+                int receiverIndex = i+startingIndex;
+            AttributesAndPosition provider = savePlug.cables[i];
+
+            if(receiverIndex < cableParentAttributes.cables.Count) {  //Then there is already an initialized cable at i
+                Debug.Log($"changed cable at index {i}");
+                cableParentAttributes.cables[receiverIndex].position = savePlug.cables[i].position;
+                Transform receiver = cableParentAttributes.cables[receiverIndex].transform;
+                Vector2 cableSize;
+                if(provider.isRotationCable) { cableSize = Constants.rotationCableSize; }
+                else { cableSize = Constants.straightCableSize; }
+
+                Sprite  prefabSprite = cablePrefabs.cableSprites[provider.cableSpriteIndex];
+                Utilities.ModifyCableValues(receiver, provider, provider.isRotationCable, 
+                                            provider.zRotation, cableSize, provider.pivot, prefabSprite);
             }
+            else {
+                Debug.Log($"instantiated cable at index {i}");
+                GameObject newCable = Instantiate(cablePrefabs.cablePrefabs[0], cableParentAttributes.transform);
+                newCable.transform.position = savePlug.cables[i].position;
+                Vector2 cableSize;
+                if(provider.isRotationCable) { cableSize = Constants.rotationCableSize; }
+                else { cableSize = Constants.straightCableSize; }
+
+                Sprite  prefabSprite = cablePrefabs.cableSprites[provider.cableSpriteIndex];
+                Utilities.ModifyCableValues(newCable.transform, provider, provider.isRotationCable, 
+                                            provider.zRotation, cableSize, provider.pivot, prefabSprite);
+                cableParentAttributes.cables.Add(newCable.transform);
+            }
+
+        }
     }
-    */
     
     public void SaveData(GameData data) {
         GameObject plug = allLevelPlugs[0].plugAttributes[0].gameObject;
@@ -103,6 +117,18 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         DebugC = DebugC.Get();
         gridsSkeleton = FindObjectOfType<GridsSkeleton>();
         Initialize();
+    }
+
+    void Update() {
+        if(!allCableHandlersInitializationFinished) {
+            CableParentAttributes[] cableParentAttributes = FindObjectsOfType<CableParentAttributes>();
+            for(int i=0; i<cableParentAttributes.Length; i++) {
+                if(!cableParentAttributes[i].finishedInitialization) {
+                    return;
+                }
+            }
+            allCableHandlersInitializationFinished = true;
+        }
     }
 
     private void Initialize() {
