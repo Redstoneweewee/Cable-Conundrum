@@ -31,6 +31,7 @@ public class GridsController : MonoBehaviour {
     }
 
     public void RenewGrids() {
+        RenewSocketsGrid();
         RenewPlugsGrid();
         RenewAllCablesGrid();
         RenewAllObstaclesGrid();

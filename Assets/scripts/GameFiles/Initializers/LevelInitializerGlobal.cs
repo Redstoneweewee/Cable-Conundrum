@@ -4,104 +4,74 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public DebugC DebugC {set; get;}
+    public int levelIndex;
     [SerializeField] private GameObject testingPrefab;
     [HideInInspector] private CablePrefabs cablePrefabs;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
+    [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
     private GridsSkeleton gridsSkeleton;
     private bool initializationFinished = false;
-    public bool allCableHandlersInitializationFinished = false;
+    //public bool allCableHandlersInitializationFinished = false;
 
 
-
+    //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
         yield return new WaitUntil(() => initializationFinished);
-        yield return new WaitUntil(() => allCableHandlersInitializationFinished);
+        //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
+        
+        //Makes sure there's a spot to save the data at later
+        while(data.levelsSavePlugs.Count <= levelIndex) {
+            data.levelsSavePlugs.Add(new List<SavePlug>());
+        }
 
-        //test
-        //Debug.Log($"moved plug {allLevelPlugs[0].plugAttributes[0].transform.name} to {data.testingVector3} ");
-        //allLevelPlugs[0].plugAttributes[0].transform.position = data.testingVector3;
-        if(data.testingSavePlug != null) {
+        if(data.levelsSavePlugs[levelIndex] != null) {
+            List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
             //Set all the necessary data for a plug
-            GameObject plug = allLevelPlugs[0].plugAttributes[0].gameObject;
-            SavePlug savePlug = data.testingSavePlug;
-            
-            Debug.Log($"Inheriting values - receiver: {plug.name}");
-            Debug.Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
-            plug.transform.position = savePlug.plugPosition;
-            Debug.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
-            Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
+            for(int i=0; i<levelData.Count; i++) {
+                if(levelData[i] == null) { continue; }
+                SavePlug savePlug = levelData[i];
+                GameObject plug = sortedPlugs[i].gameObject;
+                Debug.Log($"Inheriting values - receiver: {plug.name}");
+                Debug.Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
+                plug.transform.position = savePlug.plugPosition;
+                Debug.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
+                Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
 
-            RegenerateCables(plug, savePlug);
+                if(savePlug.indexAndDirections == null) { continue; }
+                CableHandler cableHandler = Utilities.TryGetComponentInChildren<CableHandler>(plug);
+                cableHandler.TryGenerateCableFromList(savePlug.indexAndDirections);
+            }
         }
 
         //Once all data is loaded, we are finished with all tasks
         base.FinishedWithAllTasks();
-    }
-    private void RegenerateCables(GameObject plug, SavePlug savePlug) {
-        CableParentAttributes cableParentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(plug);
-        //Excludes initial cables
-        int startingIndex = cableParentAttributes.initialCables.Length;
-        for(int i=0; i<savePlug.cables.Count; i++) {
-                int receiverIndex = i+startingIndex;
-            AttributesAndPosition provider = savePlug.cables[i];
-
-            if(receiverIndex < cableParentAttributes.cables.Count) {  //Then there is already an initialized cable at i
-                Debug.Log($"changed cable at index {i}");
-                cableParentAttributes.cables[receiverIndex].position = savePlug.cables[i].position;
-                Transform receiver = cableParentAttributes.cables[receiverIndex].transform;
-                Vector2 cableSize;
-                if(provider.isRotationCable) { cableSize = Constants.rotationCableSize; }
-                else { cableSize = Constants.straightCableSize; }
-
-                Sprite  prefabSprite = cablePrefabs.cableSprites[provider.cableSpriteIndex];
-                Utilities.ModifyCableValues(receiver, provider, provider.isRotationCable, 
-                                            provider.zRotation, cableSize, provider.pivot, prefabSprite);
-            }
-            else {
-                Debug.Log($"instantiated cable at index {i}");
-                GameObject newCable = Instantiate(cablePrefabs.cablePrefabs[0], cableParentAttributes.transform);
-                newCable.transform.position = savePlug.cables[i].position;
-                Vector2 cableSize;
-                if(provider.isRotationCable) { cableSize = Constants.rotationCableSize; }
-                else { cableSize = Constants.straightCableSize; }
-
-                Sprite  prefabSprite = cablePrefabs.cableSprites[provider.cableSpriteIndex];
-                Utilities.ModifyCableValues(newCable.transform, provider, provider.isRotationCable, 
-                                            provider.zRotation, cableSize, provider.pivot, prefabSprite);
-                cableParentAttributes.cables.Add(newCable.transform);
-            }
-
-        }
+        //And renew level grids
+        FindObjectOfType<GridsController>().RenewGrids();
     }
     
     public void SaveData(GameData data) {
-        GameObject plug = allLevelPlugs[0].plugAttributes[0].gameObject;
-        Vector3 plugPosition = plug.transform.position;
-        bool isPluggedIn = allLevelPlugs[0].plugAttributes[0].isPluggedIn;
-        Debug.Log("Instance id: "+plug.GetInstanceID());
 
-        List<AttributesAndPosition> cablesAndPositions = new List<AttributesAndPosition>();
-        
-        CableChildAttributes[] plugCables = Utilities.TryGetComponentsInChildren<CableChildAttributes>(plug);
-        //Excludes initial cables
-        int startingIndex = allLevelPlugs[0].plugAttributes[0].cableParentAttributes.initialCables.Length;
+        data.levelsSavePlugs[levelIndex] = new List<SavePlug>();
+        foreach(PlugAttributes plugAttribute in sortedPlugs) {
+            GameObject plug = plugAttribute.gameObject;
+            Vector3 plugPosition = plug.transform.position;
+            bool isPluggedIn = plugAttribute.isPluggedIn;
 
-        for(int i=startingIndex; i<plugCables.Length; i++) {
-            foreach(GameObject prefab in cablePrefabs.cablePrefabs) {
-                CableChildAttributes prefabCable = Utilities.TryGetComponent<CableChildAttributes>(prefab);
-                if(plugCables[i].cableType == prefabCable.cableType) {
-                    cablesAndPositions.Add(new AttributesAndPosition(prefabCable, plugCables[i].transform.position));
-                    break;
-                }
+            List<IndexAndDirection> indexAndDirections = new List<IndexAndDirection>();
+            
+            int startingIndex = plugAttribute.cableParentAttributes.initialCables.Length;
+            CableParentAttributes parentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(plug);
+            for(int i=startingIndex; i<parentAttributes.cables.Count; i++) {
+                CableChildAttributes childAttributes = Utilities.TryGetComponentInChildren<CableChildAttributes>(parentAttributes.cables[i].gameObject);
+                indexAndDirections.Add(new IndexAndDirection(i-1, childAttributes.endingDirection));
             }
+            data.levelsSavePlugs[levelIndex].Add(new SavePlug(plugPosition, isPluggedIn, indexAndDirections));
         }
-        
-
-        data.testingSavePlug = new SavePlug(plugPosition, isPluggedIn, cablesAndPositions);
     }
 
 
@@ -109,6 +79,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
 
     new void Awake() {
         base.Awake();
+        levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
         cablePrefabs = FindObjectOfType<CablePrefabs>();
     }
 
@@ -120,6 +91,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     }
 
     void Update() {
+        /*
         if(!allCableHandlersInitializationFinished) {
             CableParentAttributes[] cableParentAttributes = FindObjectsOfType<CableParentAttributes>();
             for(int i=0; i<cableParentAttributes.Length; i++) {
@@ -129,6 +101,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
             }
             allCableHandlersInitializationFinished = true;
         }
+        */
     }
 
     private void Initialize() {
@@ -144,6 +117,11 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         SortAllLevelPlugs();
         RenewPlugSiblingIndices();
         MoveAllPlugsToInitialPositions();
+    }
+
+    public void AddPlug() {
+        RenewAllLevelPlugsList();
+        SortAllLevelPlugs();
     }
 
 
@@ -229,6 +207,13 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                 PlugAttributes temp = levelPlug.plugAttributes[i];
                 levelPlug.plugAttributes[i] = levelPlug.plugAttributes[largestPlugIndex];
                 levelPlug.plugAttributes[largestPlugIndex] = temp;
+            }
+        }
+        //Adds all the sorted plugs into one list as well
+        sortedPlugs = new List<PlugAttributes>();
+        foreach(LevelPlugs levelPlug in allLevelPlugs) {
+            foreach(PlugAttributes plugAttribute in levelPlug.plugAttributes) {
+                sortedPlugs.Add(plugAttribute);
             }
         }
     }

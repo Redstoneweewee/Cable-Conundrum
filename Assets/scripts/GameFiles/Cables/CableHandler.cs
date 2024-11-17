@@ -31,7 +31,12 @@ public class CableHandler : MonoBehaviour {
             A.cachedStartingDirection = A.startingDirection;
             A.cachedEndingDirection = A.endingDirection;
         }
-        
+    }
+    void LateUpdate() {
+        if(A.renewSiblingCableIndices) {
+            RenewRotationAndIntersectionCables();
+            A.renewSiblingCableIndices = false;
+        }
     }
 
     private void Initialize() {
@@ -40,7 +45,6 @@ public class CableHandler : MonoBehaviour {
         if(A.startingDirection != A.endingDirection) { TryRenewRotationCable(A.initialCables.Length, A.startingDirection, A.endingDirection); endingCablesIndex++; }
         GenerateEndingCables(endingCablesIndex);
         A.finishedInitialization = true;
-
     }
 
     public void ResetCableGrid() {
@@ -77,7 +81,7 @@ public class CableHandler : MonoBehaviour {
             }
             text += " |\n";
         }
-        A.debugC.Log("cableGrid: \n"+text);
+        Debug.Log("cableGrid: \n"+text);
 
     }
     public void InitializeCachedMouseGridIndex() {
@@ -313,6 +317,19 @@ public class CableHandler : MonoBehaviour {
         }
     }
 
+
+    //Used in loading data stored in hardware
+    public void TryGenerateCableFromList(List<IndexAndDirection> indexAndDirections) {
+        A.debugC.Log("Generating Cables from List:");
+        for(int i=0; i<indexAndDirections.Count; i++){
+            A.debugC.Log($"Generating cable at index {indexAndDirections[i].previousIndex+1}, direction: {indexAndDirections[i].endingDirection}");
+            TryGenerateCable(indexAndDirections[i].previousIndex, indexAndDirections[i].endingDirection);
+        }
+        InitializeCableGrid();
+        gridsController.RenewAllCablesGrid();
+        A.intersectionController.TestForCableIntersection();
+    }
+
     //Generates a straight cable (and a rotation cable if necessary) based on the grid attribute of the previous joint that the player was hovering over.
     //Uses the previous cable as a reference.
     private void TryGenerateCable(int previousIndex, Directions newDirection) {
@@ -337,7 +354,7 @@ public class CableHandler : MonoBehaviour {
             A.debugC.Log("renewed rotation cable, direction: "+newDirection);
         }
         GenerateEndingCables(previousIndex+2);
-        RenewRotationAndIntersectionCables();
+        A.renewSiblingCableIndices = true;
     }
 
 
@@ -381,6 +398,7 @@ public class CableHandler : MonoBehaviour {
             if(A.cables[i].gameObject.activeSelf) { A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[i].gameObject).endingDirection; break; }
         }
         if(A.plugAttributes.isObstacle) { ModifyCableColorsToObstacle(); }
+        A.renewSiblingCableIndices = true;
     }
 
 

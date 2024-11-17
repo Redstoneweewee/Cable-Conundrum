@@ -135,32 +135,6 @@ public class Utilities : MonoBehaviour {
         InheritCableAttributes(currentAttributes, newAttributes, isRotationCable);
     }
 
-    public static void ModifyCableValues(Transform currentCable, AttributesAndPosition newAttributes, bool isRotationCable,
-                                   float newZRotation, Vector2 newSize, Vector2 newPivot, Sprite newSprite) {
-        
-        TryGetComponentInChildren<Image>(currentCable.gameObject).overrideSprite = newSprite;
-        currentCable.rotation = Quaternion.Euler(0, 0, newZRotation);
-        TryGetComponentInChildren<RectTransform>(currentCable.gameObject).sizeDelta = newSize;
-        
-        RectTransform cableRectTransform = TryGetComponentInChildren<RectTransform>(currentCable.gameObject);
-        cableRectTransform.pivot = newPivot;
-
-        CableChildAttributes currentAttributes = TryGetComponent<CableChildAttributes>(currentCable.gameObject);
-        InheritCableAttributes(currentAttributes, newAttributes, isRotationCable);
-    }
-
-
-    public static void InheritCableAttributes(CableChildAttributes receiver, AttributesAndPosition provider, bool isRotationCable) {
-        receiver.isRotationCable   = isRotationCable;
-        receiver.cableType         = provider.cableType;
-        receiver.cableSpriteIndex  = provider.cableSpriteIndex;
-        receiver.zRotation         = provider.zRotation;
-        receiver.pivot             = provider.pivot;
-        receiver.shadowDirection   = provider.shadowDirection;
-        receiver.startingDirection = provider.startingDirection;
-        receiver.endingDirection   = provider.endingDirection;
-        receiver.directionMultiple = provider.directionMultiple;
-    }
     public static void InheritCableAttributes(CableChildAttributes receiver, CableChildAttributes provider, bool isRotationCable) {
         receiver.isRotationCable   = isRotationCable;
         receiver.cableType         = provider.cableType;

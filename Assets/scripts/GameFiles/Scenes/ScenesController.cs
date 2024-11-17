@@ -30,7 +30,7 @@ public class ScenesController : MonoBehaviour {
                 buildIndex = 1;
                 break;
             case LoadSceneTypes.Level:
-                buildIndex = levelIndex + 1;
+                buildIndex = levelIndex + Constants.firstLevelBuidIndex - 1;
                 break;
             case LoadSceneTypes.NextLevel:
                 buildIndex = SceneManager.GetActiveScene().buildIndex + 1;
@@ -64,6 +64,9 @@ public class ScenesController : MonoBehaviour {
         //Wait until the scene is finished loading to continue.
         yield return new WaitUntil(() => D.sceneFinishedLoading);
         
+        //Load the game
+        DataPersistenceManager.instance.LoadGame();
+        
         //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
         if(FindObjectOfType<InitializerBase>()) {
             yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
@@ -92,13 +95,16 @@ public class ScenesController : MonoBehaviour {
     }
     public void OnPressEnterNextLevelButton() {
         TryLoadScene(LoadSceneTypes.NextLevel);
+        DataPersistenceManager.instance.SaveGame();
     }
     public void OnPressEnterPreviousLevelButton() {
         TryLoadScene(LoadSceneTypes.PreviousLevel);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void OnPressEnterLevelSelectorButton() {
         TryLoadScene(LoadSceneTypes.LevelSelector);
+        DataPersistenceManager.instance.SaveGame();
     }
     public void OnPressEnterMenuButton() {
         TryLoadScene(LoadSceneTypes.Menu);

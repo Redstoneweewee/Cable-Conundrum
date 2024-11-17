@@ -39,6 +39,7 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public Index2D      cachedMouseGridIndex;
     //[HideInInspector] public Transform[,] cachedJointsGrid;
     [HideInInspector] public bool         finishedInitialization = false;
+    [HideInInspector] public bool         renewSiblingCableIndices = false;
 
 
     //Are edited when cables are regenerated 

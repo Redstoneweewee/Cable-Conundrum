@@ -6,6 +6,9 @@ using UnityEngine;
 public enum InteractableType { Plug, Cable, PowerSwitch };
 
 public class Constants {
+    public static int firstLevelBuidIndex = 2;
+    public static int numberOfLevels = 10;
+
     [Range(0.01f, 1)] public static float plugInterpolation = 0.2f;
     public static int plugLockingDistance = 28;
     public static int standardSpriteSize = 140;

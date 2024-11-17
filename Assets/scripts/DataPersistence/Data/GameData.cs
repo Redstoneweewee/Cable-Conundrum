@@ -6,11 +6,16 @@ using UnityEngine;
 public class GameData {
     public int testingInt;
 
-    // TODO - store plugs' position, cablesAttributes (all of them), and isPluggedIn
-    public SavePlug testingSavePlug;
+    /*
+    * levelSavePlugs[i] = specific level, List<SavePlug>
+    * levelSavePlugs[i][j] = specific plug in the level SavePlug
+    */
+    public List<List<SavePlug>> levelsSavePlugs;
 
-    //Defalut values when the game first starts
+    //Default values when the game first starts
     public GameData() {
         this.testingInt = 0;
+        //levelsSavePlugs = new List<List<SavePlug>>(new List<SavePlug>[Constants.numberOfLevels]);
+        levelsSavePlugs = new List<List<SavePlug>>();
     }
 }
