@@ -16,6 +16,7 @@ public class SavePlug {
     }
 }
 
+
 public struct IndexAndDirection {
     public int previousIndex;
     public Directions endingDirection;

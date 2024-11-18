@@ -114,5 +114,6 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
             Utilities.TryGetComponent<ObstacleAttributes>(table).temporarilyModifiable = D.controlsData.obstaclesModifiable;
             if(D.controlsData.obstaclesModifiable) { Utilities.TryGetComponent<ObstacleHandler>(table).SetOpacity(0.8f); }
         }
+        D.levelInitializerGlobal.AddPlugs();
     }
 }

@@ -16,18 +16,16 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
     private GridsSkeleton gridsSkeleton;
     private bool initializationFinished = false;
-    //public bool allCableHandlersInitializationFinished = false;
+    public bool allCableHandlersInitializationFinished = false;
 
 
+
+
+    
     //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
         yield return new WaitUntil(() => initializationFinished);
-        //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
-        
-        //Makes sure there's a spot to save the data at later
-        while(data.levelsSavePlugs.Count <= levelIndex) {
-            data.levelsSavePlugs.Add(new List<SavePlug>());
-        }
+        yield return new WaitUntil(() => allCableHandlersInitializationFinished);
 
         if(data.levelsSavePlugs[levelIndex] != null) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
@@ -94,7 +92,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     }
 
     void Update() {
-        /*
+        
         if(!allCableHandlersInitializationFinished) {
             CableParentAttributes[] cableParentAttributes = FindObjectsOfType<CableParentAttributes>();
             for(int i=0; i<cableParentAttributes.Length; i++) {
@@ -104,7 +102,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
             }
             allCableHandlersInitializationFinished = true;
         }
-        */
+        
     }
 
     private void Initialize() {
@@ -122,7 +120,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         MoveAllPlugsToInitialPositions();
     }
 
-    public void AddPlug() {
+    public void AddPlugs() {
         RenewAllLevelPlugsList();
         SortAllLevelPlugs();
     }

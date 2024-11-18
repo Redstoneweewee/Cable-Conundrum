@@ -41,11 +41,21 @@ public class DataPersistenceManager : MonoBehaviour {
         //Load any saved data from a file using the data handler
         this.gameData = dataHandler.Load();
 
+    
         //If no data can be loaded, initialize to a new game
         if(this.gameData == null) {
             Debug.Log("No data was found. Initializing data to defaults.");
             NewGame();
         }
+        
+        //Makes sure there's a spot to save the data at later
+        while(this.gameData.levelsSavePlugs.Count <= Constants.numberOfLevels) {
+            this.gameData.levelsSavePlugs.Add(new List<SavePlug>());
+        }
+        while(this.gameData.levelCompletion.Count <= Constants.numberOfLevels) {
+            this.gameData.levelCompletion.Add(false);
+        }
+        
         //Push the loaded data to all other scripts that need it
         foreach(IDataPersistence dataPersistenceObject in dataPersistenceObjects) {
             StartCoroutine(dataPersistenceObject.LoadData(gameData));
