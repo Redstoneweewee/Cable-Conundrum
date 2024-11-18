@@ -27,7 +27,8 @@ public class CableParentAttributes : MonoBehaviour {
     * [ [16]OutUpLeft, [17]OutUpRight, [18]OutDownLeft, [19]OutDownRight, [20]OutLeftUp, [21]OutLeftDown, [22]OutRightUp, [23]OutRightDown ]
     * Link: https://docs.google.com/document/d/1-T7I-lNiF93s7gjlgOsbJBzwmPMfbWuQ_Jdx-Hd63DM/edit?usp=sharing
     */
-    [SerializeField]  public GameObject[]    initialCables;
+    
+    [SerializeField]  public List<GameObject> initialCables = new List<GameObject>();
     [HideInInspector] public Vector3         cachedPosition;
     [HideInInspector] public List<Transform> cables = new List<Transform>();
     //doesn't get used/generated until the player plugs the plug into a socket

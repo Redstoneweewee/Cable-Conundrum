@@ -16,6 +16,11 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
         InitializeButtons();
     }
 
+    // |----------------------------------------------------------------------------------|
+    // |----------------------------------------------------------------------------------|
+    // |----- Save and LoadData does NOT work with PlugSelector dragged in plugs!!!! -----|
+    // |----------------------------------------------------------------------------------|
+    // |----------------------------------------------------------------------------------|
 
     private void InitializeButtons() {
         Vector3 buttonPosition = new Vector3(D.buttonSize.x/2+D.startingOffset.x, D.buttonSize.y/2+D.startingOffset.y, 0);
@@ -114,6 +119,6 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
             Utilities.TryGetComponent<ObstacleAttributes>(table).temporarilyModifiable = D.controlsData.obstaclesModifiable;
             if(D.controlsData.obstaclesModifiable) { Utilities.TryGetComponent<ObstacleHandler>(table).SetOpacity(0.8f); }
         }
-        D.levelInitializerGlobal.AddPlugs();
+        //D.levelInitializerGlobal.AddPlugs();
     }
 }

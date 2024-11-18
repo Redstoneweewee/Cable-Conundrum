@@ -123,6 +123,17 @@ public class Utilities : MonoBehaviour {
 
     
 
+    public static void SetCableOpacity(GameObject cableParent, float opacity) {
+        CanvasGroup canvasGroup = TryGetComponent<CanvasGroup>(cableParent);
+        canvasGroup.alpha = opacity;
+    }
+    public static void ModifyCableColorsToObstacle(GameObject cable) {
+        Image cableImage = TryGetComponentInChildren<Image>(cable);
+        cableImage.color = new Color(Constants.obstacleCableColor.r,
+                                        Constants.obstacleCableColor.g,
+                                        Constants.obstacleCableColor.b,
+                                        cableImage.color.a);
+    }
 
     public static void ModifyCableValues(Transform currentCable, CableChildAttributes newAttributes, bool isRotationCable,
                                    float newZRotation, Vector2 newSize, Vector2 newPivot, Sprite newSprite) {
@@ -149,6 +160,118 @@ public class Utilities : MonoBehaviour {
         receiver.endingDirection   = provider.endingDirection;
         receiver.directionMultiple = provider.directionMultiple;
     }
+
+    
+    
+
+    public static ShadowDirections GetShadowDirectionForStraightCables(ShadowDirections previousShadowDirection, Directions startingDirection, bool isRotationCable) {
+        if(!isRotationCable) {
+            return previousShadowDirection;
+        }
+        else {
+            if(previousShadowDirection == ShadowDirections.In) {
+                if     (startingDirection == Directions.Up   ) { return ShadowDirections.Down;  }
+                else if(startingDirection == Directions.Down ) { return ShadowDirections.Up;    }
+                else if(startingDirection == Directions.Left ) { return ShadowDirections.Right; }
+                else if(startingDirection == Directions.Right) { return ShadowDirections.Left;  }
+            }
+            else {
+                return (ShadowDirections)startingDirection;
+            }
+        }
+        Debug.LogError("GetShadowDirectionForStraightCables function did not work correctly. None of the conditions were met.");
+        return ShadowDirections.Down; //should never get here
+    }
+
+    //does not check for rotation cables (because 2 rotation cables will never be adjacent)
+    public static ShadowDirections GetShadowDirectionForRotationCables(ShadowDirections previousShadowDirection, Directions endingDirection) {
+        if(previousShadowDirection == ShadowDirections.Up) {
+            if     (endingDirection == Directions.Up  ) { return ShadowDirections.In; }
+            else if(endingDirection == Directions.Down) { return ShadowDirections.Out; }
+        }
+        else if(previousShadowDirection == ShadowDirections.Down) {
+            if     (endingDirection == Directions.Up  ) { return ShadowDirections.Out; }
+            else if(endingDirection == Directions.Down) { return ShadowDirections.In; }
+        }
+        else if(previousShadowDirection == ShadowDirections.Left) {
+            if     (endingDirection == Directions.Left ) { return ShadowDirections.In; }
+            else if(endingDirection == Directions.Right) { return ShadowDirections.Out; }
+        }
+        else if(previousShadowDirection == ShadowDirections.Right) {
+            if     (endingDirection == Directions.Left ) { return ShadowDirections.Out; }
+            else if(endingDirection == Directions.Right) { return ShadowDirections.In; }
+        }
+        Debug.LogError("GetShadowDirectionForRotationCables function did not work correctly. None of the conditions were met."+
+                       "\npreviousShadowDirection: "+previousShadowDirection+
+                       "\nendingDirection: "+endingDirection);
+        return ShadowDirections.In; //should never get here
+    }
+
+    public static GameObject GetStraightCablePrefab(CablePrefabs cablePrefabs, ShadowDirections shadowDirection, Directions startDirection) {
+        if(shadowDirection == ShadowDirections.Up) {
+            if(startDirection == Directions.Left)       { return cablePrefabs.cablePrefabs[0]; }
+            else if(startDirection == Directions.Right) { return cablePrefabs.cablePrefabs[1]; }
+        }
+        else if(shadowDirection == ShadowDirections.Down) {
+            if(startDirection == Directions.Left)       { return cablePrefabs.cablePrefabs[2]; }
+            else if(startDirection == Directions.Right) { return cablePrefabs.cablePrefabs[3]; }
+        }
+        else if(shadowDirection == ShadowDirections.Left) {
+            if(startDirection == Directions.Up)        { return cablePrefabs.cablePrefabs[4]; }
+            else if(startDirection == Directions.Down) { return cablePrefabs.cablePrefabs[5]; }
+        }
+        else if(shadowDirection == ShadowDirections.Right) {
+            if(startDirection == Directions.Up)        { return cablePrefabs.cablePrefabs[6]; }
+            else if(startDirection == Directions.Down) { return cablePrefabs.cablePrefabs[7]; }
+        }
+        Debug.LogError("GetStraightCablePrefab function did not work correctly. None of the conditions were met.");
+        return cablePrefabs.cablePrefabs[0]; //should never get here
+    }
+    
+    public static GameObject GetRotationCablePrefab(CablePrefabs cablePrefabs, ShadowDirections shadowDirection, Directions startDirection, Directions endDirection) {
+        if(shadowDirection == ShadowDirections.In) {
+            if(startDirection == Directions.Up) {
+                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[8]; }
+                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[9]; }
+            }
+            else if(startDirection == Directions.Down) { 
+                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[10]; }
+                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[11]; }
+            }
+            else if(startDirection == Directions.Left) { 
+                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[12]; }
+                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[13]; }
+            }
+            else if(startDirection == Directions.Right) { 
+                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[14]; }
+                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[15]; }
+            }
+        }
+        else if(shadowDirection == ShadowDirections.Out) {
+            if(startDirection == Directions.Up) {
+                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[16]; }
+                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[17]; }
+            }
+            else if(startDirection == Directions.Down) { 
+                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[18]; }
+                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[19]; }
+            }
+            else if(startDirection == Directions.Left) { 
+                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[20]; }
+                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[21]; }
+            }
+            else if(startDirection == Directions.Right) { 
+                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[22]; }
+                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[23]; }
+            }
+        }
+        Debug.LogError("GetRotationCablePrefab function did not work correctly. None of the conditions were met."+
+                       "\nstartDirection: "+startDirection+
+                       "\nendingDirection: "+endDirection);
+        return cablePrefabs.cablePrefabs[8]; //should never get here
+    }
+
+
 
     public static float Orientation(Vector2 A, Vector2 B, Vector2 C) {
         return (B.y-A.y) * (C.x-B.x) - (B.x-A.x) * (C.y-B.y);

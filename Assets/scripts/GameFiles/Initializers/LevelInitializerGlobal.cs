@@ -16,16 +16,20 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
     private GridsSkeleton gridsSkeleton;
     private bool initializationFinished = false;
-    public bool allCableHandlersInitializationFinished = false;
+    //public bool allCableHandlersInitializationFinished = false;
 
 
 
-
+    // |----------------------------------------------------------------------------------|
+    // |----------------------------------------------------------------------------------|
+    // |----- Save and LoadData does NOT work with PlugSelector dragged in plugs!!!! -----|
+    // |----------------------------------------------------------------------------------|
+    // |----------------------------------------------------------------------------------|
     
     //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
         yield return new WaitUntil(() => initializationFinished);
-        yield return new WaitUntil(() => allCableHandlersInitializationFinished);
+        //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
 
         if(data.levelsSavePlugs[levelIndex] != null) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
@@ -63,7 +67,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
 
             List<IndexAndDirection> indexAndDirections = new List<IndexAndDirection>();
             
-            int startingIndex = plugAttribute.cableParentAttributes.initialCables.Length;
+            int startingIndex = plugAttribute.cableParentAttributes.initialCables.Count;
             CableParentAttributes parentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(plug);
             for(int i=startingIndex; i<parentAttributes.cables.Count; i++) {
                 CableChildAttributes childAttributes = Utilities.TryGetComponentInChildren<CableChildAttributes>(parentAttributes.cables[i].gameObject);
@@ -75,6 +79,15 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         }
     }
 
+
+    private IEnumerator TestForLoadData() {
+        yield return new WaitForSeconds(1.5f);
+        if(!finishedWithAllTasks) {
+            Debug.LogWarning("Level failed to load. trying again.");
+            DataPersistenceManager.instance.LoadGame();
+            StartCoroutine(TestForLoadData());
+        }
+    }
 
 
 
@@ -92,7 +105,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     }
 
     void Update() {
-        
+        /*
         if(!allCableHandlersInitializationFinished) {
             CableParentAttributes[] cableParentAttributes = FindObjectsOfType<CableParentAttributes>();
             for(int i=0; i<cableParentAttributes.Length; i++) {
@@ -102,7 +115,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
             }
             allCableHandlersInitializationFinished = true;
         }
-        
+        */
     }
 
     private void Initialize() {
@@ -111,6 +124,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         StartCoroutine(base.SetMenuButton(false));
         StartCoroutine(base.SetLevelSelectorButton(true));
         initializationFinished = true;
+        StartCoroutine(TestForLoadData());
     }
 
     public void ResetPlugs() {

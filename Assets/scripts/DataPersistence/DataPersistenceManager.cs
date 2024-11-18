@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+// |----------------------------------------------------------------------------------|
+// |----------------------------------------------------------------------------------|
+// |----- Save and LoadData does NOT work with PlugSelector dragged in plugs!!!! -----|
+// |----------------------------------------------------------------------------------|
+// |----------------------------------------------------------------------------------|
 public class DataPersistenceManager : MonoBehaviour {
     [Header("File Storage Config")]
     [SerializeField] private string fileName;

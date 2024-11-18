@@ -13,7 +13,6 @@ public class ControlsController : MonoBehaviour {
     
     void Awake() {
         D = FindObjectOfType<ControlsData>();
-        adminToggles = FindObjectOfType<AdminToggles>();
     }
     void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
@@ -31,6 +30,7 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void ChangeEditorMode() {
+        adminToggles = FindObjectOfType<AdminToggles>();
         if(!adminToggles.cachedEditorMode && adminToggles.editorMode) {
             D.obstaclesAction.action.Enable();
             D.plugSelectorAction.action.Enable();
