@@ -14,14 +14,16 @@ public class DataPersistenceManager : MonoBehaviour {
     public static DataPersistenceManager instance { get; private set; }
 
     void Awake() {
-        if(instance != null) {
-            Debug.LogError("Found more than one Data Persistence Manager in the scene.");
-            Destroy(this);
+        if(instance != null && instance != this) {
+            Debug.LogWarning("Found more than one Data Persistence Manager in the scene.");
+            Destroy(this.gameObject);
         }
-        instance = this;
+        else {
+            instance = this;
 
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        LoadGame();
+            this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+            LoadGame();
+        }
     }
 
     private void OnApplicationQuit() {

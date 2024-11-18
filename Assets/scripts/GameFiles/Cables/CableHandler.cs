@@ -70,7 +70,7 @@ public class CableHandler : MonoBehaviour {
             if(gridIndex.x >= A.cableGrid.GetLength(0) || gridIndex.x < 0 || gridIndex.y >= A.cableGrid.GetLength(1) || gridIndex.y < 0) { continue; }
             A.cableGrid[gridIndex.x,gridIndex.y].ChangeAttributes(true, i);
         }
-
+        /*
         string text = "";
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
             text += "| ";
@@ -81,7 +81,8 @@ public class CableHandler : MonoBehaviour {
             }
             text += " |\n";
         }
-        Debug.Log("cableGrid: \n"+text);
+        A.debugC.Log("cableGrid: \n"+text);
+        */
 
     }
     public void InitializeCachedMouseGridIndex() {

@@ -66,7 +66,7 @@ public class ScenesController : MonoBehaviour {
         
         //Load the game
         DataPersistenceManager.instance.LoadGame();
-        
+
         //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
         if(FindObjectOfType<InitializerBase>()) {
             yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
@@ -80,6 +80,7 @@ public class ScenesController : MonoBehaviour {
         //Set animationIsFinished to true after the animation is finished.
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;
+        Debug.Log("end");
     }
 
 

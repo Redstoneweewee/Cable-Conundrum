@@ -56,7 +56,8 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     
     public void SaveData(GameData data) {
 
-        data.levelsSavePlugs[levelIndex] = new List<SavePlug>();
+        data.levelsSavePlugs[levelIndex].Clear();
+        DebugC.Get().LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
         foreach(PlugAttributes plugAttribute in sortedPlugs) {
             GameObject plug = plugAttribute.gameObject;
             Vector3 plugPosition = plug.transform.position;
@@ -68,7 +69,9 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
             CableParentAttributes parentAttributes = Utilities.TryGetComponentInChildren<CableParentAttributes>(plug);
             for(int i=startingIndex; i<parentAttributes.cables.Count; i++) {
                 CableChildAttributes childAttributes = Utilities.TryGetComponentInChildren<CableChildAttributes>(parentAttributes.cables[i].gameObject);
-                indexAndDirections.Add(new IndexAndDirection(i-1, childAttributes.endingDirection));
+                if(parentAttributes.cables[i].gameObject.activeSelf) { 
+                    indexAndDirections.Add(new IndexAndDirection(i-1, childAttributes.endingDirection)); 
+                }
             }
             data.levelsSavePlugs[levelIndex].Add(new SavePlug(plugPosition, isPluggedIn, indexAndDirections));
         }
