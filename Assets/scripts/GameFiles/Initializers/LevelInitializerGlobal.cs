@@ -11,8 +11,6 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public DebugC DebugC {set; get;}
     public int levelIndex;
     private bool cachedHasWon = false;
-    [SerializeField] private GameObject testingPrefab;
-    [HideInInspector] private CablePrefabs cablePrefabs;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
     private GridsSkeleton gridsSkeleton;
@@ -101,7 +99,6 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     new void Awake() {
         base.Awake();
         levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
-        cablePrefabs = FindObjectOfType<CablePrefabs>();
     }
 
     new void Start() {

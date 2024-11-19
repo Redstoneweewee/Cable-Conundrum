@@ -157,7 +157,6 @@ MonoBehaviour:
   settingsGlobal: {fileID: 0}
   buttonAttributes: []
   levelIndex: 0
-  testingPrefab: {fileID: 0}
 --- !u!1 &5747367134399350812
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +168,7 @@ GameObject:
   - component: {fileID: 4516704308025847463}
   m_Layer: 0
   m_Name: LevelControllersAndInitializers
-  m_TagString: Untagged
+  m_TagString: DontDisable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
