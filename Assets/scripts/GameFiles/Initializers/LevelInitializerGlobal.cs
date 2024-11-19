@@ -288,7 +288,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                     //goes down
                     foreach(PlugAttributes plugAttributes in levelPlug.plugAttributes) {
                         if(plugAttributes.isPluggedIn) { continue; }
-                        Vector3 newPosition = new Vector3(skeletonGrid[index.x, index.y].x,
+                        Vector3 newPosition = new Vector3(skeletonGrid[index.x, index.y].x - Constants.jointDistance*Constants.startingPlugOffsetRightSideAdd,
                                                           skeletonGrid[index.x, index.y].y - Constants.jointDistance*((plugAttributes.plugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
