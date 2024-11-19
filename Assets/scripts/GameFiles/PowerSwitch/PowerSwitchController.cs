@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PowerSwitchController : MonoBehaviour, IPointerClickHandler {
+public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataPersistence {
     private PowerSwitchData D;
+
+    public IEnumerator LoadData(GameData data) {
+        yield return null;
+        if(data.levelCompletion[D.levelInitializerGlobal.levelIndex]) {
+            Win();
+        }
+    }
+
+    public void SaveData(GameData data) {}
+
 
     void Awake() {
         D = Utilities.TryGetComponent<PowerSwitchData>(gameObject);

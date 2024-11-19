@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+[Serializable]
 public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public CableHandler cableHandler;
 
@@ -28,7 +29,7 @@ public class CableParentAttributes : MonoBehaviour {
     * Link: https://docs.google.com/document/d/1-T7I-lNiF93s7gjlgOsbJBzwmPMfbWuQ_Jdx-Hd63DM/edit?usp=sharing
     */
     
-    [SerializeField]  public List<GameObject> initialCables = new List<GameObject>();
+    [SerializeField]  public List<GameObject> initialCables;// = new List<GameObject>();
     [HideInInspector] public Vector3         cachedPosition;
     [HideInInspector] public List<Transform> cables = new List<Transform>();
     //doesn't get used/generated until the player plugs the plug into a socket

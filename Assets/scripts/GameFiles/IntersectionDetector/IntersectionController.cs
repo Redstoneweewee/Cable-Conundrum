@@ -99,7 +99,7 @@ public class IntersectionController : MonoBehaviour {
                                                   cableImage1.color.a);
                 }
                 
-                if(Utilities.TryGetComponent<CableChildAttributes>(cableParentAttributes.cables[index1].gameObject).isInitialCable) { continue; }
+                //if(Utilities.TryGetComponent<CableChildAttributes>(cableParentAttributes.cables[index1].gameObject).isInitialCable) { continue; }
                 int index2 = cableParentAttributes.cableGrid[i,j].numbers[0]-1;
                 if(index2 < 0) { continue; }
                 Image cableImage2 = Utilities.TryGetComponentInChildren<Image>(cableParentAttributes.cables[index2].gameObject);

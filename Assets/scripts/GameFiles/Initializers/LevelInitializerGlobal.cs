@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public DebugC DebugC {set; get;}
     public int levelIndex;
+    private bool cachedHasWon = false;
     [SerializeField] private GameObject testingPrefab;
     [HideInInspector] private CablePrefabs cablePrefabs;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
@@ -30,12 +31,15 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public IEnumerator LoadData(GameData data) {
         yield return new WaitUntil(() => initializationFinished);
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
+        cachedHasWon = data.levelCompletion[levelIndex];
 
         if(data.levelsSavePlugs[levelIndex] != null) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
             //Set all the necessary data for a plug
             for(int i=0; i<levelData.Count; i++) {
                 if(levelData[i] == null) { continue; }
+                if(sortedPlugs.Count <= i) { continue; }
+
                 SavePlug savePlug = levelData[i];
                 GameObject plug = sortedPlugs[i].gameObject;
                 Debug.Log($"Inheriting values - receiver: {plug.name}");
@@ -57,6 +61,9 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     }
     
     public void SaveData(GameData data) {
+        //If the level has already been completed, do not save any new changes
+        if(cachedHasWon) { return; }
+        cachedHasWon = data.levelCompletion[levelIndex];
 
         data.levelsSavePlugs[levelIndex].Clear();
         DebugC.Get().LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);

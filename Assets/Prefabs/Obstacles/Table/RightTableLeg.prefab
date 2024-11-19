@@ -61,6 +61,8 @@ MonoBehaviour:
   obstacleHandler: {fileID: 0}
   intersectionController: {fileID: 0}
   temporarilyModifiable: 0
+  gridsSkeleton: {fileID: 0}
+  gridsController: {fileID: 0}
   obstacleType: 2
   isDragging: 0
   rectTransform: {fileID: 0}

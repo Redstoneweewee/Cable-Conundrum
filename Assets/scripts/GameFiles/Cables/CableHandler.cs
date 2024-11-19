@@ -45,6 +45,11 @@ public class CableHandler : MonoBehaviour {
         if(A.startingDirection != A.endingDirection) { TryRenewRotationCable(A.initialCables.Count, A.startingDirection, A.endingDirection); endingCablesIndex++; }
         GenerateEndingCables(endingCablesIndex);
         A.finishedInitialization = true;
+        if(A.plugAttributes.isObstacle) {
+            InitializeCableGrid();
+            gridsController.RenewAllCablesGrid();
+            A.intersectionController.TestForCableIntersection();
+        }
     }
 
     public void ResetCableGrid() {
@@ -394,13 +399,14 @@ public class CableHandler : MonoBehaviour {
                 }
                 break;
         }
-        if((!A.plugAttributes.isObstacle && A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && !A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { Utilities.SetCableOpacity(gameObject, 1f); }
-        else if((!A.plugAttributes.isObstacle && !A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && A.plugAttributes.obstacleAttributes.temporarilyModifiable)) {  Utilities.SetCableOpacity(gameObject, Constants.cableOpacity); }
+        if((!A.plugAttributes.isObstacle && A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && !A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { Utilities.SetCablesOpacity(gameObject, 1f); }
+        else if((!A.plugAttributes.isObstacle && !A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { Utilities.SetCablesOpacity(gameObject, Constants.cableOpacity); }
         for(int i=A.cables.Count-1; i>=0; i--) {
             if(A.cables[i].gameObject.activeSelf) { A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[i].gameObject).endingDirection; break; }
         }
         if(A.plugAttributes.isObstacle) { 
             foreach(Transform cable in A.cables) {
+                if(!cable.gameObject.activeSelf) { continue; }
                 Utilities.ModifyCableColorsToObstacle(cable.gameObject); 
             }
         }

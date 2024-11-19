@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 //Note: Place this script next to CableParentAttributes
 
 [ExecuteInEditMode]
 public class InitialCableGenerator : MonoBehaviour {
+    [Header("Place this script next to CableParentAttributes.\n"+
+            "Make sure to update the initial cables list in the editor before entering play mode.\n"+
+            "For example, add and remove an extra element to update it.\n")]
     [SerializeField] CableParentAttributes cableParentAttributes;
     [SerializeField] Directions generateDirection;
     [SerializeField] bool generateCable = false;
@@ -21,7 +26,6 @@ public class InitialCableGenerator : MonoBehaviour {
             generateCable = false;
         }
     }
-
 
     //Generates a straight cable (and a rotation cable if necessary) based on the grid attribute of the previous joint that the player was hovering over.
     //Uses the previous cable as a reference.
@@ -39,8 +43,8 @@ public class InitialCableGenerator : MonoBehaviour {
         //turning
         else if(previousAttributes.endingDirection != newDirection) {
             GenerateRotationCable(previousIndex+1, previousAttributes.endingDirection, newDirection);
-            DebugC.Get().Log("renewed rotation cable, direction: "+newDirection);
         }
+        DebugC.Get().LogListAlways("initialCables: ", cableParentAttributes.initialCables);
     }
 
 
@@ -60,6 +64,7 @@ public class InitialCableGenerator : MonoBehaviour {
         cableParentAttributes.initialCables[index].transform.position = cableParentAttributes.initialCables[index-1].transform.position + deltaPosition;
         
         cableParentAttributes.initialCables[index].name = "InitialCable"+index;
+        Utilities.TryGetComponent<CableChildAttributes>(cableParentAttributes.initialCables[index]).isInitialCable = true;
         Utilities.ModifyCableColorsToObstacle(cableParentAttributes.initialCables[index]);
     }
 
@@ -76,6 +81,7 @@ public class InitialCableGenerator : MonoBehaviour {
         cableParentAttributes.initialCables.Add(newCable.gameObject);
     
         cableParentAttributes.initialCables[index].name = "InitialRotationCable"+index;
+        Utilities.TryGetComponent<CableChildAttributes>(cableParentAttributes.initialCables[index]).isInitialCable = true;
         Utilities.ModifyCableColorsToObstacle(cableParentAttributes.initialCables[index]);
     }
 

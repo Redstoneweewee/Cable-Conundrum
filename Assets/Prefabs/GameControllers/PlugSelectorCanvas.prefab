@@ -75,6 +75,7 @@ MonoBehaviour:
   controlsData: {fileID: 0}
   controlsController: {fileID: 0}
   mouseScrollAction: {fileID: 0}
+  levelInitializerGlobal: {fileID: 0}
   obstaclesParent: {fileID: 0}
   plugsParent: {fileID: 0}
   background: {fileID: 6769768448239211867}

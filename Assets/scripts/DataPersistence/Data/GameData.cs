@@ -4,7 +4,6 @@ using UnityEngine;
 
 [System.Serializable]
 public class GameData {
-    public int testingInt;
 
     /*
     * levelSavePlugs[i] = specific level, List<SavePlug>
@@ -15,8 +14,6 @@ public class GameData {
 
     //Default values when the game first starts
     public GameData() {
-        this.testingInt = 0;
-        //levelsSavePlugs = new List<List<SavePlug>>(new List<SavePlug>[Constants.numberOfLevels]);
         levelsSavePlugs = new List<List<SavePlug>>();
         levelCompletion = new List<bool>();
     }

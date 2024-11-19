@@ -164,17 +164,10 @@ MonoBehaviour:
   lastRotationCableIndex: 0
   cachedStartingDirection: 0
   cachedEndingDirection: 0
-  isInitialCable: 0
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 0
-  cableImage: {fileID: 0}
-  zRotation: 0
-  pivot: {x: 0, y: 0}
-  shadowDirection: 0
+  finishedInitialization: 0
+  renewSiblingCableIndices: 0
   startingDirection: 1
   endingDirection: 1
-  directionMultiple: {x: 0, y: 0}
 --- !u!225 &4747786425889693909
 CanvasGroup:
   m_ObjectHideFlags: 0

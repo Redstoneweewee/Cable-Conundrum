@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WinningControllerGlobal : MonoBehaviour {
+public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
+    private LevelInitializerGlobal levelInitializerGlobal;
     private WinningMessageSizeGlobal winningMessageSizeGlobal;
     [SerializeField] [Range(0.01f, 1)] private float interpolationRatio = 0.05f;
     private bool hasWon = false;
@@ -11,7 +12,19 @@ public class WinningControllerGlobal : MonoBehaviour {
 
     private Vector2 targetMessagePosition;
 
+
+    public IEnumerator LoadData(GameData data) {
+        yield return null;
+        hasWon = data.levelCompletion[levelInitializerGlobal.levelIndex];
+    }
+
+    public void SaveData(GameData data) {
+        data.levelCompletion[levelInitializerGlobal.levelIndex] = hasWon;
+    }
+
+
     void Awake() {
+        levelInitializerGlobal   = FindObjectOfType<LevelInitializerGlobal>();
         winningMessageSizeGlobal = FindObjectOfType<WinningMessageSizeGlobal>();
         //used temporarily to figure out what level it is. Later should take from AllLevelsData or smth)
         int level = SceneManager.GetActiveScene().buildIndex - 1;
@@ -24,6 +37,7 @@ public class WinningControllerGlobal : MonoBehaviour {
 
     public void OnWin() {
         hasWon = true;
+        DataPersistenceManager.instance.SaveGame();
     }
 
     void Update() {

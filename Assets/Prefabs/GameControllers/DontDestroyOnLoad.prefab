@@ -370,6 +370,80 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+--- !u!1 &1145777595662058544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4055471001295841755}
+  - component: {fileID: 3894010035360577483}
+  - component: {fileID: 7661454138708112210}
+  m_Layer: 0
+  m_Name: ControlsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4055471001295841755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145777595662058544}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2963101829746856845}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3894010035360577483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145777595662058544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a201615e5b8ebe041b93b1f279bd22fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlsController: {fileID: 0}
+  gridsController: {fileID: 0}
+  intersectionController: {fileID: 0}
+  electricalStripData: {fileID: 0}
+  electricalStripController: {fileID: 0}
+  exitAction: {fileID: -3481171659038101867, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
+  jointAction: {fileID: 2717749234729071578, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
+  obstaclesAction: {fileID: 7372259704417167488, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
+  plugSelectorAction: {fileID: 7255957273094270131, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
+  electricalStripAction: {fileID: 5073532272262027475, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
+  mouseScrollAction: {fileID: 3307407051992394126, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
+  deleteAction: {fileID: 1817909988100231902, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
+  plugSelectorCanvas: {fileID: 0}
+  masterJointsEnabled: 0
+  obstaclesModifiable: 0
+  plugSelectorEnabled: 0
+  electricalStripEnabled: 0
+--- !u!114 &7661454138708112210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145777595662058544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e53c8c5caa65f41a6a129f55a58598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1200040138718577114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,6 +2598,7 @@ Transform:
   - {fileID: 871173992917385374}
   - {fileID: 848495113571101089}
   - {fileID: 7030501685345241910}
+  - {fileID: 4055471001295841755}
   - {fileID: 3723955017911655206}
   - {fileID: 2323572954022764769}
   - {fileID: 3040295128322460774}

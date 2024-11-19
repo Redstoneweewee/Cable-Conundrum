@@ -123,7 +123,7 @@ public class Utilities : MonoBehaviour {
 
     
 
-    public static void SetCableOpacity(GameObject cableParent, float opacity) {
+    public static void SetCablesOpacity(GameObject cableParent, float opacity) {
         CanvasGroup canvasGroup = TryGetComponent<CanvasGroup>(cableParent);
         canvasGroup.alpha = opacity;
     }

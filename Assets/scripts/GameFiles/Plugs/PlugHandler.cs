@@ -113,10 +113,8 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         A.gridsController.RenewPlugsGrid();
         A.cableHandler.InitializeCableGrid();
         A.gridsController.RenewAllCablesGrid();
-        if(!A.isObstacle) { 
-            foreach(Transform cable in A.cableParentAttributes.cables) {
-                Utilities.SetCableOpacity(cable.gameObject, 1f);
-            }   
+        if(!A.isObstacle) {   
+            Utilities.SetCablesOpacity(A.cableParentAttributes.gameObject, 1f);
         }
         A.intersectionController.TestForCableIntersection();
     }
@@ -127,9 +125,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         A.cableHandler.ResetCableGrid();
         A.gridsController.RenewAllCablesGrid();
         if(!A.isObstacle) { 
-            foreach(Transform cable in A.cableParentAttributes.cables) {
-                Utilities.SetCableOpacity(cable.gameObject, Constants.cableOpacity);
-            }
+            Utilities.SetCablesOpacity(A.cableParentAttributes.gameObject, Constants.cableOpacity);
         }
         //intersectionDetector.ClearAllCableIntersections();
         A.intersectionController.TestForCableIntersection();

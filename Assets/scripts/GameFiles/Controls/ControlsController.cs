@@ -95,8 +95,7 @@ public class ControlsController : MonoBehaviour {
     }
 
     private bool IsNotInALevel() {
-        if(SceneManager.GetActiveScene().buildIndex == 0) { return true; }
-        //if(SceneManager.GetActiveScene().buildIndex == 1) { return true; }
+        if(SceneManager.GetActiveScene().buildIndex < Constants.firstLevelBuidIndex) { return true; }
         return false;
     }
 
