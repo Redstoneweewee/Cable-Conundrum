@@ -9,8 +9,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class InitialCableGenerator : MonoBehaviour {
     [Header("Place this script next to CableParentAttributes.\n"+
-            "Make sure to update the initial cables list in the editor before entering play mode.\n"+
-            "For example, add and remove an extra element to update it.\n")]
+            "**Make sure to remove this script before entering play mode.**")]
     [SerializeField] CableParentAttributes cableParentAttributes;
     [SerializeField] Directions generateDirection;
     [SerializeField] bool generateCable = false;
