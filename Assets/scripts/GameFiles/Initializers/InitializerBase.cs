@@ -5,8 +5,9 @@ using UnityEngine;
 public class InitializerBase : MonoBehaviour {
     public bool finishedWithAllTasks = false;
     public bool allButtonsLoaded = false;
-    [HideInInspector] public ScenesController  scenesController;
-    [HideInInspector] public SettingsGlobal    settingsGlobal;
+    [HideInInspector] public ScenesController           scenesController;
+    [HideInInspector] public ExitGameConfirmationGlobal exitGameConfirmationGlobal;
+    [HideInInspector] public SettingsGlobal             settingsGlobal;
 
     [SerializeField]  public ButtonAttributes[] buttonAttributes;
 
@@ -23,6 +24,7 @@ public class InitializerBase : MonoBehaviour {
         Debug.Log("buttons waited");
         scenesController = FindObjectOfType<ScenesController>();
         settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
+        exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
         InitializeButtons();
     }
 
@@ -64,6 +66,18 @@ public class InitializerBase : MonoBehaviour {
                     Debug.Log($"settingsGlobal: {settingsGlobal.name} ");
                     Debug.Log("subscribed to exit  settings");
                     Utilities.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressExitSettingsButton);
+                    break;
+                case ButtonTypes.EnterExitConfirmation:
+                    Utilities.SubscribeToButton(buttonAttribute.button, exitGameConfirmationGlobal.OnPressEnterExitConfirmationButton);
+                    break;
+                case ButtonTypes.ExitExitConfirmation:
+                    Utilities.SubscribeToButton(buttonAttribute.button, exitGameConfirmationGlobal.OnPressExitExitConfirmationButton);
+                    break;
+                case ButtonTypes.ExitGame:
+                    Utilities.SubscribeToButton(buttonAttribute.button, exitGameConfirmationGlobal.OnPressExitGameButton);
+                    break;
+                default:
+                    Debug.LogError($"A ButtonType was not recognized, ButtonType: {buttonAttribute.buttonType}");
                     break;
             }
         }

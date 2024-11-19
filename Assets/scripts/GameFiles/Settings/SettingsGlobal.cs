@@ -5,16 +5,6 @@ using UnityEngine;
 public class SettingsGlobal : MonoBehaviour {
     [SerializeField] private GameObject settingsCanvas;
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
-
     
 
     public void OnPressEnterSettingsButton() {
