@@ -124,7 +124,7 @@ MonoBehaviour:
   isRotationCable: 1
   isIntersectionCable: 0
   cableType: 14
-  cableImage: {fileID: 7319353838460592254}
+  cableSpriteIndex: 2
   zRotation: 0
   pivot: {x: 0.5, y: 0.5}
   shadowDirection: 4

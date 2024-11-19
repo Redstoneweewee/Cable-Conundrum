@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1611392791935550035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2300640104216221413}
+  - component: {fileID: 3996656985267570173}
+  - component: {fileID: 2662927674570018969}
+  m_Layer: 5
+  m_Name: EyesVisual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2300640104216221413
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611392791935550035}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5274521693518386530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.2, y: 34.92}
+  m_SizeDelta: {x: 140, y: 140}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3996656985267570173
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611392791935550035}
+  m_CullTransparentMesh: 1
+--- !u!114 &2662927674570018969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611392791935550035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5477ac79936a3674b9084373e507765f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3499715989824386501
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +108,7 @@ Transform:
   m_Children:
   - {fileID: 3219007515855832446}
   - {fileID: 3369034755315872985}
+  - {fileID: 2300640104216221413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7314544813736556585
@@ -61,6 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugC: {fileID: 0}
   id: 0
+  gridsData: {fileID: 0}
+  gridsController: {fileID: 0}
   plugHandler: {fileID: 0}
   controlsData: {fileID: 0}
   electricalStripData: {fileID: 0}
@@ -228,36 +306,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cableHandler: {fileID: 0}
   debugC: {fileID: 0}
+  cablePrefabs: {fileID: 0}
+  gridsData: {fileID: 0}
+  gridsSkeleton: {fileID: 0}
   plugAttributes: {fileID: 0}
   intersectionController: {fileID: 0}
   electricalStripData: {fileID: 0}
   electricalStripController: {fileID: 0}
   jointsData: {fileID: 0}
-  cablePrefabs:
-  - {fileID: 5551953224207516642, guid: e27c0bdf972d4cc43a45b32d9d0f6779, type: 3}
-  - {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
-  - {fileID: 4702777388921839916, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
-  - {fileID: 4702777388921839916, guid: 10861dffd8853f94cacdc1938d688975, type: 3}
-  - {fileID: 2123226544648262142, guid: 67624ece7ff654b4c898c637e0f69ec2, type: 3}
-  - {fileID: 2123226544648262142, guid: f9079b4deb427144597cdc9ebf3dba0d, type: 3}
-  - {fileID: 6187662638159900740, guid: 0e2cb3e85aad31542b5e3c0055655bed, type: 3}
-  - {fileID: 6187662638159900740, guid: 84e87bc1940615e45af54c530e63c881, type: 3}
-  - {fileID: 1789527843901632717, guid: 1674a9a5d26e573429e24d446e5e444f, type: 3}
-  - {fileID: 1155289584367413865, guid: 68d66760317f6b847a1e5458ba54c8bf, type: 3}
-  - {fileID: 7717888941554653975, guid: d20e9625947d8a54f8e43de7ac88b17b, type: 3}
-  - {fileID: 8730862469813471331, guid: a14202d2c077d0d4e9e7e2fe5e677eb7, type: 3}
-  - {fileID: 8730862469813471331, guid: 53efc80218d3fc74296cee34e4f450e1, type: 3}
-  - {fileID: 1155289584367413865, guid: 5671118aad48b644e8b13411129e0a16, type: 3}
-  - {fileID: 7717888941554653975, guid: 76005292385604442b5c88c9c2f7c241, type: 3}
-  - {fileID: 1789527843901632717, guid: 059c036da0934a948887deae60359b08, type: 3}
-  - {fileID: 3325671832225026162, guid: 46368ece549c90349bf3978892bb183a, type: 3}
-  - {fileID: 1135255591117203442, guid: 9d4b6e3cc2f13f44aad4df3b51133079, type: 3}
-  - {fileID: 2698305703646795225, guid: 3d5dcefcd8922a547b3f8f0847086180, type: 3}
-  - {fileID: 8342147578661601924, guid: 54876201ac2076f4bbab8fa019e84dcc, type: 3}
-  - {fileID: 8342147578661601924, guid: d9235d40c1b1df446b373dccf5dfdca7, type: 3}
-  - {fileID: 1135255591117203442, guid: f1213eab3be31b042a32c89a49a3c9ed, type: 3}
-  - {fileID: 2698305703646795225, guid: e6543f9a7117b734882cf3e1fb2acf6a, type: 3}
-  - {fileID: 3325671832225026162, guid: 08920192d842760478bf6d57e3acc8fc, type: 3}
   initialCables:
   - {fileID: 8620150315647314089}
   cachedPosition: {x: 0, y: 0, z: 0}
@@ -265,17 +321,10 @@ MonoBehaviour:
   lastRotationCableIndex: 0
   cachedStartingDirection: 0
   cachedEndingDirection: 0
-  isInitialCable: 0
-  isRotationCable: 0
-  isIntersectionCable: 0
-  cableType: 0
-  cableImage: {fileID: 0}
-  zRotation: 0
-  pivot: {x: 0, y: 0}
-  shadowDirection: 0
+  finishedInitialization: 0
+  renewSiblingCableIndices: 0
   startingDirection: 1
   endingDirection: 1
-  directionMultiple: {x: 0, y: 0}
 --- !u!225 &7566094900147019474
 CanvasGroup:
   m_ObjectHideFlags: 0

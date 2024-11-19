@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266304a2cf38b2048ba9a38fc5c739d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  socketAttributes: {fileID: 0}
+  gridsData: {fileID: 0}
   electricalStripData: {fileID: 0}
   childrenTransforms: []
   isActive: 1
