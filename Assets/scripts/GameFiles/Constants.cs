@@ -23,7 +23,7 @@ public class Constants {
 
     public static int electricalStripSeparatorSize = 30;
     public static Vector2 electricalStripBaseSize = new Vector2(standardSpriteSize, standardSpriteSize);
-    public static float   jointDistance       = (electricalStripBaseSize.x + electricalStripSeparatorSize)/2;
+    public static float   jointDistance       = (electricalStripBaseSize.x + electricalStripSeparatorSize)/2; // = 85
     public static Vector2 powerSwitchBaseSize = new Vector2(standardSpriteSize, 38);
     public static Vector2 rotationCableSize = new Vector2(cableWidith, cableWidith);
     public static Vector2 straightCableSize = new Vector2(cableWidith, jointDistance);
@@ -43,6 +43,7 @@ public class Constants {
 
 
     public static Vector2 startingPlugOffset = new Vector2(3, 3);
+    public static float startingPlugOffsetRightSideAdd = 1f;
 
     
     public static Color RemapColorFromRGB(Color color) {
