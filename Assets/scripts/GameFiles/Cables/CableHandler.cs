@@ -30,6 +30,11 @@ public class CableHandler : MonoBehaviour {
             A.cachedPosition = transform.position;
             A.cachedStartingDirection = A.startingDirection;
             A.cachedEndingDirection = A.endingDirection;
+            if(A.plugAttributes.isObstacle) {
+                InitializeCableGrid();
+                gridsController.RenewAllCablesGrid();
+                A.intersectionController.TestForCableIntersection();
+            }
         }
     }
     void LateUpdate() {

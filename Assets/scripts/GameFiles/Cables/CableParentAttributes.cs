@@ -31,7 +31,7 @@ public class CableParentAttributes : MonoBehaviour {
     
     [SerializeField]  public List<GameObject> initialCables;// = new List<GameObject>();
     [HideInInspector] public Vector3         cachedPosition;
-    [HideInInspector] public List<Transform> cables = new List<Transform>();
+    [SerializeField] public List<Transform> cables = new List<Transform>();
     //doesn't get used/generated until the player plugs the plug into a socket
     //numbers always contain 0; keep going up to find the next cable until the size of the grid
     [HideInInspector] public CablesGridAttributes[,] cableGrid; 
