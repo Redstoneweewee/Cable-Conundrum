@@ -9,6 +9,12 @@ public class Constants {
     public static int firstLevelBuidIndex = 2;
     public static int numberOfLevels = 10;
 
+    public static Color levelSelectorFinishedButtonColor1 = RemapColorFromRGB(new Color(134, 172, 114, 255));
+    public static Color levelSelectorFinishedButtonColor2 = RemapColorFromRGB(new Color(137, 186, 111, 255));
+    public static Color levelSelectorFinishedButtonColor3 = RemapColorFromRGB(new Color(109, 152, 86, 255));
+
+
+
     [Range(0.01f, 1)] public static float plugInterpolation = 0.2f;
     public static int plugLockingDistance = 28;
     public static int standardSpriteSize = 140;
