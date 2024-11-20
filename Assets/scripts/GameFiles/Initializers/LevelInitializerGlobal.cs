@@ -127,6 +127,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         //Log();
         StartCoroutine(base.SetMenuButton(false));
         StartCoroutine(base.SetLevelSelectorButton(true));
+        StartCoroutine(base.SetTutorialHelpButton(true));
         initializationFinished = true;
         StartCoroutine(TestForLoadData());
     }

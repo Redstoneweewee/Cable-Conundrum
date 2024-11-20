@@ -18,6 +18,7 @@ public class LevelSelectorInitializerGlobal : InitializerBase, IDataPersistence 
         finishedWithAllTasks = true;
         StartCoroutine(base.SetMenuButton(true));
         StartCoroutine(base.SetLevelSelectorButton(false));
+        StartCoroutine(base.SetTutorialHelpButton(false));
     }
 
     public IEnumerator LoadData(GameData data) {

@@ -8,6 +8,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public ScenesController           scenesController;
     [HideInInspector] public ExitGameConfirmationGlobal exitGameConfirmationGlobal;
     [HideInInspector] public SettingsGlobal             settingsGlobal;
+    [HideInInspector] public TutorialController         tutorialController;
 
     [SerializeField]  public ButtonAttributes[] buttonAttributes;
 
@@ -25,12 +26,11 @@ public class InitializerBase : MonoBehaviour {
         scenesController = FindObjectOfType<ScenesController>();
         settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
         exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
-        InitializeButtons();
+        tutorialController = FindObjectOfType<TutorialController>();
+        InitializeItems();
     }
 
-    private void InitializeButtons() {
-        Debug.Log("doing buttons stuff");
-
+    private void InitializeItems() {
         Transform[] allTransforms = FindObjectsOfType<Transform>(true);
         GameObjectActivity[] gameObjectActivities = new GameObjectActivity[allTransforms.Length];
         for(int i=0; i<allTransforms.Length; i++) {
@@ -39,6 +39,18 @@ public class InitializerBase : MonoBehaviour {
         foreach(Transform transform in allTransforms) {
             transform.gameObject.SetActive(true);
         }
+
+        InitializeButtons();
+        tutorialController.Initialize();
+
+        foreach(GameObjectActivity activity in gameObjectActivities) {
+            activity.gameObject.SetActive(activity.isInitiallyActive);
+            //Debug.Log($"set {activity.gameObject.name} to {activity.isInitiallyActive}");
+        }
+    }
+
+    private void InitializeButtons() {
+
 
         buttonAttributes = FindObjectsOfType<ButtonAttributes>(true);
         foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
@@ -76,15 +88,22 @@ public class InitializerBase : MonoBehaviour {
                 case ButtonTypes.ExitGame:
                     Utilities.SubscribeToButton(buttonAttribute.button, exitGameConfirmationGlobal.OnPressExitGameButton);
                     break;
+                case ButtonTypes.EnterTutorialPage:
+                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressEnterTutorialPageButton);
+                    break;
+                case ButtonTypes.ExitTutorialPage:
+                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressExitTutorialPageButton);
+                    break;
+                case ButtonTypes.NextTutorialPage:
+                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressNextTutorialPageButton);
+                    break;
+                case ButtonTypes.PreviousTutorialPage:
+                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressPreviousTutorialPageButton);
+                    break;
                 default:
                     Debug.LogError($"A ButtonType was not recognized, ButtonType: {buttonAttribute.buttonType}");
                     break;
             }
-        }
-
-        foreach(GameObjectActivity activity in gameObjectActivities) {
-            activity.gameObject.SetActive(activity.isInitiallyActive);
-            //Debug.Log($"set {activity.gameObject.name} to {activity.isInitiallyActive}");
         }
         AllButtonsLoaded();
     }
@@ -102,6 +121,14 @@ public class InitializerBase : MonoBehaviour {
         yield return new WaitUntil(() => allButtonsLoaded);
         foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevelSelector) {
+                buttonAttribute.button.gameObject.SetActive(active);
+            }
+        }
+    }
+    public IEnumerator SetTutorialHelpButton(bool active) {
+        yield return new WaitUntil(() => allButtonsLoaded);
+        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+            if(buttonAttribute.buttonType == ButtonTypes.EnterTutorialPage) {
                 buttonAttribute.button.gameObject.SetActive(active);
             }
         }
