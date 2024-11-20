@@ -12,14 +12,17 @@ public class TutorialController : MonoBehaviour {
     }
 
     //is initialized in the initalizerBase
-    public void Initialize() {
+    public IEnumerator Initialize() {
         TutorialVideoAttributes[] temp = FindObjectsOfType<TutorialVideoAttributes>();
         D.videoPlayers = new TutorialVideoAttributes[temp.Length];
         foreach(TutorialVideoAttributes tutorialVideoAttributes in temp) {
-            tutorialVideoAttributes.Initialize();
+            StartCoroutine(tutorialVideoAttributes.Initialize());
+            yield return new WaitUntil(() => tutorialVideoAttributes.initialLoad);
             D.videoPlayers[tutorialVideoAttributes.tutorialPageIndex] = tutorialVideoAttributes;
         }
         StartCoroutine(SetVideoDisplayAndDescription(0, 0));
+        yield return new WaitUntil(() => D.initialVideoInitialized);
+        D.isInitialized = true;
     }
 
 
@@ -50,10 +53,12 @@ public class TutorialController : MonoBehaviour {
 
     private IEnumerator SetVideoDisplayAndDescription(int index, int previousIndex) {
         Utilities.TryGetComponent<TextMeshProUGUI>(D.description).text = D.videoPlayers[index].description;
-        D.videoPlayers[previousIndex].videoPlayer.Stop();
+        D.videoPlayers[previousIndex].videoPlayer.Pause();
+        D.videoPlayers[previousIndex].videoPlayer.frame = 0;
         D.videoPlayers[index].videoPlayer.Prepare();
         D.videoPlayers[index].videoPlayer.Play();
         yield return new WaitUntil(() => D.videoPlayers[index].videoPlayer.isPrepared);
         Utilities.TryGetComponent<RawImage>(D.videoDisplay).texture = D.videoPlayers[index].renderTexture;
+        D.initialVideoInitialized = true;
     }
 }

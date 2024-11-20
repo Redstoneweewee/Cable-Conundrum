@@ -9,6 +9,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public ExitGameConfirmationGlobal exitGameConfirmationGlobal;
     [HideInInspector] public SettingsGlobal             settingsGlobal;
     [HideInInspector] public TutorialController         tutorialController;
+    [HideInInspector] public TutorialData               tutorialData;
 
     [SerializeField]  public ButtonAttributes[] buttonAttributes;
 
@@ -27,10 +28,11 @@ public class InitializerBase : MonoBehaviour {
         settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
         exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
         tutorialController = FindObjectOfType<TutorialController>();
-        InitializeItems();
+        tutorialData       = FindObjectOfType<TutorialData>();
+        StartCoroutine(InitializeItems());
     }
 
-    private void InitializeItems() {
+    private IEnumerator InitializeItems() {
         Transform[] allTransforms = FindObjectsOfType<Transform>(true);
         GameObjectActivity[] gameObjectActivities = new GameObjectActivity[allTransforms.Length];
         for(int i=0; i<allTransforms.Length; i++) {
@@ -41,13 +43,14 @@ public class InitializerBase : MonoBehaviour {
         }
 
         InitializeButtons();
-        tutorialController.Initialize();
+        if(!tutorialData.isInitialized) { StartCoroutine(tutorialController.Initialize()); }
+        yield return new WaitUntil(() => tutorialData.isInitialized);
 
-        foreach(GameObjectActivity activity in gameObjectActivities) {
-            activity.gameObject.SetActive(activity.isInitiallyActive);
-            //Debug.Log($"set {activity.gameObject.name} to {activity.isInitiallyActive}");
-        }
+        EndInitialization(gameObjectActivities);
+        
+        AllButtonsLoaded();
     }
+
 
     private void InitializeButtons() {
 
@@ -105,9 +108,15 @@ public class InitializerBase : MonoBehaviour {
                     break;
             }
         }
-        AllButtonsLoaded();
     }
 
+
+    private void EndInitialization(GameObjectActivity[] gameObjectActivities) {
+        foreach(GameObjectActivity activity in gameObjectActivities) {
+            activity.gameObject.SetActive(activity.isInitiallyActive);
+            //Debug.Log($"set {activity.gameObject.name} to {activity.isInitiallyActive}");
+        }
+    }
 
     public IEnumerator SetMenuButton(bool active) {
         yield return new WaitUntil(() => allButtonsLoaded);

@@ -10,12 +10,16 @@ public class TutorialVideoAttributes : MonoBehaviour {
     [SerializeField] public string description;
     [HideInInspector] public RenderTexture renderTexture;
     [HideInInspector] public VideoPlayer videoPlayer;
+    [HideInInspector] public bool        initialLoad = false;
 
     //Initialized in TutorialController
-    public void Initialize() {
+    public IEnumerator Initialize() {
         videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
         renderTexture = videoPlayer.targetTexture;
-        videoPlayer.Stop();
+        videoPlayer.Pause();
+        videoPlayer.frame = 0;
         videoPlayer.Prepare();
+        yield return new WaitUntil(() => videoPlayer.isPrepared);
+        initialLoad = true;
     }
 }

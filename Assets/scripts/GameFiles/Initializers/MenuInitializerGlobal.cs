@@ -8,6 +8,6 @@ public class MenuInitializerGlobal : InitializerBase {
         finishedWithAllTasks = true;
         StartCoroutine(base.SetMenuButton(false));
         StartCoroutine(base.SetLevelSelectorButton(false));
-        StartCoroutine(base.SetTutorialHelpButton(true));
+        StartCoroutine(base.SetTutorialHelpButton(false));
     }
 }
