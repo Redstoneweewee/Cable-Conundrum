@@ -13,6 +13,8 @@ public enum ButtonTypes       { EnterLevel, NextLevel, PreviousLevel,
                                 EnterTutorialPage, ExitTutorialPage, NextTutorialPage, PreviousTutorialPage }
 
 public enum SliderTypes       { Sound, Music }
+public enum SoundTypes        { HoverOverButton, ClickOnButton, ClickOnPlug, PlugSnapEnter, PlugSnapExit, ChangeCable }
+
 public enum LevelFailureTypes { None, Plugs, Cables, Obstacles }
 
 //Editor enums

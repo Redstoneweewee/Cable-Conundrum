@@ -10,6 +10,7 @@ public class SoundsController : MonoBehaviour {
     }
     void Start() {
         InitializeSliders();
+        InitializeSounds();
     }
 
 
@@ -28,6 +29,11 @@ public class SoundsController : MonoBehaviour {
                     break;
             }
         }
+    }
+
+    private void InitializeSounds() {
+        D.soundEffects = D.soundsEditor.soundEffects;
+        D.music = D.soundsEditor.music;
     }
 
     void OnSoundSliderChange(float newValue) {
