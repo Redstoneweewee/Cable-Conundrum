@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,7 +44,18 @@ public class InitializerBase : MonoBehaviour {
         }
 
         InitializeButtons();
-        if(!tutorialData.isInitialized) { StartCoroutine(tutorialController.Initialize()); }
+
+        // |--------------------------------------------------------------------------|
+        // |--------------------------------------------------------------------------|
+        // |-------------- WARNING - Videos cannot be loaded on WebGL!! --------------|
+        // |--------------------------------------------------------------------------|
+        // |--------------------------------------------------------------------------|
+        if(!tutorialData.isInitialized) { 
+            try { StartCoroutine(tutorialController.Initialize()); }
+            catch(Exception e) {
+                Debug.LogWarning("tutorial was unable to load. Error: "+e);
+            }
+        }
         yield return new WaitUntil(() => tutorialData.isInitialized);
 
         EndInitialization(gameObjectActivities);

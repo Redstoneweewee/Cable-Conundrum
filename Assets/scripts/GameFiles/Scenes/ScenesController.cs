@@ -55,9 +55,7 @@ public class ScenesController : MonoBehaviour {
 
     private IEnumerator LoadLevelCoroutine(int buildIndex) {
         //Play animation.
-        D.crossFadeTransition.SetBool("EndCrossFade", false);
-        D.crossFadeTransition.SetBool("StartCrossFade", true);
-        //D.crossFadeTransition.SetTrigger("StartCrossFade");
+        D.crossFadeTransition.SetTrigger("StartCrossFade");
 
         //Wait for the crossfade to finish (all black screen) to load in the next scene.
         yield return new WaitForSeconds(D.crossFadeAnimationStartDuration);
@@ -76,9 +74,7 @@ public class ScenesController : MonoBehaviour {
         }
         
         //End the crossfade transition.
-        //D.crossFadeTransition.SetTrigger("EndCrossFade");
-        D.crossFadeTransition.SetBool("EndCrossFade", true);
-        D.crossFadeTransition.SetBool("StartCrossFade", false);
+        D.crossFadeTransition.SetTrigger("EndCrossFade");
         Debug.Log("Is finished with all tasks. Ending Fade.");
 
         //Set animationIsFinished to true after the animation is finished.
@@ -91,8 +87,7 @@ public class ScenesController : MonoBehaviour {
     private IEnumerator InitialSceneLoad() {
         yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
         yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().allButtonsLoaded);
-        //D.crossFadeTransition.SetTrigger("EndCrossFade");
-        D.crossFadeTransition.SetBool("EndCrossFade", true);
+        D.crossFadeTransition.SetTrigger("InitialCrossFade");
         Debug.Log("Is finished with all tasks. Ending Fade.");
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;

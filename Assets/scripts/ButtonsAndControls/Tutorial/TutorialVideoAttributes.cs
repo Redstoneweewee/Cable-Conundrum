@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,20 @@ public class TutorialVideoAttributes : MonoBehaviour {
 
     //Initialized in TutorialController
     public IEnumerator Initialize() {
-        videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
-        renderTexture = videoPlayer.targetTexture;
-        videoPlayer.Pause();
-        videoPlayer.frame = 0;
-        videoPlayer.Prepare();
-        yield return new WaitUntil(() => videoPlayer.isPrepared);
+        bool caught = false;
+        try {
+            videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
+            renderTexture = videoPlayer.targetTexture;
+            videoPlayer.Pause();
+            videoPlayer.frame = 0;
+            videoPlayer.Prepare();
+        }
+        catch(Exception e) {
+            videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
+            renderTexture = videoPlayer.targetTexture;
+            caught = true;
+        }
+        yield return new WaitUntil(() => caught ? true : videoPlayer.isPrepared);
         initialLoad = true;
     }
 }
