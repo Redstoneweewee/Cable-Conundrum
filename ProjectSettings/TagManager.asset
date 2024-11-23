@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TestDot
   - DontDisable
+  - PlugSelectorCanvas
   layers:
   - Default
   - TransparentFX

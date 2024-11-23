@@ -8,6 +8,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public ScenesController           scenesController;
     [HideInInspector] public ExitGameConfirmationGlobal exitGameConfirmationGlobal;
     [HideInInspector] public SettingsGlobal             settingsGlobal;
+    [HideInInspector] public ControlsController         controlsController;
 
     [SerializeField]  public ButtonAttributes[] buttonAttributes;
 
@@ -25,6 +26,8 @@ public class InitializerBase : MonoBehaviour {
         scenesController = FindObjectOfType<ScenesController>();
         settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
         exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
+        controlsController = FindObjectOfType<ControlsController>();
+        controlsController.Initialize();
         InitializeButtons();
     }
 

@@ -9,10 +9,10 @@ using UnityEngine.SceneManagement;
 
 public class ControlsController : MonoBehaviour {
     ControlsData D;
-    AdminToggles adminToggles;
     
     void Awake() {
         D = FindObjectOfType<ControlsData>();
+        D.adminToggles = FindObjectOfType<AdminToggles>();
     }
     void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
@@ -29,21 +29,26 @@ public class ControlsController : MonoBehaviour {
         ChangeEditorMode();
     }
 
-    private void ChangeEditorMode() {
-        adminToggles = FindObjectOfType<AdminToggles>();
-        if(!adminToggles.cachedEditorMode && adminToggles.editorMode) {
-            D.obstaclesAction.action.Enable();
-            D.plugSelectorAction.action.Enable();
-            D.electricalStripAction.action.Enable();
-            D.deleteAction.action.Enable();
-            adminToggles.cachedEditorMode = adminToggles.editorMode;
+    public void Initialize() {
+        D.gridsController           = FindObjectOfType<GridsController>();
+        D.intersectionController    = FindObjectOfType<IntersectionController>();
+        D.electricalStripData       = FindObjectOfType<ElectricalStripData>();
+        D.electricalStripController = FindObjectOfType<ElectricalStripController>();
+        D.plugSelectorCanvas        = GameObject.FindGameObjectWithTag("PlugSelectorCanvas");
+        D.isUsed = true;
+        if(D.gridsController == null || D.intersectionController == null || 
+           D.electricalStripData == null || D.electricalStripController == null ||
+           D.plugSelectorCanvas == null) {
+            D.isUsed = false;
         }
-        else if(adminToggles.cachedEditorMode && !adminToggles.editorMode) {
-            D.obstaclesAction.action.Disable();
-            D.plugSelectorAction.action.Disable();
-            D.electricalStripAction.action.Disable();
-            D.deleteAction.action.Disable();
-            adminToggles.cachedEditorMode = adminToggles.editorMode;
+    }
+
+    private void ChangeEditorMode() {
+        if(!D.adminToggles.cachedEditorMode && D.adminToggles.editorMode) {
+            D.adminToggles.cachedEditorMode = D.adminToggles.editorMode;
+        }
+        else if(D.adminToggles.cachedEditorMode && !D.adminToggles.editorMode) {
+            D.adminToggles.cachedEditorMode = D.adminToggles.editorMode;
         }
     }
 
@@ -100,14 +105,15 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void OnJointsToggle(InputAction.CallbackContext context) {
-        if(IsNotInALevel()) { return; }
+        if(!D.isUsed || IsNotInALevel()) { return; }
         D.masterJointsEnabled = !D.masterJointsEnabled;
         FindObjectOfType<JointsData>().jointsEnabled = D.masterJointsEnabled;
         Debug.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
     }
 
     private void OnObstaclesToggle(InputAction.CallbackContext context) {
-        if(IsNotInALevel()) { return; }
+        if(!D.isUsed || IsNotInALevel()) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         D.obstaclesModifiable = !D.obstaclesModifiable;
         ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         if(D.obstaclesModifiable) {
@@ -126,7 +132,8 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void OnPlugSelectorToggle(InputAction.CallbackContext context) {
-        if(IsNotInALevel()) { return; }
+        if(!D.isUsed || IsNotInALevel()) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         D.plugSelectorEnabled = !D.plugSelectorEnabled;
 
         if(D.plugSelectorEnabled) { D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(true); }
@@ -140,9 +147,11 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void OnElectricalStripToggle(InputAction.CallbackContext context) {
-        if(IsNotInALevel()) { return; }
+        if(!D.isUsed || IsNotInALevel()) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         D.electricalStripEnabled = !D.electricalStripEnabled;
         GameObject electricalStrip = FindObjectOfType<ElectricalStripController>().gameObject;
+        Debug.Log("toggled electricla strip");
         
         if(D.electricalStripEnabled) {
             Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 0.8f;
@@ -157,7 +166,8 @@ public class ControlsController : MonoBehaviour {
 
     
     private void OnTryDeletePlug(InputAction.CallbackContext context) {
-        if(IsNotInALevel()) { return; }
+        if(!D.isUsed || IsNotInALevel()) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isDragging) { 
@@ -168,7 +178,8 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void OnTryDeleteObstacle(InputAction.CallbackContext context) {
-        if(IsNotInALevel()) { return; }
+        if(!D.isUsed || IsNotInALevel()) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         ObstacleAttributes[] allObstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         foreach(ObstacleAttributes obstacleAttribute in allObstacleAttributes) {
             if(obstacleAttribute.temporarilyModifiable && obstacleAttribute.isDragging) { 
