@@ -29,6 +29,8 @@ public class ControlsData : MonoBehaviour {
     [HideInInspector] public bool plugSelectorEnabled    = false;
     [HideInInspector] public bool electricalStripEnabled = false;
 
+    public bool isUsed = true;
+
 
 
     void OnEnable() {
@@ -43,9 +45,5 @@ public class ControlsData : MonoBehaviour {
 
     void Awake() {
         controlsController        = Utilities.TryGetComponent<ControlsController>(gameObject);
-        gridsController           = FindObjectOfType<GridsController>();
-        intersectionController    = FindObjectOfType<IntersectionController>();
-        electricalStripData       = FindObjectOfType<ElectricalStripData>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
     }
 }

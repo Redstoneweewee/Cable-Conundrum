@@ -11,6 +11,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public SettingsGlobal             settingsGlobal;
     [HideInInspector] public TutorialController         tutorialController;
     [HideInInspector] public TutorialData               tutorialData;
+    [HideInInspector] public ControlsController         controlsController;
 
     [SerializeField]  public ButtonAttributes[] buttonAttributes;
 
@@ -30,6 +31,7 @@ public class InitializerBase : MonoBehaviour {
         exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
         tutorialController = FindObjectOfType<TutorialController>();
         tutorialData       = FindObjectOfType<TutorialData>();
+        controlsController = FindObjectOfType<ControlsController>();
         StartCoroutine(InitializeItems());
     }
 
@@ -43,6 +45,7 @@ public class InitializerBase : MonoBehaviour {
             transform.gameObject.SetActive(true);
         }
 
+        controlsController.Initialize();
         InitializeButtons();
 
         // |--------------------------------------------------------------------------|

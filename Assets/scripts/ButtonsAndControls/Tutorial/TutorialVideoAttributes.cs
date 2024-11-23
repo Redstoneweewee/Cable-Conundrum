@@ -23,7 +23,7 @@ public class TutorialVideoAttributes : MonoBehaviour {
             videoPlayer.frame = 0;
             videoPlayer.Prepare();
         }
-        catch(Exception e) {
+        catch(Exception) {
             videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
             renderTexture = videoPlayer.targetTexture;
             caught = true;
