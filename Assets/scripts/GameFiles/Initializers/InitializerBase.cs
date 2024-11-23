@@ -12,6 +12,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public TutorialController         tutorialController;
     [HideInInspector] public TutorialData               tutorialData;
     [HideInInspector] public ControlsController         controlsController;
+    [HideInInspector] public SoundsController           soundsController;
 
     [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
 
@@ -32,6 +33,7 @@ public class InitializerBase : MonoBehaviour {
         tutorialController = FindObjectOfType<TutorialController>();
         tutorialData       = FindObjectOfType<TutorialData>();
         controlsController = FindObjectOfType<ControlsController>();
+        soundsController   = FindObjectOfType<SoundsController>();
         StartCoroutine(InitializeItems());
     }
 
@@ -46,6 +48,7 @@ public class InitializerBase : MonoBehaviour {
         }
 
         controlsController.Initialize();
+        soundsController.InitializeSliders();
         InitializeButtons();
 
         // |--------------------------------------------------------------------------|

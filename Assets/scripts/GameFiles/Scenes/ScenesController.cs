@@ -99,17 +99,17 @@ public class ScenesController : MonoBehaviour {
         TryLoadScene(LoadSceneTypes.Level, levelIndex);
     }
     public void OnPressEnterNextLevelButton() {
-        TryLoadScene(LoadSceneTypes.NextLevel);
         DataPersistenceManager.instance.SaveGame();
+        TryLoadScene(LoadSceneTypes.NextLevel);
     }
     public void OnPressEnterPreviousLevelButton() {
-        TryLoadScene(LoadSceneTypes.PreviousLevel);
         DataPersistenceManager.instance.SaveGame();
+        TryLoadScene(LoadSceneTypes.PreviousLevel);
     }
 
     public void OnPressEnterLevelSelectorButton() {
-        TryLoadScene(LoadSceneTypes.LevelSelector);
         DataPersistenceManager.instance.SaveGame();
+        TryLoadScene(LoadSceneTypes.LevelSelector);
     }
     public void OnPressEnterMenuButton() {
         TryLoadScene(LoadSceneTypes.Menu);

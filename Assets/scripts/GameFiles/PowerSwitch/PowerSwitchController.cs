@@ -14,6 +14,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataP
     }
 
     public void SaveData(GameData data) {}
+    public void SaveDataLate(GameData data) {}
 
 
     void Awake() {

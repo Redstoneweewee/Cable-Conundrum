@@ -13,7 +13,7 @@ public class ButtonsHandler : MonoBehaviour, IPointerEnterHandler {
     public void OnPointerEnter(PointerEventData eventData) {
         foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
             if(soundsAttribute.soundType == SoundTypes.HoverOverButton) {
-                SoundPlayer.PlaySound(soundsAttribute);
+                SoundPlayer.PlaySound(soundsAttribute, A.soundsData.soundVolume);
             }
         }
     }
@@ -21,7 +21,7 @@ public class ButtonsHandler : MonoBehaviour, IPointerEnterHandler {
     public void OnPressButton() {
         foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
             if(soundsAttribute.soundType == SoundTypes.ClickOnButton) {
-                SoundPlayer.PlaySound(soundsAttribute);
+                SoundPlayer.PlaySound(soundsAttribute, A.soundsData.soundVolume);
             }
         }
     }

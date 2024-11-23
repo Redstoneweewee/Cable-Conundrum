@@ -9,6 +9,7 @@ public class SoundsEditor : MonoBehaviour {
 
 
     void Update() {
+        if(Application.isPlaying) { return; }
         foreach(SoundsAttributes soundsAttribute in soundEffects) {
             if(soundsAttribute.minPitch > soundsAttribute.maxPitch) {
                 soundsAttribute.minPitch = soundsAttribute.maxPitch;

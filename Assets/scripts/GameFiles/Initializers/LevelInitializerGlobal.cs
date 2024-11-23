@@ -10,7 +10,6 @@ using UnityEngine.UIElements;
 public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public DebugC DebugC {set; get;}
     public int levelIndex;
-    private bool cachedHasWon = false;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
     private GridsSkeleton gridsSkeleton;
@@ -29,7 +28,6 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public IEnumerator LoadData(GameData data) {
         yield return new WaitUntil(() => initializationFinished);
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
-        cachedHasWon = data.levelCompletion[levelIndex];
 
         if(data.levelsSavePlugs[levelIndex] != null) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
@@ -57,11 +55,11 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         //And renew level grids
         FindObjectOfType<GridsController>().RenewGrids();
     }
+
     
     public void SaveData(GameData data) {
         //If the level has already been completed, do not save any new changes
-        if(cachedHasWon) { return; }
-        cachedHasWon = data.levelCompletion[levelIndex];
+        if(data.levelCompletion[levelIndex]) { return; }
 
         data.levelsSavePlugs[levelIndex].Clear();
         DebugC.Get().LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
@@ -83,7 +81,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
             data.levelsSavePlugs[levelIndex].Add(new SavePlug(plugPosition, isPluggedIn, indexAndDirections));
         }
     }
-
+    public void SaveDataLate(GameData data) {}
 
     private IEnumerator TestForLoadData() {
         yield return new WaitForSeconds(1.5f);
@@ -129,7 +127,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         StartCoroutine(base.SetLevelSelectorButton(true));
         StartCoroutine(base.SetTutorialHelpButton(true));
         initializationFinished = true;
-        StartCoroutine(TestForLoadData());
+        //StartCoroutine(TestForLoadData());
     }
 
     public void ResetPlugs() {

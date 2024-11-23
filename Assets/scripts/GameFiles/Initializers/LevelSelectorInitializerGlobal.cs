@@ -27,6 +27,7 @@ public class LevelSelectorInitializerGlobal : InitializerBase, IDataPersistence 
     }
 
     public void SaveData(GameData data) {}
+    public void SaveDataLate(GameData data) {}
 
 
     private void RecolorButtons(GameData data) {

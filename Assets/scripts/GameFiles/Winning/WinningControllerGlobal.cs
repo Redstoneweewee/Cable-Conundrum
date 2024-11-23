@@ -15,11 +15,12 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
 
 
     public IEnumerator LoadData(GameData data) {
-        yield return null;
+        yield return new WaitUntil(() => levelInitializerGlobal.finishedWithAllTasks);
         hasWon = data.levelCompletion[levelInitializerGlobal.levelIndex];
     }
 
-    public void SaveData(GameData data) {
+    public void SaveData(GameData data) {}
+    public void SaveDataLate(GameData data) {
         data.levelCompletion[levelInitializerGlobal.levelIndex] = hasWon;
     }
 
@@ -41,7 +42,7 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
         if(!hasWon) {
             foreach(SoundsAttributes soundsAttribute in soundsData.soundEffects) {
                 if(soundsAttribute.soundType == SoundTypes.Victory) {
-                    SoundPlayer.PlaySound(soundsAttribute);
+                    SoundPlayer.PlaySound(soundsAttribute, soundsData.soundVolume);
                 }
             }
         }

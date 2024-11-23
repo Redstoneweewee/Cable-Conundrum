@@ -73,6 +73,9 @@ public class DataPersistenceManager : MonoBehaviour {
         foreach(IDataPersistence dataPersistenceObject in dataPersistenceObjects) {
             dataPersistenceObject.SaveData(gameData);
         }
+        foreach(IDataPersistence dataPersistenceObject in dataPersistenceObjects) {
+            dataPersistenceObject.SaveDataLate(gameData);
+        }
 
         //Save that data to a file using the data handler
         dataHandler.Save(gameData);

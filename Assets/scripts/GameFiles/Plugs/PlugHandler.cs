@@ -120,7 +120,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
         foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
             if(soundsAttribute.soundType == SoundTypes.PlugSnapEnter) {
-                SoundPlayer.PlaySound(soundsAttribute);
+                SoundPlayer.PlaySound(soundsAttribute, A.soundsData.soundVolume);
             }
         }
     }
@@ -138,7 +138,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         
         foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
             if(soundsAttribute.soundType == SoundTypes.PlugSnapExit) {
-                SoundPlayer.PlaySound(soundsAttribute);
+                SoundPlayer.PlaySound(soundsAttribute, A.soundsData.soundVolume);
             }
         }
     }

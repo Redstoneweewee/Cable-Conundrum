@@ -9,12 +9,11 @@ public class SoundsController : MonoBehaviour {
         D = Utilities.TryGetComponent<SoundsData>(gameObject);
     }
     void Start() {
-        InitializeSliders();
         InitializeSounds();
     }
 
 
-    private void InitializeSliders() {
+    public void InitializeSliders() {
         SliderAttributes[] allSliderAttributes = FindObjectsOfType<SliderAttributes>();
         foreach(SliderAttributes sliderAttribute in allSliderAttributes) {
             sliderAttribute.slider.onValueChanged.RemoveAllListeners();
