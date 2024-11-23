@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
     private LevelInitializerGlobal levelInitializerGlobal;
     private WinningMessageSizeGlobal winningMessageSizeGlobal;
+    private SoundsData soundsData;
     [SerializeField] [Range(0.01f, 1)] private float interpolationRatio = 0.05f;
     private bool hasWon = false;
     private bool isFinishedAnimating = false;
@@ -26,6 +27,7 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
     void Awake() {
         levelInitializerGlobal   = FindObjectOfType<LevelInitializerGlobal>();
         winningMessageSizeGlobal = FindObjectOfType<WinningMessageSizeGlobal>();
+        soundsData               = FindObjectOfType<SoundsData>();
         //used temporarily to figure out what level it is. Later should take from AllLevelsData or smth)
         int level = SceneManager.GetActiveScene().buildIndex - 1;
         string text = "Level " + level + " Complete!";
@@ -36,6 +38,13 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
     }
 
     public void OnWin() {
+        if(!hasWon) {
+            foreach(SoundsAttributes soundsAttribute in soundsData.soundEffects) {
+                if(soundsAttribute.soundType == SoundTypes.Victory) {
+                    SoundPlayer.PlaySound(soundsAttribute);
+                }
+            }
+        }
         hasWon = true;
         DataPersistenceManager.instance.SaveGame();
     }
