@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class PowerSwitchData : MonoBehaviour {
     [HideInInspector] public PowerSwitchController     powerSwitchController;
-    [HideInInspector] public DebugC                    debugC;
     [HideInInspector] public LevelInitializerGlobal    levelInitializerGlobal;
     [HideInInspector] public WinningControllerGlobal   winningControllerGlobal;
     [SerializeField]  public GameObject                offVisual;
@@ -14,7 +13,6 @@ public class PowerSwitchData : MonoBehaviour {
     [HideInInspector] public IntersectionData          intersectionData;
 
     void Awake() {
-        debugC = DebugC.Get();
         powerSwitchController     = Utilities.TryGetComponent<PowerSwitchController>(gameObject);
         levelInitializerGlobal    = FindObjectOfType<LevelInitializerGlobal>();
         winningControllerGlobal   = FindObjectOfType<WinningControllerGlobal>();

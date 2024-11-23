@@ -39,7 +39,6 @@ public class JointsController : MonoBehaviour {
             if(D.jointsOpacityGlobal.OpacityCoroutine == null) {
                 D.jointsOpacityGlobal.OpacityCoroutine = D.jointsOpacityGlobal.ModifyJointsOpacity();
                 StartCoroutine(D.jointsOpacityGlobal.OpacityCoroutine);
-                Debug.Log("restarted");
             }
             else {
                 D.jointsOpacityGlobal.IsFirstLoop = false;

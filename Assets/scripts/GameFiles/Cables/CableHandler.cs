@@ -116,8 +116,7 @@ public class CableHandler : MonoBehaviour {
             InitializeCableGrid();
             if(A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers != null && A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers.Count > 0) {
                 int cachedIndex = A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers[0];
-                Debug.Log("cachedIndex: "+cachedIndex);
-                if(cachedIndex < A.initialCables.Count) { Debug.Log("trying to change an initial cable. Stopped loop."); yield break; }
+                if(cachedIndex < A.initialCables.Count) { DebugC.Get().Log("trying to change an initial cable. Stopped loop."); yield break; }
                 Index2D deltaGridIndex = new Index2D(mouseGridIndex.x - A.cachedMouseGridIndex.x, mouseGridIndex.y - A.cachedMouseGridIndex.y);
                 int previousIndex = cachedIndex - 1;
                 if(previousIndex < 0) { previousIndex = 0; }
@@ -128,7 +127,7 @@ public class CableHandler : MonoBehaviour {
                 Directions startDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[previousIndex].gameObject).endingDirection;
                 Index2D gridIntersectionIndex = TestForIntersections(A.cachedMouseGridIndex, A.endingDirection);
                 if(gridIntersectionIndex != new Index2D(-1, -1)) {
-                    A.debugC.Log($"tried to create a loop. stopping cable generation. starting index: ({mouseGridIndex.x}, {mouseGridIndex.y}), direction: {A.endingDirection}, intersectionindex: ({gridIntersectionIndex.x}, {gridIntersectionIndex.y})");
+                    DebugC.Get().Log($"tried to create a loop. stopping cable generation. starting index: ({mouseGridIndex.x}, {mouseGridIndex.y}), direction: {A.endingDirection}, intersectionindex: ({gridIntersectionIndex.x}, {gridIntersectionIndex.y})");
                     int resetToIndex = A.cableGrid[gridIntersectionIndex.x, gridIntersectionIndex.y].numbers[0];
                     if(resetToIndex < A.initialCables.Count) { resetToIndex = A.initialCables.Count; }
                     Transform resetToCable = A.cables[resetToIndex];
@@ -139,28 +138,28 @@ public class CableHandler : MonoBehaviour {
                 }
                 else if(!DirectionsHaveError(startDirection, A.endingDirection)) {
                     if(deltaGridIndex.x == -1) { //moved up
-                        A.debugC.Log("moved up");
+                        DebugC.Get().Log("moved up");
                         TryGenerateCable(previousIndex, Directions.Up);
                     }
                     else if(deltaGridIndex.x == 1) { //moved down
-                        A.debugC.Log("moved down");
+                        DebugC.Get().Log("moved down");
                         TryGenerateCable(previousIndex, Directions.Down);
                     }
                     else if(deltaGridIndex.y == -1) { //moved left
-                        A.debugC.Log("moved left");
+                        DebugC.Get().Log("moved left");
                         TryGenerateCable(previousIndex, Directions.Left);
                     }
                     else if(deltaGridIndex.y == 1) { //moved right
-                        A.debugC.Log("moved right");
+                        DebugC.Get().Log("moved right");
                         TryGenerateCable(previousIndex, Directions.Right);
                     }
                     else {
-                        Debug.LogWarning("Moved mouse too quickly");
+                        DebugC.Get().LogWarning("Moved mouse too quickly");
                     }
                     A.cachedMouseGridIndex = mouseGridIndex;
                 }
                 else {
-                    Debug.LogWarning($"Impossible directions. Starting: {startDirection}, Ending: {A.endingDirection}");
+                    DebugC.Get().LogWarning($"Impossible directions. Starting: {startDirection}, Ending: {A.endingDirection}");
                     for(int i=A.cables.Count-1; i>=0; i--) {
                         if(A.cables[i].gameObject.activeSelf) { 
                             A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[i].gameObject).endingDirection; 
@@ -182,8 +181,7 @@ public class CableHandler : MonoBehaviour {
 
                 if(A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers != null && A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers.Count > 0) {
                     int index = A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers[0];
-                    if(index < A.initialCables.Count) { Debug.Log("trying to change an initial cable. Stopped loop.");yield break; }
-                    Debug.Log("index: "+index);
+                    if(index < A.initialCables.Count) { DebugC.Get().Log("trying to change an initial cable. Stopped loop.");yield break; }
                     Transform previousCable = A.cables[index-1];
                     A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject).endingDirection;
                     GenerateEndingCables(index);
@@ -251,7 +249,7 @@ public class CableHandler : MonoBehaviour {
     private void InitializeInitialCables() {
         foreach(GameObject initialCable in A.initialCables) {
             A.cables.Add(initialCable.transform);
-            A.debugC.Log($"{initialCable.name} added to cables list for {transform.name}");
+            DebugC.Get().Log($"{initialCable.name} added to cables list for {transform.name}");
         }
     }
     private void RenewInitialCable() {
@@ -267,7 +265,7 @@ public class CableHandler : MonoBehaviour {
                 case Directions.Right:
                     prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[3]); break;
                 default:
-                    Debug.LogError("RenewInitialCable function did not work correctly. None of the conditions were met.");
+                    Debug.LogWarning("RenewInitialCable function did not work correctly. None of the conditions were met.");
                     prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[3]); break;
             }
 
@@ -332,9 +330,9 @@ public class CableHandler : MonoBehaviour {
 
     //Used in loading data stored in hardware
     public void TryGenerateCableFromList(List<IndexAndDirection> indexAndDirections) {
-        A.debugC.Log("Generating Cables from List:");
+        DebugC.Get().Log("Generating Cables from List:");
         for(int i=0; i<indexAndDirections.Count; i++){
-            A.debugC.Log($"Generating cable at index {indexAndDirections[i].previousIndex+1}, direction: {indexAndDirections[i].endingDirection}");
+            DebugC.Get().Log($"Generating cable at index {indexAndDirections[i].previousIndex+1}, direction: {indexAndDirections[i].endingDirection}");
             TryGenerateCable(indexAndDirections[i].previousIndex, indexAndDirections[i].endingDirection);
         }
         InitializeCableGrid();
@@ -363,7 +361,7 @@ public class CableHandler : MonoBehaviour {
         //turning
         else if(previousAttributes.endingDirection != newDirection) {
             TryRenewRotationCable(previousIndex+1, previousAttributes.endingDirection, newDirection);
-            A.debugC.Log("renewed rotation cable, direction: "+newDirection);
+            DebugC.Get().Log("renewed rotation cable, direction: "+newDirection);
         }
         GenerateEndingCables(previousIndex+2);
         A.renewSiblingCableIndices = true;
@@ -428,8 +426,8 @@ public class CableHandler : MonoBehaviour {
         GameObject cablePrefab = Utilities.GetStraightCablePrefab(A.cablePrefabs, shadowDirection, previousEndingDirection);
         CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(cablePrefab);
         Vector3    deltaPosition;
-        if(!previousAttributes.isRotationCable) { A.debugC.Log("previous is not rotation node"); deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
-        else                                   { A.debugC.Log("previous is rotation node"); deltaPosition = Vector3.zero; }
+        if(!previousAttributes.isRotationCable) { deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
+        else                                   { deltaPosition = Vector3.zero; }
         
         
         if(A.cables.Count > index) {

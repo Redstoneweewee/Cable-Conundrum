@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class JointsData : MonoBehaviour {
     [HideInInspector] public JointsController jointsController;
 
-    [HideInInspector] public DebugC debugC;
     [HideInInspector] public ControlsData controlsData;
     [HideInInspector] public JointsOpacityGlobal jointsOpacityGlobal;
     [HideInInspector] public ElectricalStripData electricalStripData;
@@ -26,7 +25,6 @@ public class JointsData : MonoBehaviour {
 
     // Start is called before the first frame update
     void Awake() {
-        debugC = DebugC.Get();
         jointsController    = Utilities.TryGetComponent<JointsController>(gameObject);
         controlsData        = FindObjectOfType<ControlsData>();
         jointsOpacityGlobal = Utilities.TryGetComponent<JointsOpacityGlobal>(gameObject);

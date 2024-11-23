@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DebugC : MonoBehaviour {
     [SerializeField] public bool logCustomDebugMessages = true;
+    [SerializeField] public bool logMathMessages = true;
 
     public static DebugC Get() {
         return FindObjectsOfType<DebugC>()[0];
@@ -47,6 +48,10 @@ public class DebugC : MonoBehaviour {
     }
 
 
+    public void LogMath<T>(T text) {
+        if(!logMathMessages) { return; }
+        Debug.Log(text);
+    }
 
 
 

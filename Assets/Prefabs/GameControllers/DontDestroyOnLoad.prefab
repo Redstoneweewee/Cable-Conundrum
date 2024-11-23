@@ -4679,13 +4679,13 @@ MonoBehaviour:
     soundType: 3
     minPitch: 0.8
     maxPitch: 0.9
-    volume: 1
+    volume: 0.7
     playSound: 0
   - audioSource: {fileID: 1513814470478906443}
     soundType: 4
     minPitch: 1
     maxPitch: 1.5
-    volume: 0.926
+    volume: 0.64
     playSound: 0
   - audioSource: {fileID: 546512784243972696}
     soundType: 5
@@ -4697,7 +4697,7 @@ MonoBehaviour:
     soundType: 6
     minPitch: 1
     maxPitch: 1
-    volume: 0.5
+    volume: 0.85
     playSound: 0
   music: []
 --- !u!82 &2856963103883575558
@@ -4808,7 +4808,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09f8dc09efedc414784e7ba556669245, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.926
+  m_Volume: 0.7
   m_Pitch: 1.2886629
   Loop: 0
   Mute: 0
@@ -4904,7 +4904,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f5d099c7a40edb844a583ee1693ea567, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 0.88194406
   Loop: 0
   Mute: 0
@@ -5342,6 +5342,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
+--- !u!1 &6661461700191289339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4818819866299155740}
+  - component: {fileID: 5892863719096069936}
+  m_Layer: 0
+  m_Name: CustomDebug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4818819866299155740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661461700191289339}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2963101829746856845}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5892863719096069936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661461700191289339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcafee04b8170fa4d96562e050e9656e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logCustomDebugMessages: 0
+  logMathMessages: 0
 --- !u!1 &6671290371973341665
 GameObject:
   m_ObjectHideFlags: 0
@@ -6756,6 +6802,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 871173992917385374}
+  - {fileID: 4818819866299155740}
   - {fileID: 848495113571101089}
   - {fileID: 7551142015480209883}
   - {fileID: 7030501685345241910}

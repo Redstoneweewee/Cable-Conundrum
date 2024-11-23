@@ -4,7 +4,6 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public class JointsOpacityGlobal : MonoBehaviour {
-    public DebugC DebugC { get ; set; }
     private JointsData jointsData;
     private IEnumerator opacityCoroutine;
     [SerializeField] private Material jointMaterial;
@@ -35,10 +34,8 @@ public class JointsOpacityGlobal : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        DebugC = DebugC.Get();
         jointsData = Utilities.TryGetComponent<JointsData>(gameObject);
         ResetAllVariables();
-        //Debug.Log(math.sin((2*math.PI/p)*(0.5+d41) - math.PI/2));
     }
 
 
@@ -92,18 +89,17 @@ public class JointsOpacityGlobal : MonoBehaviour {
             CalculateDValues();
         }
 
-        DebugC.Log($"p: {p}");
-        DebugC.Log($"t: {t}");
-        DebugC.Log($"tf: {tf}");
-        DebugC.Log($"a3: {a3}");
-        DebugC.Log($"b31: {b31}");
-        DebugC.Log($"b32: {b32}");
+        DebugC.Get().LogMath($"p: {p}");
+        DebugC.Get().LogMath($"t: {t}");
+        DebugC.Get().LogMath($"tf: {tf}");
+        DebugC.Get().LogMath($"a3: {a3}");
+        DebugC.Get().LogMath($"b31: {b31}");
+        DebugC.Get().LogMath($"b32: {b32}");
 
-        ////Debug.Log($"td: {td}");
-        DebugC.Log($"c41: {c41}");
-        DebugC.Log($"c42: {c42}");
-        DebugC.Log($"d41: {d41}");
-        DebugC.Log($"d42: {d42}");
+        DebugC.Get().LogMath($"c41: {c41}");
+        DebugC.Get().LogMath($"c42: {c42}");
+        DebugC.Get().LogMath($"d41: {d41}");
+        DebugC.Get().LogMath($"d42: {d42}");
     }
 
     public void CalculateDValues() {
@@ -150,27 +146,27 @@ public class JointsOpacityGlobal : MonoBehaviour {
         float opacityNum;
 
         if(jointsEnabled && isFirstOpacity) { 
-            if(previousIsFirstOpacity) { opacityNum = f1(t, d41); DebugC.Log("case 11, f11(t): "+f1(t, d41)); }
-            else                       { opacityNum = f1(t, d42); DebugC.Log("case 12, f12(t): "+f1(t, d42)); }
+            if(previousIsFirstOpacity) { opacityNum = f1(t, d41); DebugC.Get().LogMath("case 11, f11(t): "+f1(t, d41)); }
+            else                       { opacityNum = f1(t, d42); DebugC.Get().LogMath("case 12, f12(t): "+f1(t, d42)); }
         }
         else if(jointsEnabled && !isFirstOpacity) { 
-            if(previousIsFirstOpacity) { opacityNum = f2(t, d41); DebugC.Log("case 21, f21(t): "+f2(t, d41));  }
-            else                       { opacityNum = f2(t, d42); DebugC.Log("case 22, f22(t): "+f2(t, d42));  }
+            if(previousIsFirstOpacity) { opacityNum = f2(t, d41); DebugC.Get().LogMath("case 21, f21(t): "+f2(t, d41));  }
+            else                       { opacityNum = f2(t, d42); DebugC.Get().LogMath("case 22, f22(t): "+f2(t, d42));  }
             
         }
         else { 
-            if(isFirstOpacity) { opacityNum = f31(t); DebugC.Log("case 31, f31(t): "+f31(t)); }
-            else               { opacityNum = f32(t); DebugC.Log("case 32, f32(t): "+f32(t)); }
+            if(isFirstOpacity) { opacityNum = f31(t); DebugC.Get().LogMath("case 31, f31(t): "+f31(t)); }
+            else               { opacityNum = f32(t); DebugC.Get().LogMath("case 32, f32(t): "+f32(t)); }
             
         }
-        DebugC.Log("isFirstLoop: "+isFirstLoop);
-        DebugC.Log("isFirstOpacity: "+isFirstOpacity);
-        DebugC.Log("previousIsFirstOpacity: "+previousIsFirstOpacity);
-        DebugC.Log("opacityNum: "+opacityNum);
+        DebugC.Get().LogMath("isFirstLoop: "+isFirstLoop);
+        DebugC.Get().LogMath("isFirstOpacity: "+isFirstOpacity);
+        DebugC.Get().LogMath("previousIsFirstOpacity: "+previousIsFirstOpacity);
+        DebugC.Get().LogMath("opacityNum: "+opacityNum);
         float newOpacity;
         newOpacity = math.remap(0f, 1f, Constants.joinOpacityMin, Constants.joinOpacityMax, opacityNum);
-        //Debug.Log("opacityNum: "+opacityNum);
-        //Debug.Log("newOpacity: "+newOpacity);
+        //Debug.LogMath("opacityNum: "+opacityNum);
+        //Debug.LogMath("newOpacity: "+newOpacity);
                 //jointImage.color = new Color(jointImage.color.r, jointImage.color.g, jointImage.color.b, newOpacity);
         //jointMaterial.color = new Color(jointMaterial.color.r, jointMaterial.color.g, jointMaterial.color.b, newOpacity);
         jointMaterial.color = new Color(jointMaterial.color.r, jointMaterial.color.g, jointMaterial.color.b, newOpacity);

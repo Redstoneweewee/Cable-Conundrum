@@ -16,19 +16,16 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
-        //Debug.Log("Drag Begin");
     }
 
     public void OnDrag(PointerEventData eventData) {
-        //Debug.Log("Dragging");
     }
 
     public void OnEndDrag(PointerEventData eventData) {
-        //Debug.Log("Drag Ended");
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        DebugC.Get().Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -43,11 +40,9 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        //Debug.Log("Mouse Enter");
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        //Debug.Log("Mouse Exit");
     }
 
     public void OnPointerUp(PointerEventData eventData) {
@@ -202,7 +197,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
 
     public void InitialCreateDrag() {
-        Debug.Log($"InitialCreateDrag: {A}");
+        DebugC.Get().Log($"InitialCreateDrag: {A.name}");
         A.offset = new Vector2(transform.position.x, transform.position.y) - A.mouse.position.value;
         //transform.localScale = new Vector3(1f, 1f, 1f);
         //transform.localScale = new Vector3(0.96f, 0.96f, 0.96f);
@@ -217,7 +212,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         yield return new WaitForEndOfFrame();
         if(!Input.GetMouseButton(0)) { A.isDragging = false; }
         if(A.isDragging) { A.targetPosition = A.mouse.position.value + A.offset; }
-        Debug.Log($"isDragging: {A.isDragging}, mouse: {Input.GetMouseButton(0)}");
+        DebugC.Get().Log($"isDragging: {A.isDragging}, mouse: {Input.GetMouseButton(0)}");
         if(!Utilities.IsApproximate(A.targetPosition, A.cachedPlugPositionDynamic - A.offset, 0.01f)) {
             A.cachedPlugPositionDynamic = Vector2.Lerp(A.cachedPlugPositionDynamic, A.targetPosition, Constants.plugInterpolation);
             Transform firstNearestSocket = PlugIntoSocketTest();

@@ -10,7 +10,6 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public CableHandler cableHandler;
 
     [HideInInspector] public Mouse mouse = Mouse.current;
-    [HideInInspector] public DebugC debugC;
 
     
     [HideInInspector] public CablePrefabs              cablePrefabs;
@@ -50,7 +49,6 @@ public class CableParentAttributes : MonoBehaviour {
     [SerializeField]  public Directions       endingDirection;
 
     void Awake() {
-        debugC = DebugC.Get();
         cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
         plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
         cablePrefabs              = FindObjectOfType<CablePrefabs>();

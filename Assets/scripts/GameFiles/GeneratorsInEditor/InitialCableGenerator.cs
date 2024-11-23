@@ -31,7 +31,6 @@ public class InitialCableGenerator : MonoBehaviour {
     private void GenerateCable(int previousIndex, Directions newDirection) {
         Transform previousCable;
         CableChildAttributes previousAttributes;
-        Debug.Log("previousIndex: "+previousIndex);
         previousCable = cableParentAttributes.initialCables[previousIndex].transform;
         previousAttributes = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject);
         
@@ -43,7 +42,7 @@ public class InitialCableGenerator : MonoBehaviour {
         else if(previousAttributes.endingDirection != newDirection) {
             GenerateRotationCable(previousIndex+1, previousAttributes.endingDirection, newDirection);
         }
-        DebugC.Get().LogListAlways("initialCables: ", cableParentAttributes.initialCables);
+        DebugC.Get().LogList("initialCables: ", cableParentAttributes.initialCables);
     }
 
 
@@ -56,8 +55,8 @@ public class InitialCableGenerator : MonoBehaviour {
         GameObject cablePrefab = Utilities.GetStraightCablePrefab(cablePrefabs, shadowDirection, previousEndingDirection);
         CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(cablePrefab);
         Vector3    deltaPosition;
-        if(!previousAttributes.isRotationCable) { DebugC.Get().Log("previous is not rotation node"); deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
-        else                                   { DebugC.Get().Log("previous is rotation node"); deltaPosition = Vector3.zero; }
+        if(!previousAttributes.isRotationCable) { deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
+        else                                    { deltaPosition = Vector3.zero; }
         
         cableParentAttributes.initialCables.Add(Instantiate(cablePrefab, transform));
         cableParentAttributes.initialCables[index].transform.position = cableParentAttributes.initialCables[index-1].transform.position + deltaPosition;

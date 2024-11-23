@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 
 public class PlugAttributes : MonoBehaviour {
     public static int idIncrement = 1;
-    [HideInInspector] public DebugC debugC;
     [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public int id;
 
@@ -52,7 +51,6 @@ public class PlugAttributes : MonoBehaviour {
 
     // Start is called before the first frame update
     void Awake() {
-        debugC = DebugC.Get();
         plugHandler               = Utilities.TryGetComponent<PlugHandler>(gameObject);
         gridsData                 = FindObjectOfType<GridsData>();
         gridsController           = FindObjectOfType<GridsController>();
@@ -70,8 +68,8 @@ public class PlugAttributes : MonoBehaviour {
         id = idIncrement;
         idIncrement++;
 
-        debugC.Log("initialized "+transform.name);
-        debugC.Log($"{transform.name}'s id: {id}");
+        DebugC.Get().Log("initialized "+transform.name);
+        DebugC.Get().Log($"{transform.name}'s id: {id}");
     }
 
 }

@@ -22,7 +22,6 @@ public class SoundsEditor : MonoBehaviour {
             }
 
             if(soundsAttribute.playSound) {
-                Debug.Log("played sound "+soundsAttribute.audioSource.clip.name);
                 SoundPlayer.PlaySound(soundsAttribute.audioSource, new Vector2(soundsAttribute.minPitch, soundsAttribute.maxPitch), soundsAttribute.volume);
                 soundsAttribute.playSound = false;
             }

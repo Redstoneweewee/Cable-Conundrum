@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridsData : MonoBehaviour {
-    [HideInInspector] public DebugC debugC;
     [HideInInspector] public GridsController gridsController;
 
     [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;
@@ -30,7 +29,6 @@ public class GridsData : MonoBehaviour {
     //public bool[,]                 ObstaclesGrid     {get{return obstaclesGrid;    } set{obstaclesGrid     = value;}}
 
     public void Awake() {
-        debugC = DebugC.Get();
         electricalStripSizeController = FindObjectOfType<ElectricalStripSizeController>();
         electricalStripData           = FindObjectOfType<ElectricalStripData>();
         gridsController = Utilities.TryGetComponent<GridsController>(gameObject);

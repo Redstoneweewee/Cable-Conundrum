@@ -26,7 +26,6 @@ public class InitializerBase : MonoBehaviour {
 
     private IEnumerator WaitToInitializeButtons() {
         yield return new WaitUntil(() => finishedWithAllTasks);
-        Debug.Log("buttons waited");
         scenesController = FindObjectOfType<ScenesController>();
         settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
         exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
@@ -131,7 +130,6 @@ public class InitializerBase : MonoBehaviour {
     private void EndInitialization(GameObjectActivity[] gameObjectActivities) {
         foreach(GameObjectActivity activity in gameObjectActivities) {
             activity.gameObject.SetActive(activity.isInitiallyActive);
-            //Debug.Log($"set {activity.gameObject.name} to {activity.isInitiallyActive}");
         }
     }
 
@@ -163,10 +161,10 @@ public class InitializerBase : MonoBehaviour {
 
     public void FinishedWithAllTasks() {
         finishedWithAllTasks = true;
-        Debug.Log("set finishedWithAllTasks to True");
+        DebugC.Get().Log("set finishedWithAllTasks to True");
     }
     public void AllButtonsLoaded() {
         allButtonsLoaded = true;
-        Debug.Log("set allButtonsLoaded to True");
+        DebugC.Get().Log("set allButtonsLoaded to True");
     }
 }

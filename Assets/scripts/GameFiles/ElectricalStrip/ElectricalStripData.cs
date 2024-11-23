@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 [ExecuteInEditMode]
 public class ElectricalStripData : MonoBehaviour {
     [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public DebugC debugC;
     [HideInInspector] public Mouse   mouse = Mouse.current;
 
     [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;
@@ -33,7 +32,6 @@ public class ElectricalStripData : MonoBehaviour {
 
 
     public void Awake() {
-        debugC = DebugC.Get();
         electricalStripController     = Utilities.TryGetComponent<ElectricalStripController>(gameObject);
         electricalStripSizeController = Utilities.TryGetComponent<ElectricalStripSizeController>(gameObject);
         jointsData                    = FindObjectOfType<JointsData>();
