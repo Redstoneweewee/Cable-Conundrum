@@ -9,20 +9,21 @@ public class SoundsEditor : MonoBehaviour {
 
 
     void Update() {
-        foreach(SoundsAttributes soundAttribute in soundEffects) {
-            if(soundAttribute.minPitch > soundAttribute.maxPitch) {
-                soundAttribute.minPitch = soundAttribute.maxPitch;
+        foreach(SoundsAttributes soundsAttribute in soundEffects) {
+            if(soundsAttribute.minPitch > soundsAttribute.maxPitch) {
+                soundsAttribute.minPitch = soundsAttribute.maxPitch;
             }
-            if(soundAttribute.maxPitch < soundAttribute.minPitch) {
-                soundAttribute.maxPitch = soundAttribute.minPitch;
+            if(soundsAttribute.maxPitch < soundsAttribute.minPitch) {
+                soundsAttribute.maxPitch = soundsAttribute.minPitch;
             }
-            if(soundAttribute.audioSource.volume != soundAttribute.volume) {
-                soundAttribute.audioSource.volume = soundAttribute.volume;
+            if(soundsAttribute.audioSource.volume != soundsAttribute.volume) {
+                soundsAttribute.audioSource.volume = soundsAttribute.volume;
             }
 
-            if(soundAttribute.playSound) {
-                SoundPlayer.PlaySound(soundAttribute.audioSource, new Vector2(soundAttribute.minPitch, soundAttribute.maxPitch), soundAttribute.volume);
-                soundAttribute.playSound = false;
+            if(soundsAttribute.playSound) {
+                Debug.Log("played sound "+soundsAttribute.audioSource.clip.name);
+                SoundPlayer.PlaySound(soundsAttribute.audioSource, new Vector2(soundsAttribute.minPitch, soundsAttribute.maxPitch), soundsAttribute.volume);
+                soundsAttribute.playSound = false;
             }
         }  
     }

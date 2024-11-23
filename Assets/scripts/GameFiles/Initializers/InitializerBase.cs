@@ -13,7 +13,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public TutorialData               tutorialData;
     [HideInInspector] public ControlsController         controlsController;
 
-    [SerializeField]  public ButtonAttributes[] buttonAttributes;
+    [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
 
     public void Awake() {
         
@@ -70,56 +70,58 @@ public class InitializerBase : MonoBehaviour {
     private void InitializeButtons() {
 
 
-        buttonAttributes = FindObjectsOfType<ButtonAttributes>(true);
-        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
-            switch(buttonAttribute.buttonType) {
+        buttonsAttributes = FindObjectsOfType<ButtonsAttributes>(true);
+        foreach(ButtonsAttributes buttonsAttribute in buttonsAttributes) {
+            buttonsAttribute.button.onClick.RemoveAllListeners();
+            Utilities.SubscribeToButton(buttonsAttribute.button, buttonsAttribute.buttonsHandler.OnPressButton);
+            switch(buttonsAttribute.buttonType) {
                 case ButtonTypes.EnterLevel:
-                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelButton, buttonAttribute.levelIndex);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterLevelButton, buttonsAttribute.levelIndex);
                     break;
                 case ButtonTypes.NextLevel:
-                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterNextLevelButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterNextLevelButton);
                     break;
                 case ButtonTypes.PreviousLevel:
-                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterPreviousLevelButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterPreviousLevelButton);
                     break;
                 case ButtonTypes.EnterLevelSelector:
-                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterLevelSelectorButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterLevelSelectorButton);
                     break;
                 case ButtonTypes.EnterMenu:
-                    Utilities.SubscribeToButton(buttonAttribute.button, scenesController.OnPressEnterMenuButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterMenuButton);
                     break;
                 case ButtonTypes.EnterSettings:
                     Debug.Log("subscribed to enter settings");
-                    Utilities.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressEnterSettingsButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, settingsGlobal.OnPressEnterSettingsButton);
                     break;
                 case ButtonTypes.ExitSettings:
                     Debug.Log($"settingsGlobal: {settingsGlobal.name} ");
                     Debug.Log("subscribed to exit  settings");
-                    Utilities.SubscribeToButton(buttonAttribute.button, settingsGlobal.OnPressExitSettingsButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, settingsGlobal.OnPressExitSettingsButton);
                     break;
                 case ButtonTypes.EnterExitConfirmation:
-                    Utilities.SubscribeToButton(buttonAttribute.button, exitGameConfirmationGlobal.OnPressEnterExitConfirmationButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, exitGameConfirmationGlobal.OnPressEnterExitConfirmationButton);
                     break;
                 case ButtonTypes.ExitExitConfirmation:
-                    Utilities.SubscribeToButton(buttonAttribute.button, exitGameConfirmationGlobal.OnPressExitExitConfirmationButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, exitGameConfirmationGlobal.OnPressExitExitConfirmationButton);
                     break;
                 case ButtonTypes.ExitGame:
-                    Utilities.SubscribeToButton(buttonAttribute.button, exitGameConfirmationGlobal.OnPressExitGameButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, exitGameConfirmationGlobal.OnPressExitGameButton);
                     break;
                 case ButtonTypes.EnterTutorialPage:
-                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressEnterTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressEnterTutorialPageButton);
                     break;
                 case ButtonTypes.ExitTutorialPage:
-                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressExitTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressExitTutorialPageButton);
                     break;
                 case ButtonTypes.NextTutorialPage:
-                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressNextTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressNextTutorialPageButton);
                     break;
                 case ButtonTypes.PreviousTutorialPage:
-                    Utilities.SubscribeToButton(buttonAttribute.button, tutorialController.OnPressPreviousTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressPreviousTutorialPageButton);
                     break;
                 default:
-                    Debug.LogError($"A ButtonType was not recognized, ButtonType: {buttonAttribute.buttonType}");
+                    Debug.LogError($"A ButtonType was not recognized, ButtonType: {buttonsAttribute.buttonType}");
                     break;
             }
         }
@@ -135,7 +137,7 @@ public class InitializerBase : MonoBehaviour {
 
     public IEnumerator SetMenuButton(bool active) {
         yield return new WaitUntil(() => allButtonsLoaded);
-        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+        foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterMenu) {
                 buttonAttribute.button.gameObject.SetActive(active);
             }
@@ -143,7 +145,7 @@ public class InitializerBase : MonoBehaviour {
     }
     public IEnumerator SetLevelSelectorButton(bool active) {
         yield return new WaitUntil(() => allButtonsLoaded);
-        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+        foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevelSelector) {
                 buttonAttribute.button.gameObject.SetActive(active);
             }
@@ -151,7 +153,7 @@ public class InitializerBase : MonoBehaviour {
     }
     public IEnumerator SetTutorialHelpButton(bool active) {
         yield return new WaitUntil(() => allButtonsLoaded);
-        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+        foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterTutorialPage) {
                 buttonAttribute.button.gameObject.SetActive(active);
             }

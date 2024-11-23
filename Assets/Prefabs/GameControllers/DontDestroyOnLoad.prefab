@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4095018399461651507}
   - component: {fileID: 2064341759857801561}
+  - component: {fileID: 7368106858976097235}
   m_Layer: 0
   m_Name: CancelButton
   m_TagString: Untagged
@@ -167,10 +168,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 8
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 181485387299411029}
+  soundsData: {fileID: 0}
+--- !u!114 &7368106858976097235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181485387299411029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &186449418474645472
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4021148429848433600}
   - component: {fileID: 243052602200405241}
+  - component: {fileID: 2331849988930120223}
   m_Layer: 0
   m_Name: LevelSelectorButton
   m_TagString: Untagged
@@ -693,10 +710,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 3
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &2331849988930120223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095868277896878884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &1145777595662058544
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +779,7 @@ MonoBehaviour:
   intersectionController: {fileID: 0}
   electricalStripData: {fileID: 0}
   electricalStripController: {fileID: 0}
+  adminToggles: {fileID: 0}
   exitAction: {fileID: -3481171659038101867, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   jointAction: {fileID: 2717749234729071578, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   obstaclesAction: {fileID: 7372259704417167488, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
@@ -759,6 +792,7 @@ MonoBehaviour:
   obstaclesModifiable: 0
   plugSelectorEnabled: 0
   electricalStripEnabled: 0
+  isUsed: 1
 --- !u!114 &7661454138708112210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3561366995511878052}
   - component: {fileID: 4883303371476140375}
+  - component: {fileID: 4550268980353653275}
   m_Layer: 0
   m_Name: TutorialHelpButton
   m_TagString: Untagged
@@ -981,10 +1016,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 10
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &4550268980353653275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382962094621092414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &1593383360967313184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,7 +1294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d354d35004960684695ed911dd009ba9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f84f95448adc10a4b8911e0efe9050bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2423,6 +2473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 185957281070653375}
   - component: {fileID: 3906811249960221941}
+  - component: {fileID: 5242285560534319689}
   m_Layer: 0
   m_Name: MenuButton
   m_TagString: Untagged
@@ -2458,10 +2509,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 4
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &5242285560534319689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3210358559162109223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &3235961038183251128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,6 +2904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1636497214828976625}
   - component: {fileID: 1273540165822670136}
+  - component: {fileID: 2398233755100458277}
   m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
@@ -2873,10 +2940,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 11
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &2398233755100458277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4030554990027296467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &4047552599306332765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,6 +2969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4078357513777299272}
   - component: {fileID: 2102404152585826954}
+  - component: {fileID: 3249779520299457849}
   m_Layer: 0
   m_Name: ExitGameButton
   m_TagString: Untagged
@@ -2923,10 +3006,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 9
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 4047552599306332765}
+  soundsData: {fileID: 0}
+--- !u!114 &3249779520299457849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4047552599306332765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &4047829180931444913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3866,13 +3964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundsController: {fileID: 0}
   soundsEditor: {fileID: 0}
-  soundEffects:
-  - audioSource: {fileID: 2856963103883575558}
-    soundType: 1
-    minPitch: 0
-    maxPitch: 0
-    volume: 0
-    playSound: 0
+  soundEffects: []
   music: []
   soundVolume: 1
   musicVolume: 1
@@ -4573,9 +4665,9 @@ MonoBehaviour:
   soundEffects:
   - audioSource: {fileID: 2353221874819876113}
     soundType: 0
-    minPitch: 1.06
-    maxPitch: 1.1
-    volume: 0.275
+    minPitch: 1.7
+    maxPitch: 1.8
+    volume: 0.2
     playSound: 0
   - audioSource: {fileID: 2856963103883575558}
     soundType: 1
@@ -4595,6 +4687,12 @@ MonoBehaviour:
     maxPitch: 1.5
     volume: 0.926
     playSound: 0
+  - audioSource: {fileID: 546512784243972696}
+    soundType: 5
+    minPitch: 1
+    maxPitch: 1.5
+    volume: 0.297
+    playSound: 0
   music: []
 --- !u!82 &2856963103883575558
 AudioSource:
@@ -4609,7 +4707,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f32d8d60f197f204ba10bab042d4cf87, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.825
-  m_Pitch: 1.194816
+  m_Pitch: 1.1215537
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -4705,7 +4803,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 09f8dc09efedc414784e7ba556669245, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.926
-  m_Pitch: 1.0902892
+  m_Pitch: 1.2886629
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -4801,7 +4899,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f5d099c7a40edb844a583ee1693ea567, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.8030187
+  m_Pitch: 0.88194406
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -4896,7 +4994,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5aa948679296f2649802b2f562804537, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.275
+  m_Volume: 0.2
   m_Pitch: 1.0910153
   Loop: 0
   Mute: 0
@@ -5089,7 +5187,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 8f7dade61c5cee742bbe8b6378ca33a6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.297
-  m_Pitch: 1.4571718
+  m_Pitch: 1.1295154
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -5182,6 +5280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7667686445607475364}
   - component: {fileID: 3757398221826569904}
+  - component: {fileID: 5652275260980594980}
   m_Layer: 0
   m_Name: PreviousTutorialPageButton
   m_TagString: Untagged
@@ -5218,10 +5317,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 13
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &5652275260980594980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652914872775933548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &6671290371973341665
 GameObject:
   m_ObjectHideFlags: 0
@@ -6039,6 +6153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 817357739269315577}
   - component: {fileID: 308164767827734547}
+  - component: {fileID: 706462779685553213}
   m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
@@ -6074,10 +6189,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 6
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &706462779685553213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034904368426454084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &8083107085740606855
 GameObject:
   m_ObjectHideFlags: 0
@@ -6927,6 +7057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198514140725816086}
   - component: {fileID: 5838574557586830284}
+  - component: {fileID: 7282155195033530694}
   m_Layer: 0
   m_Name: NextTutorialPageButton
   m_TagString: Untagged
@@ -6963,10 +7094,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 12
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &7282155195033530694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095871765366007073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &9199441673116312022
 GameObject:
   m_ObjectHideFlags: 0
@@ -6977,6 +7123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4953116061218081117}
   - component: {fileID: 609858854562360556}
+  - component: {fileID: 7798200810134131816}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -7012,10 +7159,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 5
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &7798200810134131816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199441673116312022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1001 &6496387426736844404
 PrefabInstance:
   m_ObjectHideFlags: 0

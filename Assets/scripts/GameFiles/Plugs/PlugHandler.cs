@@ -117,6 +117,12 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
             Utilities.SetCablesOpacity(A.cableParentAttributes.gameObject, 1f);
         }
         A.intersectionController.TestForCableIntersection();
+
+        foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
+            if(soundsAttribute.soundType == SoundTypes.PlugSnapEnter) {
+                SoundPlayer.PlaySound(soundsAttribute);
+            }
+        }
     }
 
     public void PlugOut() {
@@ -129,6 +135,12 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         }
         //intersectionDetector.ClearAllCableIntersections();
         A.intersectionController.TestForCableIntersection();
+        
+        foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
+            if(soundsAttribute.soundType == SoundTypes.PlugSnapExit) {
+                SoundPlayer.PlaySound(soundsAttribute);
+            }
+        }
     }
 
     private void TryModifyCables() {

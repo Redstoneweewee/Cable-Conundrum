@@ -147,7 +147,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
 
     private IEnumerator EnableMenuButtons() {
         yield return new WaitUntil(() => allButtonsLoaded);
-        foreach(ButtonAttributes buttonAttribute in buttonAttributes) {
+        foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterMenu) {
                 buttonAttribute.button.gameObject.SetActive(true);
             }

@@ -146,6 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6672258520593134425}
   - component: {fileID: 2737194097739886259}
+  - component: {fileID: 6456096307328626120}
   m_Layer: 0
   m_Name: LevelButton
   m_TagString: Untagged
@@ -181,10 +182,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 0
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 4398931976694179294}
+  soundsData: {fileID: 0}
+--- !u!114 &6456096307328626120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398931976694179294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &5591666577618980462
 GameObject:
   m_ObjectHideFlags: 0

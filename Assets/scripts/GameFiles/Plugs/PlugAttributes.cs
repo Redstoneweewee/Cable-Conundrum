@@ -23,6 +23,7 @@ public class PlugAttributes : MonoBehaviour {
     [HideInInspector] public JointsData                jointsData;
     [HideInInspector] public CableParentAttributes     cableParentAttributes;
     [HideInInspector] public CableHandler              cableHandler;
+    [HideInInspector] public SoundsData                soundsData;
 
     [SerializeField] public bool isPluggedIn = false;
     [SerializeField] public bool isObstacle = false;
@@ -61,6 +62,7 @@ public class PlugAttributes : MonoBehaviour {
         intersectionData          = FindObjectOfType<IntersectionData>();
         intersectionController    = FindObjectOfType<IntersectionController>();
         jointsData                = FindObjectOfType<JointsData>();
+        soundsData                = FindObjectOfType<SoundsData>();
         cableParentAttributes     = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
         cableHandler              = Utilities.TryGetComponentInChildren<CableHandler>(gameObject);
 

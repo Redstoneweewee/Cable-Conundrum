@@ -21,6 +21,7 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public ElectricalStripData       electricalStripData;
     [HideInInspector] public ElectricalStripController electricalStripController;
     [HideInInspector] public JointsData                jointsData;
+    [HideInInspector] public SoundsData                soundsData;
 
     /* Cables:
     * [ [0 ]UpLeft,    [1 ]UpRight,    [2 ]DownLeft,    [3 ]DownRight,    [4 ]LeftUp,    [5 ]LeftDown,    [6 ]RightUp,    [7 ]RightDown,   ]
@@ -59,5 +60,6 @@ public class CableParentAttributes : MonoBehaviour {
         electricalStripData       = FindObjectOfType<ElectricalStripData>();
         electricalStripController = FindObjectOfType<ElectricalStripController>();
         jointsData                = FindObjectOfType<JointsData>();
+        soundsData                = FindObjectOfType<SoundsData>();
     }
 }

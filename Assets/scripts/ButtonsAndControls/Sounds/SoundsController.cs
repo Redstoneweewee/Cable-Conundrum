@@ -17,6 +17,7 @@ public class SoundsController : MonoBehaviour {
     private void InitializeSliders() {
         SliderAttributes[] allSliderAttributes = FindObjectsOfType<SliderAttributes>();
         foreach(SliderAttributes sliderAttribute in allSliderAttributes) {
+            sliderAttribute.slider.onValueChanged.RemoveAllListeners();
             switch(sliderAttribute.sliderType) {
                 case SliderTypes.Sound:
                     Utilities.SubscribeToSlider(sliderAttribute.slider, OnSoundSliderChange);

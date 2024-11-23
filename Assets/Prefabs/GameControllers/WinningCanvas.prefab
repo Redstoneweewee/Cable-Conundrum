@@ -525,6 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1037444182294487157}
   - component: {fileID: 3912029829919583795}
+  - component: {fileID: 1590326130258459}
   m_Layer: 0
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -561,10 +562,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6a4a3028287743991bbe5229f0e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsHandler: {fileID: 0}
   buttonType: 1
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
+  soundsData: {fileID: 0}
+--- !u!114 &1590326130258459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560746035761380310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15b97a1bbec89f44b7da9486f984522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: {fileID: 0}
 --- !u!1 &7953712795315074924
 GameObject:
   m_ObjectHideFlags: 0

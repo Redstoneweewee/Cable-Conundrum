@@ -75,17 +75,14 @@ public class Utilities : MonoBehaviour {
     }
 
     public static void SubscribeToButton(Button button, System.Action function) {
-        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => function.Invoke());
     }
 
     public static void SubscribeToButton<T>(Button button, UnityAction<T> function, T argument) {
-        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => function.Invoke(argument));
     }
 
     public static void SubscribeToSlider(Slider slider, UnityAction<float> function) {
-        slider.onValueChanged.RemoveAllListeners();
         slider.onValueChanged.AddListener((value) => function.Invoke(value));
     }
 

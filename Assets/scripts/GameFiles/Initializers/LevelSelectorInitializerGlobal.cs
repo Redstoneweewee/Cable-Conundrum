@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelectorInitializerGlobal : InitializerBase, IDataPersistence {
-    List<ButtonAttributes> enterLevelButtons = new List<ButtonAttributes>();
+    List<ButtonsAttributes> enterLevelButtons = new List<ButtonsAttributes>();
 
     new void Awake() {
         base.Awake();
-        ButtonAttributes[] temp = FindObjectsOfType<ButtonAttributes>();
-        foreach(ButtonAttributes buttonAttribute in temp) {
+        ButtonsAttributes[] temp = FindObjectsOfType<ButtonsAttributes>();
+        foreach(ButtonsAttributes buttonAttribute in temp) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevel) {
                 enterLevelButtons.Add(buttonAttribute);
             }
@@ -30,7 +30,7 @@ public class LevelSelectorInitializerGlobal : InitializerBase, IDataPersistence 
 
 
     private void RecolorButtons(GameData data) {
-        foreach(ButtonAttributes buttonAttribute in enterLevelButtons) {
+        foreach(ButtonsAttributes buttonAttribute in enterLevelButtons) {
             if(buttonAttribute.levelIndex <= 0) {
                 Debug.LogWarning($"An EnterLevel button has a level index of {buttonAttribute.levelIndex}. Level Indices should be 1 or greater.");
                 continue;
