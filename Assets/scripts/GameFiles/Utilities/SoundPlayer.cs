@@ -14,7 +14,6 @@ public class SoundPlayer : MonoBehaviour {
     public static void PlaySound(SoundsAttributes soundsAttribute, float volume) {
         float pitch = Random.Range(soundsAttribute.minPitch, soundsAttribute.maxPitch);
         soundsAttribute.audioSource.pitch = pitch;
-        Debug.Log($"soundsAttribute.volume: {soundsAttribute.volume}, volume: {volume}");
         soundsAttribute.audioSource.volume = soundsAttribute.volume * volume;
         soundsAttribute.audioSource.Play();
     }

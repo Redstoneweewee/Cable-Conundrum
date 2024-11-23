@@ -9,6 +9,7 @@ public class GameData {
     * levelSavePlugs[i] = specific level, List<SavePlug>
     * levelSavePlugs[i][j] = specific plug in the level SavePlug
     */
+    public SaveSettings settings;
     public List<List<SavePlug>> levelsSavePlugs;
     public List<bool> levelCompletion;
 
@@ -16,5 +17,6 @@ public class GameData {
     public GameData() {
         levelsSavePlugs = new List<List<SavePlug>>();
         levelCompletion = new List<bool>();
+        settings        = new SaveSettings();
     }
 }

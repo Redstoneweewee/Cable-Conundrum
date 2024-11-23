@@ -49,7 +49,6 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
 
 
     public void OnPointerEnter(PointerEventData eventData) {
-        Debug.Log("Mouse Enter");
         D.isHoveringOver = true;
         if(D.scrollCoroutine == null) {
             D.scrollCoroutine = TestForScroll();
@@ -59,7 +58,6 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
 
 
     public void OnPointerExit(PointerEventData eventData) {
-        Debug.Log("Mouse Exit");
         D.isHoveringOver = false;
     }
 
@@ -100,8 +98,7 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
 
 
     public void OnClickPlugSelectorButton(int buttonId) {
-        Debug.Log("A button was pressed.");
-        Debug.Log($"buttonId: {buttonId}");
+        DebugC.Get().Log($"A button was pressed. ButtonId: {buttonId}");
         PlugSelectorAtributes attribute = D.allSelectablePlugs[buttonId];
         if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);

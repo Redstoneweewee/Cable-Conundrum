@@ -19,13 +19,15 @@ public class SoundsController : MonoBehaviour {
             sliderAttribute.slider.onValueChanged.RemoveAllListeners();
             switch(sliderAttribute.sliderType) {
                 case SliderTypes.Sound:
+                    sliderAttribute.slider.value = D.soundVolume;
                     Utilities.SubscribeToSlider(sliderAttribute.slider, OnSoundSliderChange);
                     break;
                 case SliderTypes.Music:
+                    sliderAttribute.slider.value = D.musicVolume;
                     Utilities.SubscribeToSlider(sliderAttribute.slider, OnMusicSliderChange);
                     break;
                 default:
-                    Debug.LogWarning($"Undefined slider type: {sliderAttribute.sliderType}");
+                    Debug.LogError($"Undefined slider type: {sliderAttribute.sliderType}");
                     break;
             }
         }

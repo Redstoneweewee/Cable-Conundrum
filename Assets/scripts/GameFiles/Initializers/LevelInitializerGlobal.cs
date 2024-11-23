@@ -26,10 +26,13 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     
     //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
+        gridsSkeleton = FindObjectOfType<GridsSkeleton>();
+        Initialize(data);
+
         yield return new WaitUntil(() => initializationFinished);
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
 
-        if(data.levelsSavePlugs[levelIndex] != null) {
+        if(data.levelsSavePlugs[levelIndex] != null && data.levelsSavePlugs[levelIndex].Count != 0) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
             //Set all the necessary data for a plug
             for(int i=0; i<levelData.Count; i++) {
@@ -102,8 +105,6 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     new void Start() {
         base.Start();
         DebugC = DebugC.Get();
-        gridsSkeleton = FindObjectOfType<GridsSkeleton>();
-        Initialize();
     }
 
     void Update() {
@@ -120,8 +121,9 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         */
     }
 
-    private void Initialize() {
-        ResetPlugs();
+    private void Initialize(GameData data) {
+        bool shouldMovePlugs = data.levelsSavePlugs[levelIndex] == null || data.levelsSavePlugs[levelIndex].Count == 0;
+        ResetPlugs(shouldMovePlugs);
         //Log();
         StartCoroutine(base.SetMenuButton(false));
         StartCoroutine(base.SetLevelSelectorButton(true));
@@ -130,14 +132,23 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         //StartCoroutine(TestForLoadData());
     }
 
-    public void ResetPlugs() {
+    public void ResetPlugs(bool shouldMovePlugs) {
         RenewAllLevelPlugsList();
         SortAllLevelPlugs();
         RenewPlugSiblingIndices();
-        MoveAllPlugsToInitialPositions();
+        if(shouldMovePlugs) {
+            MoveAllPlugsToInitialPositions();
+        }
     }
 
     public void AddPlugs() {
+
+        //|-------------------------------------------------------|
+        //|-------------------------------------------------------|
+        //| Added plugs do not get saved to data persistence yet. |
+        //|-------------------------------------------------------|
+        //|-------------------------------------------------------|
+
         RenewAllLevelPlugsList();
         SortAllLevelPlugs();
     }

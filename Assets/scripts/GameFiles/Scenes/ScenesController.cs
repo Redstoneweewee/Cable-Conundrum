@@ -96,6 +96,7 @@ public class ScenesController : MonoBehaviour {
 
 
     public void OnPressEnterLevelButton(int levelIndex) {
+        DataPersistenceManager.instance.SaveGame();
         TryLoadScene(LoadSceneTypes.Level, levelIndex);
     }
     public void OnPressEnterNextLevelButton() {
@@ -112,6 +113,7 @@ public class ScenesController : MonoBehaviour {
         TryLoadScene(LoadSceneTypes.LevelSelector);
     }
     public void OnPressEnterMenuButton() {
+        DataPersistenceManager.instance.SaveGame();
         TryLoadScene(LoadSceneTypes.Menu);
     }
 }

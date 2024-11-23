@@ -142,7 +142,7 @@ public class GridsController : MonoBehaviour {
         CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
         D.allCablesGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
-            if(cableParentAttribute.cableGrid == default(Array)) { Debug.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
+            if(cableParentAttribute.cableGrid == default(Array)) { D.debugC.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
             if(!cableParentAttribute.plugAttributes.isPluggedIn) { continue; }
             for(int i=0; i<cableParentAttribute.cableGrid.GetLength(0); i++) {
                 for(int j=0; j<cableParentAttribute.cableGrid.GetLength(1); j++) {

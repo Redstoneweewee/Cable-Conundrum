@@ -94,12 +94,9 @@ public class InitializerBase : MonoBehaviour {
                     Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterMenuButton);
                     break;
                 case ButtonTypes.EnterSettings:
-                    Debug.Log("subscribed to enter settings");
                     Utilities.SubscribeToButton(buttonsAttribute.button, settingsGlobal.OnPressEnterSettingsButton);
                     break;
                 case ButtonTypes.ExitSettings:
-                    Debug.Log($"settingsGlobal: {settingsGlobal.name} ");
-                    Debug.Log("subscribed to exit  settings");
                     Utilities.SubscribeToButton(buttonsAttribute.button, settingsGlobal.OnPressExitSettingsButton);
                     break;
                 case ButtonTypes.EnterExitConfirmation:
@@ -124,7 +121,7 @@ public class InitializerBase : MonoBehaviour {
                     Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressPreviousTutorialPageButton);
                     break;
                 default:
-                    Debug.LogError($"A ButtonType was not recognized, ButtonType: {buttonsAttribute.buttonType}");
+                    Debug.LogError($"Undefined button type: {buttonsAttribute.buttonType}");
                     break;
             }
         }

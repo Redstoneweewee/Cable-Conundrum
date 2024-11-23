@@ -14,6 +14,10 @@ public class DebugC : MonoBehaviour {
         if(!logCustomDebugMessages) { return; }
         Debug.Log(text);
     }
+    public void LogWarning<T>(T text) {
+        if(!logCustomDebugMessages) { return; }
+        Debug.LogWarning(text);
+    }
     public void LogArray<T>(string startText, T[] array) {
         if(!logCustomDebugMessages) { return; }
         string text = "";
