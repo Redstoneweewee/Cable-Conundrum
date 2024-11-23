@@ -11,6 +11,7 @@ public class ControlsData : MonoBehaviour {
     [HideInInspector] public IntersectionController    intersectionController;
     [HideInInspector] public ElectricalStripData       electricalStripData;
     [HideInInspector] public ElectricalStripController electricalStripController;
+    [HideInInspector] public AdminToggles              adminToggles;
 
     public InputActionReference exitAction;
     public InputActionReference jointAction;

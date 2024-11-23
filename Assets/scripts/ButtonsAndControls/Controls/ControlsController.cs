@@ -9,10 +9,10 @@ using UnityEngine.SceneManagement;
 
 public class ControlsController : MonoBehaviour {
     ControlsData D;
-    AdminToggles adminToggles;
     
     void Awake() {
         D = FindObjectOfType<ControlsData>();
+        D.adminToggles = FindObjectOfType<AdminToggles>();
     }
     void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
@@ -44,12 +44,12 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void ChangeEditorMode() {
-        adminToggles = FindObjectOfType<AdminToggles>();
-        if(!adminToggles.cachedEditorMode && adminToggles.editorMode) {
-            adminToggles.cachedEditorMode = adminToggles.editorMode;
+        D.adminToggles = FindObjectOfType<AdminToggles>();
+        if(!D.adminToggles.cachedEditorMode && D.adminToggles.editorMode) {
+            D.adminToggles.cachedEditorMode = D.adminToggles.editorMode;
         }
-        else if(adminToggles.cachedEditorMode && !adminToggles.editorMode) {
-            adminToggles.cachedEditorMode = adminToggles.editorMode;
+        else if(D.adminToggles.cachedEditorMode && !D.adminToggles.editorMode) {
+            D.adminToggles.cachedEditorMode = D.adminToggles.editorMode;
         }
     }
 
@@ -114,7 +114,7 @@ public class ControlsController : MonoBehaviour {
 
     private void OnObstaclesToggle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!adminToggles.editorMode) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         D.obstaclesModifiable = !D.obstaclesModifiable;
         ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         if(D.obstaclesModifiable) {
@@ -134,7 +134,7 @@ public class ControlsController : MonoBehaviour {
 
     private void OnPlugSelectorToggle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!adminToggles.editorMode) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         D.plugSelectorEnabled = !D.plugSelectorEnabled;
 
         if(D.plugSelectorEnabled) { D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(true); }
@@ -149,7 +149,7 @@ public class ControlsController : MonoBehaviour {
 
     private void OnElectricalStripToggle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!adminToggles.editorMode) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         D.electricalStripEnabled = !D.electricalStripEnabled;
         GameObject electricalStrip = FindObjectOfType<ElectricalStripController>().gameObject;
         Debug.Log("toggled electricla strip");
@@ -168,7 +168,7 @@ public class ControlsController : MonoBehaviour {
     
     private void OnTryDeletePlug(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!adminToggles.editorMode) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isDragging) { 
@@ -180,7 +180,7 @@ public class ControlsController : MonoBehaviour {
 
     private void OnTryDeleteObstacle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!adminToggles.editorMode) { return; }
+        if(!D.adminToggles.editorMode) { return; }
         ObstacleAttributes[] allObstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
         foreach(ObstacleAttributes obstacleAttribute in allObstacleAttributes) {
             if(obstacleAttribute.temporarilyModifiable && obstacleAttribute.isDragging) { 
