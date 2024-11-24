@@ -284,13 +284,13 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: https://redstoneweewee.github.io/Cable-Conundrum-Videos/Move%20Plugs.mp4
+  m_Url: 
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
@@ -3377,13 +3377,13 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: https://redstoneweewee.github.io/Cable-Conundrum-Videos/Change%20Cables.mp4
+  m_Url: 
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
@@ -3703,13 +3703,13 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: https://redstoneweewee.github.io/Cable-Conundrum-Videos/Grid%20Toggle.mp4
+  m_Url: 
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
@@ -5924,13 +5924,13 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: https://redstoneweewee.github.io/Cable-Conundrum-Videos/Finish%20Level.mp4
+  m_Url: 
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
