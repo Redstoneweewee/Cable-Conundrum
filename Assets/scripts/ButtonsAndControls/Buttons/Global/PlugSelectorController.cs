@@ -98,7 +98,7 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
 
 
     public void OnClickPlugSelectorButton(int buttonId) {
-        DebugC.Get().Log($"A button was pressed. ButtonId: {buttonId}");
+        DebugC.Get()?.Log($"A button was pressed. ButtonId: {buttonId}");
         PlugSelectorAtributes attribute = D.allSelectablePlugs[buttonId];
         if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);

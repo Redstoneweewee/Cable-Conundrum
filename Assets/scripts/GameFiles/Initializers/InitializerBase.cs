@@ -161,10 +161,10 @@ public class InitializerBase : MonoBehaviour {
 
     public void FinishedWithAllTasks() {
         finishedWithAllTasks = true;
-        DebugC.Get().Log("set finishedWithAllTasks to True");
+        DebugC.Get()?.Log("set finishedWithAllTasks to True");
     }
     public void AllButtonsLoaded() {
         allButtonsLoaded = true;
-        DebugC.Get().Log("set allButtonsLoaded to True");
+        DebugC.Get()?.Log("set allButtonsLoaded to True");
     }
 }

@@ -28,7 +28,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataP
         else if(levelFailureTypes == LevelFailureTypes.Cables)    { Debug.Log("Some cables are overlapping!"); DidNotWin(); }
         else if(levelFailureTypes == LevelFailureTypes.None)      { Debug.Log("You win!"); Win(); }
         else   { Debug.LogError("Undefined level failure type."); }
-        DebugC.Get().Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        DebugC.Get()?.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     //conditions:

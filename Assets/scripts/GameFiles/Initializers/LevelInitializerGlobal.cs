@@ -40,10 +40,10 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
 
                 SavePlug savePlug = levelData[i];
                 GameObject plug = sortedPlugs[i].gameObject;
-                DebugC.Get().Log($"Inheriting values - receiver: {plug.name}");
-                DebugC.Get().Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
+                DebugC.Get()?.Log($"Inheriting values - receiver: {plug.name}");
+                DebugC.Get()?.Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
                 plug.transform.position = savePlug.plugPosition;
-                DebugC.Get().Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
+                DebugC.Get()?.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
                 Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
 
                 if(savePlug.indexAndDirections == null) { continue; }
@@ -64,7 +64,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         if(data.levelCompletion[levelIndex]) { return; }
 
         data.levelsSavePlugs[levelIndex].Clear();
-        DebugC.Get().LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
+        DebugC.Get()?.LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
         foreach(PlugAttributes plugAttribute in sortedPlugs) {
             GameObject plug = plugAttribute.gameObject;
             Vector3 plugPosition = plug.transform.position;
@@ -261,7 +261,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                                                           skeletonGrid[index.x, index.y].y - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get().Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x, index.y + (int)plugAttributes.plugSize.y);
                     }
                     break;
@@ -274,7 +274,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                                                           skeletonGrid[index.x, index.y].y + (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get().Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x, index.y + (int)plugAttributes.plugSize.y);
                     }
                     break;
@@ -287,7 +287,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                                                           skeletonGrid[index.x, index.y].y - Constants.jointDistance*((plugAttributes.plugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get().Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x + (int)plugAttributes.plugSize.x, index.y);
                     }
                     break;
@@ -300,7 +300,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                                                           skeletonGrid[index.x, index.y].y - Constants.jointDistance*((plugAttributes.plugSize.x-1)/2) - (Constants.startingPlugOffset.x-(int)Constants.startingPlugOffset.x)*Constants.jointDistance,//*(i+1),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get().Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         index = new Index2D(index.x + (int)plugAttributes.plugSize.x, index.y);
                     }
                     break;

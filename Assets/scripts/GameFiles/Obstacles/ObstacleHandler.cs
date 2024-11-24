@@ -84,8 +84,8 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         Index2D endingIndex = new Index2D(A.obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-0.1f - skeletonGrid[0,0].x)/Constants.jointDistance));
         startingIndex = Utilities.ClampIndex2D(startingIndex, 0, skeletonGrid.GetLength(0), 0, skeletonGrid.GetLength(1));
         endingIndex   = Utilities.ClampIndex2D(endingIndex, 0, skeletonGrid.GetLength(0), 0, skeletonGrid.GetLength(1));
-        DebugC.Get().Log($"startingIndex: ({startingIndex.x}, {startingIndex.y})");
-        DebugC.Get().Log($"endingIndex: ({endingIndex.x}, {endingIndex.y})");
+        DebugC.Get()?.Log($"startingIndex: ({startingIndex.x}, {startingIndex.y})");
+        DebugC.Get()?.Log($"endingIndex: ({endingIndex.x}, {endingIndex.y})");
 
         for(int i=startingIndex.x; i<=endingIndex.x; i++) {
             for(int j=startingIndex.y; j<=endingIndex.y; j++) {

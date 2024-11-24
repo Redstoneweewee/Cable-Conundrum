@@ -49,7 +49,7 @@ public class DataPersistenceManager : MonoBehaviour {
     
         //If no data can be loaded, initialize to a new game
         if(this.gameData == null) {
-            DebugC.Get().Log("No data was found. Initializing data to defaults.");
+            DebugC.Get()?.Log("No data was found. Initializing data to defaults.");
             NewGame();
         }
         

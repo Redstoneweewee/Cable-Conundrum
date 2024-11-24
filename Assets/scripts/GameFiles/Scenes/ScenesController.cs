@@ -75,12 +75,12 @@ public class ScenesController : MonoBehaviour {
         
         //End the crossfade transition.
         D.crossFadeTransition.SetTrigger("EndCrossFade");
-        DebugC.Get().Log("Is finished with all tasks. Ending Fade.");
+        DebugC.Get()?.Log("Is finished with all tasks. Ending Fade.");
 
         //Set animationIsFinished to true after the animation is finished.
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;
-        DebugC.Get().Log("Animation ended.");
+        DebugC.Get()?.Log("Animation ended.");
     }
 
 
@@ -88,7 +88,7 @@ public class ScenesController : MonoBehaviour {
         yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
         yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().allButtonsLoaded);
         D.crossFadeTransition.SetTrigger("InitialCrossFade");
-        DebugC.Get().Log("Is finished with all tasks. Ending Fade. ");
+        DebugC.Get()?.Log("Is finished with all tasks. Ending Fade. ");
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;
     }

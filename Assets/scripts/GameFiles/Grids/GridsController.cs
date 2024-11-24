@@ -106,7 +106,7 @@ public class GridsController : MonoBehaviour {
                     Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).id = new Index2D(i, j);
                 }
                 if(D.socketsActiveGrid[i].row[j] == false) { 
-                    DebugC.Get().Log($"Socket At ({i}, {j}) is inactive."); 
+                    DebugC.Get()?.Log($"Socket At ({i}, {j}) is inactive."); 
                     for(int a=0; a<D.socketsGrid[i, j].childCount; a++) {
                         D.socketsGrid[i, j].GetChild(a).gameObject.SetActive(false);
                     }
@@ -142,7 +142,7 @@ public class GridsController : MonoBehaviour {
         CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
         D.allCablesGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
-            if(cableParentAttribute.cableGrid == default(Array)) { DebugC.Get().LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
+            if(cableParentAttribute.cableGrid == default(Array)) { DebugC.Get()?.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
             if(!cableParentAttribute.plugAttributes.isPluggedIn) { continue; }
             for(int i=0; i<cableParentAttribute.cableGrid.GetLength(0); i++) {
                 for(int j=0; j<cableParentAttribute.cableGrid.GetLength(1); j++) {
@@ -158,7 +158,7 @@ public class GridsController : MonoBehaviour {
 
         foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
             if(obstacleAttribute.obstacleType == ObstacleTypes.Plug) { continue; }
-            if(obstacleAttribute.obstacleGrid == default(Array)) { DebugC.Get().LogWarning($"{obstacleAttribute?.name}'s obstaclesGrid not defined."); continue; }
+            if(obstacleAttribute.obstacleGrid == default(Array)) { DebugC.Get()?.LogWarning($"{obstacleAttribute?.name}'s obstaclesGrid not defined."); continue; }
             for(int i=0; i<D.allObstaclesGrid.GetLength(0); i++) {
                 for(int j=0; j<D.allObstaclesGrid.GetLength(1); j++) {
                     if(obstacleAttribute.obstacleGrid[i,j] == true) {

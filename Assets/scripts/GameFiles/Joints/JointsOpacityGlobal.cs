@@ -89,17 +89,17 @@ public class JointsOpacityGlobal : MonoBehaviour {
             CalculateDValues();
         }
 
-        DebugC.Get().LogMath($"p: {p}");
-        DebugC.Get().LogMath($"t: {t}");
-        DebugC.Get().LogMath($"tf: {tf}");
-        DebugC.Get().LogMath($"a3: {a3}");
-        DebugC.Get().LogMath($"b31: {b31}");
-        DebugC.Get().LogMath($"b32: {b32}");
+        DebugC.Get()?.LogMath($"p: {p}");
+        DebugC.Get()?.LogMath($"t: {t}");
+        DebugC.Get()?.LogMath($"tf: {tf}");
+        DebugC.Get()?.LogMath($"a3: {a3}");
+        DebugC.Get()?.LogMath($"b31: {b31}");
+        DebugC.Get()?.LogMath($"b32: {b32}");
 
-        DebugC.Get().LogMath($"c41: {c41}");
-        DebugC.Get().LogMath($"c42: {c42}");
-        DebugC.Get().LogMath($"d41: {d41}");
-        DebugC.Get().LogMath($"d42: {d42}");
+        DebugC.Get()?.LogMath($"c41: {c41}");
+        DebugC.Get()?.LogMath($"c42: {c42}");
+        DebugC.Get()?.LogMath($"d41: {d41}");
+        DebugC.Get()?.LogMath($"d42: {d42}");
     }
 
     public void CalculateDValues() {
@@ -146,23 +146,23 @@ public class JointsOpacityGlobal : MonoBehaviour {
         float opacityNum;
 
         if(jointsEnabled && isFirstOpacity) { 
-            if(previousIsFirstOpacity) { opacityNum = f1(t, d41); DebugC.Get().LogMath("case 11, f11(t): "+f1(t, d41)); }
-            else                       { opacityNum = f1(t, d42); DebugC.Get().LogMath("case 12, f12(t): "+f1(t, d42)); }
+            if(previousIsFirstOpacity) { opacityNum = f1(t, d41); DebugC.Get()?.LogMath("case 11, f11(t): "+f1(t, d41)); }
+            else                       { opacityNum = f1(t, d42); DebugC.Get()?.LogMath("case 12, f12(t): "+f1(t, d42)); }
         }
         else if(jointsEnabled && !isFirstOpacity) { 
-            if(previousIsFirstOpacity) { opacityNum = f2(t, d41); DebugC.Get().LogMath("case 21, f21(t): "+f2(t, d41));  }
-            else                       { opacityNum = f2(t, d42); DebugC.Get().LogMath("case 22, f22(t): "+f2(t, d42));  }
+            if(previousIsFirstOpacity) { opacityNum = f2(t, d41); DebugC.Get()?.LogMath("case 21, f21(t): "+f2(t, d41));  }
+            else                       { opacityNum = f2(t, d42); DebugC.Get()?.LogMath("case 22, f22(t): "+f2(t, d42));  }
             
         }
         else { 
-            if(isFirstOpacity) { opacityNum = f31(t); DebugC.Get().LogMath("case 31, f31(t): "+f31(t)); }
-            else               { opacityNum = f32(t); DebugC.Get().LogMath("case 32, f32(t): "+f32(t)); }
+            if(isFirstOpacity) { opacityNum = f31(t); DebugC.Get()?.LogMath("case 31, f31(t): "+f31(t)); }
+            else               { opacityNum = f32(t); DebugC.Get()?.LogMath("case 32, f32(t): "+f32(t)); }
             
         }
-        DebugC.Get().LogMath("isFirstLoop: "+isFirstLoop);
-        DebugC.Get().LogMath("isFirstOpacity: "+isFirstOpacity);
-        DebugC.Get().LogMath("previousIsFirstOpacity: "+previousIsFirstOpacity);
-        DebugC.Get().LogMath("opacityNum: "+opacityNum);
+        DebugC.Get()?.LogMath("isFirstLoop: "+isFirstLoop);
+        DebugC.Get()?.LogMath("isFirstOpacity: "+isFirstOpacity);
+        DebugC.Get()?.LogMath("previousIsFirstOpacity: "+previousIsFirstOpacity);
+        DebugC.Get()?.LogMath("opacityNum: "+opacityNum);
         float newOpacity;
         newOpacity = math.remap(0f, 1f, Constants.joinOpacityMin, Constants.joinOpacityMax, opacityNum);
         //Debug.LogMath("opacityNum: "+opacityNum);

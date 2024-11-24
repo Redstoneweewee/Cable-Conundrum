@@ -109,7 +109,7 @@ public class ControlsController : MonoBehaviour {
         if(!D.isUsed || IsNotInALevel()) { return; }
         D.masterJointsEnabled = !D.masterJointsEnabled;
         FindObjectOfType<JointsData>().jointsEnabled = D.masterJointsEnabled;
-        DebugC.Get().Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
+        DebugC.Get()?.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
     }
 
     private void OnObstaclesToggle(InputAction.CallbackContext context) {
@@ -129,7 +129,7 @@ public class ControlsController : MonoBehaviour {
                 obstacleAttribute.temporarilyModifiable = false;
             }   
         }
-        DebugC.Get().Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
+        DebugC.Get()?.Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
     }
 
     private void OnPlugSelectorToggle(InputAction.CallbackContext context) {
@@ -152,7 +152,7 @@ public class ControlsController : MonoBehaviour {
         if(!D.adminToggles.editorMode) { return; }
         D.electricalStripEnabled = !D.electricalStripEnabled;
         GameObject electricalStrip = FindObjectOfType<ElectricalStripController>().gameObject;
-        DebugC.Get().Log("toggled electricla strip: "+D.electricalStripEnabled);
+        DebugC.Get()?.Log("toggled electricla strip: "+D.electricalStripEnabled);
         
         if(D.electricalStripEnabled) {
             Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 0.8f;

@@ -68,8 +68,8 @@ public class PlugAttributes : MonoBehaviour {
         id = idIncrement;
         idIncrement++;
 
-        DebugC.Get().Log("initialized "+transform.name);
-        DebugC.Get().Log($"{transform.name}'s id: {id}");
+        DebugC.Get()?.Log("initialized "+transform.name);
+        DebugC.Get()?.Log($"{transform.name}'s id: {id}");
     }
 
 }
