@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 //Can be altered in Edit Mode
 //A script that can alter all grids.
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class GridsModifier : MonoBehaviour {
     [HideInInspector] public GridsSkeleton gridsSkeleton;
     

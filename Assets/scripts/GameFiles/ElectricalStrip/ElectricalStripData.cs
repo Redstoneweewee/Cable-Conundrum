@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ElectricalStripData : MonoBehaviour {
     [HideInInspector] public ElectricalStripController electricalStripController;
     [HideInInspector] public Mouse   mouse = Mouse.current;

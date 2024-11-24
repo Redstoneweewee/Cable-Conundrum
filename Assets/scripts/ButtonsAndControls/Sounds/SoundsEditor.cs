@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class SoundsEditor : MonoBehaviour {
     public List<SoundsAttributes> soundEffects;
     public List<SoundsAttributes> music;

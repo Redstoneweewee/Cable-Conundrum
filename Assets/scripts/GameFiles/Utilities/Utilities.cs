@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class Utilities : MonoBehaviour {
 
     public static Object TryGetComponent<Object>(GameObject gameObject) {

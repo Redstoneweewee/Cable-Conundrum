@@ -6,7 +6,7 @@ using UnityEngine;
 
 //Note: Place this script next to CableParentAttributes
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class InitialCableGenerator : MonoBehaviour {
     [Header("Place this script next to CableParentAttributes.\n"+
             "**Make sure to remove this script before entering play mode.**")]

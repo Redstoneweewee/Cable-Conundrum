@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class WinningMessageSizeGlobal : MonoBehaviour {
     [SerializeField] private bool reinitialize = false;
     [SerializeField] private float offset = 45f;
