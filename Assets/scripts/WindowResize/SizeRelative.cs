@@ -8,16 +8,8 @@ public class SizeRelative : RelativeBase {
     [SerializeField] private Vector2 sizeReduction;
     [SerializeField] private Vector2 offset;
 
-    void Awake() {
-        Renew();
-    }
-    
-    new void Update() {
+    void Update() {
         base.accountForObjectSize = true;
-        base.Update();
-        if(Application.isPlaying && base.cachedScreenSize != new Vector2(Screen.width, Screen.height)) {
-            Renew();
-        }
     }
 
     new public void Renew() {

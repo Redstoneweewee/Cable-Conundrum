@@ -9,18 +9,6 @@ public class MoveRelative : RelativeBase {
                      private Vector2 anchorOffset;
     [SerializeField] private Vector2 offset;
 
-    void Awake() {
-        Renew();
-    }
-
-    new void Update() {
-        base.Update();
-        if(Application.isPlaying && base.cachedScreenSize != new Vector2(Screen.width, Screen.height)) {
-            Renew();
-        }
-    }
-
-    
     new public void Renew() {
         base.Renew();
         UpdateAnchorOffset();

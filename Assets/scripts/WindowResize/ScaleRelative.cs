@@ -7,17 +7,9 @@ public class ScaleRelative : RelativeBase {
     [SerializeField] private float scaleMultiplier = 0.6f;
     [SerializeField] private ScaleTypes scaleType = ScaleTypes.Either;
 
-    void Awake() {
-        Renew();
-    }
-    
-    new void Update() {
+    void Update() {
         base.relativeResize = true;
         base.accountForObjectSize = true;
-        base.Update();
-        if(Application.isPlaying && base.cachedScreenSize != new Vector2(Screen.width, Screen.height)) {
-            Renew();
-        }
     }
 
     new public void Renew() {

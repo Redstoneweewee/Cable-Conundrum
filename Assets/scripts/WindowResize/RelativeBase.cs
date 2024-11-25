@@ -7,7 +7,6 @@ public class RelativeBase : MonoBehaviour {
 
 
     [HideInInspector] public Vector2 cachedScreenSize;
-    [SerializeField] public bool renew = false;
     
     [Tooltip("A lower renew index will renew before a higher renew index.")]
     [SerializeField] [Min(0)] public int renewIndex = 0;
@@ -39,30 +38,6 @@ public class RelativeBase : MonoBehaviour {
     [SerializeField]  public RectTransform relativeTo;
     [HideInInspector] public Vector2 relativeToSize;
     [HideInInspector] public Vector2 relativeToCenter;
-
-    public void Update() {
-        //|---------------------------------------------------------------------------------|
-        //|---------------------------------------------------------------------------------|
-        //| WARNING: DO NOT REMOVE renew, OTHERWISE THE EDITOR FREEZES AND CRASHES RANDOMLY |
-        //|---------------------------------------------------------------------------------|
-        //|---------------------------------------------------------------------------------|
-        if(renew) {
-            Debug.Log("renewed "+transform.name);
-            SizeRelative[] allSizeRelatives = FindObjectsOfType<SizeRelative>();
-            foreach(SizeRelative sizeRelative in allSizeRelatives) {
-                sizeRelative.Renew();
-            }
-            ScaleRelative[] allScaleRelatives = FindObjectsOfType<ScaleRelative>();
-            foreach(ScaleRelative scaleRelative in allScaleRelatives) {
-                scaleRelative.Renew();
-            }
-            MoveRelative[] allMoveRelatives = FindObjectsOfType<MoveRelative>();
-            foreach(MoveRelative moveRelative in allMoveRelatives) {
-                moveRelative.Renew();
-            }
-            renew = false;
-        }
-    }
 
     public void Renew() {
         Debug.Log("Renewed "+transform.name);
