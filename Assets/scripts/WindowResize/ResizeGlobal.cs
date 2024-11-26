@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -57,6 +58,9 @@ public class ResizeGlobal : MonoBehaviour {
                 if(moveRelative.renewIndex == i) { moveRelative.Renew(); }
             }
         }
+
+        //Renew ButtonOutlines
+        StageUtility.GetCurrentStageHandle().FindComponentsOfType<ButtonsOutlineGlobal>().ToList().ForEach(obj => obj.Renew());
     }
 
     public void InitializeAll() {
@@ -81,4 +85,6 @@ public class ResizeGlobal : MonoBehaviour {
             moveRelative.Renew();
         }
     }
+
+
 }

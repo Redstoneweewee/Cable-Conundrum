@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,8 @@ public class TutorialController : MonoBehaviour {
 
     //is initialized in the initalizerBase
     public IEnumerator Initialize() {
-        TutorialVideoAttributes[] temp = FindObjectsByType<TutorialVideoAttributes>(FindObjectsSortMode.None);
+        TutorialVideoAttributes[] temp = FindObjectsByType<TutorialVideoAttributes>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Debug.Log(temp.Length);
         D.videoPlayers = new TutorialVideoAttributes[temp.Length];
         foreach(TutorialVideoAttributes tutorialVideoAttributes in temp) {
             StartCoroutine(tutorialVideoAttributes.Initialize());
@@ -27,28 +29,39 @@ public class TutorialController : MonoBehaviour {
 
 
     public void OnPressEnterTutorialPageButton() {
-        D.tutorialCanvas.SetActive(true);
+        FindFirstObjectByType<ResizeGlobal>().RenewAll();
+        Utilities.TryGetComponent<Canvas>(D.tutorialCanvas).sortingOrder = Constants.tutorialCanvasSortOrder;
         StartCoroutine(SetVideoDisplayAndDescription(D.currentPageIndex, D.currentPageIndex));
     }
     public void OnPressExitTutorialPageButton() {
-        D.tutorialCanvas.SetActive(false);
+        FindFirstObjectByType<ResizeGlobal>().RenewAll();
+        Utilities.TryGetComponent<Canvas>(D.tutorialCanvas).sortingOrder = Constants.deactivatedCanvasSortOrder;
     }
 
     public void OnPressNextTutorialPageButton() {
         if(D.currentPageIndex >= D.videoPlayers.Length-1) { return; }
-        D.previousTutorialPageButton.SetActive(true);
+        Utilities.TryGetComponentInChildren<Button>(D.previousTutorialPageButton).enabled = true;
+        Utilities.TryGetComponentsInChildren<Image>(D.previousTutorialPageButton).ToList().ForEach(image => image.enabled = true);
+
         D.currentPageIndex++;
         StartCoroutine(SetVideoDisplayAndDescription(D.currentPageIndex, D.currentPageIndex-1));
 
-        if(D.currentPageIndex == D.videoPlayers.Length-1) { D.nextTutorialPageButton.SetActive(false); }
+        if(D.currentPageIndex == D.videoPlayers.Length-1) { 
+        Utilities.TryGetComponentInChildren<Button>(D.nextTutorialPageButton).enabled = false;
+        Utilities.TryGetComponentsInChildren<Image>(D.nextTutorialPageButton).ToList().ForEach(image => image.enabled = false);
+        }
     }
     public void OnPressPreviousTutorialPageButton() {
         if(D.currentPageIndex == 0) { return; }
-        D.nextTutorialPageButton.SetActive(true);
+        Utilities.TryGetComponentInChildren<Button>(D.nextTutorialPageButton).enabled = true;
+        Utilities.TryGetComponentsInChildren<Image>(D.nextTutorialPageButton).ToList().ForEach(image => image.enabled = true);
         D.currentPageIndex--;
         StartCoroutine(SetVideoDisplayAndDescription(D.currentPageIndex, D.currentPageIndex+1));
 
-        if(D.currentPageIndex == 0) { D.previousTutorialPageButton.SetActive(false); }
+        if(D.currentPageIndex == 0) { 
+        Utilities.TryGetComponentInChildren<Button>(D.previousTutorialPageButton).enabled = false;
+        Utilities.TryGetComponentsInChildren<Image>(D.previousTutorialPageButton).ToList().ForEach(image => image.enabled = false);
+        }
     }
 
     private IEnumerator SetVideoDisplayAndDescription(int index, int previousIndex) {

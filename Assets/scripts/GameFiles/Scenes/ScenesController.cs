@@ -64,6 +64,9 @@ public class ScenesController : MonoBehaviour {
         //Wait until the scene is finished loading to continue.
         yield return new WaitUntil(() => D.sceneFinishedLoading);
         
+        //Renew Resizes
+        FindFirstObjectByType<ResizeGlobal>().RenewAll();
+
         //Load the game
         DataPersistenceManager.instance.LoadGame();
 

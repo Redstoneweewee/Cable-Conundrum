@@ -9,11 +9,11 @@ public class ExitGameConfirmationGlobal : MonoBehaviour {
 
 
     public void OnPressEnterExitConfirmationButton() {
-        exitConfirmationCanvas.SetActive(true);
+        Utilities.TryGetComponent<Canvas>(exitConfirmationCanvas).sortingOrder = Constants.exitConfirmationCanvasSortOrder;
     }
 
     public void OnPressExitExitConfirmationButton() {
-        exitConfirmationCanvas.SetActive(false);
+        Utilities.TryGetComponent<Canvas>(exitConfirmationCanvas).sortingOrder = Constants.deactivatedCanvasSortOrder;
     }
     
     public void OnPressExitGameButton() {

@@ -24,10 +24,10 @@ public class SettingsGlobal : MonoBehaviour, IDataPersistence {
 
 
     public void OnPressEnterSettingsButton() {
-        settingsCanvas.SetActive(true);
+        Utilities.TryGetComponent<Canvas>(settingsCanvas).sortingOrder = Constants.settingsCanvasSortOrder;
     }
 
     public void OnPressExitSettingsButton() {
-        settingsCanvas.SetActive(false);
+        Utilities.TryGetComponent<Canvas>(settingsCanvas).sortingOrder = Constants.deactivatedCanvasSortOrder;
     }
 }

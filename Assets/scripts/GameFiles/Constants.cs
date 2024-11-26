@@ -9,6 +9,11 @@ public class Constants {
     public static int firstLevelBuidIndex = 2;
     public static int numberOfLevels = 10;
 
+    public static int deactivatedCanvasSortOrder = -1;
+    public static int settingsCanvasSortOrder = 50;
+    public static int tutorialCanvasSortOrder = 60;
+    public static int exitConfirmationCanvasSortOrder = 70;
+
     public static Color levelSelectorFinishedButtonColor1 = RemapColorFromRGB(new Color(134, 172, 114, 255));
     public static Color levelSelectorFinishedButtonColor2 = RemapColorFromRGB(new Color(137, 186, 111, 255));
     public static Color levelSelectorFinishedButtonColor3 = RemapColorFromRGB(new Color(109, 152, 86, 255));

@@ -13,6 +13,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public TutorialData               tutorialData;
     [HideInInspector] public ControlsController         controlsController;
     [HideInInspector] public SoundsController           soundsController;
+    [HideInInspector] public ResizeGlobal               resizeGlobal;
 
     [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
 
@@ -27,17 +28,18 @@ public class InitializerBase : MonoBehaviour {
     private IEnumerator WaitToInitializeButtons() {
         yield return new WaitUntil(() => finishedWithAllTasks);
         scenesController = FindFirstObjectByType<ScenesController>();
-        settingsGlobal   = FindFirstObjectByType<SettingsGlobal>();
-        exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>();
+        settingsGlobal   = FindFirstObjectByType<SettingsGlobal>(FindObjectsInactive.Include);
+        exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>(FindObjectsInactive.Include);
         tutorialController = FindFirstObjectByType<TutorialController>();
         tutorialData       = FindFirstObjectByType<TutorialData>();
         controlsController = FindFirstObjectByType<ControlsController>();
         soundsController   = FindFirstObjectByType<SoundsController>();
+        resizeGlobal       = FindFirstObjectByType<ResizeGlobal>();
         StartCoroutine(InitializeItems());
     }
 
     private IEnumerator InitializeItems() {
-        Transform[] allTransforms = FindObjectsByType<Transform>(FindObjectsSortMode.None);
+        Transform[] allTransforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         GameObjectActivity[] gameObjectActivities = new GameObjectActivity[allTransforms.Length];
         for(int i=0; i<allTransforms.Length; i++) {
             gameObjectActivities[i] = new GameObjectActivity(allTransforms[i].gameObject, allTransforms[i].gameObject.activeSelf);
@@ -56,10 +58,13 @@ public class InitializerBase : MonoBehaviour {
         // |--------------------------------------------------------------------------|
         // |--------------------------------------------------------------------------|
         if(!tutorialData.isInitialized) { 
+            StartCoroutine(tutorialController.Initialize());
+            /*
             try { StartCoroutine(tutorialController.Initialize()); }
             catch(Exception e) {
                 Debug.LogWarning("tutorial was unable to load. Error: "+e);
             }
+            */
         }
         yield return new WaitUntil(() => tutorialData.isInitialized);
 
