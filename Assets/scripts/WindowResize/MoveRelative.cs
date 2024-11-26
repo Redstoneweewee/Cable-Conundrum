@@ -21,7 +21,7 @@ public class MoveRelative : RelativeBase {
 
     private void UpdateAnchorOffset() {
         Vector2 objectSizeOffset = Vector2.zero;
-        RectTransform rectTransform = GetComponentInChildren<RectTransform>();
+        RectTransform rectTransform = GetComponentInChildren<RectTransform>(true);
         if(base.accountForObjectSize && rectTransform != null) { 
             objectSizeOffset = new Vector2(rectTransform.sizeDelta.x/2*rectTransform.localScale.x, rectTransform.sizeDelta.y/2*rectTransform.localScale.y); 
         }

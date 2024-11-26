@@ -47,14 +47,17 @@ public class ResizeGlobal : MonoBehaviour {
         for(int i=0; i<=maxRenewIndex; i++) {
             SizeRelative[] allSizeRelatives = StageUtility.GetCurrentStageHandle().FindComponentsOfType<SizeRelative>();
             foreach(SizeRelative sizeRelative in allSizeRelatives) {
+                if(!sizeRelative.enabled) { continue; }
                 if(sizeRelative.renewIndex == i) { sizeRelative.Renew(); }
             }
             ScaleRelative[] allScaleRelatives = StageUtility.GetCurrentStageHandle().FindComponentsOfType<ScaleRelative>();
             foreach(ScaleRelative scaleRelative in allScaleRelatives) {
+                if(!scaleRelative.enabled) { continue; }
                 if(scaleRelative.renewIndex == i) { scaleRelative.Renew(); }
             }
             MoveRelative[] allMoveRelatives = StageUtility.GetCurrentStageHandle().FindComponentsOfType<MoveRelative>();
             foreach(MoveRelative moveRelative in allMoveRelatives) {
+                if(!moveRelative.enabled) { continue; }
                 if(moveRelative.renewIndex == i) { moveRelative.Renew(); }
             }
         }

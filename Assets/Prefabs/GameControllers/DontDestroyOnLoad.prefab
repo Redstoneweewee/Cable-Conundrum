@@ -196,7 +196,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181485387299411029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181485387299411029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -439,7 +439,7 @@ RectTransform:
   m_GameObject: {fileID: 704746367397844498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4953116061218081117}
@@ -609,11 +609,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998912897290528660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998912897290528660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -834,7 +834,7 @@ Transform:
   m_GameObject: {fileID: 1095868277896878884}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 890, y: 350, z: 0}
+  m_LocalPosition: {x: 847.0365, y: 372.81952, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -884,15 +884,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
   anchor: 6
   offset: {x: -20, y: -140}
 --- !u!114 &4785844555190618185
@@ -907,16 +907,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
+  scaleMultiplier: -1
   scaleType: 3
 --- !u!1 &1145777595662058544
 GameObject:
@@ -1188,7 +1188,7 @@ Transform:
   m_GameObject: {fileID: 1382962094621092414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 890, y: 240, z: 0}
+  m_LocalPosition: {x: 847.0365, y: 244.82747, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1238,15 +1238,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
   anchor: 6
   offset: {x: -20, y: -250}
 --- !u!114 &538809874590928887
@@ -1261,16 +1261,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
+  scaleMultiplier: -1
   scaleType: 3
 --- !u!1 &1593383360967313184
 GameObject:
@@ -1349,11 +1349,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1493,7 +1493,7 @@ RectTransform:
   m_GameObject: {fileID: 1702356541681245985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4021148429848433600}
@@ -1826,7 +1826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062957406334878362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -2208,7 +2208,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2572611076816520316}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -2231,7 +2231,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2572611076816520316}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2843192546835337391}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -2491,7 +2491,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2843192546835337391}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -2777,7 +2777,7 @@ Transform:
   m_GameObject: {fileID: 3210358559162109223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 890, y: 350, z: 0}
+  m_LocalPosition: {x: 847.0365, y: 372.81952, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2827,15 +2827,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
   anchor: 6
   offset: {x: -20, y: -140}
 --- !u!114 &4752248616920943291
@@ -2850,16 +2850,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
+  scaleMultiplier: -1
   scaleType: 3
 --- !u!1 &3235961038183251128
 GameObject:
@@ -2910,7 +2910,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3235961038183251128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -2933,7 +2933,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3235961038183251128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -3049,7 +3049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: -0.000015258789}
   m_SizeDelta: {x: 310, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7948270336988611926
@@ -3158,7 +3158,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3537515607532927223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -3181,7 +3181,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3537515607532927223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -3399,7 +3399,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4030554990027296467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -3422,7 +3422,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4030554990027296467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -3513,7 +3513,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4047552599306332765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -3536,7 +3536,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4047552599306332765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -3742,7 +3742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4242587234785373478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -3765,7 +3765,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4242587234785373478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -4137,7 +4137,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5017134034323498260}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -4746,7 +4746,7 @@ RectTransform:
   m_GameObject: {fileID: 5866678485045685642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 185957281070653375}
@@ -4951,11 +4951,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -5965,7 +5965,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6652914872775933548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -5988,7 +5988,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6652914872775933548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -6105,7 +6105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6671290371973341665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
   m_Name: 
@@ -6269,7 +6269,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6682577565710610668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -6292,7 +6292,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6682577565710610668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -6479,7 +6479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: -0.000015258789}
   m_SizeDelta: {x: 310, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1352000917934497530
@@ -6823,7 +6823,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7921973208075580478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -6846,7 +6846,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7921973208075580478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -6983,7 +6983,7 @@ RectTransform:
   m_GameObject: {fileID: 7982506068944984106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0.8196875, y: 0.8196875, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2198514140725816086}
@@ -7013,15 +7013,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &2122744089546976093
@@ -7154,7 +7154,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8034904368426454084}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -7177,7 +7177,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8034904368426454084}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -7274,11 +7274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -7357,7 +7357,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8137979959912823381}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
   m_Name: 
@@ -7459,7 +7459,7 @@ RectTransform:
   m_GameObject: {fileID: 8527291686089412084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3561366995511878052}
@@ -7679,7 +7679,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8777336814462748497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
   m_Name: 
@@ -7840,7 +7840,7 @@ RectTransform:
   m_GameObject: {fileID: 8886039974580707838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0.8196875, y: 0.8196875, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7667686445607475364}
@@ -7870,15 +7870,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &4571116552645437994
@@ -8011,7 +8011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 346.3}
+  m_AnchoredPosition: {x: 0, y: 500.40408}
   m_SizeDelta: {x: 418, y: 99.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4266221139124373439
@@ -8029,7 +8029,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9012913232977416485}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -8052,7 +8052,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9012913232977416485}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -8171,15 +8171,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 3291340296303018918}
   relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToCenter: {x: 671.5, y: 439.25}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!114 &1496619603833943688
@@ -8194,15 +8194,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 3291340296303018918}
   relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToCenter: {x: 671.5, y: 439.25}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!1 &9095871765366007073
@@ -8280,7 +8280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9095871765366007073}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
@@ -8303,7 +8303,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9095871765366007073}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -8348,7 +8348,7 @@ Transform:
   m_GameObject: {fileID: 9199441673116312022}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 890, y: 470, z: 0}
+  m_LocalPosition: {x: 847.0365, y: 512.44727, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8398,15 +8398,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
   anchor: 6
   offset: {x: -20, y: -20}
 --- !u!114 &9006379635427836869
@@ -8421,16 +8421,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
+  cachedScreenSize: {x: 1343, y: 879}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
+  relativeScreenSize: {x: 1343, y: 879}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1
+  relativeToSize: {x: 1343, y: 879}
+  relativeToCenter: {x: 671.5, y: 439.5}
+  scaleMultiplier: -1
   scaleType: 3
 --- !u!1001 &6496387426736844404
 PrefabInstance:
@@ -8456,42 +8456,6 @@ PrefabInstance:
       propertyPath: relativeTo
       value: 
       objectReference: {fileID: 3291340296303018918}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: renewIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToSize.x
-      value: 1440
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToSize.y
-      value: 832
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: cachedScreenSize.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: cachedScreenSize.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToCenter.x
-      value: 960
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToCenter.y
-      value: 540
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeScreenSize.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeScreenSize.y
-      value: 1080
-      objectReference: {fileID: 0}
     - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8603,38 +8567,6 @@ PrefabInstance:
     - target: {fileID: 5350714457923173422, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToSize.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToSize.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: cachedScreenSize.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: cachedScreenSize.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToCenter.x
-      value: 960
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeToCenter.y
-      value: 540
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeScreenSize.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
-      propertyPath: relativeScreenSize.y
-      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 8129694724301251504, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_Name

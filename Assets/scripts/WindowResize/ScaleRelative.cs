@@ -43,6 +43,16 @@ public class ScaleRelative : RelativeBase {
                 rectTransform.localScale = new Vector2(scaleMultiplier*relativeSize/absoluteSize + 1 - scaleMultiplier,
                                                        scaleMultiplier*relativeSize/absoluteSize + 1 - scaleMultiplier);
             }
+            else if(scaleType == ScaleTypes.KeepWithScreen) {
+                Debug.Log($"Screen size: {Screen.width}, {Screen.height}");
+                Vector2 normalSize = rectTransform.sizeDelta;
+                Vector2 sizeRatio = new Vector2(normalSize.x/Screen.width, normalSize.y/Screen.height);
+                float scale = 1/sizeRatio.x;
+                if(sizeRatio.x > sizeRatio.y) {
+                    scale = 1/sizeRatio.y;
+                }
+                rectTransform.localScale = new Vector2(scale*scaleMultiplier, scale*scaleMultiplier);
+            }
         }
     }
 }
