@@ -35,7 +35,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataP
     //all plugs must be plugged in
     //no cables are overlapping
     private LevelFailureTypes TestForLevelSuccess() {
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttributes in allPlugAttributes) {
             if(plugAttributes.isObstacle) { continue; }
             if(!plugAttributes.isPluggedIn) { return LevelFailureTypes.Plugs; }

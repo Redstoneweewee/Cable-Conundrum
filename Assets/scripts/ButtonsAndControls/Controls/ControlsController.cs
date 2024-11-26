@@ -116,7 +116,7 @@ public class ControlsController : MonoBehaviour {
         if(!D.isUsed || IsNotInALevel()) { return; }
         if(!D.adminToggles.editorMode) { return; }
         D.obstaclesModifiable = !D.obstaclesModifiable;
-        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        ObstacleAttributes[] obstacleAttributes = FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None);
         if(D.obstaclesModifiable) {
             foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
                 obstacleAttribute.obstacleHandler.SetOpacity(0.8f);
@@ -169,7 +169,7 @@ public class ControlsController : MonoBehaviour {
     private void OnTryDeletePlug(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
         if(!D.adminToggles.editorMode) { return; }
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isDragging) { 
                 Destroy(plugAttribute.gameObject); 
@@ -181,7 +181,7 @@ public class ControlsController : MonoBehaviour {
     private void OnTryDeleteObstacle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
         if(!D.adminToggles.editorMode) { return; }
-        ObstacleAttributes[] allObstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        ObstacleAttributes[] allObstacleAttributes = FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None);
         foreach(ObstacleAttributes obstacleAttribute in allObstacleAttributes) {
             if(obstacleAttribute.temporarilyModifiable && obstacleAttribute.isDragging) { 
                 Destroy(obstacleAttribute.gameObject);

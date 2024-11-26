@@ -13,7 +13,7 @@ public class TutorialController : MonoBehaviour {
 
     //is initialized in the initalizerBase
     public IEnumerator Initialize() {
-        TutorialVideoAttributes[] temp = FindObjectsOfType<TutorialVideoAttributes>();
+        TutorialVideoAttributes[] temp = FindObjectsByType<TutorialVideoAttributes>(FindObjectsSortMode.None);
         D.videoPlayers = new TutorialVideoAttributes[temp.Length];
         foreach(TutorialVideoAttributes tutorialVideoAttributes in temp) {
             StartCoroutine(tutorialVideoAttributes.Initialize());

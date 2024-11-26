@@ -108,7 +108,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     void Update() {
         /*
         if(!allCableHandlersInitializationFinished) {
-            CableParentAttributes[] cableParentAttributes = FindObjectsOfType<CableParentAttributes>();
+            CableParentAttributes[] cableParentAttributes = FindObjectsByType<CableParentAttributes>();
             for(int i=0; i<cableParentAttributes.Length; i++) {
                 if(!cableParentAttributes[i].finishedInitialization) {
                     return;
@@ -168,7 +168,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         allLevelPlugs.Add(new LevelPlugs(Directions.Left));
         allLevelPlugs.Add(new LevelPlugs(Directions.Right));
 
-        PlugAttributes[] plugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] plugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttribute in plugAttributes) {
             if(plugAttribute.isObstacle) { continue; }
             Directions startingDirection = Utilities.TryGetComponentInChildren<CableParentAttributes>(plugAttribute.gameObject).startingDirection;

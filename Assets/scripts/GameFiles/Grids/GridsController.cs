@@ -125,7 +125,7 @@ public class GridsController : MonoBehaviour {
     public void RenewPlugsGrid() {
         D.plugsGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         //Get all plugs in the level
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
 
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isPluggedIn) {
@@ -139,7 +139,7 @@ public class GridsController : MonoBehaviour {
     }
 
     public void RenewAllCablesGrid() {
-        CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
+        CableParentAttributes[] allCableAttributes = FindObjectsByType<CableParentAttributes>(FindObjectsSortMode.None);
         D.allCablesGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
             if(cableParentAttribute.cableGrid == default(Array)) { DebugC.Get()?.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
@@ -153,7 +153,7 @@ public class GridsController : MonoBehaviour {
     }
 
     public void RenewAllObstaclesGrid() {
-        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        ObstacleAttributes[] obstacleAttributes = FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None);
         D.allObstaclesGrid = new bool[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
 
         foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {

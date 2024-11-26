@@ -27,8 +27,8 @@ public class InitializerBase : MonoBehaviour {
     private IEnumerator WaitToInitializeButtons() {
         yield return new WaitUntil(() => finishedWithAllTasks);
         scenesController = FindFirstObjectByType<ScenesController>();
-        settingsGlobal   = FindFirstObjectByType<SettingsGlobal>(true);
-        exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>(true);
+        settingsGlobal   = FindFirstObjectByType<SettingsGlobal>();
+        exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>();
         tutorialController = FindFirstObjectByType<TutorialController>();
         tutorialData       = FindFirstObjectByType<TutorialData>();
         controlsController = FindFirstObjectByType<ControlsController>();
@@ -37,7 +37,7 @@ public class InitializerBase : MonoBehaviour {
     }
 
     private IEnumerator InitializeItems() {
-        Transform[] allTransforms = FindObjectsOfType<Transform>(true);
+        Transform[] allTransforms = FindObjectsByType<Transform>(FindObjectsSortMode.None);
         GameObjectActivity[] gameObjectActivities = new GameObjectActivity[allTransforms.Length];
         for(int i=0; i<allTransforms.Length; i++) {
             gameObjectActivities[i] = new GameObjectActivity(allTransforms[i].gameObject, allTransforms[i].gameObject.activeSelf);
@@ -72,7 +72,7 @@ public class InitializerBase : MonoBehaviour {
     private void InitializeButtons() {
 
 
-        buttonsAttributes = FindObjectsOfType<ButtonsAttributes>(true);
+        buttonsAttributes = FindObjectsByType<ButtonsAttributes>(FindObjectsSortMode.None);
         foreach(ButtonsAttributes buttonsAttribute in buttonsAttributes) {
             buttonsAttribute.button.onClick.RemoveAllListeners();
             Utilities.SubscribeToButton(buttonsAttribute.button, buttonsAttribute.buttonsHandler.OnPressButton);

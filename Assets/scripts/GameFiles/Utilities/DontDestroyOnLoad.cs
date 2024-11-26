@@ -5,7 +5,7 @@ using UnityEngine;
 public class DontDestroyOnLoad : MonoBehaviour {
 
     void Awake() {
-        DontDestroyOnLoad[] dontDestroyOnLoad = FindObjectsOfType<DontDestroyOnLoad>();
+        DontDestroyOnLoad[] dontDestroyOnLoad = FindObjectsByType<DontDestroyOnLoad>(FindObjectsSortMode.None);
         if(dontDestroyOnLoad.Length > 1) {
             Destroy(gameObject);
         }

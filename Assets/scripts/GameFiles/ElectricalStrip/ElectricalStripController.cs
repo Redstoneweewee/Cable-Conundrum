@@ -18,7 +18,7 @@ public class ElectricalStripController : MonoBehaviour {
     public void RenewPlugsGrid() {
         Transform[,] jointsGrid = D.jointsData.jointsGrid;
         D.plugsGrid = new int[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>();
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isPluggedIn) {
                 foreach(Vector2 localPlugPositionsTakenUp in plugAttribute.localJointPositionsTakenUp) {
@@ -54,7 +54,7 @@ public class ElectricalStripController : MonoBehaviour {
     }
 
     public void RenewAllCableGrids() {
-        CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
+        CableParentAttributes[] allCableAttributes = FindObjectsByType<CableParentAttributes>();
 
         D.allCablesGrid = new int[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
