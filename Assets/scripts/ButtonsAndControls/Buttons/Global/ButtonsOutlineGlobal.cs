@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Nobi.UiRoundedCorners;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ButtonsOutlineGlobal : MonoBehaviour {
     [SerializeField]          private GameObject outline;
     [SerializeField] [Min(0)] private float width = 10f;

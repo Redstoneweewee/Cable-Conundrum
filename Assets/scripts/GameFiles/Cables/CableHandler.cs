@@ -13,8 +13,8 @@ public class CableHandler : MonoBehaviour {
     private CableParentAttributes A;
 
     void Awake() {
-        gridsController = FindObjectOfType<GridsController>();
-        levelInitializerGlobal = FindObjectOfType<LevelInitializerGlobal>();
+        gridsController = FindFirstObjectByType<GridsController>();
+        levelInitializerGlobal = FindFirstObjectByType<LevelInitializerGlobal>();
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
     }
 

@@ -68,9 +68,9 @@ public class ScenesController : MonoBehaviour {
         DataPersistenceManager.instance.LoadGame();
 
         //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
-        if(FindObjectOfType<InitializerBase>()) {
-            yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
-            yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().allButtonsLoaded);
+        if(FindFirstObjectByType<InitializerBase>()) {
+            yield return new WaitUntil(() => FindFirstObjectByType<InitializerBase>().finishedWithAllTasks);
+            yield return new WaitUntil(() => FindFirstObjectByType<InitializerBase>().allButtonsLoaded);
         }
         
         //End the crossfade transition.
@@ -85,8 +85,8 @@ public class ScenesController : MonoBehaviour {
 
 
     private IEnumerator InitialSceneLoad() {
-        yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
-        yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().allButtonsLoaded);
+        yield return new WaitUntil(() => FindFirstObjectByType<InitializerBase>().finishedWithAllTasks);
+        yield return new WaitUntil(() => FindFirstObjectByType<InitializerBase>().allButtonsLoaded);
         D.crossFadeTransition.SetTrigger("InitialCrossFade");
         DebugC.Get()?.Log("Is finished with all tasks. Ending Fade. ");
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);

@@ -33,9 +33,9 @@ public class PlugSelectorData : MonoBehaviour {
 
     void Awake() {
         plugSelectorController = Utilities.TryGetComponent<PlugSelectorController>(gameObject);
-        controlsData = FindObjectOfType<ControlsData>();
-        controlsController = FindObjectOfType<ControlsController>();
-        levelInitializerGlobal = FindObjectOfType<LevelInitializerGlobal>();
+        controlsData = FindFirstObjectByType<ControlsData>();
+        controlsController = FindFirstObjectByType<ControlsController>();
+        levelInitializerGlobal = FindFirstObjectByType<LevelInitializerGlobal>();
         mouseScrollAction = controlsData.mouseScrollAction;
     }
 }

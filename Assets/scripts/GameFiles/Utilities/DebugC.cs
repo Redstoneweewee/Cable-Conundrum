@@ -8,7 +8,7 @@ public class DebugC : MonoBehaviour {
     [SerializeField] public bool logMathMessages = true;
 
     public static DebugC Get() {
-        return FindObjectOfType<DebugC>();
+        return FindFirstObjectByType<DebugC>();
     }
 
     public void Log<T>(T text) {

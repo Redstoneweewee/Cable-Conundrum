@@ -14,8 +14,8 @@ public class IntersectionData : MonoBehaviour {
     // Start is called before the first frame update
     void Awake() {
         intersectionController = Utilities.TryGetComponent<IntersectionController>(gameObject);
-        electricalStripData    = FindObjectOfType<ElectricalStripData>();
-        jointsData             = FindObjectOfType<JointsData>();
-        gridsData              = FindObjectOfType<GridsData>();
+        electricalStripData    = FindFirstObjectByType<ElectricalStripData>();
+        jointsData             = FindFirstObjectByType<JointsData>();
+        gridsData              = FindFirstObjectByType<GridsData>();
     }
 }

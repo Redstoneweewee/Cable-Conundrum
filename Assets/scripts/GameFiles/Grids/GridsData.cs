@@ -29,8 +29,8 @@ public class GridsData : MonoBehaviour {
     //public bool[,]                 ObstaclesGrid     {get{return obstaclesGrid;    } set{obstaclesGrid     = value;}}
 
     public void Awake() {
-        electricalStripSizeController = FindObjectOfType<ElectricalStripSizeController>();
-        electricalStripData           = FindObjectOfType<ElectricalStripData>();
+        electricalStripSizeController = FindFirstObjectByType<ElectricalStripSizeController>();
+        electricalStripData           = FindFirstObjectByType<ElectricalStripData>();
         gridsController = Utilities.TryGetComponent<GridsController>(gameObject);
     }
 }

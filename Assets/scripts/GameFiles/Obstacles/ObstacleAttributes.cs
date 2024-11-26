@@ -23,9 +23,9 @@ public class ObstacleAttributes : MonoBehaviour {
 
     void Awake() {
         obstacleHandler        = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
-        gridsSkeleton          = FindObjectOfType<GridsSkeleton>();
-        gridsController        = FindObjectOfType<GridsController>();
-        intersectionController = FindObjectOfType<IntersectionController>();
+        gridsSkeleton          = FindFirstObjectByType<GridsSkeleton>();
+        gridsController        = FindFirstObjectByType<GridsController>();
+        intersectionController = FindFirstObjectByType<IntersectionController>();
         rectTransform          = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
     }
 }

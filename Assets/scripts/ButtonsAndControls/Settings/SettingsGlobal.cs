@@ -7,7 +7,7 @@ public class SettingsGlobal : MonoBehaviour, IDataPersistence {
     private SoundsData soundsData;
 
     void Awake() {
-        soundsData = FindObjectOfType<SoundsData>();
+        soundsData = FindFirstObjectByType<SoundsData>();
     }
 
     public IEnumerator LoadData(GameData data) {

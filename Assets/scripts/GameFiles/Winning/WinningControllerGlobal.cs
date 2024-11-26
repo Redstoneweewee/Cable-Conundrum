@@ -26,9 +26,9 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
 
 
     void Awake() {
-        levelInitializerGlobal   = FindObjectOfType<LevelInitializerGlobal>();
-        winningMessageSizeGlobal = FindObjectOfType<WinningMessageSizeGlobal>();
-        soundsData               = FindObjectOfType<SoundsData>();
+        levelInitializerGlobal   = FindFirstObjectByType<LevelInitializerGlobal>();
+        winningMessageSizeGlobal = FindFirstObjectByType<WinningMessageSizeGlobal>();
+        soundsData               = FindFirstObjectByType<SoundsData>();
         //used temporarily to figure out what level it is. Later should take from AllLevelsData or smth)
         int level = SceneManager.GetActiveScene().buildIndex - 1;
         string text = "Level " + level + " Complete!";

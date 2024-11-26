@@ -34,8 +34,8 @@ public class ElectricalStripData : MonoBehaviour {
     public void Awake() {
         electricalStripController     = Utilities.TryGetComponent<ElectricalStripController>(gameObject);
         electricalStripSizeController = Utilities.TryGetComponent<ElectricalStripSizeController>(gameObject);
-        jointsData                    = FindObjectOfType<JointsData>();
-        gridsModifier                 = FindObjectOfType<GridsModifier>();
+        jointsData                    = FindFirstObjectByType<JointsData>();
+        gridsModifier                 = FindFirstObjectByType<GridsModifier>();
 
         rectangularTransform = Utilities.TryGetComponent<RectTransform>(backgroundVisual);
     }

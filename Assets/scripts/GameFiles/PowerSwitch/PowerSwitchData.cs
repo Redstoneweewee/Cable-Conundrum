@@ -14,9 +14,9 @@ public class PowerSwitchData : MonoBehaviour {
 
     void Awake() {
         powerSwitchController     = Utilities.TryGetComponent<PowerSwitchController>(gameObject);
-        levelInitializerGlobal    = FindObjectOfType<LevelInitializerGlobal>();
-        winningControllerGlobal   = FindObjectOfType<WinningControllerGlobal>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
-        intersectionData          = FindObjectOfType<IntersectionData>();
+        levelInitializerGlobal    = FindFirstObjectByType<LevelInitializerGlobal>();
+        winningControllerGlobal   = FindFirstObjectByType<WinningControllerGlobal>();
+        electricalStripController = FindFirstObjectByType<ElectricalStripController>();
+        intersectionData          = FindFirstObjectByType<IntersectionData>();
     }
 }

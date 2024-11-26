@@ -17,6 +17,7 @@ public class ResizeGlobal : MonoBehaviour {
     void Update() {
         if(Application.isPlaying && cachedScreenSize != new Vector2(Screen.width, Screen.height)) {
             RenewAll();
+            cachedScreenSize = new Vector2(Screen.width, Screen.height);
         }
         
         //|---------------------------------------------------------------------------------|

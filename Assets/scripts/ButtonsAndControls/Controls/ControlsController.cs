@@ -11,8 +11,8 @@ public class ControlsController : MonoBehaviour {
     ControlsData D;
     
     void Awake() {
-        D = FindObjectOfType<ControlsData>();
-        D.adminToggles = FindObjectOfType<AdminToggles>();
+        D = FindFirstObjectByType<ControlsData>();
+        D.adminToggles = FindFirstObjectByType<AdminToggles>();
     }
     void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
@@ -30,10 +30,10 @@ public class ControlsController : MonoBehaviour {
     }
 
     public void Initialize() {
-        D.gridsController           = FindObjectOfType<GridsController>();
-        D.intersectionController    = FindObjectOfType<IntersectionController>();
-        D.electricalStripData       = FindObjectOfType<ElectricalStripData>();
-        D.electricalStripController = FindObjectOfType<ElectricalStripController>();
+        D.gridsController           = FindFirstObjectByType<GridsController>();
+        D.intersectionController    = FindFirstObjectByType<IntersectionController>();
+        D.electricalStripData       = FindFirstObjectByType<ElectricalStripData>();
+        D.electricalStripController = FindFirstObjectByType<ElectricalStripController>();
         D.plugSelectorCanvas        = GameObject.FindGameObjectWithTag("PlugSelectorCanvas");
         D.isUsed = true;
         if(D.gridsController == null || D.intersectionController == null || 
@@ -44,7 +44,7 @@ public class ControlsController : MonoBehaviour {
     }
 
     private void ChangeEditorMode() {
-        D.adminToggles = FindObjectOfType<AdminToggles>();
+        D.adminToggles = FindFirstObjectByType<AdminToggles>();
         if(!D.adminToggles.cachedEditorMode && D.adminToggles.editorMode) {
             D.adminToggles.cachedEditorMode = D.adminToggles.editorMode;
         }
@@ -108,7 +108,7 @@ public class ControlsController : MonoBehaviour {
     private void OnJointsToggle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
         D.masterJointsEnabled = !D.masterJointsEnabled;
-        FindObjectOfType<JointsData>().jointsEnabled = D.masterJointsEnabled;
+        FindFirstObjectByType<JointsData>().jointsEnabled = D.masterJointsEnabled;
         DebugC.Get()?.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
     }
 
@@ -151,7 +151,7 @@ public class ControlsController : MonoBehaviour {
         if(!D.isUsed || IsNotInALevel()) { return; }
         if(!D.adminToggles.editorMode) { return; }
         D.electricalStripEnabled = !D.electricalStripEnabled;
-        GameObject electricalStrip = FindObjectOfType<ElectricalStripController>().gameObject;
+        GameObject electricalStrip = FindFirstObjectByType<ElectricalStripController>().gameObject;
         DebugC.Get()?.Log("toggled electricla strip: "+D.electricalStripEnabled);
         
         if(D.electricalStripEnabled) {

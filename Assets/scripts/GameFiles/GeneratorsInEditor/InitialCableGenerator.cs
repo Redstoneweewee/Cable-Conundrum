@@ -18,7 +18,7 @@ public class InitialCableGenerator : MonoBehaviour {
 
     void Update() {
         if(cableParentAttributes != null && generateCable) { 
-            cablePrefabs = FindObjectOfType<CablePrefabs>();
+            cablePrefabs = FindFirstObjectByType<CablePrefabs>();
             int previousIndex = cableParentAttributes.initialCables.Count-1;
             GenerateCable(previousIndex, generateDirection);
             RenewRotationAndIntersectionCables();

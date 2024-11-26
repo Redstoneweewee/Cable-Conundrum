@@ -25,7 +25,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     
     //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
-        gridsSkeleton = FindObjectOfType<GridsSkeleton>();
+        gridsSkeleton = FindFirstObjectByType<GridsSkeleton>();
         Initialize(data);
 
         yield return new WaitUntil(() => initializationFinished);
@@ -55,7 +55,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         //Once all data is loaded, we are finished with all tasks
         base.FinishedWithAllTasks();
         //And renew level grids
-        FindObjectOfType<GridsController>().RenewGrids();
+        FindFirstObjectByType<GridsController>().RenewGrids();
     }
 
     

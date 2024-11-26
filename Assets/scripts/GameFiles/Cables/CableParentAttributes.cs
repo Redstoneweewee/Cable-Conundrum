@@ -51,13 +51,13 @@ public class CableParentAttributes : MonoBehaviour {
     void Awake() {
         cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
         plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
-        cablePrefabs              = FindObjectOfType<CablePrefabs>();
-        gridsData                 = FindObjectOfType<GridsData>();
-        gridsSkeleton             = FindObjectOfType<GridsSkeleton>();
-        intersectionController    = FindObjectOfType<IntersectionController>();
-        electricalStripData       = FindObjectOfType<ElectricalStripData>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
-        jointsData                = FindObjectOfType<JointsData>();
-        soundsData                = FindObjectOfType<SoundsData>();
+        cablePrefabs              = FindFirstObjectByType<CablePrefabs>();
+        gridsData                 = FindFirstObjectByType<GridsData>();
+        gridsSkeleton             = FindFirstObjectByType<GridsSkeleton>();
+        intersectionController    = FindFirstObjectByType<IntersectionController>();
+        electricalStripData       = FindFirstObjectByType<ElectricalStripData>();
+        electricalStripController = FindFirstObjectByType<ElectricalStripController>();
+        jointsData                = FindFirstObjectByType<JointsData>();
+        soundsData                = FindFirstObjectByType<SoundsData>();
     }
 }

@@ -26,13 +26,13 @@ public class InitializerBase : MonoBehaviour {
 
     private IEnumerator WaitToInitializeButtons() {
         yield return new WaitUntil(() => finishedWithAllTasks);
-        scenesController = FindObjectOfType<ScenesController>();
-        settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
-        exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
-        tutorialController = FindObjectOfType<TutorialController>();
-        tutorialData       = FindObjectOfType<TutorialData>();
-        controlsController = FindObjectOfType<ControlsController>();
-        soundsController   = FindObjectOfType<SoundsController>();
+        scenesController = FindFirstObjectByType<ScenesController>();
+        settingsGlobal   = FindFirstObjectByType<SettingsGlobal>(true);
+        exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>(true);
+        tutorialController = FindFirstObjectByType<TutorialController>();
+        tutorialData       = FindFirstObjectByType<TutorialData>();
+        controlsController = FindFirstObjectByType<ControlsController>();
+        soundsController   = FindFirstObjectByType<SoundsController>();
         StartCoroutine(InitializeItems());
     }
 
