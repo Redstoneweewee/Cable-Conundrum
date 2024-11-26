@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 181485387299411029}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -226.9, y: -78.6, z: 0}
+  m_LocalPosition: {x: -220, y: -80, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 0
   absoluteScreenSize: {x: 1920, y: 1080}
@@ -224,15 +224,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!1 &186449418474645472
@@ -290,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8031809154787748389}
-  - component: {fileID: 2217402762742089183}
+  - component: {fileID: 3536516382218726310}
   m_Layer: 0
   m_Name: ResizeController
   m_TagString: Untagged
@@ -313,7 +313,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2963101829746856845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2217402762742089183
+--- !u!114 &3536516382218726310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
@@ -808,7 +808,7 @@ Transform:
   m_GameObject: {fileID: 1095868277896878884}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 577.5, y: 172, z: 0}
+  m_LocalPosition: {x: 890, y: 350, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -858,15 +858,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -140}
 --- !u!1 &1145777595662058544
@@ -981,7 +981,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 959, y: 719.4963}
+  m_SizeDelta: {x: 1460, y: 852}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8806278703884040095
 CanvasRenderer:
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 41.14368
+  radius: 40.96154
   image: {fileID: 10598916522012057}
 --- !u!1 &1265269276746663717
 GameObject:
@@ -1138,7 +1138,7 @@ Transform:
   m_GameObject: {fileID: 1382962094621092414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 577.5, y: 57, z: 0}
+  m_LocalPosition: {x: 890, y: 240, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1188,15 +1188,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -250}
 --- !u!1 &1593383360967313184
@@ -1540,7 +1540,7 @@ RectTransform:
   m_GameObject: {fileID: 1754030196148259603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 817357739269315577}
@@ -1727,7 +1727,7 @@ RectTransform:
   m_GameObject: {fileID: 2062957406334878362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7452091342526139639}
@@ -1758,15 +1758,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &110908282863237357
@@ -1974,7 +1974,7 @@ RectTransform:
   m_GameObject: {fileID: 2418879449336320089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1636497214828976625}
@@ -2185,14 +2185,14 @@ RectTransform:
   m_GameObject: {fileID: 2572611076816520316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7854731445066757061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -485.45, y: 175}
+  m_AnchoredPosition: {x: -501, y: 175}
   m_SizeDelta: {x: 288, y: 63.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1699700325929708378
@@ -2215,15 +2215,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 3
   offset: {x: 75, y: 175}
 --- !u!114 &8310085437924497978
@@ -2238,15 +2238,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.5
   scaleType: 3
 --- !u!114 &8942575712627905324
@@ -2472,15 +2472,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1252, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1252, y: 908}
-  relativeToCenter: {x: 626, y: 454}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &2306088480208358221
@@ -2751,7 +2751,7 @@ Transform:
   m_GameObject: {fileID: 3210358559162109223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 577.5, y: 172, z: 0}
+  m_LocalPosition: {x: 890, y: 350, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2801,15 +2801,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -140}
 --- !u!1 &3235961038183251128
@@ -2841,7 +2841,7 @@ RectTransform:
   m_GameObject: {fileID: 3235961038183251128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8974740089766266105}
@@ -2851,7 +2851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 184.7, y: 78.3}
+  m_AnchoredPosition: {x: 185, y: 82}
   m_SizeDelta: {x: 960, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6431562692761401940
@@ -2866,15 +2866,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 4
   offset: {x: -55, y: 82}
 --- !u!114 &8156692413865602618
@@ -2889,15 +2889,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1346, y: 559}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1346, y: 559}
-  relativeToCenter: {x: 673, y: 279.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 1.13
   scaleType: 0
 --- !u!114 &5039895589593142051
@@ -3084,14 +3084,14 @@ RectTransform:
   m_GameObject: {fileID: 3537515607532927223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7854731445066757061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 343.8}
+  m_AnchoredPosition: {x: 0, y: 371}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8571694768167368979
@@ -3114,15 +3114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!114 &2104755631050576174
@@ -3137,15 +3137,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &4359684753495182815
@@ -3353,15 +3353,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1304, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 978, y: 699.4963}
-  relativeToCenter: {x: 652, y: 454}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 5
   offset: {x: 15, y: -15}
 --- !u!114 &2966463447295547049
@@ -3376,15 +3376,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1029, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1029, y: 908}
-  relativeToCenter: {x: 514.5, y: 454}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!1 &4047552599306332765
@@ -3416,7 +3416,7 @@ Transform:
   m_GameObject: {fileID: 4047552599306332765}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 226.9, y: -78.6, z: 0}
+  m_LocalPosition: {x: 220, y: -80, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3467,8 +3467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 0
   absoluteScreenSize: {x: 1920, y: 1080}
@@ -3490,15 +3490,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!1 &4047829180931444913
@@ -3664,14 +3664,14 @@ RectTransform:
   m_GameObject: {fileID: 4242587234785373478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3626057844786608840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0, y: 90}
   m_SizeDelta: {x: 727, y: 63.8787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6175029968359038599
@@ -3694,8 +3694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
@@ -3717,7 +3717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
@@ -4056,7 +4056,7 @@ RectTransform:
   m_GameObject: {fileID: 5017134034323498260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7522576856506995700}
@@ -4087,7 +4087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
@@ -4313,7 +4313,7 @@ RectTransform:
   m_GameObject: {fileID: 5230577238684882518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2198514140725816086}
@@ -4557,7 +4557,7 @@ RectTransform:
   m_GameObject: {fileID: 5846262200825851143}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7667686445607475364}
@@ -5905,8 +5905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
@@ -5928,15 +5928,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1029, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1029, y: 908}
-  relativeToCenter: {x: 514.5, y: 454}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!1 &6661461700191289339
@@ -6045,7 +6045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
@@ -6209,15 +6209,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1252, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 8396500226212500263}
-  relativeToSize: {x: 569.7, y: 320.45624}
-  relativeToCenter: {x: 626, y: 514}
+  relativeToSize: {x: 720, y: 405}
+  relativeToCenter: {x: 960, y: 600}
   anchor: 10
   offset: {x: 0, y: 0}
 --- !u!114 &842531870834167242
@@ -6232,15 +6232,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1252, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1252, y: 908}
-  relativeToCenter: {x: 626, y: 454}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &3265472781206313313
@@ -6405,14 +6405,14 @@ RectTransform:
   m_GameObject: {fileID: 6927399890971698636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4078357513777299272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 310, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1352000917934497530
@@ -6656,14 +6656,14 @@ RectTransform:
   m_GameObject: {fileID: 7921973208075580478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7854731445066757061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -504.95, y: 78.3}
+  m_AnchoredPosition: {x: -505.5, y: 85}
   m_SizeDelta: {x: 249, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6180616757504608499
@@ -6686,15 +6686,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 3
   offset: {x: 90, y: 85}
 --- !u!114 &6022672789814792259
@@ -6709,15 +6709,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.5
   scaleType: 3
 --- !u!114 &7508824393418117721
@@ -6839,7 +6839,7 @@ RectTransform:
   m_GameObject: {fileID: 7982506068944984106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2198514140725816086}
@@ -6869,15 +6869,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1029, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1029, y: 908}
-  relativeToCenter: {x: 514.5, y: 454}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &2122744089546976093
@@ -6965,7 +6965,7 @@ Transform:
   m_GameObject: {fileID: 8034904368426454084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -244, y: 262.7, z: 0}
+  m_LocalPosition: {x: -655, y: 351, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7015,15 +7015,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 5
   offset: {x: 15, y: -15}
 --- !u!114 &186213403814031207
@@ -7038,15 +7038,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!1 &8083107085740606855
@@ -7217,7 +7217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
@@ -7517,7 +7517,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 939, y: 699.4963}
+  m_SizeDelta: {x: 1440, y: 832}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3437599521340570725
 CanvasRenderer:
@@ -7539,15 +7539,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   sizeReduction: {x: 480, y: 248}
   offset: {x: 0, y: 0}
 --- !u!114 &7630179771251485114
@@ -7695,7 +7695,7 @@ RectTransform:
   m_GameObject: {fileID: 8886039974580707838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7667686445607475364}
@@ -7725,15 +7725,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1029, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1029, y: 908}
-  relativeToCenter: {x: 514.5, y: 454}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &4571116552645437994
@@ -7859,14 +7859,14 @@ RectTransform:
   m_GameObject: {fileID: 9012913232977416485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1330140267369906764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 343.8}
+  m_AnchoredPosition: {x: 0, y: 346.3}
   m_SizeDelta: {x: 418, y: 99.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4266221139124373439
@@ -7889,15 +7889,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!114 &751409950207887593
@@ -7912,15 +7912,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &503182838533075283
@@ -8024,15 +8024,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!114 &1496619603833943688
@@ -8047,15 +8047,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!1 &9095871765366007073
@@ -8138,15 +8138,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
-  renewIndex: 0
+  cachedScreenSize: {x: 1920, y: 1080}
+  renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1159, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 869.25, y: 699.4963}
-  relativeToCenter: {x: 579.5, y: 454}
+  relativeToSize: {x: 1440, y: 832}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 8
   offset: {x: -25, y: 25}
 --- !u!114 &4861543972854891577
@@ -8161,15 +8161,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1029, y: 908}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1029, y: 908}
-  relativeToCenter: {x: 514.5, y: 454}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!1 &9199441673116312022
@@ -8200,7 +8200,7 @@ Transform:
   m_GameObject: {fileID: 9199441673116312022}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 577.5, y: 287, z: 0}
+  m_LocalPosition: {x: 890, y: 470, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8250,15 +8250,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 0, y: 0}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 0, y: 0}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 0, y: 0}
-  relativeToCenter: {x: 0, y: 0}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -20}
 --- !u!1001 &6496387426736844404
@@ -8285,6 +8285,42 @@ PrefabInstance:
       propertyPath: relativeTo
       value: 
       objectReference: {fileID: 3291340296303018918}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: renewIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToSize.x
+      value: 1440
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToSize.y
+      value: 832
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: cachedScreenSize.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: cachedScreenSize.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToCenter.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToCenter.y
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeScreenSize.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984845520759793185, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeScreenSize.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8318,6 +8354,18 @@ PrefabInstance:
       value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -8347,11 +8395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 184.7
+      value: 185
       objectReference: {fileID: 0}
     - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 170.39
+      value: 172
       objectReference: {fileID: 0}
     - target: {fileID: 4690786668311310794, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8384,6 +8432,38 @@ PrefabInstance:
     - target: {fileID: 5350714457923173422, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToSize.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToSize.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: cachedScreenSize.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: cachedScreenSize.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToCenter.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeToCenter.y
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeScreenSize.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696988686822175832, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: relativeScreenSize.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 8129694724301251504, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_Name

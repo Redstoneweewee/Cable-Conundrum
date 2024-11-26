@@ -34,7 +34,6 @@ public class ScaleRelative : RelativeBase {
                                                        scaleMultiplier*base.relativeScreenSize.y/base.absoluteScreenSize.y + 1 - scaleMultiplier);
             }
             else if(scaleType == ScaleTypes.Either) { //Scales based on the smaller value
-                Debug.Log(scaleMultiplier);
                 float relativeSize = base.relativeScreenSize.x;
                 float absoluteSize = base.absoluteScreenSize.x;
                 if(base.relativeScreenSize.x/base.absoluteScreenSize.x > base.relativeScreenSize.y/base.absoluteScreenSize.y) { 

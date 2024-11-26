@@ -39,8 +39,8 @@ public class RelativeBase : MonoBehaviour {
     [HideInInspector] public Vector2 relativeToSize;
     [HideInInspector] public Vector2 relativeToCenter;
 
+
     public void Renew() {
-        Debug.Log("Renewed "+transform.name);
         absoluteScreenSize = new Vector2(1920, 1080);
         if(relativeResize) { relativeScreenSize = new Vector2(Screen.width, Screen.height); }
         else { relativeScreenSize = new Vector2(1920, 1080); }
@@ -48,10 +48,17 @@ public class RelativeBase : MonoBehaviour {
         if(!relativeTo) {
             relativeToSize = new Vector2(Screen.width, Screen.height);
             relativeToCenter = new Vector2(Screen.width/2f, Screen.height/2f);
+            renewIndex = 0;
         }
         else {
             relativeToSize = relativeTo.sizeDelta*relativeTo.localScale;
             relativeToCenter = relativeTo.position;
+            if(relativeTo.TryGetComponent(out RelativeBase relativeBase)) {
+                renewIndex = relativeBase.renewIndex + 1;
+            }
+            else {
+                renewIndex = 0;
+            }
         }
         cachedScreenSize = new Vector2(Screen.width, Screen.height);
     }
