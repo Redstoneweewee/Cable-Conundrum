@@ -39,6 +39,7 @@ public class InitializerBase : MonoBehaviour {
     }
 
     private IEnumerator InitializeItems() {
+        /*
         Transform[] allTransforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         GameObjectActivity[] gameObjectActivities = new GameObjectActivity[allTransforms.Length];
         for(int i=0; i<allTransforms.Length; i++) {
@@ -47,6 +48,7 @@ public class InitializerBase : MonoBehaviour {
         foreach(Transform transform in allTransforms) {
             transform.gameObject.SetActive(true);
         }
+        */
 
         controlsController.Initialize();
         soundsController.InitializeSliders();
@@ -68,7 +70,7 @@ public class InitializerBase : MonoBehaviour {
         }
         yield return new WaitUntil(() => tutorialData.isInitialized);
 
-        EndInitialization(gameObjectActivities);
+        //EndInitialization(gameObjectActivities);
         
         AllButtonsLoaded();
     }
