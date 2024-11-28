@@ -21,7 +21,8 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     private RectTransform rectTransform;
     private Mouse   mouse = Mouse.current;
     private Vector2 cachedMousePosition;
-
+    private float   cachedLeftMostX;
+    private float   cachedRightMostX;
 
 
     // Start is called before the first frame update
@@ -32,6 +33,48 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
            obstacleType == ObstacleType.RightTableLeg ||
            obstacleType == ObstacleType.TableTop) { StartCoroutine(InitializeTable()); }
     }   
+
+    void Update() {
+        if(obstacleType != ObstacleType.TableTop) { return; }
+        RenewTableTopPosition();
+    }
+
+    private void RenewTableTopPosition() {
+        Obstacle[] obstacles = FindObjectsByType<Obstacle>(FindObjectsSortMode.None);
+        Obstacle leftLegObstacle = null;
+        Obstacle rightLegObstacle = null;
+        foreach(Obstacle obstacle in obstacles) {
+            if(obstacle.obstacleType == ObstacleType.LeftTableLeg) {
+                if(leftLegObstacle == null || obstacle.transform.position.x > leftLegObstacle.transform.position.x) {
+                    leftLegObstacle = obstacle;
+                }
+            }
+            else if(obstacle.obstacleType == ObstacleType.RightTableLeg) {
+                if(rightLegObstacle == null || obstacle.transform.position.x < rightLegObstacle.transform.position.x) {
+                    rightLegObstacle = obstacle;
+                }
+            }
+        }
+        float leftMostX = 0;
+        float rightMostX = 1920;
+        if(leftLegObstacle) {
+            leftMostX = leftLegObstacle.transform.position.x + leftLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 - Constants.tableTopDistanceFromLeg;
+        }
+        if(rightLegObstacle) {
+            rightMostX = rightLegObstacle.transform.position.x - leftLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 + Constants.tableTopDistanceFromLeg;
+        }
+        rectTransform.sizeDelta = new Vector2(rightMostX-leftMostX, rectTransform.sizeDelta.y);
+        transform.position = new Vector3(leftMostX+rectTransform.sizeDelta.x/2, transform.position.y, 0);
+        transform.SetSiblingIndex(transform.parent.childCount-1);
+
+        if(cachedLeftMostX != leftMostX || cachedRightMostX != rightMostX) {
+            RenewObstacleGrid();
+            intersectionDetector.RenewAllObstaclesGrid();
+            intersectionDetector.TestForCableIntersection();
+        }
+        cachedLeftMostX = leftMostX;
+        cachedRightMostX = rightMostX;
+    }
 
     private IEnumerator InitializeTable() {
         yield return new WaitForSeconds(0.01f);
@@ -56,7 +99,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     }
     public void OnDrag(PointerEventData eventData) {
         if(!TemporarilyModifiable) { return; }
-        if(obstacleType != ObstacleType.LeftTableLeg && obstacleType != ObstacleType.RightTableLeg && obstacleType != ObstacleType.TableTop) { return; }
+        if(obstacleType != ObstacleType.LeftTableLeg && obstacleType != ObstacleType.RightTableLeg) { return; }
         //Debug.Log("Drag Begin");
         if(math.abs(cachedMousePosition.x - mouse.position.value.x) > Constants.tableSnapDistance) {
             if(mouse.position.value.x > cachedMousePosition.x) { ModifyTablePosition(Directions.Right); }
@@ -92,9 +135,12 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
         obstacleGrid = new bool[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
         Vector2 topLeft     = new Vector2(transform.position.x - rectTransform.sizeDelta.x/2, transform.position.y + rectTransform.sizeDelta.y/2);
         Vector2 bottomRight = new Vector2(transform.position.x + rectTransform.sizeDelta.x/2, transform.position.y - rectTransform.sizeDelta.y/2);
+        Debug.Log("topleft: "+topLeft);
+        Debug.Log("bottomRight: "+bottomRight);
+        Debug.Log($"position: {transform.position}, size: {rectTransform.sizeDelta}");
 
-        Index2D startingIndex = new Index2D(0, (int)((topLeft.x - jointsGrid[0,0].position.x)/Constants.jointDistance)+1);
-        Index2D endingIndex = new Index2D(obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-0.1f - jointsGrid[0,0].position.x)/Constants.jointDistance));
+        Index2D startingIndex = new Index2D((int)((topLeft.y - jointsGrid[0,0].position.y)/Constants.jointDistance), (int)((topLeft.x - jointsGrid[0,0].position.x)/Constants.jointDistance)+1);
+        Index2D endingIndex = new Index2D((int)((jointsGrid[0,jointsGrid.GetLength(1)-1].position.y - bottomRight.y)/Constants.jointDistance), (int)((bottomRight.x-0.1f - jointsGrid[0,0].position.x)/Constants.jointDistance));
         startingIndex = Utilities.ClampIndex2D(startingIndex, 0, jointsGrid.GetLength(0), 0, jointsGrid.GetLength(1));
         endingIndex   = Utilities.ClampIndex2D(endingIndex, 0, jointsGrid.GetLength(0), 0, jointsGrid.GetLength(1));
         Debug.Log($"startingIndex: ({startingIndex.x}, {startingIndex.y})");
