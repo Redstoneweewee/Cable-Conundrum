@@ -99,7 +99,7 @@ public class Obstacle : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointer
     }
     public void OnDrag(PointerEventData eventData) {
         if(!TemporarilyModifiable) { return; }
-        if(obstacleType != ObstacleType.LeftTableLeg && obstacleType != ObstacleType.RightTableLeg) { return; }
+        if(obstacleType != ObstacleType.LeftTableLeg && obstacleType != ObstacleType.RightTableLeg && obstacleType != ObstacleType.TableTop) { return; }
         //Debug.Log("Drag Begin");
         if(math.abs(cachedMousePosition.x - mouse.position.value.x) > Constants.tableSnapDistance) {
             if(mouse.position.value.x > cachedMousePosition.x) { ModifyTablePosition(Directions.Right); }
