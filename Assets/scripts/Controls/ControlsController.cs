@@ -14,6 +14,8 @@ public class ControlsController : MonoBehaviour {
     [SerializeField] private InputActionReference electricalStripAction;
     [SerializeField] private InputActionReference mouseScrollAction;
     [SerializeField] private InputActionReference deleteAction;
+    [SerializeField] private InputActionReference clickAction;
+
 
     [SerializeField] private GameObject plugSelectorCanvas;
 
@@ -25,6 +27,7 @@ public class ControlsController : MonoBehaviour {
     public InputActionReference ElectricalStripAction { get{ return electricalStripAction; } set{ electricalStripAction = value; } }
     public InputActionReference MouseScrollAction     { get{ return mouseScrollAction;     } set{ mouseScrollAction     = value; } }
     public InputActionReference DeleteAction          { get{ return deleteAction;          } set{ deleteAction          = value; } }
+    public InputActionReference ClickAction           { get{ return clickAction;           } set{ clickAction           = value; } }
 
     public GameObject           PlugSelectorCanvas   { get{ return plugSelectorCanvas;   } set{ plugSelectorCanvas   = value; } }
 
@@ -40,6 +43,7 @@ public class ControlsController : MonoBehaviour {
         electricalStripAction.action.Enable();
         mouseScrollAction.action.Enable();
         deleteAction.action.Enable();
+        clickAction.action.Enable();
     }
 
     void Awake() {

@@ -9,7 +9,7 @@
                     "name": "JointAction",
                     "type": "Button",
                     "id": "1f7448aa-7de2-4c78-a7f3-7bfff409f5a6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -63,7 +63,7 @@
                     "name": "DeleteAction",
                     "type": "Button",
                     "id": "dba52faf-bbfa-44f4-830a-ce32b0f825a0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -166,7 +166,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "602401aa-2f2e-4f64-bf15-3a52900d201e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

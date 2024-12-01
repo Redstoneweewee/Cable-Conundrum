@@ -11,6 +11,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     IBeginDragHandler, IDragHandler, IEndDragHandler {
     public DebugC DebugC {set; get;}
     private ControlsManager controlsManager;
+    private ControlsController controlsController;
     private InputActionReference deleteAction;
 
     [SerializeField] private GameObject plugVisual;
@@ -42,8 +43,7 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
         plug = GetComponent<Plug>();
         jointsController = FindObjectOfType<JointsController>();
         cableGeneration = GetComponentInChildren<CableGeneration>();
-
-        DebugC.Log(electricalStripController);
+        controlsController = FindObjectOfType<ControlsController>();
     }
     
 
@@ -63,17 +63,26 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
     public void OnPointerClick(PointerEventData eventData) {
         Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
-
     public void OnPointerDown(PointerEventData eventData) {
         if(plug.IsObstacle && !plug.Obstacle.TemporarilyModifiable) { return; }
+        if(eventData.pointerCurrentRaycast.gameObject == plugVisual) { return; }
+        TryModifyCables();
+        if(controlsManager.MasterJointsEnabled) { jointsController.JointsEnabled = true; }
+    }
+
+    void OnMouseDown() {
+        if(plug.IsObstacle && !plug.Obstacle.TemporarilyModifiable) { return; }
         plug.transform.SetAsLastSibling();
-        if(eventData.pointerCurrentRaycast.gameObject != plugVisual) { 
-            TryModifyCables();
-            if(controlsManager.MasterJointsEnabled) { jointsController.JointsEnabled = true; }
-            return;
-        }
         StartDrag();
     }
+    void OnMouseUp() {
+        if(plug.IsObstacle && !plug.Obstacle.TemporarilyModifiable) { return; }
+        plugVisual.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+        isModifyingCables = false;
+        isDragging = false;
+        if(!controlsManager.MasterJointsEnabled) { jointsController.JointsEnabled = false; }
+    }
+
 
     public void OnPointerEnter(PointerEventData eventData) {
         //Debug.Log("Mouse Enter");
@@ -85,11 +94,10 @@ public class PlugInteractions : MonoBehaviour, IPointerDownHandler, IPointerClic
 
     public void OnPointerUp(PointerEventData eventData) {
         if(plug.IsObstacle && !plug.Obstacle.TemporarilyModifiable) { return; }
-        plugVisual.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-        TryModifyCables();
-        //electricalStripController.RenewAllCableGrids();
-        isDragging = false;
+        if(eventData.pointerCurrentRaycast.gameObject == plugVisual) { return; }
+        //TryModifyCables();
         isModifyingCables = false;
+        isDragging = false;
         if(!controlsManager.MasterJointsEnabled) { jointsController.JointsEnabled = false; }
     }
 
