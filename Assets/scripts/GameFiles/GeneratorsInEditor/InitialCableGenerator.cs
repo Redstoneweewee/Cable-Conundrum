@@ -55,7 +55,7 @@ public class InitialCableGenerator : MonoBehaviour {
         GameObject cablePrefab = Utilities.GetStraightCablePrefab(cablePrefabs, shadowDirection, previousEndingDirection);
         CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(cablePrefab);
         Vector3    deltaPosition;
-        if(!previousAttributes.isRotationCable) { deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
+        if(!previousAttributes.isRotationCable) { deltaPosition = LevelResizeGlobal.instance.jointDistance*prefabAttributes.directionMultiple; }
         else                                    { deltaPosition = Vector3.zero; }
         
         cableParentAttributes.initialCables.Add(Instantiate(cablePrefab, transform));
@@ -71,7 +71,7 @@ public class InitialCableGenerator : MonoBehaviour {
         CableChildAttributes previousAttributes = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject);
         ShadowDirections shadowDirection = Utilities.GetShadowDirectionForRotationCables(previousAttributes.shadowDirection, endingDirection);
         GameObject rotationCablePrefab = Utilities.GetRotationCablePrefab(cablePrefabs, shadowDirection, startingDirection, endingDirection);
-        Vector3 deltaPosition = Constants.jointDistance*previousAttributes.directionMultiple;
+        Vector3 deltaPosition = LevelResizeGlobal.instance.jointDistance*previousAttributes.directionMultiple;
         Vector2 placePosition = previousCable.position + deltaPosition;
 
         Transform newCable = Instantiate(rotationCablePrefab, transform).transform;

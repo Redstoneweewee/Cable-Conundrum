@@ -44,7 +44,6 @@ public class ScaleRelative : RelativeBase {
                                                        scaleMultiplier*relativeSize/absoluteSize + 1 - scaleMultiplier);
             }
             else if(scaleType == ScaleTypes.KeepWithScreen) {
-                Debug.Log($"Screen size: {Screen.width}, {Screen.height}");
                 Vector2 normalSize = rectTransform.sizeDelta;
                 Vector2 sizeRatio = new Vector2(normalSize.x/Screen.width, normalSize.y/Screen.height);
                 float scale = 1/sizeRatio.x;

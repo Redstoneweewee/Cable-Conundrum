@@ -173,7 +173,7 @@ public class GridsController : MonoBehaviour {
 
 
     private Index2D CalculateJointsGridIndex(Vector2 position) {
-        float   subJointLength  = Constants.jointDistance/2;
+        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(position.x - S.jointsSkeletonGrid[0,0].x, S.jointsSkeletonGrid[0,0].y - position.y);
         Index2D gridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         gridIndex          = new Index2D(Math.Clamp(gridIndex.y, 0, S.jointsSkeletonGrid.GetLength(0)-1), Math.Clamp(gridIndex.x, 0, S.jointsSkeletonGrid.GetLength(1)-1));

@@ -24,7 +24,7 @@ public class GridsSkeleton : MonoBehaviour {
 
     private void InitializeJointsSkeletonGrid() {
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
-        float step = Constants.jointDistance;
+        float step = LevelResizeGlobal.instance.jointDistance;
         Vector2 topLeft = center;
 
         //Moves topLeft to outside the screen based on jointDistance
@@ -50,11 +50,11 @@ public class GridsSkeleton : MonoBehaviour {
     }
 
     private void InitializeSocketsSkeletonGrid(int height, int width) {
-        float r = Constants.electricalStripBaseSize.x;
-        float s = Constants.electricalStripSeparatorSize;
+        float r = LevelResizeGlobal.instance.electricalStripBaseSize.x;
+        float s = LevelResizeGlobal.instance.electricalStripSeparatorSize;
 
-        Vector2 newSize = new Vector2((Constants.electricalStripBaseSize.x + Constants.electricalStripSeparatorSize)*width  + Constants.electricalStripSeparatorSize, 
-                                      (Constants.electricalStripBaseSize.y + Constants.electricalStripSeparatorSize)*height + Constants.electricalStripSeparatorSize);
+        Vector2 newSize = new Vector2((LevelResizeGlobal.instance.electricalStripBaseSize.x + LevelResizeGlobal.instance.electricalStripSeparatorSize)*width  + LevelResizeGlobal.instance.electricalStripSeparatorSize, 
+                                      (LevelResizeGlobal.instance.electricalStripBaseSize.y + LevelResizeGlobal.instance.electricalStripSeparatorSize)*height + LevelResizeGlobal.instance.electricalStripSeparatorSize);
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
         socketsSkeletonGrid = new Vector2[height, width];
         Vector2 topLeft = new Vector2(center.x - newSize.x/2, center.y + newSize.y/2);

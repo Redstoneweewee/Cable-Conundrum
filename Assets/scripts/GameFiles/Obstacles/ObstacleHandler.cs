@@ -45,10 +45,10 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         float leftMostX = 0;
         float rightMostX = 1920;
         if(leftLegObstacle) {
-            leftMostX = leftLegObstacle.transform.position.x + leftLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 - Constants.tableTopDistanceFromLeg;
+            leftMostX = leftLegObstacle.transform.position.x + leftLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 - LevelResizeGlobal.instance.tableTopDistanceFromLeg;
         }
         if(rightLegObstacle) {
-            rightMostX = rightLegObstacle.transform.position.x - rightLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 + Constants.tableTopDistanceFromLeg;
+            rightMostX = rightLegObstacle.transform.position.x - rightLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 + LevelResizeGlobal.instance.tableTopDistanceFromLeg;
         }
         A.rectTransform.sizeDelta = new Vector2(rightMostX-leftMostX, A.rectTransform.sizeDelta.y);
         transform.position = new Vector3(leftMostX+A.rectTransform.sizeDelta.x/2, transform.position.y, 0);
@@ -68,10 +68,10 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
         
         if(A.obstacleType == ObstacleTypes.LeftTableLeg) {
-            transform.position = new Vector3(skeletonGrid[0, 1].x + Constants.jointDistance/2 + A.rectTransform.sizeDelta.x/2, A.rectTransform.sizeDelta.y/2, 0);
+            transform.position = new Vector3(skeletonGrid[0, 1].x + LevelResizeGlobal.instance.jointDistance/2 + A.rectTransform.sizeDelta.x/2, A.rectTransform.sizeDelta.y/2, 0);
         }
         else if(A.obstacleType == ObstacleTypes.RightTableLeg) {
-            transform.position = new Vector3(skeletonGrid[0, skeletonGrid.GetLength(1)-2].x - Constants.jointDistance/2 - A.rectTransform.sizeDelta.x/2, A.rectTransform.sizeDelta.y/2, 0);
+            transform.position = new Vector3(skeletonGrid[0, skeletonGrid.GetLength(1)-2].x - LevelResizeGlobal.instance.jointDistance/2 - A.rectTransform.sizeDelta.x/2, A.rectTransform.sizeDelta.y/2, 0);
         }
         
         RenewObstacleGrid();
@@ -88,7 +88,7 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         if(!A.temporarilyModifiable) { return; }
         if(A.obstacleType != ObstacleTypes.LeftTableLeg && A.obstacleType != ObstacleTypes.RightTableLeg && A.obstacleType != ObstacleTypes.TableTop) { return; }
         //Debug.Log("Drag Begin");
-        if(math.abs(A.cachedMousePosition.x - A.mouse.position.value.x) > Constants.tableSnapDistance) {
+        if(math.abs(A.cachedMousePosition.x - A.mouse.position.value.x) > LevelResizeGlobal.instance.tableSnapDistance) {
             if(A.mouse.position.value.x > A.cachedMousePosition.x) { ModifyTablePosition(Directions.Right); }
             else                                               { ModifyTablePosition(Directions.Left); }
             A.cachedMousePosition = A.mouse.position.value;
@@ -107,10 +107,10 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     private void ModifyTablePosition(Directions direction) {
         if(direction == Directions.Up || direction == Directions.Down) { Debug.LogWarning("Cannot move tables up or down as of right now."); return; }
         else if(direction == Directions.Right) {
-            transform.position = new Vector3(transform.position.x + Constants.tableSnapDistance, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + LevelResizeGlobal.instance.tableSnapDistance, transform.position.y, transform.position.z);
         }
         else {
-            transform.position = new Vector3(transform.position.x - Constants.tableSnapDistance, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - LevelResizeGlobal.instance.tableSnapDistance, transform.position.y, transform.position.z);
         }
         RenewObstacleGrid();
         A.gridsController.RenewAllObstaclesGrid();
@@ -123,8 +123,8 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         Vector2 topLeft     = new Vector2(transform.position.x - A.rectTransform.sizeDelta.x/2, transform.position.y + A.rectTransform.sizeDelta.y/2);
         Vector2 bottomRight = new Vector2(transform.position.x + A.rectTransform.sizeDelta.x/2, transform.position.y - A.rectTransform.sizeDelta.y/2);
 
-        Index2D startingIndex = new Index2D(0, (int)((topLeft.x - skeletonGrid[0,0].x)/Constants.jointDistance)+1);
-        Index2D endingIndex = new Index2D(A.obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-0.1f - skeletonGrid[0,0].x)/Constants.jointDistance));
+        Index2D startingIndex = new Index2D(0, (int)((topLeft.x - skeletonGrid[0,0].x)/LevelResizeGlobal.instance.jointDistance)+1);
+        Index2D endingIndex = new Index2D(A.obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-0.1f - skeletonGrid[0,0].x)/LevelResizeGlobal.instance.jointDistance));
         startingIndex = Utilities.ClampIndex2D(startingIndex, 0, skeletonGrid.GetLength(0), 0, skeletonGrid.GetLength(1));
         endingIndex   = Utilities.ClampIndex2D(endingIndex, 0, skeletonGrid.GetLength(0), 0, skeletonGrid.GetLength(1));
         DebugC.Get()?.Log($"startingIndex: ({startingIndex.x}, {startingIndex.y})");

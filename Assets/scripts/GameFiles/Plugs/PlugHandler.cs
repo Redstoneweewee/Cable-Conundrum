@@ -168,8 +168,8 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         
         Transform[,] socketsGrid = A.gridsData.socketsGrid;
         Transform[,] jointsGrid = A.gridsData.jointsGrid;
-        float   subSocketLength  = Constants.jointDistance;
-        float   subJointLength  = Constants.jointDistance/2;
+        float   subSocketLength  = LevelResizeGlobal.instance.jointDistance;
+        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
 
         Transform nearestSocket = socketsGrid[0, 0]; //This is just here to make the error go away. Doesn't actually do anything.
 
@@ -189,14 +189,14 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
             float distance = (socketsGrid[socketGridIndex.x, socketGridIndex.y].position - position).magnitude;
             //tests if the plug is plugged into the socket and has no been moved too far away. 
             //If the statement is true, the plug does not get evicted yet and keep testing for each LocalSnapPosition.
-            if(A.isPluggedIn && distance <= Constants.plugLockingDistance) { continue; }
+            if(A.isPluggedIn && distance <= LevelResizeGlobal.instance.plugLockingDistance) { continue; }
             //tests if:
             //1. The socket is inactive
             //2. There are cables blocking the socket
             //3. There is already a plug on the socket
             //4. The socket is too far away (distance > Constants.plugLockingDistance)
             //If any of those conditions are true, then the plug cannot be plugged in, therefore return null.
-            else if(distance > Constants.plugLockingDistance ||
+            else if(distance > LevelResizeGlobal.instance.plugLockingDistance ||
                 !Utilities.TryGetComponent<SocketAttributes>(socketsGrid[socketGridIndex.x,socketGridIndex.y].gameObject).isActive || 
                 allCablesGrid[jointsGridIndex.x, jointsGridIndex.y] != 0 || 
                 allObstaclesGrid[jointsGridIndex.x,jointsGridIndex.y] ||
