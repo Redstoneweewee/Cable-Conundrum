@@ -291,6 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8031809154787748389}
   - component: {fileID: 3536516382218726310}
+  - component: {fileID: 5904490166739335161}
   m_Layer: 0
   m_Name: ResizeController
   m_TagString: Untagged
@@ -326,6 +327,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renew: 0
+--- !u!114 &5904490166739335161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318550797872181346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47cb1c34d2fd8a4eaba6cbec4df4eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &379809299494376333
 GameObject:
   m_ObjectHideFlags: 0
