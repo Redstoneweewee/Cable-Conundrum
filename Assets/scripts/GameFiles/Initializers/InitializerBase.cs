@@ -56,22 +56,23 @@ public class InitializerBase : MonoBehaviour {
 
         // |--------------------------------------------------------------------------|
         // |--------------------------------------------------------------------------|
-        // |-------------- WARNING - Videos cannot be loaded on WebGL!! --------------|
+        // |-------------- WARNING - Videos cannot load without WIFI!! ---------------|
         // |--------------------------------------------------------------------------|
         // |--------------------------------------------------------------------------|
+        /*
         if(!tutorialData.isInitialized) { 
-            StartCoroutine(tutorialController.Initialize());
-            /*
+            //StartCoroutine(tutorialController.Initialize());
+            
             try { StartCoroutine(tutorialController.Initialize()); }
             catch(Exception e) {
                 Debug.LogWarning("tutorial was unable to load. Error: "+e);
             }
-            */
+            
         }
         yield return new WaitUntil(() => tutorialData.isInitialized);
-
+        */
         //EndInitialization(gameObjectActivities);
-        
+        yield return null;
         AllButtonsLoaded();
     }
 

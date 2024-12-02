@@ -12,7 +12,7 @@ public class TutorialData : MonoBehaviour {
     [HideInInspector] public TutorialController tutorialController;
     public TutorialVideoAttributes[] videoPlayers;
     [SerializeField] public bool isInitialized = false;
-    [HideInInspector] public bool initialVideoInitialized = false;
+    [SerializeField] public bool initialVideoInitialized = false;
     [HideInInspector] public int currentPageIndex = 0;
 
 

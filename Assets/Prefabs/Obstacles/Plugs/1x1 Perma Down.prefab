@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cableHandler: {fileID: 0}
-  debugC: {fileID: 0}
   cablePrefabs: {fileID: 0}
   gridsData: {fileID: 0}
   gridsSkeleton: {fileID: 0}
@@ -69,6 +68,7 @@ MonoBehaviour:
   electricalStripData: {fileID: 0}
   electricalStripController: {fileID: 0}
   jointsData: {fileID: 0}
+  soundsData: {fileID: 0}
   initialCables:
   - {fileID: 5112515956268113197}
   cachedPosition: {x: 0, y: 0, z: 0}
@@ -271,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 7151729919157773566}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -416.5, z: 0}
+  m_LocalPosition: {x: 0, y: -320, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -304,7 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b541a2886d83935499846f8995586c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugC: {fileID: 0}
   id: 0
   gridsData: {fileID: 0}
   gridsController: {fileID: 0}
@@ -317,6 +316,7 @@ MonoBehaviour:
   jointsData: {fileID: 0}
   cableParentAttributes: {fileID: 0}
   cableHandler: {fileID: 0}
+  soundsData: {fileID: 0}
   isPluggedIn: 0
   isObstacle: 1
   obstacleAttributes: {fileID: 0}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -112,6 +113,13 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
             Utilities.TryGetComponent<PlugHandler>(plug).InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.Table) {
+            if(attribute.PlugPrefab.GetComponent<ObstacleAttributes>().obstacleType == ObstacleTypes.TableTop) {
+                bool hasTableTop = false;
+                FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None).ToList().ForEach(obs => {
+                    if(obs.obstacleType == ObstacleTypes.TableTop) { hasTableTop = true; }
+                });
+                if(hasTableTop) { return; }
+            }
             GameObject table = Instantiate(attribute.PlugPrefab, D.obstaclesParent.transform);
             Utilities.TryGetComponent<ObstacleAttributes>(table).temporarilyModifiable = D.controlsData.obstaclesModifiable;
             if(D.controlsData.obstaclesModifiable) { Utilities.TryGetComponent<ObstacleHandler>(table).SetOpacity(0.8f); }

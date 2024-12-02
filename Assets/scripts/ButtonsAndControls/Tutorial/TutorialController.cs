@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +15,19 @@ public class TutorialController : MonoBehaviour {
 
     //is initialized in the initalizerBase
     public IEnumerator Initialize() {
-        TutorialVideoAttributes[] temp = FindObjectsByType<TutorialVideoAttributes>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        Debug.Log(temp.Length);
-        D.videoPlayers = new TutorialVideoAttributes[temp.Length];
-        foreach(TutorialVideoAttributes tutorialVideoAttributes in temp) {
-            StartCoroutine(tutorialVideoAttributes.Initialize());
-            yield return new WaitUntil(() => tutorialVideoAttributes.initialLoad);
-            D.videoPlayers[tutorialVideoAttributes.tutorialPageIndex] = tutorialVideoAttributes;
-        }
-        StartCoroutine(SetVideoDisplayAndDescription(0, 0));
-        yield return new WaitUntil(() => D.initialVideoInitialized);
-        D.isInitialized = true;
+            TutorialVideoAttributes[] temp = FindObjectsByType<TutorialVideoAttributes>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            //Debug.Log(temp.Length);
+            D.videoPlayers = new TutorialVideoAttributes[temp.Length];
+            foreach(TutorialVideoAttributes tutorialVideoAttributes in temp) {
+                //If videos don't load, gets stuck here
+                StartCoroutine(tutorialVideoAttributes.Initialize());
+                yield return new WaitUntil(() => tutorialVideoAttributes.initialLoad);
+                D.videoPlayers[tutorialVideoAttributes.tutorialPageIndex] = tutorialVideoAttributes;
+                Debug.Log("happened");
+            }
+            StartCoroutine(SetVideoDisplayAndDescription(0, 0));
+            yield return new WaitUntil(() => D.initialVideoInitialized);
+            D.isInitialized = true;
     }
 
 
@@ -65,11 +68,17 @@ public class TutorialController : MonoBehaviour {
     }
 
     private IEnumerator SetVideoDisplayAndDescription(int index, int previousIndex) {
-        Utilities.TryGetComponent<TextMeshProUGUI>(D.description).text = D.videoPlayers[index].description;
-        D.videoPlayers[previousIndex].videoPlayer.Pause();
-        D.videoPlayers[previousIndex].videoPlayer.frame = 0;
-        D.videoPlayers[index].videoPlayer.Prepare();
-        D.videoPlayers[index].videoPlayer.Play();
+        try {
+            Utilities.TryGetComponent<TextMeshProUGUI>(D.description).text = D.videoPlayers[index].description;
+            D.videoPlayers[previousIndex].videoPlayer.Pause();
+            D.videoPlayers[previousIndex].videoPlayer.frame = 0;
+            D.videoPlayers[index].videoPlayer.Prepare();
+            D.videoPlayers[index].videoPlayer.Play();
+        }
+        catch(Exception e) {
+            Debug.LogWarning("tutorial was unable to load. Error: "+e);
+            D.initialVideoInitialized = true;
+        }
         yield return new WaitUntil(() => D.videoPlayers[index].videoPlayer.isPrepared);
         Utilities.TryGetComponent<RawImage>(D.videoDisplay).texture = D.videoPlayers[index].renderTexture;
         D.initialVideoInitialized = true;

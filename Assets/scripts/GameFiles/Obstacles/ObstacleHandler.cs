@@ -20,6 +20,49 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
            A.obstacleType == ObstacleTypes.TableTop) { StartCoroutine(InitializeTable()); }
     }   
 
+    void Update() {
+        if(A.obstacleType != ObstacleTypes.TableTop) { return; }
+        RenewTableTopPosition();
+    }
+
+    
+    private void RenewTableTopPosition() {
+        ObstacleAttributes[] obstacleAttributes = FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None);
+        ObstacleAttributes leftLegObstacle = null;
+        ObstacleAttributes rightLegObstacle = null;
+        foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
+            if(obstacleAttribute.obstacleType == ObstacleTypes.LeftTableLeg) {
+                if(leftLegObstacle == null || obstacleAttribute.transform.position.x > leftLegObstacle.transform.position.x) {
+                    leftLegObstacle = obstacleAttribute;
+                }
+            }
+            else if(obstacleAttribute.obstacleType == ObstacleTypes.RightTableLeg) {
+                if(rightLegObstacle == null || obstacleAttribute.transform.position.x < rightLegObstacle.transform.position.x) {
+                    rightLegObstacle = obstacleAttribute;
+                }
+            }
+        }
+        float leftMostX = 0;
+        float rightMostX = 1920;
+        if(leftLegObstacle) {
+            leftMostX = leftLegObstacle.transform.position.x + leftLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 - Constants.tableTopDistanceFromLeg;
+        }
+        if(rightLegObstacle) {
+            rightMostX = rightLegObstacle.transform.position.x - rightLegObstacle.GetComponentInChildren<RectTransform>().sizeDelta.x/2 + Constants.tableTopDistanceFromLeg;
+        }
+        A.rectTransform.sizeDelta = new Vector2(rightMostX-leftMostX, A.rectTransform.sizeDelta.y);
+        transform.position = new Vector3(leftMostX+A.rectTransform.sizeDelta.x/2, transform.position.y, 0);
+        transform.SetSiblingIndex(transform.parent.childCount-1);
+
+        if(A.cachedLeftMostX != leftMostX || A.cachedRightMostX != rightMostX) {
+            RenewObstacleGrid();
+            A.gridsController.RenewAllObstaclesGrid();
+            A.intersectionController.TestForCableIntersection();
+        }
+        A.cachedLeftMostX = leftMostX;
+        A.cachedRightMostX = rightMostX;
+    }
+
     private IEnumerator InitializeTable() {
         yield return new WaitForSeconds(0.01f);
         Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;

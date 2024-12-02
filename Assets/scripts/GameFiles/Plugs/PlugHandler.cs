@@ -30,12 +30,19 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
     public void OnPointerDown(PointerEventData eventData) {
         if(A.isObstacle && !A.obstacleAttributes.temporarilyModifiable) { return; }
+        if(eventData.pointerCurrentRaycast.gameObject == A.plugVisual) { return; }
+        TryModifyCables();
+        if(A.controlsData.masterJointsEnabled) { A.jointsData.jointsEnabled = true; }
+    }
+    /// <summary>
+    /// OnMouseDown() only works when:
+    /// 1. The Main Camera is seeing the entire UI Canvas (must be resized with canvas size)
+    /// 2. Collider2D(s) are added to this gameobject
+    /// </summary>
+    void OnMouseDown() {
+        Debug.Log("mosue down ");
+        if(A.isObstacle && !A.obstacleAttributes.temporarilyModifiable) { return; }
         A.transform.SetAsLastSibling();
-        if(eventData.pointerCurrentRaycast.gameObject != A.plugVisual) { 
-            TryModifyCables();
-            if(A.controlsData.masterJointsEnabled) { A.jointsData.jointsEnabled = true; }
-            return;
-        }
         StartDrag();
     }
 
@@ -47,12 +54,18 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
     public void OnPointerUp(PointerEventData eventData) {
         if(A.isObstacle && !A.obstacleAttributes.temporarilyModifiable) { return; }
-        Utilities.TryGetComponent<RectTransform>(A.plugVisual).localScale = new Vector3(1f, 1f, 1f);
-        TryModifyCables();
-        //electricalStripController.RenewAllCableGrids();
+        if(eventData.pointerCurrentRaycast.gameObject == A.plugVisual) { return; }
         A.isDragging = false;
         A.isModifyingCables = false;
         if(!A.controlsData.masterJointsEnabled) { A.jointsData.jointsEnabled = false; }
+    }
+    void OnMouseUp() {
+        if(A.isObstacle && !A.obstacleAttributes.temporarilyModifiable) { return; }
+        Utilities.TryGetComponent<RectTransform>(A.plugVisual).localScale = new Vector3(1f, 1f, 1f);
+        A.isDragging = false;
+        A.isModifyingCables = false;
+        if(!A.controlsData.masterJointsEnabled) { A.jointsData.jointsEnabled = false; }
+
     }
 
     private void StartDrag() {

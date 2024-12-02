@@ -20,6 +20,8 @@ public class ObstacleAttributes : MonoBehaviour {
     [HideInInspector] public bool[,]       obstacleGrid;
     [HideInInspector] public RectTransform rectTransform;
     [HideInInspector] public Vector2       cachedMousePosition;
+    [HideInInspector] public float         cachedLeftMostX;
+    [HideInInspector] public float         cachedRightMostX;
 
     void Awake() {
         obstacleHandler        = Utilities.TryGetComponent<ObstacleHandler>(gameObject);

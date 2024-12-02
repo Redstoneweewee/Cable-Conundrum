@@ -439,7 +439,7 @@ RectTransform:
   m_GameObject: {fileID: 704746367397844498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4953116061218081117}
@@ -834,7 +834,7 @@ Transform:
   m_GameObject: {fileID: 1095868277896878884}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 847.0365, y: 372.81952, z: 0}
+  m_LocalPosition: {x: 890, y: 350, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -884,15 +884,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -140}
 --- !u!114 &4785844555190618185
@@ -907,15 +907,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: -1
   scaleType: 3
 --- !u!1 &1145777595662058544
@@ -1188,7 +1188,7 @@ Transform:
   m_GameObject: {fileID: 1382962094621092414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 847.0365, y: 244.82747, z: 0}
+  m_LocalPosition: {x: 890, y: 240, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1238,15 +1238,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -250}
 --- !u!114 &538809874590928887
@@ -1261,15 +1261,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: -1
   scaleType: 3
 --- !u!1 &1593383360967313184
@@ -1493,7 +1493,7 @@ RectTransform:
   m_GameObject: {fileID: 1702356541681245985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4021148429848433600}
@@ -2777,7 +2777,7 @@ Transform:
   m_GameObject: {fileID: 3210358559162109223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 847.0365, y: 372.81952, z: 0}
+  m_LocalPosition: {x: 890, y: 350, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2827,15 +2827,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -140}
 --- !u!114 &4752248616920943291
@@ -2850,15 +2850,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: -1
   scaleType: 3
 --- !u!1 &3235961038183251128
@@ -3049,7 +3049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 310, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7948270336988611926
@@ -4746,7 +4746,7 @@ RectTransform:
   m_GameObject: {fileID: 5866678485045685642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 185957281070653375}
@@ -6479,7 +6479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 310, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1352000917934497530
@@ -6684,6 +6684,111 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7392785432415988145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4079127779697700093}
+  - component: {fileID: 6587395273228308516}
+  - component: {fileID: 1218264295633570504}
+  - component: {fileID: 1560007715486330144}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4079127779697700093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392785432415988145}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2963101829746856845}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &6587395273228308516
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392785432415988145}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 540
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &1218264295633570504
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392785432415988145}
+  m_Enabled: 1
+--- !u!114 &1560007715486330144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392785432415988145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967a86991a9a2d447bcbe8ff5fe6a315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7751162814742376231
 GameObject:
   m_ObjectHideFlags: 0
@@ -6983,7 +7088,7 @@ RectTransform:
   m_GameObject: {fileID: 7982506068944984106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8196875, y: 0.8196875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2198514140725816086}
@@ -7013,15 +7118,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &2122744089546976093
@@ -7459,7 +7564,7 @@ RectTransform:
   m_GameObject: {fileID: 8527291686089412084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3005208, y: 1.3005208, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3561366995511878052}
@@ -7783,6 +7888,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4079127779697700093}
   - {fileID: 871173992917385374}
   - {fileID: 4818819866299155740}
   - {fileID: 848495113571101089}
@@ -7840,7 +7946,7 @@ RectTransform:
   m_GameObject: {fileID: 8886039974580707838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8196875, y: 0.8196875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7667686445607475364}
@@ -7870,15 +7976,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: 0.6
   scaleType: 3
 --- !u!114 &4571116552645437994
@@ -8011,7 +8117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 500.40408}
+  m_AnchoredPosition: {x: 0, y: 346.3}
   m_SizeDelta: {x: 418, y: 99.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4266221139124373439
@@ -8171,15 +8277,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
   relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 671.5, y: 439.25}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!114 &1496619603833943688
@@ -8194,15 +8300,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 1
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 3291340296303018918}
   relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 671.5, y: 439.25}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 1
   offset: {x: 0, y: -20}
 --- !u!1 &9095871765366007073
@@ -8348,7 +8454,7 @@ Transform:
   m_GameObject: {fileID: 9199441673116312022}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 847.0365, y: 512.44727, z: 0}
+  m_LocalPosition: {x: 890, y: 470, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8398,15 +8504,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   anchor: 6
   offset: {x: -20, y: -20}
 --- !u!114 &9006379635427836869
@@ -8421,15 +8527,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1343, y: 879}
+  cachedScreenSize: {x: 1920, y: 1080}
   renewIndex: 0
   relativeResize: 1
   accountForObjectSize: 1
   absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1343, y: 879}
+  relativeScreenSize: {x: 1920, y: 1080}
   relativeTo: {fileID: 0}
-  relativeToSize: {x: 1343, y: 879}
-  relativeToCenter: {x: 671.5, y: 439.5}
+  relativeToSize: {x: 1920, y: 1080}
+  relativeToCenter: {x: 960, y: 540}
   scaleMultiplier: -1
   scaleType: 3
 --- !u!1001 &6496387426736844404
