@@ -305,7 +305,7 @@ public class CableHandler : MonoBehaviour {
             A.cables[i].SetSiblingIndex(i);
         }
         int index = A.initialCables.Count;
-        A.lastRotationCableIndex = A.initialCables.Count;
+        A.lastRotationCableIndex = A.initialCables.Count-1;
         
         while(index < A.cables.Count) {
             int nextRotationCableIndex = index;
@@ -370,6 +370,7 @@ public class CableHandler : MonoBehaviour {
 
     private void GenerateEndingCables(int index) {
         for(int i=index; i<A.cables.Count; i++) { A.cables[i].gameObject.SetActive(false); }
+        Debug.Log("index: "+(index-1));
         Transform previousCable = A.cables[index-1];
         Vector2 currentPosition = previousCable.position;
         switch(A.endingDirection) {
