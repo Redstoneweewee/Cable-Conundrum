@@ -23,7 +23,6 @@ public class TutorialController : MonoBehaviour {
                 StartCoroutine(tutorialVideoAttributes.Initialize());
                 yield return new WaitUntil(() => tutorialVideoAttributes.initialLoad);
                 D.videoPlayers[tutorialVideoAttributes.tutorialPageIndex] = tutorialVideoAttributes;
-                Debug.Log("happened");
             }
             StartCoroutine(SetVideoDisplayAndDescription(0, 0));
             yield return new WaitUntil(() => D.initialVideoInitialized);

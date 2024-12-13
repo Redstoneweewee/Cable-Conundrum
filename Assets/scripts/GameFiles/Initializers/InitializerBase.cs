@@ -59,7 +59,7 @@ public class InitializerBase : MonoBehaviour {
         // |-------------- WARNING - Videos cannot load without WIFI!! ---------------|
         // |--------------------------------------------------------------------------|
         // |--------------------------------------------------------------------------|
-        /*
+        
         if(!tutorialData.isInitialized) { 
             //StartCoroutine(tutorialController.Initialize());
             
@@ -70,9 +70,9 @@ public class InitializerBase : MonoBehaviour {
             
         }
         yield return new WaitUntil(() => tutorialData.isInitialized);
-        */
+        
         //EndInitialization(gameObjectActivities);
-        yield return null;
+        //yield return null;
         AllButtonsLoaded();
     }
 

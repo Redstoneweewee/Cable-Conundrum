@@ -30,7 +30,8 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
 
         yield return new WaitUntil(() => initializationFinished);
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
-
+        Debug.Log(data.levelsSavePlugs[levelIndex]);
+        Debug.Log(data.levelsSavePlugs[levelIndex].Count);
         if(data.levelsSavePlugs[levelIndex] != null && data.levelsSavePlugs[levelIndex].Count != 0) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
             //Set all the necessary data for a plug
@@ -80,8 +81,11 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                     indexAndDirections.Add(new IndexAndDirection(i-1, childAttributes.endingDirection)); 
                 }
             }
+            Debug.Log($"plugPosition: {plugPosition}, isPluggedIn: {isPluggedIn}, indexAndDirections: {indexAndDirections}");
+
             data.levelsSavePlugs[levelIndex].Add(new SavePlug(plugPosition, isPluggedIn, indexAndDirections));
         }
+        DebugC.Get().LogListAlways("levelsSavePlugs: ", data.levelsSavePlugs[levelIndex][0].indexAndDirections);
     }
     public void SaveDataLate(GameData data) {}
 

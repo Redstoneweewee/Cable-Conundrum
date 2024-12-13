@@ -370,7 +370,6 @@ public class CableHandler : MonoBehaviour {
 
     private void GenerateEndingCables(int index) {
         for(int i=index; i<A.cables.Count; i++) { A.cables[i].gameObject.SetActive(false); }
-        Debug.Log("index: "+(index-1));
         Transform previousCable = A.cables[index-1];
         Vector2 currentPosition = previousCable.position;
         switch(A.endingDirection) {

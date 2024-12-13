@@ -19,22 +19,16 @@ public class TutorialVideoAttributes : MonoBehaviour {
         try {
             videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
             renderTexture = videoPlayer.targetTexture;
-            Debug.Log("1");
             videoPlayer.Pause();
-            Debug.Log("2");
             videoPlayer.frame = 0;
-            Debug.Log("3");
             videoPlayer.Prepare();
-            Debug.Log("4");
         }
         catch(Exception) {
             videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
             renderTexture = videoPlayer.targetTexture;
             caught = true;
-            Debug.Log("5");
         }
         yield return new WaitUntil(() => caught ? true : videoPlayer.isPrepared);
         initialLoad = true;
-            Debug.Log("6");
     }
 }
