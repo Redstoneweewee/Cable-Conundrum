@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 namespace Nobi.UiRoundedCorners {
-    [ExecuteInEditMode]								//Required to check the OnEnable function
+    //[ExecuteInEditMode]								//Required to check the OnEnable function
     [DisallowMultipleComponent]                     //You can only have one of these in every object.
     [RequireComponent(typeof(RectTransform))]
 	public class ImageWithRoundedCorners : MonoBehaviour {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3367230049586527254}
   - component: {fileID: 104875181134094271}
   m_Layer: 0
-  m_Name: IntersectionRightDown
+  m_Name: OutIntersection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

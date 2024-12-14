@@ -10,7 +10,7 @@ public class SocketHandler : MonoBehaviour, IPointerDownHandler {
 
     void Awake() {
         A = Utilities.TryGetComponent<SocketAttributes>(gameObject);
-        gridsController = FindObjectOfType<GridsController>();
+        gridsController = FindFirstObjectByType<GridsController>();
     }
 
     public void OnPointerDown(PointerEventData eventData) {

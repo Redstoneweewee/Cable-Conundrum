@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[ExecuteInEditMode]
+[ExecuteInEditMode]
 public class SoundPlayer : MonoBehaviour {
     public static void PlaySound(AudioSource audioSource, Vector2 pitchRange, float volume) {
         float pitch = Random.Range(pitchRange.x, pitchRange.y);

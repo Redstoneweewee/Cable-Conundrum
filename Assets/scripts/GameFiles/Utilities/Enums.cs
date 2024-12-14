@@ -30,4 +30,4 @@ public enum ShadowDirections { Up, Down, Left, Right, In, Out }
 
 
 public enum ScreenAnchor     { Center, Up, Down, Left, Right, TopLeft, TopRight, BottomLeft, BottomRight, UpInverted, DownInverted, LeftInverted, RightInverted }
-public enum ScaleTypes       { Horizontal, Vertical, Both, Either }
+public enum ScaleTypes       { Horizontal, Vertical, Both, Either, KeepWithScreen }

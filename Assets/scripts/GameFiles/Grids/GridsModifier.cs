@@ -28,7 +28,7 @@ public class GridsModifier : MonoBehaviour {
         if(renewGrids || testDotsActive != cachedtestDotsActive || width != cachedWidth || height != cachedHeight) {
             gridsSkeleton = Utilities.TryGetComponent<GridsSkeleton>(gameObject);
             gridsSkeleton.Initialize();
-            FindObjectOfType<GridsController>().Initialize();
+            FindFirstObjectByType<GridsController>().Initialize();
             renewGrids = false;
             cachedtestDotsActive = testDotsActive;
             cachedWidth = width;

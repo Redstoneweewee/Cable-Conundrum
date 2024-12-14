@@ -19,4 +19,53 @@ public class GameData {
         levelCompletion = new List<bool>();
         settings        = new SaveSettings();
     }
+
+
+    public void Log() {
+        string output;
+        output = "gamedata data:";
+        output += $"\nsettings:\n"+
+                  $"sound volume: {settings.soundVolume}\n"+
+                  $"music volume: {settings.musicVolume}\n";
+        output += "levelCompletion: [";
+        foreach(bool completion in levelCompletion) {
+            output += completion + ", ";
+        }
+        output += "]\n";
+        int level = 1;
+        foreach(List<SavePlug> list in levelsSavePlugs) {
+            output += "level "+level+" data:\n";
+            foreach(SavePlug savePlug in list) {
+                output += $"   plugPosition: {savePlug.plugPosition}, "+
+                          $"isPluggedIn: {savePlug.isPluggedIn}";
+                foreach(IndexAndDirection indexAndDirection in savePlug.indexAndDirections) {
+                    output += $"\n      IandD prev: {indexAndDirection.previousIndex}, "+
+                              $"IandD endDir: {indexAndDirection.endingDirection}";
+                }
+                output += "\n";
+            }
+            level++;
+        }
+        Debug.Log(output);
+    }
+}
+
+[System.Serializable]
+public class GameDataSerializable {
+    //public List<List<Vector2>>   levelPlugPositions;
+    public List<bool>      levelPlugsArePluggedIn;
+    //public List<List<List<int>>> levelPlugPreviousCableIndices;
+    //public List<List<List<int>>> levelPlugCableDirections;
+
+    public GameDataSerializable(GameData gameData) {
+        //Convert GameData into serializable form
+        //levelPlugPositions            = new List<List<Vector2>>();
+        levelPlugsArePluggedIn        = new List<bool>();
+        //levelPlugPreviousCableIndices = new List<List<List<int>>>();
+        //levelPlugCableDirections      = new List<List<List<int>>>();
+        levelPlugsArePluggedIn = new List<bool>{true, false, true, false};
+        //DataConversion.AllLevelDataToSerializable(gameData.levelsSavePlugs, out levelPlugPositions, out levelPlugsArePluggedIn,
+        //                                            out levelPlugPreviousCableIndices, out levelPlugCableDirections);
+        Debug.Log("testings: " +levelPlugsArePluggedIn[0]??"none");
+    }
 }

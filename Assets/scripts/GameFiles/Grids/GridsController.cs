@@ -125,7 +125,7 @@ public class GridsController : MonoBehaviour {
     public void RenewPlugsGrid() {
         D.plugsGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         //Get all plugs in the level
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
 
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isPluggedIn) {
@@ -139,7 +139,7 @@ public class GridsController : MonoBehaviour {
     }
 
     public void RenewAllCablesGrid() {
-        CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
+        CableParentAttributes[] allCableAttributes = FindObjectsByType<CableParentAttributes>(FindObjectsSortMode.None);
         D.allCablesGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
             if(cableParentAttribute.cableGrid == default(Array)) { DebugC.Get()?.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
@@ -153,7 +153,7 @@ public class GridsController : MonoBehaviour {
     }
 
     public void RenewAllObstaclesGrid() {
-        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        ObstacleAttributes[] obstacleAttributes = FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None);
         D.allObstaclesGrid = new bool[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
 
         foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
@@ -173,7 +173,7 @@ public class GridsController : MonoBehaviour {
 
 
     private Index2D CalculateJointsGridIndex(Vector2 position) {
-        float   subJointLength  = Constants.jointDistance/2;
+        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(position.x - S.jointsSkeletonGrid[0,0].x, S.jointsSkeletonGrid[0,0].y - position.y);
         Index2D gridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         gridIndex          = new Index2D(Math.Clamp(gridIndex.y, 0, S.jointsSkeletonGrid.GetLength(0)-1), Math.Clamp(gridIndex.x, 0, S.jointsSkeletonGrid.GetLength(1)-1));

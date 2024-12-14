@@ -7,7 +7,7 @@ public class SettingsGlobal : MonoBehaviour, IDataPersistence {
     private SoundsData soundsData;
 
     void Awake() {
-        soundsData = FindObjectOfType<SoundsData>();
+        soundsData = FindFirstObjectByType<SoundsData>();
     }
 
     public IEnumerator LoadData(GameData data) {
@@ -24,10 +24,10 @@ public class SettingsGlobal : MonoBehaviour, IDataPersistence {
 
 
     public void OnPressEnterSettingsButton() {
-        settingsCanvas.SetActive(true);
+        Utilities.TryGetComponent<Canvas>(settingsCanvas).sortingOrder = Constants.settingsCanvasSortOrder;
     }
 
     public void OnPressExitSettingsButton() {
-        settingsCanvas.SetActive(false);
+        Utilities.TryGetComponent<Canvas>(settingsCanvas).sortingOrder = Constants.deactivatedCanvasSortOrder;
     }
 }

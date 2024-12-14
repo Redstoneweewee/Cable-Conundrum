@@ -12,6 +12,6 @@ public class SoundsData : MonoBehaviour {
 
     void Awake() {
         soundsController = Utilities.TryGetComponent<SoundsController>(gameObject);
-        soundsEditor     = FindObjectOfType<SoundsEditor>();
+        soundsEditor     = FindFirstObjectByType<SoundsEditor>();
     }
 }

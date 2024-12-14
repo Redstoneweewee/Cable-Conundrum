@@ -52,15 +52,15 @@ public class PlugAttributes : MonoBehaviour {
     // Start is called before the first frame update
     void Awake() {
         plugHandler               = Utilities.TryGetComponent<PlugHandler>(gameObject);
-        gridsData                 = FindObjectOfType<GridsData>();
-        gridsController           = FindObjectOfType<GridsController>();
-        controlsData              = FindObjectOfType<ControlsData>();
-        electricalStripData       = FindObjectOfType<ElectricalStripData>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
-        intersectionData          = FindObjectOfType<IntersectionData>();
-        intersectionController    = FindObjectOfType<IntersectionController>();
-        jointsData                = FindObjectOfType<JointsData>();
-        soundsData                = FindObjectOfType<SoundsData>();
+        gridsData                 = FindFirstObjectByType<GridsData>();
+        gridsController           = FindFirstObjectByType<GridsController>();
+        controlsData              = FindFirstObjectByType<ControlsData>();
+        electricalStripData       = FindFirstObjectByType<ElectricalStripData>();
+        electricalStripController = FindFirstObjectByType<ElectricalStripController>();
+        intersectionData          = FindFirstObjectByType<IntersectionData>();
+        intersectionController    = FindFirstObjectByType<IntersectionController>();
+        jointsData                = FindFirstObjectByType<JointsData>();
+        soundsData                = FindFirstObjectByType<SoundsData>();
         cableParentAttributes     = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
         cableHandler              = Utilities.TryGetComponentInChildren<CableHandler>(gameObject);
 

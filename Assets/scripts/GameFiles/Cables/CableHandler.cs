@@ -13,8 +13,8 @@ public class CableHandler : MonoBehaviour {
     private CableParentAttributes A;
 
     void Awake() {
-        gridsController = FindObjectOfType<GridsController>();
-        levelInitializerGlobal = FindObjectOfType<LevelInitializerGlobal>();
+        gridsController = FindFirstObjectByType<GridsController>();
+        levelInitializerGlobal = FindFirstObjectByType<LevelInitializerGlobal>();
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
     }
 
@@ -72,7 +72,7 @@ public class CableHandler : MonoBehaviour {
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
             for(int j=0; j<A.cableGrid.GetLength(1); j++) { A.cableGrid[i,j] = new CablesGridAttributes(); }
         }
-        float   subJointLength  = Constants.jointDistance/2;
+        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
         for(int i=0; i<A.cables.Count; i++) {
             if(A.cables[i].gameObject.activeSelf == false) { continue; }
             Vector2 distanceFromTopLeftJoint = new Vector2(A.cables[i].position.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.cables[i].position.y);
@@ -97,7 +97,7 @@ public class CableHandler : MonoBehaviour {
     }
     public void InitializeCachedMouseGridIndex() {
         Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
-        float   subJointLength  = Constants.jointDistance/2;
+        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
         A.cachedMouseGridIndex = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         A.cachedMouseGridIndex = new Index2D(Math.Clamp(A.cachedMouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(A.cachedMouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
@@ -107,7 +107,7 @@ public class CableHandler : MonoBehaviour {
         yield return new WaitForSeconds(0.01f);
 
         Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
-        float   subJointLength  = Constants.jointDistance/2;
+        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
         Index2D mouseGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         mouseGridIndex          = new Index2D(Math.Clamp(mouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(mouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
@@ -273,7 +273,7 @@ public class CableHandler : MonoBehaviour {
             float   prefabZRotation = prefabAttributes.zRotation;
             Vector2 prefabPivot     = prefabAttributes.pivot;
             Utilities.ModifyCableValues(A.cables[0], prefabAttributes, false, 
-                                        prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
+                                        prefabZRotation, LevelResizeGlobal.instance.straightCableSize, prefabPivot, prefabSprite);
         }
         else {
             Transform newCable;
@@ -305,7 +305,7 @@ public class CableHandler : MonoBehaviour {
             A.cables[i].SetSiblingIndex(i);
         }
         int index = A.initialCables.Count;
-        A.lastRotationCableIndex = A.initialCables.Count;
+        A.lastRotationCableIndex = A.initialCables.Count-1;
         
         while(index < A.cables.Count) {
             int nextRotationCableIndex = index;
@@ -376,28 +376,28 @@ public class CableHandler : MonoBehaviour {
             case Directions.Up:
                 while(currentPosition.y < Screen.height) {
                     TryRenewStraightCable(index); 
-                    currentPosition.y += Constants.jointDistance;
+                    currentPosition.y += LevelResizeGlobal.instance.jointDistance;
                     index++;
                 }
                 break;
             case Directions.Down:
                 while(currentPosition.y > 0) {
                     TryRenewStraightCable(index);
-                    currentPosition.y -= Constants.jointDistance;
+                    currentPosition.y -= LevelResizeGlobal.instance.jointDistance;
                     index++;
                 }
                 break;
             case Directions.Left:
                 while(currentPosition.x > 0) {
                     TryRenewStraightCable(index);
-                    currentPosition.x -= Constants.jointDistance;
+                    currentPosition.x -= LevelResizeGlobal.instance.jointDistance;
                     index++;
                 }
                 break;
             case Directions.Right:
                 while(currentPosition.x < Screen.width) {
                     TryRenewStraightCable(index);
-                    currentPosition.x += Constants.jointDistance;
+                    currentPosition.x += LevelResizeGlobal.instance.jointDistance;
                     index++;
                 }
                 break;
@@ -426,7 +426,7 @@ public class CableHandler : MonoBehaviour {
         GameObject cablePrefab = Utilities.GetStraightCablePrefab(A.cablePrefabs, shadowDirection, previousEndingDirection);
         CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(cablePrefab);
         Vector3    deltaPosition;
-        if(!previousAttributes.isRotationCable) { deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
+        if(!previousAttributes.isRotationCable) { deltaPosition = LevelResizeGlobal.instance.jointDistance*prefabAttributes.directionMultiple; }
         else                                   { deltaPosition = Vector3.zero; }
         
         
@@ -436,7 +436,7 @@ public class CableHandler : MonoBehaviour {
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
             Utilities.ModifyCableValues(A.cables[index], prefabAttributes, false, 
-                                        prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
+                                        prefabZRotation, LevelResizeGlobal.instance.straightCableSize, prefabPivot, prefabSprite);
             A.cables[index].gameObject.SetActive(true);
         }
         else {
@@ -451,7 +451,7 @@ public class CableHandler : MonoBehaviour {
         CableChildAttributes previousAttributes = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject);
         ShadowDirections shadowDirection = Utilities.GetShadowDirectionForRotationCables(previousAttributes.shadowDirection, endingDirection);
         GameObject rotationCablePrefab = Utilities.GetRotationCablePrefab(A.cablePrefabs, shadowDirection, startingDirection, endingDirection);
-        Vector3 deltaPosition = Constants.jointDistance*previousAttributes.directionMultiple;
+        Vector3 deltaPosition = LevelResizeGlobal.instance.jointDistance*previousAttributes.directionMultiple;
         Vector2 placePosition = previousCable.position + deltaPosition;
         if(A.cables.Count > index) {
             CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(rotationCablePrefab);
@@ -461,7 +461,7 @@ public class CableHandler : MonoBehaviour {
 
             A.cables[index].position = placePosition;
             Utilities.ModifyCableValues(A.cables[index], prefabAttributes, true, 
-                                        prefabZRotation, Constants.rotationCableSize, prefabPivot, prefabSprite);
+                                        prefabZRotation, LevelResizeGlobal.instance.rotationCableSize, prefabPivot, prefabSprite);
         }
         else {
             Transform newCable = Instantiate(rotationCablePrefab, transform).transform;

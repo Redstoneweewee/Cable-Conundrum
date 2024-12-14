@@ -14,7 +14,7 @@ public class SocketAttributes : MonoBehaviour {
 
     void Awake() {
         socketAttributes    = Utilities.TryGetComponent<SocketAttributes>(gameObject);
-        gridsData           = FindObjectOfType<GridsData>();
+        gridsData           = FindFirstObjectByType<GridsData>();
         childrenTransforms  = Utilities.TryGetComponentsInChildren<Transform>(gameObject);
         electricalStripData = Utilities.TryGetComponentInParent<ElectricalStripData>(gameObject);
     }

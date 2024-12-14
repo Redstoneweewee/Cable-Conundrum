@@ -18,6 +18,6 @@ public class ButtonsAttributes : MonoBehaviour {
         buttonGameObject = gameObject;
         buttonsHandler = Utilities.TryGetComponent<ButtonsHandler>(gameObject);
         button = Utilities.TryGetComponentInChildren<Button>(gameObject);
-        soundsData = FindObjectOfType<SoundsData>();
+        soundsData = FindFirstObjectByType<SoundsData>();
     }
 }

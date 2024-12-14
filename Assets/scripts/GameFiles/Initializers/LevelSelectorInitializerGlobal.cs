@@ -8,7 +8,7 @@ public class LevelSelectorInitializerGlobal : InitializerBase, IDataPersistence 
 
     new void Awake() {
         base.Awake();
-        ButtonsAttributes[] temp = FindObjectsOfType<ButtonsAttributes>();
+        ButtonsAttributes[] temp = FindObjectsByType<ButtonsAttributes>(FindObjectsSortMode.None);
         foreach(ButtonsAttributes buttonAttribute in temp) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevel) {
                 enterLevelButtons.Add(buttonAttribute);

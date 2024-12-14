@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Nobi.UiRoundedCorners;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ButtonsOutlineGlobal : MonoBehaviour {
     [SerializeField]          private GameObject outline;
     [SerializeField] [Min(0)] private float width = 10f;
@@ -21,8 +21,13 @@ public class ButtonsOutlineGlobal : MonoBehaviour {
         rectTransform = Utilities.TryGetComponent<RectTransform>(gameObject);
     }
 
-    // Update is called once per frame
-    void Update() {
+    //void Update() {
+    //    Renew();
+    //}
+
+    public void Renew() {
+        imageWithRoundedCorners = Utilities.TryGetComponent<ImageWithRoundedCorners>(gameObject);
+        rectTransform = Utilities.TryGetComponent<RectTransform>(gameObject);
         if(cachedWidth != width || rectTransform.sizeDelta != cachedSize || cachedRadius != imageWithRoundedCorners.radius || cachedPosition != rectTransform.position) {
             cachedWidth = width;
             cachedSize = rectTransform.sizeDelta;

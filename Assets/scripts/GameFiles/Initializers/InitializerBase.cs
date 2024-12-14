@@ -13,6 +13,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public TutorialData               tutorialData;
     [HideInInspector] public ControlsController         controlsController;
     [HideInInspector] public SoundsController           soundsController;
+    [HideInInspector] public ResizeGlobal               resizeGlobal;
 
     [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
 
@@ -26,18 +27,20 @@ public class InitializerBase : MonoBehaviour {
 
     private IEnumerator WaitToInitializeButtons() {
         yield return new WaitUntil(() => finishedWithAllTasks);
-        scenesController = FindObjectOfType<ScenesController>();
-        settingsGlobal   = FindObjectOfType<SettingsGlobal>(true);
-        exitGameConfirmationGlobal = FindObjectOfType<ExitGameConfirmationGlobal>(true);
-        tutorialController = FindObjectOfType<TutorialController>();
-        tutorialData       = FindObjectOfType<TutorialData>();
-        controlsController = FindObjectOfType<ControlsController>();
-        soundsController   = FindObjectOfType<SoundsController>();
+        scenesController = FindFirstObjectByType<ScenesController>();
+        settingsGlobal   = FindFirstObjectByType<SettingsGlobal>(FindObjectsInactive.Include);
+        exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>(FindObjectsInactive.Include);
+        tutorialController = FindFirstObjectByType<TutorialController>();
+        tutorialData       = FindFirstObjectByType<TutorialData>();
+        controlsController = FindFirstObjectByType<ControlsController>();
+        soundsController   = FindFirstObjectByType<SoundsController>();
+        resizeGlobal       = FindFirstObjectByType<ResizeGlobal>();
         StartCoroutine(InitializeItems());
     }
 
     private IEnumerator InitializeItems() {
-        Transform[] allTransforms = FindObjectsOfType<Transform>(true);
+        /*
+        Transform[] allTransforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         GameObjectActivity[] gameObjectActivities = new GameObjectActivity[allTransforms.Length];
         for(int i=0; i<allTransforms.Length; i++) {
             gameObjectActivities[i] = new GameObjectActivity(allTransforms[i].gameObject, allTransforms[i].gameObject.activeSelf);
@@ -45,6 +48,7 @@ public class InitializerBase : MonoBehaviour {
         foreach(Transform transform in allTransforms) {
             transform.gameObject.SetActive(true);
         }
+        */
 
         controlsController.Initialize();
         soundsController.InitializeSliders();
@@ -52,19 +56,23 @@ public class InitializerBase : MonoBehaviour {
 
         // |--------------------------------------------------------------------------|
         // |--------------------------------------------------------------------------|
-        // |-------------- WARNING - Videos cannot be loaded on WebGL!! --------------|
+        // |-------------- WARNING - Videos cannot load without WIFI!! ---------------|
         // |--------------------------------------------------------------------------|
         // |--------------------------------------------------------------------------|
+        
         if(!tutorialData.isInitialized) { 
+            //StartCoroutine(tutorialController.Initialize());
+            
             try { StartCoroutine(tutorialController.Initialize()); }
             catch(Exception e) {
                 Debug.LogWarning("tutorial was unable to load. Error: "+e);
             }
+            
         }
         yield return new WaitUntil(() => tutorialData.isInitialized);
-
-        EndInitialization(gameObjectActivities);
         
+        //EndInitialization(gameObjectActivities);
+        //yield return null;
         AllButtonsLoaded();
     }
 
@@ -72,7 +80,7 @@ public class InitializerBase : MonoBehaviour {
     private void InitializeButtons() {
 
 
-        buttonsAttributes = FindObjectsOfType<ButtonsAttributes>(true);
+        buttonsAttributes = FindObjectsByType<ButtonsAttributes>(FindObjectsSortMode.None);
         foreach(ButtonsAttributes buttonsAttribute in buttonsAttributes) {
             buttonsAttribute.button.onClick.RemoveAllListeners();
             Utilities.SubscribeToButton(buttonsAttribute.button, buttonsAttribute.buttonsHandler.OnPressButton);

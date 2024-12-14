@@ -22,7 +22,7 @@ public class IntersectionController : MonoBehaviour {
     /*
     public void RenewAllObstaclesGrid() {
         gridsData.allObstaclesGrid = new bool[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
-        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
+        ObstacleAttributes[] obstacleAttributes = FindObjectsByType<ObstacleAttributes>();
         foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
             if(obstacleAttribute.obstacleType == ObstacleTypes.Plug) { continue; }
             if(obstacleAttribute.obstacleGrid == null) { Debug.LogWarning($"{obstacleAttribute.name}'s obstaclesGrid not defined."); continue; }
@@ -63,7 +63,7 @@ public class IntersectionController : MonoBehaviour {
     }
 
     public void ClearAllCableIntersections() {
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             CableParentAttributes cableParentAttributes = plugAttribute.cableParentAttributes;
             foreach(Transform cable in cableParentAttributes.cables) {
@@ -76,7 +76,7 @@ public class IntersectionController : MonoBehaviour {
     }
 
     private void DetermineTypeOfIntersection(int i, int j, int plugId) {
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         //CableGridAttributes[] allCablesAtPosition = new CableGridAttributes[cableGenerations.Length];
         //populates allCablesAtPosition to find out how the cables are overlapping
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
