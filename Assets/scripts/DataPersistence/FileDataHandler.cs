@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 public class FileDataHandler {
     private string dataDirPath = "";
@@ -47,16 +47,14 @@ public class FileDataHandler {
         try {
             //Create the directory the file will be written to if it doesn't already exist
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
-            //Convert GameData into serializable form
-            GameDataSerializable gameDataSerializable = new GameDataSerializable(data);
             //Serialize the C# game data object into Json
-            string dataToStore = JsonUtility.ToJson(gameDataSerializable, true);
+            //string dataToStore = JsonUtility.ToJson(gameDataSerializable, true);
 
 
             ////string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented);
-            ////string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings {
-            ////    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            ////});
+            string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
             Debug.Log($"dataToStore: {dataToStore}");
             //Write the serialized data to the file
             using (FileStream stream = new FileStream(fullPath, FileMode.Create)) {
