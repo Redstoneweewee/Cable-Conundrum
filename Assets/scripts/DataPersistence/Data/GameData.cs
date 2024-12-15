@@ -50,6 +50,9 @@ public class GameData {
     }
 }
 
+
+//Obsolete
+/*
 [System.Serializable]
 public class GameDataSerializable {
     //public List<List<Vector2>>   levelPlugPositions;
@@ -69,3 +72,4 @@ public class GameDataSerializable {
         Debug.Log("testings: " +levelPlugsArePluggedIn[0]??"none");
     }
 }
+*/
