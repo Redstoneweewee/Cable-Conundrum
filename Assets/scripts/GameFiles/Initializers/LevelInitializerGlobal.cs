@@ -27,8 +27,9 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public IEnumerator LoadData(GameData data) {
         gridsSkeleton = FindFirstObjectByType<GridsSkeleton>();
         Initialize(data);
-
+        Debug.Log("Loading Data 1");
         yield return new WaitUntil(() => initializationFinished);
+        Debug.Log("Loading Data 2");
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
         Debug.Log(data.levelsSavePlugs[levelIndex]);
         Debug.Log(data.levelsSavePlugs[levelIndex].Count);
