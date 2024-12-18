@@ -8,15 +8,13 @@ public class GridsController : MonoBehaviour {
     private GridsSkeleton S;
 
     void Awake() {
-        D = Utilities.TryGetComponent<GridsData>(gameObject);
-        S = Utilities.TryGetComponent<GridsSkeleton>(gameObject);
-        S.Initialize();
         Initialize();
     }
 
     public void Initialize() {
         D = Utilities.TryGetComponent<GridsData>(gameObject);
         S = Utilities.TryGetComponent<GridsSkeleton>(gameObject);
+        S.Initialize();
         InitializeJointsGrid();
         InitializeSocketsActiveGrid();
         RenewSocketsGrid();
@@ -140,6 +138,9 @@ public class GridsController : MonoBehaviour {
 
     public void RenewAllCablesGrid() {
         CableParentAttributes[] allCableAttributes = FindObjectsByType<CableParentAttributes>(FindObjectsSortMode.None);
+        foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
+            cableParentAttribute.cableHandler.InitializeCableGrid();
+        }
         D.allCablesGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
             if(cableParentAttribute.cableGrid == default(Array)) { DebugC.Get()?.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }

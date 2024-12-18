@@ -17,7 +17,7 @@ public class ElectricalStripData : MonoBehaviour {
     //[HideInInspector] public int[,] allCablesGrid;  //contains the number of cables at each index. A value of 0 means there are no cables.
 
     [HideInInspector] public float r = LevelResizeGlobal.instance.electricalStripBaseSize.x;
-    [HideInInspector] public float s = LevelResizeGlobal.instance.electricalStripSeparatorSize;
+    [HideInInspector] public float s = LevelResizeGlobal.instance.electricalStripSeparatorDistance;
     [SerializeField]  public GameObject socketPrefab;
     //[SerializeField] public List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>();
     //[SerializeField] public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();

@@ -327,6 +327,13 @@ public class CableHandler : MonoBehaviour {
     }
 
 
+    //Used to relocate cables when the screen size changes
+    //public void RegenerateAllCablePositions() {
+    //    List<IndexAndDirection> indexAndDirections = new List<IndexAndDirection>();
+    //    foreach(Transform cable in A.cables) {
+//
+    //    }
+    //}
 
     //Used in loading data stored in hardware
     public void TryGenerateCableFromList(List<IndexAndDirection> indexAndDirections) {

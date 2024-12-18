@@ -1,24 +1,38 @@
 using UnityEngine;
 
 
-[HideInInspector] public class LevelResizeGlobal : MonoBehaviour {
+[HideInInspector] 
+public class LevelResizeGlobal : MonoBehaviour {
 
-    public static LevelResizeGlobal instance;
+    [SerializeField] private float cachedScaleFactor = 1;
+    [SerializeField] private float scaleFactor       = 1;
+    [SerializeField] public Canvas gameCanvas;
+    public static LevelResizeGlobal instance; 
     [SerializeField] public float scaleMultiplier = 1;
-    [Tooltip("Just for seeing, cannot be changed.")]
-    [SerializeField] public float levelScale;
 
+    [SerializeField] public float finalScale;
     
     //Game distances and offsets normal values (1920 x 1080)
+    //[HideInInspector] private static float   staticSocketSize = 133;
+    //[HideInInspector] private static Vector2 staticPowerSwitchSize = new Vector2(140, 38);
+    //[HideInInspector] private static Vector2 staticEyesSize        = new Vector2(140, 140);
+    //[HideInInspector] private static Vector2 static1x1PlugSize     = new Vector2(140, 140);
+    //[HideInInspector] private static Vector2 static1x3PlugSize     = new Vector2(311, 140);
+    //[HideInInspector] private static Vector2 static3x1PlugSize     = new Vector2(140, 311);
+    //[HideInInspector] private static Vector2 static3x1v2PlugSize   = new Vector2(160, 311);
+    //[HideInInspector] private static Vector2 static3x3LPlugSize    = new Vector2(311, 311);
+
+
+
     [HideInInspector] private static float staticPlugLockingDistance = 28;
     [HideInInspector] private static float staticStandardSpriteSize = 140;
     [HideInInspector] private static float staticCableWidith = 26;
-    [HideInInspector] private static float staticRotationAndStraightCableOverlap = 13;
+    //[HideInInspector] private static float staticRotationAndStraightCableOverlap = 13;
 
-    [HideInInspector] private static float staticElectricalStripSeparatorSize = 30;
-    [HideInInspector] private static Vector2 staticElectricalStripBaseSize = new Vector2(staticStandardSpriteSize, staticStandardSpriteSize);
-    [HideInInspector] private static float   staticJointDistance       = (staticElectricalStripBaseSize.x + staticElectricalStripSeparatorSize)/2; // = 85
-    [HideInInspector] private static Vector2 staticPowerSwitchBaseSize = new Vector2(staticStandardSpriteSize, 38);
+    [HideInInspector] public  static float staticElectricalStripSeparatorDistance = 30;
+    [HideInInspector] public  static Vector2 staticElectricalStripBaseSize = new Vector2(staticStandardSpriteSize, staticStandardSpriteSize);
+    [HideInInspector] private static float   staticJointDistance       = (staticElectricalStripBaseSize.x + staticElectricalStripSeparatorDistance)/2; // = 85
+    [HideInInspector] public  static Vector2 staticPowerSwitchBaseSize = new Vector2(staticStandardSpriteSize, 38);
     [HideInInspector] private static Vector2 staticRotationCableSize = new Vector2(staticCableWidith, staticCableWidith);
     [HideInInspector] private static Vector2 staticStraightCableSize = new Vector2(staticCableWidith, staticJointDistance);
 
@@ -32,9 +46,9 @@ using UnityEngine;
     [HideInInspector] public float   plugLockingDistance;
     [HideInInspector] public float   standardSpriteSize;
     [HideInInspector] public float   cableWidith;
-    [HideInInspector] public float   rotationAndStraightCableOverlap;
+    //[HideInInspector] public float   rotationAndStraightCableOverlap;
 
-    [HideInInspector] public float   electricalStripSeparatorSize;
+    [HideInInspector] public float   electricalStripSeparatorDistance;
     [HideInInspector] public Vector2 electricalStripBaseSize;
     [HideInInspector] public float   jointDistance;
     [HideInInspector] public Vector2 powerSwitchBaseSize;
@@ -53,35 +67,40 @@ using UnityEngine;
     
  
     void Update() {
-    }
-
-
-    private void RenewLevelScale() {
-        Vector2 normalSize = new Vector2(1920, 1980);
-        Vector2 sizeRatio = new Vector2(normalSize.x/Screen.width, normalSize.y/Screen.height);
-        float scale = 1/sizeRatio.x;
-        if(sizeRatio.x > sizeRatio.y) {
-            scale = 1/sizeRatio.y;
+        if(!GameObject.FindGameObjectWithTag("GameCanvas")) { return; }
+        gameCanvas = Utilities.TryGetComponent<Canvas>(GameObject.FindGameObjectWithTag("GameCanvas"));
+        if(gameCanvas && gameCanvas.scaleFactor != cachedScaleFactor) { 
+            Debug.Log("renew");
+            RenewValues();
+            cachedScaleFactor = gameCanvas.scaleFactor;
         }
-        levelScale = scale*scaleMultiplier;
     }
 
     void RenewValues() {
-        RenewLevelScale();
+        scaleFactor = 1;
+        if(gameCanvas) { scaleFactor = gameCanvas.scaleFactor; }
+        finalScale = scaleFactor*scaleMultiplier;
+        
+        plugLockingDistance              = staticPlugLockingDistance             *finalScale;
+        //rotationAndStraightCableOverlap = staticRotationAndStraightCableOverlap*finalScale;
+        electricalStripSeparatorDistance = staticElectricalStripSeparatorDistance*finalScale;
+        jointDistance                    = staticJointDistance                   *finalScale;
+        tableSnapDistance                = staticTableSnapDistance               *finalScale;
+        tableTopDistanceFromLeg          = staticTableTopDistanceFromLeg         *finalScale;
+        startingPlugOffset               = staticStartingPlugOffset              *finalScale;
+        startingPlugOffsetRightSideAdd   = staticStartingPlugOffsetRightSideAdd  *finalScale;
+        powerSwitchBaseSize              = staticPowerSwitchBaseSize             *finalScale;
 
-        plugLockingDistance             = staticPlugLockingDistance*levelScale*scaleMultiplier;
-        standardSpriteSize              = staticStandardSpriteSize*levelScale*scaleMultiplier;
-        cableWidith                     = staticCableWidith*levelScale*scaleMultiplier;
-        rotationAndStraightCableOverlap = staticRotationAndStraightCableOverlap*levelScale*scaleMultiplier;
-        electricalStripSeparatorSize    = staticElectricalStripSeparatorSize*levelScale*scaleMultiplier;
-        electricalStripBaseSize         = staticElectricalStripBaseSize*levelScale*scaleMultiplier;
-        jointDistance                   = staticJointDistance*levelScale*scaleMultiplier;
-        powerSwitchBaseSize             = staticPowerSwitchBaseSize*levelScale*scaleMultiplier;
-        rotationCableSize               = staticRotationCableSize*levelScale*scaleMultiplier;
-        straightCableSize               = staticStraightCableSize*levelScale*scaleMultiplier;
-        tableSnapDistance               = staticTableSnapDistance*levelScale*scaleMultiplier;
-        tableTopDistanceFromLeg         = staticTableTopDistanceFromLeg*levelScale*scaleMultiplier;
-        startingPlugOffset              = staticStartingPlugOffset*levelScale*scaleMultiplier;
-        startingPlugOffsetRightSideAdd  = staticStartingPlugOffsetRightSideAdd*levelScale*scaleMultiplier;
+        electricalStripBaseSize          = staticElectricalStripBaseSize         *finalScale;
+        rotationCableSize                = staticRotationCableSize;
+        straightCableSize                = staticStraightCableSize;
+        standardSpriteSize               = staticStandardSpriteSize;
+        cableWidith                      = staticCableWidith;
+        //Debug.Log($"powerSwitchBaseSize: {powerSwitchBaseSize}");
+        //Debug.Log($"electricalStripSeparatorDistance: {electricalStripSeparatorDistance}");
+        //TODO - call all calculations to recalculate offsets, distances, and sizes
+        //including resizing plug, sockets, etc. sizes
+        FindFirstObjectByType<GridsController>()?.Initialize();
+        CableHandler[] allCableHandlers = FindObjectsByType<CableHandler>(FindObjectsSortMode.None);
     }
 }

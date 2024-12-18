@@ -21,7 +21,7 @@ public class JointsData : MonoBehaviour {
     
     [SerializeField]  public Material jointMaterial;
     [HideInInspector] public float r = LevelResizeGlobal.instance.electricalStripBaseSize.x;
-    [HideInInspector] public float s = LevelResizeGlobal.instance.electricalStripSeparatorSize;
+    [HideInInspector] public float s = LevelResizeGlobal.instance.electricalStripSeparatorDistance;
 
     // Start is called before the first frame update
     void Awake() {

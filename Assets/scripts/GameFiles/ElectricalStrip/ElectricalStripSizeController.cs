@@ -19,8 +19,8 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
     void Update() {
         //DebugC.Log(Mouse.current.position.value);
         D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
-        Vector2 newSize = new Vector2((LevelResizeGlobal.instance.electricalStripBaseSize.x + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.width  + LevelResizeGlobal.instance.electricalStripSeparatorSize, 
-                                      (LevelResizeGlobal.instance.electricalStripBaseSize.y + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.height + 2*LevelResizeGlobal.instance.electricalStripSeparatorSize + LevelResizeGlobal.instance.powerSwitchBaseSize.y);
+        //Vector2 newSize = new Vector2((LevelResizeGlobal.instance.electricalStripBaseSize.x + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.width  + LevelResizeGlobal.instance.electricalStripSeparatorSize, 
+        //                              (LevelResizeGlobal.instance.electricalStripBaseSize.y + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.height + 2*LevelResizeGlobal.instance.electricalStripSeparatorSize + LevelResizeGlobal.instance.powerSwitchBaseSize.y);
         //if(D.size != newSize || D.resetBoard) {
         //    RenewSockets();
         //    MovePowerSwitch();
@@ -68,18 +68,18 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
     }
 
     public void ModifyBackgroundVisual() {
-        Vector2 newSize = new Vector2((LevelResizeGlobal.instance.electricalStripBaseSize.x + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.width  + LevelResizeGlobal.instance.electricalStripSeparatorSize, 
-                                      (LevelResizeGlobal.instance.electricalStripBaseSize.y + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.height + 2*LevelResizeGlobal.instance.electricalStripSeparatorSize + LevelResizeGlobal.instance.powerSwitchBaseSize.y);
+        Vector2 newSize = new Vector2((LevelResizeGlobal.staticElectricalStripBaseSize.x + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*D.gridsModifier.width  + LevelResizeGlobal.staticElectricalStripSeparatorDistance, 
+                                      (LevelResizeGlobal.staticElectricalStripBaseSize.y + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*D.gridsModifier.height + 2*LevelResizeGlobal.staticElectricalStripSeparatorDistance + LevelResizeGlobal.staticPowerSwitchBaseSize.y);
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
         D.rectangularTransform.sizeDelta = newSize;
-        D.rectangularTransform.position = new Vector3(center.x, center.y+(LevelResizeGlobal.instance.electricalStripSeparatorSize + LevelResizeGlobal.instance.powerSwitchBaseSize.y)/2, 0);
+        D.rectangularTransform.position = new Vector3(center.x, center.y+(LevelResizeGlobal.instance.electricalStripSeparatorDistance + LevelResizeGlobal.instance.powerSwitchBaseSize.y)/2, 0);
         MovePowerSwitch();
     }
 
     private void MovePowerSwitch() {
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
-        Vector2 topLeft = new Vector2(D.rectangularTransform.position.x - D.rectangularTransform.sizeDelta.x/2, D.rectangularTransform.position.y + D.rectangularTransform.sizeDelta.y/2);
-        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - (LevelResizeGlobal.instance.powerSwitchBaseSize.y/2 + LevelResizeGlobal.instance.electricalStripSeparatorSize));
+        Vector2 topLeft = new Vector2(D.rectangularTransform.position.x - (D.rectangularTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale), D.rectangularTransform.position.y + (D.rectangularTransform.sizeDelta.y/2*LevelResizeGlobal.instance.finalScale));
+        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - (LevelResizeGlobal.instance.powerSwitchBaseSize.y/2 + LevelResizeGlobal.instance.electricalStripSeparatorDistance));
     }
     /*
     public void RenewSockets() {

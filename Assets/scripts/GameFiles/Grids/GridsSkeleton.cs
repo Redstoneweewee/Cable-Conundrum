@@ -35,6 +35,7 @@ public class GridsSkeleton : MonoBehaviour {
 
         int width  = (int)((Screen.width - topLeft.x)/step) + 2;
         int height = (int)(topLeft.y/step) + 2;
+        Debug.Log($"width: {width}, height: {height}");
         jointsSkeletonGrid = new Vector2[height, width];
         //Fill jointsSkeletonGrid with positions & instantiate test dots at each position for testing
         for(int i=0; i<height; i++) {
@@ -51,10 +52,10 @@ public class GridsSkeleton : MonoBehaviour {
 
     private void InitializeSocketsSkeletonGrid(int height, int width) {
         float r = LevelResizeGlobal.instance.electricalStripBaseSize.x;
-        float s = LevelResizeGlobal.instance.electricalStripSeparatorSize;
+        float s = LevelResizeGlobal.instance.electricalStripSeparatorDistance;
 
-        Vector2 newSize = new Vector2((LevelResizeGlobal.instance.electricalStripBaseSize.x + LevelResizeGlobal.instance.electricalStripSeparatorSize)*width  + LevelResizeGlobal.instance.electricalStripSeparatorSize, 
-                                      (LevelResizeGlobal.instance.electricalStripBaseSize.y + LevelResizeGlobal.instance.electricalStripSeparatorSize)*height + LevelResizeGlobal.instance.electricalStripSeparatorSize);
+        Vector2 newSize = new Vector2((LevelResizeGlobal.instance.electricalStripBaseSize.x + LevelResizeGlobal.instance.electricalStripSeparatorDistance)*width  + LevelResizeGlobal.instance.electricalStripSeparatorDistance, 
+                                      (LevelResizeGlobal.instance.electricalStripBaseSize.y + LevelResizeGlobal.instance.electricalStripSeparatorDistance)*height + LevelResizeGlobal.instance.electricalStripSeparatorDistance);
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
         socketsSkeletonGrid = new Vector2[height, width];
         Vector2 topLeft = new Vector2(center.x - newSize.x/2, center.y + newSize.y/2);

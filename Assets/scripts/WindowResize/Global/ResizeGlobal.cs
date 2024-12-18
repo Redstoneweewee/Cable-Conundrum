@@ -5,8 +5,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ResizeGlobal : MonoBehaviour {
-    private Vector2 cachedScreenSize;
+public class ResizeGlobal : WindowSizeChange {
     [SerializeField] public bool renew = false;
     
     void Awake() {
@@ -16,9 +15,9 @@ public class ResizeGlobal : MonoBehaviour {
     }
     
     void Update() {
-        if(Application.isPlaying && cachedScreenSize != new Vector2(Screen.width, Screen.height)) {
+        if(base.GetScreenSizeChange()) { 
+            Debug.Log($"new window size: {Screen.width}, {Screen.height}");
             RenewAll();
-            cachedScreenSize = new Vector2(Screen.width, Screen.height);
         }
         
         //|---------------------------------------------------------------------------------|

@@ -42,6 +42,7 @@ public class RelativeBase : MonoBehaviour {
 
     public void Renew() {
         absoluteScreenSize = new Vector2(1920, 1080);
+        //Debug.Log($"RelativeBase Renew: {Screen.width}, {Screen.height}");
         if(relativeResize) { relativeScreenSize = new Vector2(Screen.width, Screen.height); }
         else { relativeScreenSize = new Vector2(1920, 1080); }
         

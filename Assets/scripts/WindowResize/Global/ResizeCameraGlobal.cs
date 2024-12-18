@@ -1,14 +1,10 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ResizeCameraGlobal : MonoBehaviour {
-    private Vector2 cachedScreenSize;
+public class ResizeCameraGlobal : WindowSizeChange {
 
     void Update() {
-        if(cachedScreenSize.x != Screen.width || cachedScreenSize.y != Screen.height) {
-            ResizeCamera();
-            cachedScreenSize = new Vector2(Screen.width, Screen.height);
-        }
+        if(base.GetScreenSizeChange()) { ResizeCamera(); }
     }
 
     public void ResizeCamera() {
