@@ -20,8 +20,8 @@ public class JointsData : MonoBehaviour {
     //[HideInInspector] public Transform[,] jointsGrid;
     
     [SerializeField]  public Material jointMaterial;
-    [HideInInspector] public float r = LevelResizeGlobal.instance.electricalStripBaseSize.x;
-    [HideInInspector] public float s = LevelResizeGlobal.instance.electricalStripSeparatorDistance;
+    [HideInInspector] public float r;
+    [HideInInspector] public float s;
 
     // Start is called before the first frame update
     void Awake() {
@@ -29,6 +29,9 @@ public class JointsData : MonoBehaviour {
         controlsData        = FindFirstObjectByType<ControlsData>();
         jointsOpacityGlobal = Utilities.TryGetComponent<JointsOpacityGlobal>(gameObject);
         electricalStripData = FindFirstObjectByType<ElectricalStripData>();
+
+        r = LevelResizeGlobal.instance.electricalStripBaseSize.x;
+        s = LevelResizeGlobal.instance.electricalStripSeparatorDistance;
         cachedScreenSize    = new Vector2(Screen.width, Screen.height);
         jointMaterial.color = Constants.jointColor;
     }

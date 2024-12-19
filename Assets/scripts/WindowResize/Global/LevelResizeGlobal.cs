@@ -81,26 +81,28 @@ public class LevelResizeGlobal : MonoBehaviour {
         if(gameCanvas) { scaleFactor = gameCanvas.scaleFactor; }
         finalScale = scaleFactor*scaleMultiplier;
         
-        plugLockingDistance              = staticPlugLockingDistance             *finalScale;
-        //rotationAndStraightCableOverlap = staticRotationAndStraightCableOverlap*finalScale;
-        electricalStripSeparatorDistance = staticElectricalStripSeparatorDistance*finalScale;
-        jointDistance                    = staticJointDistance                   *finalScale;
-        tableSnapDistance                = staticTableSnapDistance               *finalScale;
-        tableTopDistanceFromLeg          = staticTableTopDistanceFromLeg         *finalScale;
-        startingPlugOffset               = staticStartingPlugOffset              *finalScale;
-        startingPlugOffsetRightSideAdd   = staticStartingPlugOffsetRightSideAdd  *finalScale;
-        powerSwitchBaseSize              = staticPowerSwitchBaseSize             *finalScale;
-
-        electricalStripBaseSize          = staticElectricalStripBaseSize         *finalScale;
-        rotationCableSize                = staticRotationCableSize;
-        straightCableSize                = staticStraightCableSize;
-        standardSpriteSize               = staticStandardSpriteSize;
-        cableWidith                      = staticCableWidith;
+        plugLockingDistance               = staticPlugLockingDistance             *finalScale;
+        //rotationAndStraightCableOverlap = staticRotationAndStraightCableOverlap *finalScale;
+        electricalStripSeparatorDistance  = staticElectricalStripSeparatorDistance*finalScale;
+        jointDistance                     = staticJointDistance                   *finalScale;
+        tableSnapDistance                 = staticTableSnapDistance               *finalScale;
+        tableTopDistanceFromLeg           = staticTableTopDistanceFromLeg         *finalScale;
+        startingPlugOffset                = staticStartingPlugOffset              *finalScale;
+        startingPlugOffsetRightSideAdd    = staticStartingPlugOffsetRightSideAdd  *finalScale;
+        powerSwitchBaseSize               = staticPowerSwitchBaseSize             *finalScale;
+        electricalStripBaseSize           = staticElectricalStripBaseSize         *finalScale;
+        
+        rotationCableSize                 = staticRotationCableSize;
+        straightCableSize                 = staticStraightCableSize;
+        standardSpriteSize                = staticStandardSpriteSize;
+        cableWidith                       = staticCableWidith;
         //Debug.Log($"powerSwitchBaseSize: {powerSwitchBaseSize}");
         //Debug.Log($"electricalStripSeparatorDistance: {electricalStripSeparatorDistance}");
         //TODO - call all calculations to recalculate offsets, distances, and sizes
         //including resizing plug, sockets, etc. sizes
         FindFirstObjectByType<GridsController>()?.Initialize();
-        CableHandler[] allCableHandlers = FindObjectsByType<CableHandler>(FindObjectsSortMode.None);
+        WinningMessageSizeGlobal winningMessageSizeGlobal = FindFirstObjectByType<WinningMessageSizeGlobal>();
+        if(winningMessageSizeGlobal) { winningMessageSizeGlobal.reinitialize = true; }
+
     }
 }

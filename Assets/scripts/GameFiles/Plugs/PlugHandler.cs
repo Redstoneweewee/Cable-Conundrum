@@ -40,7 +40,6 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
     /// 2. Collider2D(s) are added to this gameobject
     /// </summary>
     void OnMouseDown() {
-        Debug.Log("mosue down ");
         if(A.isObstacle && !A.obstacleAttributes.temporarilyModifiable) { return; }
         A.transform.SetAsLastSibling();
         StartDrag();
@@ -95,7 +94,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
                 }
             }
             else {
-                transform.position = firstNearestSocket.position - new Vector3(A.localSnapPositions[0].x, A.localSnapPositions[0].y, 0);
+                transform.position = firstNearestSocket.position - new Vector3(A.localSnapPositions[0].x*LevelResizeGlobal.instance.finalScale, A.localSnapPositions[0].y*LevelResizeGlobal.instance.finalScale, 0);
                 if(A.isPluggedIn == false) {
                     PlugIn();
                 }
@@ -141,9 +140,10 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         if(!A.isObstacle) { 
             Utilities.SetCablesOpacity(A.cableParentAttributes.gameObject, Constants.cableOpacity);
         }
-        //intersectionDetector.ClearAllCableIntersections();
         A.intersectionController.TestForCableIntersection();
-        
+        //A.intersectionController.ClearAllCableIntersections();
+        ////A.intersectionController.ClearCableIntersections(A);
+
         foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
             if(soundsAttribute.soundType == SoundTypes.PlugSnapExit) {
                 SoundPlayer.PlaySound(soundsAttribute, A.soundsData.soundVolume);
@@ -174,7 +174,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         Transform nearestSocket = socketsGrid[0, 0]; //This is just here to make the error go away. Doesn't actually do anything.
 
         for(int a=0; a<A.localSnapPositions.Count; a++) {
-            Vector3 position = A.cachedPlugPositionDynamic + A.localSnapPositions[a];
+            Vector3 position = A.cachedPlugPositionDynamic + A.localSnapPositions[a]*LevelResizeGlobal.instance.finalScale;
 
             Vector2 distanceFromTopLeftJoint = new Vector2(position.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - position.y);
             Index2D jointsGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
@@ -238,7 +238,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
                 }
             }
             else {
-                transform.position = firstNearestSocket.position - new Vector3(A.localSnapPositions[0].x, A.localSnapPositions[0].y, 0);
+                transform.position = firstNearestSocket.position - new Vector3(A.localSnapPositions[0].x*LevelResizeGlobal.instance.finalScale, A.localSnapPositions[0].y*LevelResizeGlobal.instance.finalScale, 0);
                 if(A.isPluggedIn == false) {
                     PlugIn();
                 }

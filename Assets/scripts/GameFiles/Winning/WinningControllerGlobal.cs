@@ -9,7 +9,6 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
     private SoundsData soundsData;
     [SerializeField] [Range(0.01f, 1)] private float interpolationRatio = 0.05f;
     private bool hasWon = false;
-    private bool isFinishedAnimating = false;
 
     private Vector2 targetMessagePosition;
 
@@ -34,8 +33,7 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
         string text = "Level " + level + " Complete!";
         Utilities.SetText(winningMessageSizeGlobal.text.gameObject, text);
 
-        winningMessageSizeGlobal.transform.position = new Vector2(Screen.width/2, Screen.height*1.5f);
-        targetMessagePosition = new Vector2(Screen.width/2, Screen.height*0.8935f);
+        StationaryWinningMessage();
     }
 
     public void OnWin() {
@@ -51,13 +49,20 @@ public class WinningControllerGlobal : MonoBehaviour, IDataPersistence {
     }
 
     void Update() {
-        if(hasWon && !isFinishedAnimating) {
+        if(hasWon) {
             AnimateWinningMessage();
+        }
+        else {
+            StationaryWinningMessage();
         }
     }
 
+    private void StationaryWinningMessage() {
+        winningMessageSizeGlobal.transform.position = new Vector2(Screen.width/2, Screen.height*3/2);
+    }
     private void AnimateWinningMessage() {
         if(!Utilities.IsApproximate(winningMessageSizeGlobal.transform.position, targetMessagePosition, 0.001f)) {
+            targetMessagePosition = new Vector2(Screen.width/2, Screen.height*0.8935f);
             winningMessageSizeGlobal.transform.position = Vector2.Lerp(winningMessageSizeGlobal.transform.position, targetMessagePosition, interpolationRatio);
         }
     }

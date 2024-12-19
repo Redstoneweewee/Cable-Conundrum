@@ -5,7 +5,7 @@ using UnityEngine;
 
 //[ExecuteInEditMode]
 public class WinningMessageSizeGlobal : MonoBehaviour {
-    [SerializeField] private bool reinitialize = false;
+    [SerializeField] public  bool reinitialize = false;
     [SerializeField] private float offset = 45f;
     [SerializeField] public GameObject background;
     [SerializeField] public GameObject text;
@@ -21,7 +21,7 @@ public class WinningMessageSizeGlobal : MonoBehaviour {
     private int cachedNumberOfNumbers;
     //Each number adds ~67 pixels to text
     //One-numbered text is 971 pixels
-    //Tw0-numbered text is 1038 pixels
+    //Two-numbered text is 1038 pixels
     //etc.
 
     void Awake() {
@@ -38,12 +38,13 @@ public class WinningMessageSizeGlobal : MonoBehaviour {
             Initialize();
         }
         if(cachedNumberOfNumbers != CountNumberOfNumbers(Utilities.GetText(text)) || reinitialize) {
+            
             float textSize = initialTextSize + CountNumberOfNumbers(Utilities.GetText(text)) * numSize;
             cachedNumberOfNumbers = CountNumberOfNumbers(Utilities.GetText(text));
-            backgroundRectTransform.sizeDelta = new Vector2((offset * 3) + buttonRectTransform.sizeDelta.x + textSize,backgroundHeight);
+            backgroundRectTransform.sizeDelta = new Vector2((offset*3) + buttonRectTransform.sizeDelta.x + textSize,backgroundHeight);
 
-            button.transform.position = new Vector2(background.transform.position.x + backgroundRectTransform.sizeDelta.x/2 - buttonRectTransform.sizeDelta.x/2 - offset, background.transform.position.y);
-            text.transform.position = new Vector2(button.transform.position.x - textSize/2 - buttonRectTransform.sizeDelta.x/2 - offset, button.transform.position.y);
+            button.transform.position = new Vector2(background.transform.position.x + backgroundRectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale - buttonRectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale - offset*LevelResizeGlobal.instance.finalScale, background.transform.position.y);
+            text.transform.position = new Vector2(button.transform.position.x - textSize/2*LevelResizeGlobal.instance.finalScale - buttonRectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale - offset*LevelResizeGlobal.instance.finalScale, button.transform.position.y);
             
             reinitialize = false;
         }

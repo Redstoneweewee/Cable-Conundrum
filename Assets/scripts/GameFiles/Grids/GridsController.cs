@@ -128,7 +128,7 @@ public class GridsController : MonoBehaviour {
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isPluggedIn) {
                 foreach(Vector2 localPlugPositionsTakenUp in plugAttribute.localJointPositionsTakenUp) {
-                    Vector2 position = new Vector2(plugAttribute.transform.position.x, plugAttribute.transform.position.y) + localPlugPositionsTakenUp;
+                    Vector2 position = new Vector2(plugAttribute.transform.position.x, plugAttribute.transform.position.y) + localPlugPositionsTakenUp*LevelResizeGlobal.instance.finalScale;
                     Index2D gridIndex = CalculateJointsGridIndex(position);
                     D.plugsGrid[gridIndex.x, gridIndex.y] = plugAttribute.id;
                 }
@@ -138,8 +138,9 @@ public class GridsController : MonoBehaviour {
 
     public void RenewAllCablesGrid() {
         CableParentAttributes[] allCableAttributes = FindObjectsByType<CableParentAttributes>(FindObjectsSortMode.None);
-        foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
-            cableParentAttribute.cableHandler.InitializeCableGrid();
+        CableHandler[] allCableHandlers = FindObjectsByType<CableHandler>(FindObjectsSortMode.None);
+        foreach(CableHandler cableHandler in allCableHandlers) {
+            cableHandler.InitializeCableGrid();
         }
         D.allCablesGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {

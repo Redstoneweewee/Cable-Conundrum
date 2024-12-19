@@ -16,7 +16,7 @@ public class ResizeGlobal : WindowSizeChange {
     
     void Update() {
         if(base.GetScreenSizeChange()) { 
-            Debug.Log($"new window size: {Screen.width}, {Screen.height}");
+            //Debug.Log($"new window size: {Screen.width}, {Screen.height}");
             RenewAll();
         }
         
@@ -36,7 +36,7 @@ public class ResizeGlobal : WindowSizeChange {
 
     public void RenewAll() {
         RelativeBase[] allRelativeBases = StageUtility.GetCurrentStageHandle().FindComponentsOfType<RelativeBase>();
-        Debug.Log("DD allRelativeBases: "+allRelativeBases.Length);
+        //Debug.Log("DD allRelativeBases: "+allRelativeBases.Length);
         int maxRenewIndex = 0;
         foreach(RelativeBase relativeBase in allRelativeBases) {
             if(relativeBase.renewIndex > maxRenewIndex) {
