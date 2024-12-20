@@ -18,6 +18,7 @@ public class CableHandler : MonoBehaviour {
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
     }
 
+
     void Start() {
         Initialize();
         RenewRotationAndIntersectionCables();

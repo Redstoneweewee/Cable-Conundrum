@@ -35,7 +35,6 @@ public class GridsSkeleton : MonoBehaviour {
 
         int width  = (int)((Screen.width - topLeft.x)/step) + 2;
         int height = (int)(topLeft.y/step) + 2;
-        Debug.Log($"width: {width}, height: {height}");
         jointsSkeletonGrid = new Vector2[height, width];
         //Fill jointsSkeletonGrid with positions & instantiate test dots at each position for testing
         for(int i=0; i<height; i++) {

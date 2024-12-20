@@ -17,10 +17,7 @@ public class GridsController : MonoBehaviour {
         S.Initialize();
         InitializeJointsGrid();
         InitializeSocketsActiveGrid();
-        RenewSocketsGrid();
-        RenewPlugsGrid();
-        RenewAllCablesGrid();
-        RenewAllObstaclesGrid();
+        StartCoroutine(RenewGrids());
 
         D.Awake();
         D.electricalStripData.Awake();
@@ -28,11 +25,12 @@ public class GridsController : MonoBehaviour {
         D.electricalStripSizeController.ModifyBackgroundVisual();
     }
 
-    public void RenewGrids() {
+    public IEnumerator RenewGrids() {
         RenewSocketsGrid();
         RenewPlugsGrid();
-        RenewAllCablesGrid();
         RenewAllObstaclesGrid();
+        yield return 0; //Waits one frame
+        RenewAllCablesGrid();
     }
 
     private void InitializeJointsGrid() {

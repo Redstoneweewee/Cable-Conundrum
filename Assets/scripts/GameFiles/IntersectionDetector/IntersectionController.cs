@@ -78,7 +78,6 @@ public class IntersectionController : MonoBehaviour {
             Image cableImage = Utilities.TryGetComponentInChildren<Image>(cable.gameObject);
             if(!plugAttribute.isObstacle) { 
                 cableImage.color = new Color(1, 1, 1, cableImage.color.a); 
-                Debug.Log($"changed color of cable {count}");
             }
             else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
             count++;

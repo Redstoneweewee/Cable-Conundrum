@@ -27,12 +27,10 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     public IEnumerator LoadData(GameData data) {
         gridsSkeleton = FindFirstObjectByType<GridsSkeleton>();
         Initialize(data);
-        Debug.Log("Loading Data 1");
         yield return new WaitUntil(() => initializationFinished);
-        Debug.Log("Loading Data 2");
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
-        Debug.Log(data.levelsSavePlugs[levelIndex]);
-        Debug.Log(data.levelsSavePlugs[levelIndex].Count);
+        //Debug.Log(data.levelsSavePlugs[levelIndex]);
+        //Debug.Log(data.levelsSavePlugs[levelIndex].Count);
         if(data.levelsSavePlugs[levelIndex] != null && data.levelsSavePlugs[levelIndex].Count != 0) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
             //Set all the necessary data for a plug
@@ -57,7 +55,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         //Once all data is loaded, we are finished with all tasks
         base.FinishedWithAllTasks();
         //And renew level grids
-        FindFirstObjectByType<GridsController>().RenewGrids();
+        StartCoroutine(FindFirstObjectByType<GridsController>().RenewGrids());
     }
 
     
