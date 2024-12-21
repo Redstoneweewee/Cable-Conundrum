@@ -19,7 +19,10 @@ public class ScaleRelative : RelativeBase {
     }
     
     private void UpdateSize() {
-        RectTransform rectTransform = GetComponentInChildren<RectTransform>();
+        RectTransform rectTransform = GetComponentInChildren<RectTransform>(true);
+        bool isActive = rectTransform.gameObject.activeSelf;
+        if(!isActive) { rectTransform.gameObject.SetActive(true); }
+
         if(rectTransform) {
             if(scaleType == ScaleTypes.Horizontal) {
                 rectTransform.localScale = new Vector2(scaleMultiplier*base.relativeScreenSize.x/base.absoluteScreenSize.x + 1 - scaleMultiplier,
@@ -53,5 +56,7 @@ public class ScaleRelative : RelativeBase {
                 rectTransform.localScale = new Vector2(scale*scaleMultiplier, scale*scaleMultiplier);
             }
         }
+
+        if(!isActive) { rectTransform.gameObject.SetActive(false); }
     }
 }

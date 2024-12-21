@@ -66,6 +66,7 @@ public class ScenesController : MonoBehaviour {
         
         //Renew Resizes
         FindFirstObjectByType<ResizeGlobal>().RenewAll();
+        Debug.Log("AAAAAAAAAAAAAAAAAAAA renewed resizes");
 
         //Load the game
         DataPersistenceManager.instance.LoadGame();
