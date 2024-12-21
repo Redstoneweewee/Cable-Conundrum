@@ -38,7 +38,7 @@ public class LevelResizeGlobal : MonoBehaviour {
 
     [HideInInspector] private static float staticTableSnapDistance = staticJointDistance/2;
     [HideInInspector] private static float   staticTableTopDistanceFromLeg = 18;
-    [HideInInspector] private static Vector2 staticStartingPlugOffset = new Vector2(3, 3);
+    [HideInInspector] private static Vector2 staticStartingPlugOffset = new Vector2(staticJointDistance*1.25f, staticJointDistance*1.25f);
     [HideInInspector] private static float staticStartingPlugOffsetRightSideAdd = 1f;
 
     

@@ -167,26 +167,17 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         bool[,] allObstaclesGrid = A.gridsData.allObstaclesGrid;
         
         Transform[,] socketsGrid = A.gridsData.socketsGrid;
-        Transform[,] jointsGrid = A.gridsData.jointsGrid;
-        float   subSocketLength  = LevelResizeGlobal.instance.jointDistance;
-        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
 
         Transform nearestSocket = socketsGrid[0, 0]; //This is just here to make the error go away. Doesn't actually do anything.
 
         for(int a=0; a<A.localSnapPositions.Count; a++) {
             Vector3 position = A.cachedPlugPositionDynamic + A.localSnapPositions[a]*LevelResizeGlobal.instance.finalScale;
-
-            Vector2 distanceFromTopLeftJoint = new Vector2(position.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - position.y);
-            Index2D jointsGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
-            jointsGridIndex          = new Index2D(Math.Clamp(jointsGridIndex.y, 0, jointsGrid.GetLength(0)-1), Math.Clamp(jointsGridIndex.x, 0, jointsGrid.GetLength(1)-1));
-
-            Vector2 distanceFromTopLeftSocket = new Vector2(position.x - socketsGrid[0,0].position.x, socketsGrid[0,0].position.y - position.y);
-            Index2D socketGridIndex = new Index2D(((int)(distanceFromTopLeftSocket.x/subSocketLength)+1)/2, ((int)(distanceFromTopLeftSocket.y/subSocketLength)+1)/2);
-            socketGridIndex         = new Index2D(Math.Clamp(socketGridIndex.y, 0, socketsGrid.GetLength(0)-1), Math.Clamp(socketGridIndex.x, 0, socketsGrid.GetLength(1)-1));
+            Index2D jointsGridIndex   = Utilities.CalculateJointsGridIndex(position);
+            Index2D socketsGridIndex = Utilities.CalculateSocketsGridIndex(position);
             
-            if(a == 0) { nearestSocket = socketsGrid[socketGridIndex.x,socketGridIndex.y]; }
+            if(a == 0) { nearestSocket = socketsGrid[socketsGridIndex.x,socketsGridIndex.y]; }
 
-            float distance = (socketsGrid[socketGridIndex.x, socketGridIndex.y].position - position).magnitude;
+            float distance = (socketsGrid[socketsGridIndex.x, socketsGridIndex.y].position - position).magnitude;
             //tests if the plug is plugged into the socket and has no been moved too far away. 
             //If the statement is true, the plug does not get evicted yet and keep testing for each LocalSnapPosition.
             if(A.isPluggedIn && distance <= LevelResizeGlobal.instance.plugLockingDistance) { continue; }
@@ -197,7 +188,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
             //4. The socket is too far away (distance > Constants.plugLockingDistance)
             //If any of those conditions are true, then the plug cannot be plugged in, therefore return null.
             else if(distance > LevelResizeGlobal.instance.plugLockingDistance ||
-                !Utilities.TryGetComponent<SocketAttributes>(socketsGrid[socketGridIndex.x,socketGridIndex.y].gameObject).isActive || 
+                !Utilities.TryGetComponent<SocketAttributes>(socketsGrid[socketsGridIndex.x,socketsGridIndex.y].gameObject).isActive || 
                 allCablesGrid[jointsGridIndex.x, jointsGridIndex.y] != 0 || 
                 allObstaclesGrid[jointsGridIndex.x,jointsGridIndex.y] ||
                 plugsGrid[jointsGridIndex.x,jointsGridIndex.y] > 0) 

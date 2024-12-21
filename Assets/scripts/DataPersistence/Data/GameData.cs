@@ -36,7 +36,7 @@ public class GameData {
         foreach(List<SavePlug> list in levelsSavePlugs) {
             output += "level "+level+" data:\n";
             foreach(SavePlug savePlug in list) {
-                output += $"   plugPosition: {savePlug.plugPosition}, "+
+                output += $"   socketIndex: {savePlug.socketIndex}, "+
                           $"isPluggedIn: {savePlug.isPluggedIn}";
                 foreach(IndexAndDirection indexAndDirection in savePlug.indexAndDirections) {
                     output += $"\n      IandD prev: {indexAndDirection.previousIndex}, "+

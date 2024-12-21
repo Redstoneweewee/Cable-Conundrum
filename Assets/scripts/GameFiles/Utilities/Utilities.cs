@@ -118,7 +118,24 @@ public class Utilities : MonoBehaviour {
         return index2D;
     }
 
+    public static Index2D CalculateJointsGridIndex(Vector3 position) {
+        Transform[,] jointsGrid = FindFirstObjectByType<GridsData>().jointsGrid;
+        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
+
+        Vector2 distanceFromTopLeftJoint = new Vector2(position.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - position.y);
+        Index2D jointsGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
+        jointsGridIndex          = new Index2D(Math.Clamp(jointsGridIndex.y, 0, jointsGrid.GetLength(0)-1), Math.Clamp(jointsGridIndex.x, 0, jointsGrid.GetLength(1)-1));
+        return jointsGridIndex;
+    }
     
+    public static Index2D CalculateSocketsGridIndex(Vector3 position) {
+        Transform[,] socketsGrid = FindFirstObjectByType<GridsData>().socketsGrid;
+        float   subSocketLength  = LevelResizeGlobal.instance.jointDistance;
+        Vector2 distanceFromTopLeftSocket = new Vector2(position.x - socketsGrid[0,0].position.x, socketsGrid[0,0].position.y - position.y);
+        Index2D socketsGridIndex = new Index2D(((int)(distanceFromTopLeftSocket.x/subSocketLength)+1)/2, ((int)(distanceFromTopLeftSocket.y/subSocketLength)+1)/2);
+        socketsGridIndex         = new Index2D(Math.Clamp(socketsGridIndex.y, 0, socketsGrid.GetLength(0)-1), Math.Clamp(socketsGridIndex.x, 0, socketsGrid.GetLength(1)-1));
+        return socketsGridIndex;
+    }
 
     public static void SetCablesOpacity(GameObject cableParent, float opacity) {
         CanvasGroup canvasGroup = TryGetComponent<CanvasGroup>(cableParent);
