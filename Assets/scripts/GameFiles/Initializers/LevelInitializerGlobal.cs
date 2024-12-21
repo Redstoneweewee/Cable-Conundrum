@@ -230,6 +230,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     //Plugs are sorted in this order:
     //1. How tall the plug is 
     //2. How wide the plug is
+    //3. A greater plug priority (if width and height are the same)
     //Ex sort. [3x2, 3x1, 2x3, 2x2, 2x1, 1x1]
     private void SortAllLevelPlugs() {
         foreach(LevelPlugs levelPlug in allLevelPlugs) {
@@ -238,7 +239,8 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                 int largestPlugIndex = i;
                 for(int j=i+1; j<levelPlug.plugAttributes.Count; j++) {
                     if(levelPlug.plugAttributes[j].plugSize.x > largestPlug.plugSize.x ||
-                       (levelPlug.plugAttributes[j].plugSize.x == largestPlug.plugSize.x && levelPlug.plugAttributes[j].plugSize.y > largestPlug.plugSize.y)) {
+                       (levelPlug.plugAttributes[j].plugSize.x == largestPlug.plugSize.x && levelPlug.plugAttributes[j].plugSize.y > largestPlug.plugSize.y) ||
+                       (levelPlug.plugAttributes[j].plugSize.x == largestPlug.plugSize.x && levelPlug.plugAttributes[j].plugSize.y == largestPlug.plugSize.y && largestPlug.plugPriority < levelPlug.plugAttributes[j].plugPriority)) {
                         largestPlug = levelPlug.plugAttributes[j];
                         largestPlugIndex = j;
                     }

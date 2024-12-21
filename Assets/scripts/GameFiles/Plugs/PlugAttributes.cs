@@ -27,6 +27,8 @@ public class PlugAttributes : MonoBehaviour {
     [SerializeField] public bool isPluggedIn = false;
     [SerializeField] public bool isObstacle = false;
     [SerializeField] public ObstacleAttributes obstacleAttributes;
+    [Tooltip("PlugPriority is determined by how \"new\" the plug is in terms of game chapters. Higher number = higher priority")]
+    [SerializeField] [Min(0)] public int plugPriority;
     [SerializeField] public Vector2 plugSize = new Vector2(1, 1);
     [Tooltip("This is all the space on the joints grid that this plug takes up. These values are used in IntersectionDetector. The first position should be the left-most position.")]
     [SerializeField] public List<Vector2> localJointPositionsTakenUp = new List<Vector2>();

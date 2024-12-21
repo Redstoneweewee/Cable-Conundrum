@@ -152,6 +152,7 @@ MonoBehaviour:
   isPluggedIn: 0
   isObstacle: 0
   obstacleAttributes: {fileID: 0}
+  plugPriority: 1
   plugSize: {x: 3, y: 1}
   localJointPositionsTakenUp:
   - {x: 0, y: 85}
@@ -164,7 +165,7 @@ MonoBehaviour:
   localSnapPositions:
   - {x: 0, y: 85}
   - {x: 0, y: -85}
-  center: {x: 0, y: -85}
+  center: {x: 0, y: 0}
   plugVisual: {fileID: 5945985879273786467}
   isDragging: 0
   isModifyingCables: 0
@@ -179,7 +180,6 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3499715989824386501}
   m_Enabled: 1
-  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -203,8 +203,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 2.71}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,6 +214,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 113.3, y: 262.55}
   m_EdgeRadius: 0
 --- !u!1 &5945985879273786467
