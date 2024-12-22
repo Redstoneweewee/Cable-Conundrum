@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1254055206498036271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6442170087528976367}
+  - component: {fileID: 9017268304300088923}
+  m_Layer: 0
+  m_Name: OffScreenController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6442170087528976367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254055206498036271}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4516704308025847463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9017268304300088923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254055206498036271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b966cd49b4599cf46b830cf61d7be0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpValue: 0.1
 --- !u!1 &2528144497874294695
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +160,7 @@ MonoBehaviour:
   tutorialData: {fileID: 0}
   controlsController: {fileID: 0}
   soundsController: {fileID: 0}
+  resizeGlobal: {fileID: 0}
   buttonsAttributes: []
   levelIndex: 0
 --- !u!1 &5747367134399350812
@@ -151,6 +197,7 @@ Transform:
   - {fileID: 784491552828133349}
   - {fileID: 6235363332466899479}
   - {fileID: 884867864589327919}
+  - {fileID: 6442170087528976367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6773632555941416161
@@ -276,6 +323,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &8436611435698838868
 GameObject:
   m_ObjectHideFlags: 0
