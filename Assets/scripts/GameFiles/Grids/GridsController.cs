@@ -31,6 +31,7 @@ public class GridsController : MonoBehaviour {
         RenewAllObstaclesGrid();
         yield return 0; //Waits one frame
         RenewAllCablesGrid();
+        D.initialized = true;
     }
 
     private void InitializeJointsGrid() {

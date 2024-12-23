@@ -12,11 +12,10 @@ public class IntersectionController : MonoBehaviour {
     }
 
     void Start() {
-        StartCoroutine(InitialWaitUntilUpdate(0.02f));
+        StartCoroutine(InitialWaitUntilUpdate());
     }
-
-    private IEnumerator InitialWaitUntilUpdate(float time) {
-        yield return new WaitForSeconds(time);
+    private IEnumerator InitialWaitUntilUpdate() {
+        yield return new WaitUntil(() => D.gridsData.initialized);
         //RenewAllObstaclesGrid();
         TestForCableIntersection();
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridsData : MonoBehaviour {
+    [HideInInspector] public bool initialized = false;
     [HideInInspector] public GridsController gridsController;
 
     [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;

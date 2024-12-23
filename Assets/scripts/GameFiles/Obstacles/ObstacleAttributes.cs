@@ -13,19 +13,21 @@ public class ObstacleAttributes : MonoBehaviour {
     [HideInInspector] public IntersectionController intersectionController;
     [SerializeField]  public bool                   temporarilyModifiable;
 
-    [SerializeField]  public GridsSkeleton gridsSkeleton;
+    [SerializeField]  public GridsSkeleton   gridsSkeleton;
+    [SerializeField]  public GridsData       gridsData;
     [SerializeField]  public GridsController gridsController;
-    [SerializeField]  public ObstacleTypes obstacleType;
-    [HideInInspector] public bool          isDragging;
-    [HideInInspector] public bool[,]       obstacleGrid;
-    [HideInInspector] public RectTransform rectTransform;
-    [HideInInspector] public Vector2       cachedMousePosition;
-    [HideInInspector] public float         cachedLeftMostX;
-    [HideInInspector] public float         cachedRightMostX;
+    [SerializeField]  public ObstacleTypes   obstacleType;
+    [HideInInspector] public bool            isDragging;
+    [HideInInspector] public bool[,]         obstacleGrid;
+    [HideInInspector] public RectTransform   rectTransform;
+    [HideInInspector] public Vector2         cachedMousePosition;
+    [HideInInspector] public float           cachedLeftMostX;
+    [HideInInspector] public float           cachedRightMostX;
 
     void Awake() {
         obstacleHandler        = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
         gridsSkeleton          = FindFirstObjectByType<GridsSkeleton>();
+        gridsData              = FindFirstObjectByType<GridsData>();
         gridsController        = FindFirstObjectByType<GridsController>();
         intersectionController = FindFirstObjectByType<IntersectionController>();
         rectTransform          = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
