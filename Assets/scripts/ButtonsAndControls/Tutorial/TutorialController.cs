@@ -15,10 +15,14 @@ public class TutorialController : MonoBehaviour {
 
     //is initialized in the initalizerBase
     public IEnumerator Initialize() {
-            TutorialVideoAttributes[] temp = FindObjectsByType<TutorialVideoAttributes>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            if(Application.platform == RuntimePlatform.WebGLPlayer) {
+                D.useNormalVideoPlayers = 0;
+            }
+            TutorialVideoAttributes[] allTutorialVideoAttributes = Utilities.TryGetComponentsInChildren<TutorialVideoAttributes>(D.videoPlayerParents[D.useNormalVideoPlayers]);
+            D.videoPlayers = new TutorialVideoAttributes[allTutorialVideoAttributes.Length];
+
             //Debug.Log(temp.Length);
-            D.videoPlayers = new TutorialVideoAttributes[temp.Length];
-            foreach(TutorialVideoAttributes tutorialVideoAttributes in temp) {
+            foreach(TutorialVideoAttributes tutorialVideoAttributes in allTutorialVideoAttributes) {
                 //If videos don't load, gets stuck here
                 StartCoroutine(tutorialVideoAttributes.Initialize());
                 yield return new WaitUntil(() => tutorialVideoAttributes.initialLoad);
@@ -26,6 +30,7 @@ public class TutorialController : MonoBehaviour {
             }
             StartCoroutine(SetVideoDisplayAndDescription(0, 0));
             yield return new WaitUntil(() => D.initialVideoInitialized);
+            Debug.Log("initial videos initialized");
             D.isInitialized = true;
     }
 

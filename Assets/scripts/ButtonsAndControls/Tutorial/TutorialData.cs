@@ -10,9 +10,12 @@ public class TutorialData : MonoBehaviour {
     [SerializeField] public GameObject nextTutorialPageButton;
     [SerializeField] public GameObject previousTutorialPageButton;
     [HideInInspector] public TutorialController tutorialController;
-    public TutorialVideoAttributes[] videoPlayers;
-    [SerializeField] public bool isInitialized = false;
-    [SerializeField] public bool initialVideoInitialized = false;
+    /*[HideInInspector] */[Range(0, 1)] public int useNormalVideoPlayers = 1;
+    [Header("videoPlayers contains the URL parent as the first element and \nNormal parent as the second element.")]
+    [SerializeField] public GameObject[] videoPlayerParents = new GameObject[2];
+    /*[HideInInspector] */public TutorialVideoAttributes[] videoPlayers;
+    /*[HideInInspector] */public bool isInitialized = false;
+    /*[HideInInspector] */public bool initialVideoInitialized = false;
     [HideInInspector] public int currentPageIndex = 0;
 
 

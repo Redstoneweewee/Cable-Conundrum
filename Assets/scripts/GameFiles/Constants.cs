@@ -15,6 +15,7 @@ public class Constants {
     public static int settingsCanvasSortOrder = 50;
     public static int tutorialCanvasSortOrder = 60;
     public static int exitConfirmationCanvasSortOrder = 70;
+    public static int creditsCanvasSortOrder = 80;
 
     public static Color levelSelectorFinishedButtonColor1 = RemapColorFromRGB(new Color(134, 172, 114, 255));
     public static Color levelSelectorFinishedButtonColor2 = RemapColorFromRGB(new Color(137, 186, 111, 255));

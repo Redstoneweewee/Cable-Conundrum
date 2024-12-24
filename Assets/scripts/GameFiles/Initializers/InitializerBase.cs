@@ -11,6 +11,7 @@ public class InitializerBase : MonoBehaviour {
     [HideInInspector] public SettingsGlobal             settingsGlobal;
     [HideInInspector] public TutorialController         tutorialController;
     [HideInInspector] public TutorialData               tutorialData;
+    [HideInInspector] public CreditsGlobal              creditsGlobal;
     [HideInInspector] public ControlsController         controlsController;
     [HideInInspector] public SoundsController           soundsController;
     [HideInInspector] public ResizeGlobal               resizeGlobal;
@@ -32,6 +33,7 @@ public class InitializerBase : MonoBehaviour {
         exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>(FindObjectsInactive.Include);
         tutorialController = FindFirstObjectByType<TutorialController>();
         tutorialData       = FindFirstObjectByType<TutorialData>();
+        creditsGlobal      = FindFirstObjectByType<CreditsGlobal>();
         controlsController = FindFirstObjectByType<ControlsController>();
         soundsController   = FindFirstObjectByType<SoundsController>();
         resizeGlobal       = FindFirstObjectByType<ResizeGlobal>();
@@ -63,7 +65,7 @@ public class InitializerBase : MonoBehaviour {
         if(!tutorialData.isInitialized) { 
             //StartCoroutine(tutorialController.Initialize());
             
-            try { StartCoroutine(tutorialController.Initialize()); }
+            try { StartCoroutine(tutorialController.Initialize()); Debug.Log("initializing tutorial");}
             catch(Exception e) {
                 Debug.LogWarning("tutorial was unable to load. Error: "+e);
             }
@@ -126,6 +128,12 @@ public class InitializerBase : MonoBehaviour {
                     break;
                 case ButtonTypes.PreviousTutorialPage:
                     Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressPreviousTutorialPageButton);
+                    break;
+                case ButtonTypes.EnterCredits:
+                    Utilities.SubscribeToButton(buttonsAttribute.button, creditsGlobal.OnPressEnterCreditsButton);
+                    break;
+                case ButtonTypes.ExitCredits:
+                    Utilities.SubscribeToButton(buttonsAttribute.button, creditsGlobal.OnPressExitCreditsButton);
                     break;
                 default:
                     Debug.LogError($"Undefined button type: {buttonsAttribute.buttonType}");

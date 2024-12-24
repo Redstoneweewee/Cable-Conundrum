@@ -10,7 +10,8 @@ public enum ButtonTypes       { EnterLevel, NextLevel, PreviousLevel,
                                 EnterMenu, 
                                 EnterSettings, ExitSettings, 
                                 EnterExitConfirmation, ExitExitConfirmation, ExitGame, 
-                                EnterTutorialPage, ExitTutorialPage, NextTutorialPage, PreviousTutorialPage }
+                                EnterTutorialPage, ExitTutorialPage, NextTutorialPage, PreviousTutorialPage,
+                                EnterCredits, ExitCredits }
 
 public enum SliderTypes       { Sound, Music }
 public enum SoundTypes        { HoverOverButton, ClickOnButton, ClickOnPlug, PlugSnapEnter, PlugSnapExit, ChangeCable, Victory }
