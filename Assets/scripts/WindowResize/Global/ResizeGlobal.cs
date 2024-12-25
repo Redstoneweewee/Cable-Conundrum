@@ -11,13 +11,13 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
     public override void OnAwake() {
         //if(PrefabStageUtility.GetCurrentPrefabStage() != null) { return; }
         if(!Application.isPlaying) { return; }
-        RenewAll();
+        StartCoroutine(RenewAll());
     }
     
     void Update() {
         if(base.GetScreenSizeChange()) { 
             //Debug.Log($"new window size: {Screen.width}, {Screen.height}");
-            RenewAll();
+            StartCoroutine(RenewAll());
         }
         
         //|---------------------------------------------------------------------------------|
@@ -28,13 +28,15 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
 
         else if(renew) {
             //InitializeAll();
-            RenewAll();
+            StartCoroutine(RenewAll());
             renew = false;
             Debug.Log("AAAAAA Renewed");
         }
     }
 
-    public void RenewAll() {
+    public IEnumerator RenewAll() {
+        yield return null;
+        Debug.Log("renewed EEEEEEEEEEEEEEEEEEE");
         RelativeBase[] allRelativeBases = FindObjectsByType<RelativeBase>(FindObjectsSortMode.None);
         int maxRenewIndex = 0;
         foreach(RelativeBase relativeBase in allRelativeBases) {
