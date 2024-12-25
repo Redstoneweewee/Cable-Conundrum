@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.SceneManagement;
+//using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -9,7 +9,7 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
     [SerializeField] public bool renew = false;
     
     public override void OnAwake() {
-        if(PrefabStageUtility.GetCurrentPrefabStage() != null) { return; }
+        //if(PrefabStageUtility.GetCurrentPrefabStage() != null) { return; }
         if(!Application.isPlaying) { return; }
         RenewAll();
     }
@@ -35,7 +35,7 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
     }
 
     public void RenewAll() {
-        RelativeBase[] allRelativeBases = StageUtility.GetCurrentStageHandle().FindComponentsOfType<RelativeBase>();
+        RelativeBase[] allRelativeBases = FindObjectsByType<RelativeBase>(FindObjectsSortMode.None);
         int maxRenewIndex = 0;
         foreach(RelativeBase relativeBase in allRelativeBases) {
             if(relativeBase.renewIndex > maxRenewIndex) {
@@ -43,17 +43,17 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
             }
         }
         for(int i=0; i<=maxRenewIndex; i++) {
-            SizeRelative[] allSizeRelatives = StageUtility.GetCurrentStageHandle().FindComponentsOfType<SizeRelative>();
+            SizeRelative[] allSizeRelatives = FindObjectsByType<SizeRelative>(FindObjectsSortMode.None);
             foreach(SizeRelative sizeRelative in allSizeRelatives) {
                 if(!sizeRelative.enabled) { continue; }
                 if(sizeRelative.renewIndex == i) { sizeRelative.Renew(); }
             }
-            ScaleRelative[] allScaleRelatives = StageUtility.GetCurrentStageHandle().FindComponentsOfType<ScaleRelative>();
+            ScaleRelative[] allScaleRelatives = FindObjectsByType<ScaleRelative>(FindObjectsSortMode.None);
             foreach(ScaleRelative scaleRelative in allScaleRelatives) {
                 if(!scaleRelative.enabled) { continue; }
                 if(scaleRelative.renewIndex == i) { scaleRelative.Renew(); }
             }
-            MoveRelative[] allMoveRelatives = StageUtility.GetCurrentStageHandle().FindComponentsOfType<MoveRelative>();
+            MoveRelative[] allMoveRelatives = FindObjectsByType<MoveRelative>(FindObjectsSortMode.None);
             foreach(MoveRelative moveRelative in allMoveRelatives) {
                 if(!moveRelative.enabled) { continue; }
                 if(moveRelative.renewIndex == i) { moveRelative.Renew(); }
@@ -61,7 +61,7 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
         }
 
         //Renew ButtonOutlines
-        StageUtility.GetCurrentStageHandle().FindComponentsOfType<ButtonsOutlineLocal>().ToList().ForEach(obj => obj.Renew());
+        FindObjectsByType<ButtonsOutlineLocal>(FindObjectsSortMode.None).ToList().ForEach(obj => obj.Renew());
     }
 
     /*

@@ -21,8 +21,8 @@ public class GridsController : Singleton<GridsController> {
 
         D.OnAwake();
         ElectricalStripData.Instance.OnAwake();
-        ElectricalStripSizeController.Instance.OnAwake();
-        ElectricalStripSizeController.Instance.ModifyBackgroundVisual();
+        ElectricalStripController.Instance.OnAwake();
+        ElectricalStripController.Instance.ModifyBackgroundVisual();
     }
 
     public IEnumerator RenewGrids() {
