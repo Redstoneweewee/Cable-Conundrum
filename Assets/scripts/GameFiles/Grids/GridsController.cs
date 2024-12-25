@@ -35,6 +35,9 @@ public class GridsController : Singleton<GridsController> {
     }
 
     private void InitializeJointsGrid() {
+        for(int i=0; i<D.jointsParent.transform.childCount; i++) {
+            D.jointsParent.transform.GetChild(i).gameObject.SetActive(true);
+        }
         D.jointsGrid = new Transform[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         int childCount = D.jointsParent.transform.childCount;
         int index = 0;
@@ -52,6 +55,12 @@ public class GridsController : Singleton<GridsController> {
                 }
                 index++;
             }
+        }
+        int jointCount = S.jointsSkeletonGrid.GetLength(0) * S.jointsSkeletonGrid.GetLength(1);
+        Debug.Log($"jointCount: {jointCount}");
+        Debug.Log($"total count: {D.jointsParent.transform.childCount}");
+        for(int i=jointCount; i<D.jointsParent.transform.childCount; i++) {
+            D.jointsParent.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 
