@@ -7,7 +7,7 @@ public enum InteractableType { Plug, Cable, PowerSwitch };
 
 public class Constants {
     //Levels
-    public static int firstLevelBuidIndex = 2;
+    public static int firstLevelBuidIndex = 3;
     public static int numberOfLevels = 10;
 
     //Canvases

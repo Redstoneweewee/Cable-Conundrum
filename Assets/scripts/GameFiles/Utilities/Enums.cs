@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Game enums
 
-public enum LoadSceneTypes    { Menu, LevelSelector, Level, NextLevel, PreviousLevel }
+public enum LoadSceneTypes    { Start, Menu, LevelSelector, Level, NextLevel, PreviousLevel }
 public enum ButtonTypes       { EnterLevel, NextLevel, PreviousLevel, 
                                 EnterLevelSelector, 
                                 EnterMenu, 

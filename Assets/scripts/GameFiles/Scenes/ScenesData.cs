@@ -10,6 +10,7 @@ public class ScenesData : Singleton<ScenesData> {
     public Animator         crossFadeTransition;
     public float            crossFadeAnimationStartDuration;
     public float            crossFadeAnimationEndDuration;
+    public bool             initialFinishedLoading = false;
     public bool             sceneFinishedLoading = false;
     public bool             animationIsFinished = false;
 

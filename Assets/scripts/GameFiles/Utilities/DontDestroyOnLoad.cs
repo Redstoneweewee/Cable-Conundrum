@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestroyOnLoad : Singleton<DontDestroyOnLoad> {
+public class DontDestroyOnLoad : MonoBehaviour {
 
-    public override void OnAwake() {
+    void Awake() {
         DontDestroyOnLoad[] dontDestroyOnLoad = FindObjectsByType<DontDestroyOnLoad>(FindObjectsSortMode.None);
         if(dontDestroyOnLoad.Length > 1) {
             Destroy(gameObject);

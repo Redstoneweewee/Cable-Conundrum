@@ -11,11 +11,14 @@ public class ScenesController : Singleton<ScenesController> {
 
     public override void OnAwake() {
         D = ScenesData.Instance;
-
-        SceneManager.sceneLoaded += OnSceneLoad;
+        SceneManager.sceneLoaded += OnInitialSceneLoad;
+        SceneManager.LoadScene(1);
         StartCoroutine(InitialSceneLoad());
     }
 
+    private void OnInitialSceneLoad(Scene scene, LoadSceneMode mode) {
+        D.initialFinishedLoading = true;
+    }
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
         D.sceneFinishedLoading = true;
     }
@@ -24,10 +27,10 @@ public class ScenesController : Singleton<ScenesController> {
         int buildIndex;
         switch(loadSceneType) {
             case LoadSceneTypes.Menu:
-                buildIndex = 0;
+                buildIndex = 1;
                 break;
             case LoadSceneTypes.LevelSelector:
-                buildIndex = 1;
+                buildIndex = 2;
                 break;
             case LoadSceneTypes.Level:
                 buildIndex = levelNumber + Constants.firstLevelBuidIndex - 1;
@@ -39,7 +42,7 @@ public class ScenesController : Singleton<ScenesController> {
                 buildIndex = SceneManager.GetActiveScene().buildIndex - 1;
                 break;
             default:
-                buildIndex = 0;
+                buildIndex = 1;
                 break;
         }
 
@@ -96,6 +99,9 @@ public class ScenesController : Singleton<ScenesController> {
 
 
     private IEnumerator InitialSceneLoad() {
+        yield return new WaitUntil(() => D.initialFinishedLoading);
+        SceneManager.sceneLoaded += OnSceneLoad;
+        
         if(MenuInitializerGlobal.Instance != null) {
             yield return new WaitUntil(() => MenuInitializerGlobal.Instance.finishedWithAllTasks);
             yield return new WaitUntil(() => MenuInitializerGlobal.Instance.allButtonsLoaded);
