@@ -4,23 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 //[ExecuteInEditMode]
-public class ElectricalStripData : MonoBehaviour {
-    [HideInInspector] public ElectricalStripController electricalStripController;
+public class ElectricalStripData : Singleton<ElectricalStripData> {
     [HideInInspector] public Mouse   mouse = Mouse.current;
-
-    [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;
-    [HideInInspector] public JointsData jointsData;
-    [HideInInspector] public GridsModifier gridsModifier;
-
-    //[HideInInspector] public Transform[,] socketsGrid;
-    //[HideInInspector] public int[,] plugsGrid;      //contains the plug ids, starting from 1. A value of 0 means there is no plug.
-    //[HideInInspector] public int[,] allCablesGrid;  //contains the number of cables at each index. A value of 0 means there are no cables.
 
     [HideInInspector] public float r;
     [HideInInspector] public float s;
-    [SerializeField]  public GameObject socketPrefab;
-    //[SerializeField] public List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>();
-    //[SerializeField] public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
     [SerializeField] public GameObject backgroundVisual;
     [SerializeField] public GameObject socketsParent;
     [SerializeField] public GameObject powerSwitch;
@@ -30,16 +18,10 @@ public class ElectricalStripData : MonoBehaviour {
     [HideInInspector] public Vector2 cachedMousePosition;
     [HideInInspector] public RectTransform rectangularTransform;
 
-
-    public void Awake() {
-        electricalStripController     = Utilities.TryGetComponent<ElectricalStripController>(gameObject);
-        electricalStripSizeController = Utilities.TryGetComponent<ElectricalStripSizeController>(gameObject);
-        jointsData                    = FindFirstObjectByType<JointsData>();
-        gridsModifier                 = FindFirstObjectByType<GridsModifier>();
-        
-        r = LevelResizeGlobal.instance.electricalStripBaseSize.x;
-        s = LevelResizeGlobal.instance.electricalStripSeparatorDistance;
+    public override void OnAwake() {
+        r = LevelResizeGlobal.Instance.electricalStripBaseSize.x;
+        s = LevelResizeGlobal.Instance.electricalStripSeparatorDistance;
         rectangularTransform = Utilities.TryGetComponent<RectTransform>(backgroundVisual);
-    }
 
+    }
 }

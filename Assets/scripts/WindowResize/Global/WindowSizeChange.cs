@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindowSizeChange : MonoBehaviour {
+public abstract class WindowSizeChange<T> : Singleton<T> where T : MonoBehaviour {
     private Vector2 cachedScreenSize;
 
     public bool GetScreenSizeChange() {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Will be deprecated soon
 public class SavePlug {
     public Index2D socketIndex;
     public bool isPluggedIn;

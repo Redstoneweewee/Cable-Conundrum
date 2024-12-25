@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 //[ExecuteInEditMode]
-public class Utilities : MonoBehaviour {
+public class Utilities {
 
     public static Object TryGetComponent<Object>(GameObject gameObject) {
         Object objectTypeOut;
@@ -119,8 +119,8 @@ public class Utilities : MonoBehaviour {
     }
 
     public static Index2D CalculateJointsGridIndex(Vector3 position) {
-        Transform[,] jointsGrid = FindFirstObjectByType<GridsData>().jointsGrid;
-        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
+        Transform[,] jointsGrid = GridsData.Instance.jointsGrid;
+        float   subJointLength  = LevelResizeGlobal.Instance.jointDistance/2;
 
         Vector2 distanceFromTopLeftJoint = new Vector2(position.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - position.y);
         Index2D jointsGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
@@ -129,8 +129,8 @@ public class Utilities : MonoBehaviour {
     }
     
     public static Index2D CalculateSocketsGridIndex(Vector3 position) {
-        Transform[,] socketsGrid = FindFirstObjectByType<GridsData>().socketsGrid;
-        float   subSocketLength  = LevelResizeGlobal.instance.jointDistance;
+        Transform[,] socketsGrid = GridsData.Instance.socketsGrid;
+        float   subSocketLength  = LevelResizeGlobal.Instance.jointDistance;
         Vector2 distanceFromTopLeftSocket = new Vector2(position.x - socketsGrid[0,0].position.x, socketsGrid[0,0].position.y - position.y);
         Index2D socketsGridIndex = new Index2D(((int)(distanceFromTopLeftSocket.x/subSocketLength)+1)/2, ((int)(distanceFromTopLeftSocket.y/subSocketLength)+1)/2);
         socketsGridIndex         = new Index2D(Math.Clamp(socketsGridIndex.y, 0, socketsGrid.GetLength(0)-1), Math.Clamp(socketsGridIndex.x, 0, socketsGrid.GetLength(1)-1));

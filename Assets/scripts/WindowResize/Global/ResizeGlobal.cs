@@ -5,10 +5,10 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ResizeGlobal : WindowSizeChange {
+public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
     [SerializeField] public bool renew = false;
     
-    void Awake() {
+    public override void OnAwake() {
         if(PrefabStageUtility.GetCurrentPrefabStage() != null) { return; }
         if(!Application.isPlaying) { return; }
         RenewAll();
@@ -61,7 +61,7 @@ public class ResizeGlobal : WindowSizeChange {
         }
 
         //Renew ButtonOutlines
-        StageUtility.GetCurrentStageHandle().FindComponentsOfType<ButtonsOutlineGlobal>().ToList().ForEach(obj => obj.Renew());
+        StageUtility.GetCurrentStageHandle().FindComponentsOfType<ButtonsOutlineLocal>().ToList().ForEach(obj => obj.Renew());
     }
 
     /*

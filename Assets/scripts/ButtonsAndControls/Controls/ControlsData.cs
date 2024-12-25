@@ -5,13 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ControlsData : MonoBehaviour {
-    [HideInInspector] public ControlsController        controlsController;
-    [HideInInspector] public GridsController           gridsController;
-    [HideInInspector] public IntersectionController    intersectionController;
-    [HideInInspector] public ElectricalStripData       electricalStripData;
-    [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public AdminToggles              adminToggles;
+public class ControlsData : Singleton<ControlsData> {
 
     public InputActionReference exitAction;
     public InputActionReference jointAction;
@@ -44,7 +38,5 @@ public class ControlsData : MonoBehaviour {
         deleteAction.action.Enable();
     }
 
-    void Awake() {
-        controlsController        = Utilities.TryGetComponent<ControlsController>(gameObject);
-    }
+    public override void OnAwake() { }
 }

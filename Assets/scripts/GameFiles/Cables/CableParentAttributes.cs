@@ -10,17 +10,8 @@ public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public CableHandler cableHandler;
 
     [HideInInspector] public Mouse mouse = Mouse.current;
-
     
-    [HideInInspector] public CablePrefabs              cablePrefabs;
-    [HideInInspector] public GridsData                 gridsData;
-    [HideInInspector] public GridsSkeleton             gridsSkeleton;
     [HideInInspector] public PlugAttributes            plugAttributes;
-    [HideInInspector] public IntersectionController    intersectionController;
-    [HideInInspector] public ElectricalStripData       electricalStripData;
-    [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public JointsData                jointsData;
-    [HideInInspector] public SoundsData                soundsData;
 
     /* Cables:
     * [ [0 ]UpLeft,    [1 ]UpRight,    [2 ]DownLeft,    [3 ]DownRight,    [4 ]LeftUp,    [5 ]LeftDown,    [6 ]RightUp,    [7 ]RightDown,   ]
@@ -51,13 +42,5 @@ public class CableParentAttributes : MonoBehaviour {
     void Awake() {
         cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
         plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
-        cablePrefabs              = FindFirstObjectByType<CablePrefabs>();
-        gridsData                 = FindFirstObjectByType<GridsData>();
-        gridsSkeleton             = FindFirstObjectByType<GridsSkeleton>();
-        intersectionController    = FindFirstObjectByType<IntersectionController>();
-        electricalStripData       = FindFirstObjectByType<ElectricalStripData>();
-        electricalStripController = FindFirstObjectByType<ElectricalStripController>();
-        jointsData                = FindFirstObjectByType<JointsData>();
-        soundsData                = FindFirstObjectByType<SoundsData>();
     }
 }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataPersistence {
+public class PowerSwitchController : Singleton<PowerSwitchController>, IPointerClickHandler, IDataPersistence {
     private PowerSwitchData D;
 
     public IEnumerator LoadData(GameData data) {
         yield return null;
-        if(data.levelCompletion[D.levelInitializerGlobal.levelIndex]) {
+        if(data.levelCompletion[LevelInitializerGlobal.Instance.levelIndex]) {
             Win();
         }
     }
@@ -17,7 +17,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataP
     public void SaveDataLate(GameData data) {}
 
 
-    void Awake() {
+    public override void OnAwake() {
         D = Utilities.TryGetComponent<PowerSwitchData>(gameObject);
     }
 
@@ -28,7 +28,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataP
         else if(levelFailureTypes == LevelFailureTypes.Cables)    { Debug.Log("Some cables are overlapping!"); DidNotWin(); }
         else if(levelFailureTypes == LevelFailureTypes.None)      { Debug.Log("You win!"); Win(); }
         else   { Debug.LogError("Undefined level failure type."); }
-        DebugC.Get()?.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        DebugC.Instance?.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     //conditions:
@@ -41,7 +41,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataP
             if(!plugAttributes.isPluggedIn) { return LevelFailureTypes.Plugs; }
         }
 
-        if(D.intersectionData.hasIntersection) {
+        if(IntersectionData.Instance.hasIntersection) {
             return LevelFailureTypes.Cables;
         }
         return LevelFailureTypes.None;
@@ -50,7 +50,7 @@ public class PowerSwitchController : MonoBehaviour, IPointerClickHandler, IDataP
     private void Win() {
         D.offVisual.SetActive(false);
         D.onVisual.SetActive(true);
-        D.winningControllerGlobal.OnWin();
+        WinningControllerGlobal.Instance.OnWin();
     }
 
     private void DidNotWin() {

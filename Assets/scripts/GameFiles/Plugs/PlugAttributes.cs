@@ -11,18 +11,9 @@ public class PlugAttributes : MonoBehaviour {
     [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public int id;
 
-    [HideInInspector] public GridsData                 gridsData;
-    [HideInInspector] public GridsController           gridsController;
     [HideInInspector] public PlugHandler               plugHandler;
-    [HideInInspector] public ControlsData              controlsData;
-    [HideInInspector] public ElectricalStripData       electricalStripData;
-    [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public IntersectionData          intersectionData;
-    [HideInInspector] public IntersectionController    intersectionController;
-    [HideInInspector] public JointsData                jointsData;
     [HideInInspector] public CableParentAttributes     cableParentAttributes;
     [HideInInspector] public CableHandler              cableHandler;
-    [HideInInspector] public SoundsData                soundsData;
 
     [SerializeField] public bool isPluggedIn = false;
     [SerializeField] public bool isObstacle = false;
@@ -54,15 +45,6 @@ public class PlugAttributes : MonoBehaviour {
     // Start is called before the first frame update
     void Awake() {
         plugHandler               = Utilities.TryGetComponent<PlugHandler>(gameObject);
-        gridsData                 = FindFirstObjectByType<GridsData>();
-        gridsController           = FindFirstObjectByType<GridsController>();
-        controlsData              = FindFirstObjectByType<ControlsData>();
-        electricalStripData       = FindFirstObjectByType<ElectricalStripData>();
-        electricalStripController = FindFirstObjectByType<ElectricalStripController>();
-        intersectionData          = FindFirstObjectByType<IntersectionData>();
-        intersectionController    = FindFirstObjectByType<IntersectionController>();
-        jointsData                = FindFirstObjectByType<JointsData>();
-        soundsData                = FindFirstObjectByType<SoundsData>();
         cableParentAttributes     = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
         cableHandler              = Utilities.TryGetComponentInChildren<CableHandler>(gameObject);
 
@@ -70,8 +52,8 @@ public class PlugAttributes : MonoBehaviour {
         id = idIncrement;
         idIncrement++;
 
-        DebugC.Get()?.Log("initialized "+transform.name);
-        DebugC.Get()?.Log($"{transform.name}'s id: {id}");
+        DebugC.Instance?.Log("initialized "+transform.name);
+        DebugC.Instance?.Log($"{transform.name}'s id: {id}");
     }
 
 }

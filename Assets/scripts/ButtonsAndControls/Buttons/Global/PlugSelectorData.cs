@@ -8,12 +8,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class PlugSelectorData : MonoBehaviour {
-    [HideInInspector] public PlugSelectorController plugSelectorController;
-    [HideInInspector] public ControlsData           controlsData;
-    [HideInInspector] public ControlsController     controlsController;
+public class PlugSelectorData : Singleton<PlugSelectorData> {
     [HideInInspector] public InputActionReference   mouseScrollAction;
-    [HideInInspector] public LevelInitializerGlobal levelInitializerGlobal;
 
 
     //buttons will be automatically generated
@@ -30,12 +26,7 @@ public class PlugSelectorData : MonoBehaviour {
     [HideInInspector] public bool        isHoveringOver     = false;
     [HideInInspector] public IEnumerator scrollCoroutine;
 
-
-    void Awake() {
-        plugSelectorController = Utilities.TryGetComponent<PlugSelectorController>(gameObject);
-        controlsData = FindFirstObjectByType<ControlsData>();
-        controlsController = FindFirstObjectByType<ControlsController>();
-        levelInitializerGlobal = FindFirstObjectByType<LevelInitializerGlobal>();
-        mouseScrollAction = controlsData.mouseScrollAction;
+    public override void OnAwake() {
+        mouseScrollAction = ControlsData.Instance.mouseScrollAction;
     }
 }

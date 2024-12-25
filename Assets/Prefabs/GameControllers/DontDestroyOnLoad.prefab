@@ -255,7 +255,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318550797872181346}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47cb1c34d2fd8a4eaba6cbec4df4eb5, type: 3}
   m_Name: 
@@ -704,7 +704,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &2331849988930120223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,12 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a201615e5b8ebe041b93b1f279bd22fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsController: {fileID: 0}
-  gridsController: {fileID: 0}
-  intersectionController: {fileID: 0}
-  electricalStripData: {fileID: 0}
-  electricalStripController: {fileID: 0}
-  adminToggles: {fileID: 0}
   exitAction: {fileID: -3481171659038101867, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   jointAction: {fileID: 2717749234729071578, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   obstaclesAction: {fileID: 7372259704417167488, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
@@ -1058,7 +1051,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &4550268980353653275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,7 +1640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a453d98304e6f44b96a6bbae1b31d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenesController: {fileID: 0}
   crossFadeTransition: {fileID: 7301717057473133773}
   crossFadeAnimationStartDuration: 1
   crossFadeAnimationEndDuration: 1
@@ -2595,7 +2586,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &5242285560534319689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3078,7 +3068,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &2398233755100458277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3607,8 +3596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b365d7e2186b74d8c4afbf90c9736f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsController: {fileID: 0}
-  soundsEditor: {fileID: 0}
   soundEffects: []
   music: []
   soundVolume: 1
@@ -4051,7 +4038,6 @@ MonoBehaviour:
   description: {fileID: 6682577565710610668}
   nextTutorialPageButton: {fileID: 9095871765366007073}
   previousTutorialPageButton: {fileID: 6652914872775933548}
-  tutorialController: {fileID: 0}
   useNormalVideoPlayers: 1
   videoPlayerParents:
   - {fileID: 55132918936073089}
@@ -4811,7 +4797,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &5652275260980594980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5898,7 +5883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7982506068944984106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -6023,7 +6008,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &706462779685553213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6626,7 +6610,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8886039974580707838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
   m_Name: 
@@ -7104,7 +7088,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &7282155195033530694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7217,7 +7200,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
-  soundsData: {fileID: 0}
 --- !u!114 &7798200810134131816
 MonoBehaviour:
   m_ObjectHideFlags: 0

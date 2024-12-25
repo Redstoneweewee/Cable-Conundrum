@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class SoundsEditor : MonoBehaviour {
+public class SoundsEditor : Singleton<SoundsEditor> {
     public List<SoundsAttributes> soundEffects;
     public List<SoundsAttributes> music;
 
+    public override void OnAwake() { }
 
     void Update() {
         if(Application.isPlaying) { return; }

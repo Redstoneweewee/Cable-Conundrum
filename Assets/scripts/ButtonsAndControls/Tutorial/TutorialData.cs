@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class TutorialData : MonoBehaviour {
+public class TutorialData : Singleton<TutorialData> {
     [SerializeField] public GameObject tutorialCanvas;
     [SerializeField] public GameObject videoDisplay;
     [SerializeField] public GameObject description;
     [SerializeField] public GameObject nextTutorialPageButton;
     [SerializeField] public GameObject previousTutorialPageButton;
-    [HideInInspector] public TutorialController tutorialController;
     /*[HideInInspector] */[Range(0, 1)] public int useNormalVideoPlayers = 1;
     [Header("videoPlayers contains the URL parent as the first element and \nNormal parent as the second element.")]
     [SerializeField] public GameObject[] videoPlayerParents = new GameObject[2];
@@ -19,7 +18,5 @@ public class TutorialData : MonoBehaviour {
     [HideInInspector] public int currentPageIndex = 0;
 
 
-    void Awake() {
-        tutorialController = Utilities.TryGetComponent<TutorialController>(gameObject);
-    }
+    public override void OnAwake() { }
 }

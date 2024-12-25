@@ -7,11 +7,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
+public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, IDataPersistence {
     public int levelIndex;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
-    private GridsSkeleton gridsSkeleton;
     private bool initializationFinished = false;
     //public bool allCableHandlersInitializationFinished = false;
 
@@ -25,7 +24,6 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     
     //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
-        gridsSkeleton = FindFirstObjectByType<GridsSkeleton>();
         Initialize(data);
         yield return new WaitUntil(() => initializationFinished);
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
@@ -42,11 +40,11 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                 if(!savePlug.isPluggedIn) { continue; }
 
                 GameObject plug = sortedPlugs[i].gameObject;
-                DebugC.Get()?.Log($"Inheriting values - receiver: {plug.name}");
-                //DebugC.Get()?.Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
-                Vector3 socketPosition = gridsSkeleton.socketsSkeletonGrid[savePlug.socketIndex.x,savePlug.socketIndex.y];
-                plug.transform.position = socketPosition-((Vector3)Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]*LevelResizeGlobal.instance.finalScale);
-                DebugC.Get()?.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
+                DebugC.Instance?.Log($"Inheriting values - receiver: {plug.name}");
+                //DebugC.Instance?.Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
+                Vector3 socketPosition = GridsSkeleton.Instance.socketsSkeletonGrid[savePlug.socketIndex.x,savePlug.socketIndex.y];
+                plug.transform.position = socketPosition-((Vector3)Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]*LevelResizeGlobal.Instance.finalScale);
+                DebugC.Instance?.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
                 Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
 
                 if(savePlug.indexAndDirections == null) { continue; }
@@ -68,7 +66,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
         if(data.levelCompletion[levelIndex]) { return; }
 
         data.levelsSavePlugs[levelIndex].Clear();
-        DebugC.Get()?.LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
+        DebugC.Instance?.LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
         foreach(PlugAttributes plugAttribute in sortedPlugs) {
             GameObject plug = plugAttribute.gameObject;
             Vector3 plugPosition = plug.transform.position;
@@ -84,7 +82,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                 }
             }
             if(isPluggedIn) {
-                Vector3 socketSnapPosition = plugPosition+(Vector3)(Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]*LevelResizeGlobal.instance.finalScale);
+                Vector3 socketSnapPosition = plugPosition+(Vector3)(Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]*LevelResizeGlobal.Instance.finalScale);
                 Index2D socketIndex = Utilities.CalculateSocketsGridIndex(socketSnapPosition);
                 data.levelsSavePlugs[levelIndex].Add(new SavePlug(socketIndex, isPluggedIn, indexAndDirections));
                 Debug.Log($"socketSnapPosition: {socketSnapPosition}, socketIndex: [{socketIndex.x}, {socketIndex.y}], isPluggedIn: {isPluggedIn}, indexAndDirections: {indexAndDirections}");
@@ -93,7 +91,7 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
                 data.levelsSavePlugs[levelIndex].Add(new SavePlug(isPluggedIn, indexAndDirections));
             }
         }
-        DebugC.Get().LogListAlways("levelsSavePlugs: ", data.levelsSavePlugs[levelIndex][0].indexAndDirections);
+        DebugC.Instance.LogListAlways("levelsSavePlugs: ", data.levelsSavePlugs[levelIndex][0].indexAndDirections);
     }
     public void SaveDataLate(GameData data) {}
 
@@ -101,15 +99,14 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     //    yield return new WaitForSeconds(1.5f);
     //    if(!finishedWithAllTasks) {
     //        Debug.LogWarning("Level failed to load. trying again.");
-    //        DataPersistenceManager.instance.LoadGame();
+    //        DataPersistenceManager.Instance.LoadGame();
     //        StartCoroutine(TestForLoadData());
     //    }
     //}
 
 
 
-    new void Awake() {
-        base.Awake();
+    public override void OnAwake() {
         levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
     }
 
@@ -260,62 +257,62 @@ public class LevelInitializerGlobal : InitializerBase, IDataPersistence {
     }
 
     private void MoveAllPlugsToInitialPositions() {
-        Vector2[,] skeletonGrid = gridsSkeleton.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
 
         foreach(LevelPlugs levelPlug in allLevelPlugs) {
             Directions direction = levelPlug.startingDirection;
             Vector3 plugPosition;
             switch(direction) {
                 case Directions.Up:
-                    plugPosition = new Vector3(LevelResizeGlobal.instance.startingPlugOffset.x, Screen.height-LevelResizeGlobal.instance.startingPlugOffset.y);
+                    plugPosition = new Vector3(LevelResizeGlobal.Instance.startingPlugOffset.x, Screen.height-LevelResizeGlobal.Instance.startingPlugOffset.y);
                     //goes to the right
                     foreach(PlugAttributes plugAttributes in levelPlug.plugAttributes) {
                         if(plugAttributes.isPluggedIn) { continue; }
-                        Vector3 newPosition = new Vector3(plugPosition.x + LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
-                                                          plugPosition.y - LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
+                        Vector3 newPosition = new Vector3(plugPosition.x + LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
+                                                          plugPosition.y - LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
-                        plugPosition = new Vector3(plugPosition.x + ((int)plugAttributes.plugSize.y)*LevelResizeGlobal.instance.jointDistance, plugPosition.y);
+                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        plugPosition = new Vector3(plugPosition.x + ((int)plugAttributes.plugSize.y)*LevelResizeGlobal.Instance.jointDistance, plugPosition.y);
                     }
                     break;
                 case Directions.Down:
-                    plugPosition = new Vector3(LevelResizeGlobal.instance.startingPlugOffset.x, LevelResizeGlobal.instance.startingPlugOffset.y);
+                    plugPosition = new Vector3(LevelResizeGlobal.Instance.startingPlugOffset.x, LevelResizeGlobal.Instance.startingPlugOffset.y);
                     //goes to the right
                     foreach(PlugAttributes plugAttributes in levelPlug.plugAttributes) {
                         if(plugAttributes.isPluggedIn) { continue; }
-                        Vector3 newPosition = new Vector3(plugPosition.x + LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
-                                                          plugPosition.y + LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
+                        Vector3 newPosition = new Vector3(plugPosition.x + LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
+                                                          plugPosition.y + LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
-                        plugPosition = new Vector3(plugPosition.x + ((int)plugAttributes.plugSize.y)*LevelResizeGlobal.instance.jointDistance, plugPosition.y);
+                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        plugPosition = new Vector3(plugPosition.x + ((int)plugAttributes.plugSize.y)*LevelResizeGlobal.Instance.jointDistance, plugPosition.y);
                     }
                     break;
                 case Directions.Left:
-                    plugPosition = new Vector3(LevelResizeGlobal.instance.startingPlugOffset.x, Screen.height-LevelResizeGlobal.instance.startingPlugOffset.y*2);
+                    plugPosition = new Vector3(LevelResizeGlobal.Instance.startingPlugOffset.x, Screen.height-LevelResizeGlobal.Instance.startingPlugOffset.y*2);
                     //goes down
                     foreach(PlugAttributes plugAttributes in levelPlug.plugAttributes) {
                         if(plugAttributes.isPluggedIn) { continue; }
-                        Vector3 newPosition = new Vector3(plugPosition.x + LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
-                                                          plugPosition.y - LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
+                        Vector3 newPosition = new Vector3(plugPosition.x + LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
+                                                          plugPosition.y - LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
-                        plugPosition = new Vector3(plugPosition.x, plugPosition.y - ((int)plugAttributes.plugSize.x)*LevelResizeGlobal.instance.jointDistance);
+                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        plugPosition = new Vector3(plugPosition.x, plugPosition.y - ((int)plugAttributes.plugSize.x)*LevelResizeGlobal.Instance.jointDistance);
                     }
                     break;
                 case Directions.Right:
-                    plugPosition = new Vector3(Screen.width-LevelResizeGlobal.instance.startingPlugOffset.x, Screen.height-LevelResizeGlobal.instance.startingPlugOffset.y*2);
+                    plugPosition = new Vector3(Screen.width-LevelResizeGlobal.Instance.startingPlugOffset.x, Screen.height-LevelResizeGlobal.Instance.startingPlugOffset.y*2);
                     //goes down
                     foreach(PlugAttributes plugAttributes in levelPlug.plugAttributes) {
                         if(plugAttributes.isPluggedIn) { continue; }
-                        Vector3 newPosition = new Vector3(plugPosition.x - LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
-                                                          plugPosition.y - LevelResizeGlobal.instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
+                        Vector3 newPosition = new Vector3(plugPosition.x - LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.y-1)/2),
+                                                          plugPosition.y - LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Get()?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
-                        plugPosition = new Vector3(plugPosition.x, plugPosition.y - ((int)plugAttributes.plugSize.x)*LevelResizeGlobal.instance.jointDistance);
+                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        plugPosition = new Vector3(plugPosition.x, plugPosition.y - ((int)plugAttributes.plugSize.x)*LevelResizeGlobal.Instance.jointDistance);
                     }
                     break;
             }

@@ -7,12 +7,11 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class ControlsController : MonoBehaviour {
+public class ControlsController : Singleton<ControlsController> {
     ControlsData D;
-    
-    void Awake() {
-        D = FindFirstObjectByType<ControlsData>();
-        D.adminToggles = FindFirstObjectByType<AdminToggles>();
+
+    public override void OnAwake() {
+        D = ControlsData.Instance;
     }
     void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
@@ -30,26 +29,20 @@ public class ControlsController : MonoBehaviour {
     }
 
     public void Initialize() {
-        D.gridsController           = FindFirstObjectByType<GridsController>();
-        D.intersectionController    = FindFirstObjectByType<IntersectionController>();
-        D.electricalStripData       = FindFirstObjectByType<ElectricalStripData>();
-        D.electricalStripController = FindFirstObjectByType<ElectricalStripController>();
         D.plugSelectorCanvas        = GameObject.FindGameObjectWithTag("PlugSelectorCanvas");
         D.isUsed = true;
-        if(D.gridsController == null || D.intersectionController == null || 
-           D.electricalStripData == null || D.electricalStripController == null ||
-           D.plugSelectorCanvas == null) {
+        if(D.plugSelectorCanvas == null || GridsController.Instance == null || IntersectionController.Instance == null || 
+           ElectricalStripData.Instance == null || ElectricalStripController.Instance == null) {
             D.isUsed = false;
         }
     }
 
     private void ChangeEditorMode() {
-        D.adminToggles = FindFirstObjectByType<AdminToggles>();
-        if(!D.adminToggles.cachedEditorMode && D.adminToggles.editorMode) {
-            D.adminToggles.cachedEditorMode = D.adminToggles.editorMode;
+        if(!AdminToggles.Instance.cachedEditorMode && AdminToggles.Instance.editorMode) {
+            AdminToggles.Instance.cachedEditorMode = AdminToggles.Instance.editorMode;
         }
-        else if(D.adminToggles.cachedEditorMode && !D.adminToggles.editorMode) {
-            D.adminToggles.cachedEditorMode = D.adminToggles.editorMode;
+        else if(AdminToggles.Instance.cachedEditorMode && !AdminToggles.Instance.editorMode) {
+            AdminToggles.Instance.cachedEditorMode = AdminToggles.Instance.editorMode;
         }
     }
 
@@ -109,12 +102,12 @@ public class ControlsController : MonoBehaviour {
         if(!D.isUsed || IsNotInALevel()) { return; }
         D.masterJointsEnabled = !D.masterJointsEnabled;
         FindFirstObjectByType<JointsData>().jointsEnabled = D.masterJointsEnabled;
-        DebugC.Get()?.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
+        DebugC.Instance?.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
     }
 
     private void OnObstaclesToggle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!D.adminToggles.editorMode) { return; }
+        if(!AdminToggles.Instance.editorMode) { return; }
         D.obstaclesModifiable = !D.obstaclesModifiable;
         ObstacleAttributes[] obstacleAttributes = FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None);
         if(D.obstaclesModifiable) {
@@ -129,12 +122,12 @@ public class ControlsController : MonoBehaviour {
                 obstacleAttribute.temporarilyModifiable = false;
             }   
         }
-        DebugC.Get()?.Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
+        DebugC.Instance?.Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
     }
 
     private void OnPlugSelectorToggle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!D.adminToggles.editorMode) { return; }
+        if(!AdminToggles.Instance.editorMode) { return; }
         D.plugSelectorEnabled = !D.plugSelectorEnabled;
 
         if(D.plugSelectorEnabled) { D.plugSelectorCanvas.transform.GetChild(0).gameObject.SetActive(true); }
@@ -149,18 +142,18 @@ public class ControlsController : MonoBehaviour {
 
     private void OnElectricalStripToggle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!D.adminToggles.editorMode) { return; }
+        if(!AdminToggles.Instance.editorMode) { return; }
         D.electricalStripEnabled = !D.electricalStripEnabled;
         GameObject electricalStrip = FindFirstObjectByType<ElectricalStripController>().gameObject;
-        DebugC.Get()?.Log("toggled electricla strip: "+D.electricalStripEnabled);
+        DebugC.Instance?.Log("toggled electricla strip: "+D.electricalStripEnabled);
         
         if(D.electricalStripEnabled) {
             Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 0.8f;
-            D.electricalStripData.temporarilyModifiable = true;
+            ElectricalStripData.Instance.temporarilyModifiable = true;
         }
         else {
             Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 1f;
-            D.electricalStripData.temporarilyModifiable = false;
+            ElectricalStripData.Instance.temporarilyModifiable = false;
         }
     
     }
@@ -168,7 +161,7 @@ public class ControlsController : MonoBehaviour {
     
     private void OnTryDeletePlug(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!D.adminToggles.editorMode) { return; }
+        if(!AdminToggles.Instance.editorMode) { return; }
         PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isDragging) { 
@@ -180,7 +173,7 @@ public class ControlsController : MonoBehaviour {
 
     private void OnTryDeleteObstacle(InputAction.CallbackContext context) {
         if(!D.isUsed || IsNotInALevel()) { return; }
-        if(!D.adminToggles.editorMode) { return; }
+        if(!AdminToggles.Instance.editorMode) { return; }
         ObstacleAttributes[] allObstacleAttributes = FindObjectsByType<ObstacleAttributes>(FindObjectsSortMode.None);
         foreach(ObstacleAttributes obstacleAttribute in allObstacleAttributes) {
             if(obstacleAttribute.temporarilyModifiable && obstacleAttribute.isDragging) { 
@@ -192,9 +185,9 @@ public class ControlsController : MonoBehaviour {
 
     private IEnumerator RenewGrids() {
         yield return new WaitForEndOfFrame();
-        D.gridsController.RenewAllObstaclesGrid();
-        D.gridsController.RenewAllCablesGrid();
-        D.intersectionController.TestForCableIntersection();
+        GridsController.Instance.RenewAllObstaclesGrid();
+        GridsController.Instance.RenewAllCablesGrid();
+        IntersectionController.Instance.TestForCableIntersection();
     }
 
 }

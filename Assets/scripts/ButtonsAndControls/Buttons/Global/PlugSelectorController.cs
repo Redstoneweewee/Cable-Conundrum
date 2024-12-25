@@ -9,10 +9,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+public class PlugSelectorController : Singleton<PlugSelectorController>, IPointerEnterHandler, IPointerExitHandler {
     private PlugSelectorData D;
 
-    void Awake() {
+    public override void OnAwake() {
         D = Utilities.TryGetComponent<PlugSelectorData>(gameObject);
         InitializeButtons();
     }
@@ -66,7 +66,7 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
     private IEnumerator TestForScroll() {
         yield return new WaitForEndOfFrame();
 
-        Vector2 mouseScroll = D.controlsController.GetActionInputValue<Vector2>(D.mouseScrollAction);
+        Vector2 mouseScroll = ControlsController.Instance.GetActionInputValue<Vector2>(D.mouseScrollAction);
         RectTransform rectTransform = Utilities.TryGetComponent<RectTransform>(D.background);
         if(mouseScroll.y > 0) { 
             if(rectTransform.position.x < 0) {
@@ -99,7 +99,7 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
 
 
     public void OnClickPlugSelectorButton(int buttonId) {
-        DebugC.Get()?.Log($"A button was pressed. ButtonId: {buttonId}");
+        DebugC.Instance?.Log($"A button was pressed. ButtonId: {buttonId}");
         PlugSelectorAtributes attribute = D.allSelectablePlugs[buttonId];
         if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
@@ -109,7 +109,7 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
         else if(attribute.Type == PlugSelectorTypes.PermaPlug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
             plug.transform.position = Mouse.current.position.value;
-            Utilities.TryGetComponent<ObstacleAttributes>(plug).temporarilyModifiable = D.controlsData.obstaclesModifiable;
+            Utilities.TryGetComponent<ObstacleAttributes>(plug).temporarilyModifiable = ControlsData.Instance.obstaclesModifiable;
             Utilities.TryGetComponent<PlugHandler>(plug).InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.Table) {
@@ -121,8 +121,8 @@ public class PlugSelectorController : MonoBehaviour, IPointerEnterHandler, IPoin
                 if(hasTableTop) { return; }
             }
             GameObject table = Instantiate(attribute.PlugPrefab, D.obstaclesParent.transform);
-            Utilities.TryGetComponent<ObstacleAttributes>(table).temporarilyModifiable = D.controlsData.obstaclesModifiable;
-            if(D.controlsData.obstaclesModifiable) { Utilities.TryGetComponent<ObstacleHandler>(table).SetOpacity(0.8f); }
+            Utilities.TryGetComponent<ObstacleAttributes>(table).temporarilyModifiable = ControlsData.Instance.obstaclesModifiable;
+            if(ControlsData.Instance.obstaclesModifiable) { Utilities.TryGetComponent<ObstacleHandler>(table).SetOpacity(0.8f); }
         }
         //D.levelInitializerGlobal.AddPlugs();
     }

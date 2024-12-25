@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class LevelSelectorBackgroundData : MonoBehaviour {
-    [HideInInspector] public LevelSelectorBackgroundController levelSelectorBackgroundController;
+public class LevelSelectorBackgroundData : Singleton<LevelSelectorBackgroundData> {
 
     [SerializeField]  public GameObject backgroundImageOnly;
     [SerializeField]  public GameObject buttonsImageOnly;
@@ -20,8 +19,7 @@ public class LevelSelectorBackgroundData : MonoBehaviour {
 
 
 
-    void Awake() {
-        levelSelectorBackgroundController = Utilities.TryGetComponent<LevelSelectorBackgroundController>(gameObject);
+    public override void OnAwake() {
         mouse = Mouse.current;
         center = transform.position;
     }

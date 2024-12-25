@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class CreditsGlobal : MonoBehaviour {
+public class CreditsGlobal : Singleton<CreditsGlobal> {
     [SerializeField] private GameObject creditsCanvas;
     [SerializeField] private float scrollSpeed;
     private float usedScrollSpeed;
@@ -15,7 +15,7 @@ public class CreditsGlobal : MonoBehaviour {
     private bool autoScroll = false;
     private float lowestPosition;
     
-    void Awake() {
+    public override void OnAwake() {
         usedScrollSpeed = scrollSpeed;
         stopDuration = 0;
     }

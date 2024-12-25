@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlugOffScreenGlobal : MonoBehaviour {
+public class PlugOffScreenGlobal : Singleton<PlugOffScreenGlobal> {
     [SerializeField] [Range(0, 1)] private float lerpValue;
-    // Update is called once per frame
+    
+    public override void OnAwake() { }
+
     void Update() {
         PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
@@ -20,8 +22,8 @@ public class PlugOffScreenGlobal : MonoBehaviour {
             Vector3 position = plugAttribute.transform.position;
             RectTransform rectTransform = Utilities.TryGetComponentInChildren<RectTransform>(plugAttribute.plugVisual);
 
-            float leftMost = 0+(rectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale);
-            float rightMost = Screen.width-(rectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale);
+            float leftMost = 0+(rectTransform.sizeDelta.x/2*LevelResizeGlobal.Instance.finalScale);
+            float rightMost = Screen.width-(rectTransform.sizeDelta.x/2*LevelResizeGlobal.Instance.finalScale);
             if(position.x < leftMost) { 
                 plugAttribute.transform.position = Vector3.Lerp(position, new Vector3(leftMost, position.y, 0), lerpValue); 
             }
@@ -34,8 +36,8 @@ public class PlugOffScreenGlobal : MonoBehaviour {
             Vector3 position = plugAttribute.transform.position;
             RectTransform rectTransform = Utilities.TryGetComponentInChildren<RectTransform>(plugAttribute.plugVisual);
 
-            float bottomMost = 0+(rectTransform.sizeDelta.y/2*LevelResizeGlobal.instance.finalScale);
-            float topMost = Screen.height-(rectTransform.sizeDelta.y/2*LevelResizeGlobal.instance.finalScale);
+            float bottomMost = 0+(rectTransform.sizeDelta.y/2*LevelResizeGlobal.Instance.finalScale);
+            float topMost = Screen.height-(rectTransform.sizeDelta.y/2*LevelResizeGlobal.Instance.finalScale);
             if(position.y < bottomMost) { 
                 plugAttribute.transform.position = Vector3.Lerp(position, new Vector3(position.x, bottomMost, 0), lerpValue); 
             }

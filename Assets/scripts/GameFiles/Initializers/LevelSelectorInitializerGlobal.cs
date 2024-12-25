@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectorInitializerGlobal : InitializerBase, IDataPersistence {
+public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorInitializerGlobal>, IDataPersistence {
     List<ButtonsAttributes> enterLevelButtons = new List<ButtonsAttributes>();
 
-    new void Awake() {
-        base.Awake();
+    public override void OnAwake() {
         ButtonsAttributes[] temp = FindObjectsByType<ButtonsAttributes>(FindObjectsSortMode.None);
         foreach(ButtonsAttributes buttonAttribute in temp) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevel) {

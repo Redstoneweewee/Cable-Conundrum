@@ -1,8 +1,10 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ResizeCameraGlobal : WindowSizeChange {
+public class ResizeCameraGlobal : WindowSizeChange<ResizeCameraGlobal> {
 
+    public override void OnAwake() { }
+    
     void Update() {
         if(base.GetScreenSizeChange()) { ResizeCamera(); }
     }

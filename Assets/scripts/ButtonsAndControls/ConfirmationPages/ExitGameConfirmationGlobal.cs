@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitGameConfirmationGlobal : MonoBehaviour {
+public class ExitGameConfirmationGlobal : Singleton<ExitGameConfirmationGlobal> {
     [SerializeField] private GameObject exitConfirmationCanvas;
 
-
+    public override void OnAwake() { }
 
 
     public void OnPressEnterExitConfirmationButton() {

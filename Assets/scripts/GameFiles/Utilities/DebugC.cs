@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugC : MonoBehaviour {
+public class DebugC : Singleton<DebugC> {
     [SerializeField] public bool logCustomDebugMessages = true;
     [SerializeField] public bool logMathMessages = true;
 
-    public static DebugC Get() {
-        return FindFirstObjectByType<DebugC>();
-    }
+    public override void OnAwake() { }
 
     public void Log<T>(T text) {
         if(!logCustomDebugMessages) { return; }

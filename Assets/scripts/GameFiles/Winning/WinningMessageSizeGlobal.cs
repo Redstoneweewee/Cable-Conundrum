@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //[ExecuteInEditMode]
-public class WinningMessageSizeGlobal : MonoBehaviour {
+public class WinningMessageSizeGlobal : Singleton<WinningMessageSizeGlobal> {
     [SerializeField] public  bool reinitialize = false;
     [SerializeField] private float offset = 45f;
     [SerializeField] public GameObject background;
@@ -24,7 +24,7 @@ public class WinningMessageSizeGlobal : MonoBehaviour {
     //Two-numbered text is 1038 pixels
     //etc.
 
-    void Awake() {
+    public override void OnAwake() {
         Initialize();
     }
 
@@ -43,8 +43,8 @@ public class WinningMessageSizeGlobal : MonoBehaviour {
             cachedNumberOfNumbers = CountNumberOfNumbers(Utilities.GetText(text));
             backgroundRectTransform.sizeDelta = new Vector2((offset*3) + buttonRectTransform.sizeDelta.x + textSize,backgroundHeight);
 
-            button.transform.position = new Vector2(background.transform.position.x + backgroundRectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale - buttonRectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale - offset*LevelResizeGlobal.instance.finalScale, background.transform.position.y);
-            text.transform.position = new Vector2(button.transform.position.x - textSize/2*LevelResizeGlobal.instance.finalScale - buttonRectTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale - offset*LevelResizeGlobal.instance.finalScale, button.transform.position.y);
+            button.transform.position = new Vector2(background.transform.position.x + backgroundRectTransform.sizeDelta.x/2*LevelResizeGlobal.Instance.finalScale - buttonRectTransform.sizeDelta.x/2*LevelResizeGlobal.Instance.finalScale - offset*LevelResizeGlobal.Instance.finalScale, background.transform.position.y);
+            text.transform.position = new Vector2(button.transform.position.x - textSize/2*LevelResizeGlobal.Instance.finalScale - buttonRectTransform.sizeDelta.x/2*LevelResizeGlobal.Instance.finalScale - offset*LevelResizeGlobal.Instance.finalScale, button.transform.position.y);
             
             reinitialize = false;
         }

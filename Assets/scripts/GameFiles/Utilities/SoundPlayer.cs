@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class SoundPlayer : MonoBehaviour {
+public class SoundPlayer {
     public static void PlaySound(AudioSource audioSource, Vector2 pitchRange, float volume) {
         float pitch = Random.Range(pitchRange.x, pitchRange.y);
         audioSource.pitch = pitch;

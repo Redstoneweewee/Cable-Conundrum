@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class LevelSelectorBackgroundController : MonoBehaviour {
+public class LevelSelectorBackgroundController : Singleton<LevelSelectorBackgroundController> {
     private LevelSelectorBackgroundData D;
 
 
-    void Awake() {
-        D = Utilities.TryGetComponent<LevelSelectorBackgroundData>(gameObject);
+    public override void OnAwake() {
+        D = LevelSelectorBackgroundData.Instance;
     }
 
     void Update() {

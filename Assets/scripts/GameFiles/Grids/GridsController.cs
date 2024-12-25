@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridsController : MonoBehaviour {
+public class GridsController : Singleton<GridsController> {
     private GridsData D;
     private GridsSkeleton S;
 
-    void Awake() {
+    public override void OnAwake() {
         Initialize();
     }
 
@@ -19,10 +19,10 @@ public class GridsController : MonoBehaviour {
         InitializeSocketsActiveGrid();
         StartCoroutine(RenewGrids());
 
-        D.Awake();
-        D.electricalStripData.Awake();
-        D.electricalStripSizeController.Initialize();
-        D.electricalStripSizeController.ModifyBackgroundVisual();
+        D.OnAwake();
+        ElectricalStripData.Instance.OnAwake();
+        ElectricalStripSizeController.Instance.OnAwake();
+        ElectricalStripSizeController.Instance.ModifyBackgroundVisual();
     }
 
     public IEnumerator RenewGrids() {
@@ -103,7 +103,7 @@ public class GridsController : MonoBehaviour {
                     Utilities.TryGetComponent<SocketAttributes>(D.socketsGrid[i, j].gameObject).id = new Index2D(i, j);
                 }
                 if(D.socketsActiveGrid[i].row[j] == false) { 
-                    DebugC.Get()?.Log($"Socket At ({i}, {j}) is inactive."); 
+                    DebugC.Instance?.Log($"Socket At ({i}, {j}) is inactive."); 
                     for(int a=0; a<D.socketsGrid[i, j].childCount; a++) {
                         D.socketsGrid[i, j].GetChild(a).gameObject.SetActive(false);
                     }
@@ -127,7 +127,7 @@ public class GridsController : MonoBehaviour {
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isPluggedIn) {
                 foreach(Vector2 localPlugPositionsTakenUp in plugAttribute.localJointPositionsTakenUp) {
-                    Vector2 position = new Vector2(plugAttribute.transform.position.x, plugAttribute.transform.position.y) + localPlugPositionsTakenUp*LevelResizeGlobal.instance.finalScale;
+                    Vector2 position = new Vector2(plugAttribute.transform.position.x, plugAttribute.transform.position.y) + localPlugPositionsTakenUp*LevelResizeGlobal.Instance.finalScale;
                     Index2D gridIndex = CalculateJointsGridIndex(position);
                     D.plugsGrid[gridIndex.x, gridIndex.y] = plugAttribute.id;
                 }
@@ -143,7 +143,7 @@ public class GridsController : MonoBehaviour {
         }
         D.allCablesGrid = new int[S.jointsSkeletonGrid.GetLength(0), S.jointsSkeletonGrid.GetLength(1)];
         foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
-            if(cableParentAttribute.cableGrid == default(Array)) { DebugC.Get()?.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
+            if(cableParentAttribute.cableGrid == default(Array)) { DebugC.Instance?.LogWarning($"CableGrid of {cableParentAttribute?.transform?.name} is null."); continue; }
             if(!cableParentAttribute.plugAttributes.isPluggedIn) { continue; }
             for(int i=0; i<cableParentAttribute.cableGrid.GetLength(0); i++) {
                 for(int j=0; j<cableParentAttribute.cableGrid.GetLength(1); j++) {
@@ -159,7 +159,7 @@ public class GridsController : MonoBehaviour {
 
         foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
             if(obstacleAttribute.obstacleType == ObstacleTypes.Plug) { continue; }
-            if(obstacleAttribute.obstacleGrid == default(Array)) { DebugC.Get()?.LogWarning($"{obstacleAttribute?.name}'s obstaclesGrid not defined."); continue; }
+            if(obstacleAttribute.obstacleGrid == default(Array)) { DebugC.Instance?.LogWarning($"{obstacleAttribute?.name}'s obstaclesGrid not defined."); continue; }
             for(int i=0; i<D.allObstaclesGrid.GetLength(0); i++) {
                 for(int j=0; j<D.allObstaclesGrid.GetLength(1); j++) {
                     if(obstacleAttribute.obstacleGrid[i,j] == true) {
@@ -174,7 +174,7 @@ public class GridsController : MonoBehaviour {
 
 
     private Index2D CalculateJointsGridIndex(Vector2 position) {
-        float   subJointLength  = LevelResizeGlobal.instance.jointDistance/2;
+        float   subJointLength  = LevelResizeGlobal.Instance.jointDistance/2;
         Vector2 distanceFromTopLeftJoint = new Vector2(position.x - S.jointsSkeletonGrid[0,0].x, S.jointsSkeletonGrid[0,0].y - position.y);
         Index2D gridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         gridIndex          = new Index2D(Math.Clamp(gridIndex.y, 0, S.jointsSkeletonGrid.GetLength(0)-1), Math.Clamp(gridIndex.x, 0, S.jointsSkeletonGrid.GetLength(1)-1));

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundsController : MonoBehaviour {
+public class SoundsController : Singleton<SoundsController> {
     private SoundsData D;
 
-    void Awake() {
-        D = Utilities.TryGetComponent<SoundsData>(gameObject);
+    public override void OnAwake() {
+        D = SoundsData.Instance;
     }
     void Start() {
         InitializeSounds();
@@ -34,8 +34,8 @@ public class SoundsController : MonoBehaviour {
     }
 
     private void InitializeSounds() {
-        D.soundEffects = D.soundsEditor.soundEffects;
-        D.music = D.soundsEditor.music;
+        D.soundEffects = SoundsEditor.Instance.soundEffects;
+        D.music = SoundsEditor.Instance.music;
     }
 
     void OnSoundSliderChange(float newValue) {

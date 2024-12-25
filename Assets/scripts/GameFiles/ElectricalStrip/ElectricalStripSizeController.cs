@@ -7,29 +7,18 @@ using UnityEngine.InputSystem;
 
 
 //[ExecuteInEditMode]
-public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBeginDragHandler {
+public class ElectricalStripSizeController : Singleton<ElectricalStripSizeController>, IDragHandler, IBeginDragHandler {
     private ElectricalStripData D;
 
     // Start is called before the first frame update
-    void Awake() {
-        Initialize();
+    public override void OnAwake() {
+        D = ElectricalStripData.Instance;
     }
 
-    // Update is called once per frame
     void Update() {
-        //DebugC.Log(Mouse.current.position.value);
         D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
-        //Vector2 newSize = new Vector2((LevelResizeGlobal.instance.electricalStripBaseSize.x + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.width  + LevelResizeGlobal.instance.electricalStripSeparatorSize, 
-        //                              (LevelResizeGlobal.instance.electricalStripBaseSize.y + LevelResizeGlobal.instance.electricalStripSeparatorSize)*D.gridsModifier.height + 2*LevelResizeGlobal.instance.electricalStripSeparatorSize + LevelResizeGlobal.instance.powerSwitchBaseSize.y);
-        //if(D.size != newSize || D.resetBoard) {
-        //    RenewSockets();
-        //    MovePowerSwitch();
-        //}
     }
 
-    public void Initialize() {
-        D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
-    }
 
     public void OnBeginDrag(PointerEventData eventData) {
         if(!D.temporarilyModifiable) { return; }
@@ -37,12 +26,12 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
     }
     public void OnDrag(PointerEventData eventData) {
         if(!D.temporarilyModifiable) { return; }
-        if(math.abs(D.cachedMousePosition.x - D.mouse.position.value.x) > LevelResizeGlobal.instance.electricalStripBaseSize.x) {
+        if(math.abs(D.cachedMousePosition.x - D.mouse.position.value.x) > LevelResizeGlobal.Instance.electricalStripBaseSize.x) {
             if(D.mouse.position.value.x > D.cachedMousePosition.x) { ModifySize(Directions.Right); }
             else                                               { ModifySize(Directions.Left); }
             D.cachedMousePosition.x = D.mouse.position.value.x;
         }
-        else if(math.abs(D.cachedMousePosition.y - D.mouse.position.value.y) > LevelResizeGlobal.instance.electricalStripBaseSize.y) {
+        else if(math.abs(D.cachedMousePosition.y - D.mouse.position.value.y) > LevelResizeGlobal.Instance.electricalStripBaseSize.y) {
             if(D.mouse.position.value.y > D.cachedMousePosition.y) { ModifySize(Directions.Up); }
             else                                               { ModifySize(Directions.Down); }
             D.cachedMousePosition.y = D.mouse.position.value.y;
@@ -53,33 +42,33 @@ public class ElectricalStripSizeController : MonoBehaviour, IDragHandler, IBegin
     private void ModifySize(Directions direction) {
         switch(direction) {
             case Directions.Up:
-                if(D.gridsModifier.height < 6) { D.gridsModifier.height++; }
+                if(GridsModifier.Instance.height < 6) { GridsModifier.Instance.height++; }
                 break;
             case Directions.Down:
-                if(D.gridsModifier.height > 1) { D.gridsModifier.height--; }
+                if(GridsModifier.Instance.height > 1) { GridsModifier.Instance.height--; }
                 break;
             case Directions.Left:
-                if(D.gridsModifier.width > 1) { D.gridsModifier.width--; }
+                if(GridsModifier.Instance.width > 1) { GridsModifier.Instance.width--; }
                 break;
             case Directions.Right:
-                if(D.gridsModifier.width < 10) { D.gridsModifier.width++; }
+                if(GridsModifier.Instance.width < 10) { GridsModifier.Instance.width++; }
                 break;
         }
     }
 
     public void ModifyBackgroundVisual() {
-        Vector2 newSize = new Vector2((LevelResizeGlobal.staticElectricalStripBaseSize.x + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*D.gridsModifier.width  + LevelResizeGlobal.staticElectricalStripSeparatorDistance, 
-                                      (LevelResizeGlobal.staticElectricalStripBaseSize.y + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*D.gridsModifier.height + 2*LevelResizeGlobal.staticElectricalStripSeparatorDistance + LevelResizeGlobal.staticPowerSwitchBaseSize.y);
+        Vector2 newSize = new Vector2((LevelResizeGlobal.staticElectricalStripBaseSize.x + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.width  + LevelResizeGlobal.staticElectricalStripSeparatorDistance, 
+                                      (LevelResizeGlobal.staticElectricalStripBaseSize.y + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.height + 2*LevelResizeGlobal.staticElectricalStripSeparatorDistance + LevelResizeGlobal.staticPowerSwitchBaseSize.y);
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
         D.rectangularTransform.sizeDelta = newSize;
-        D.rectangularTransform.position = new Vector3(center.x, center.y+(LevelResizeGlobal.instance.electricalStripSeparatorDistance + LevelResizeGlobal.instance.powerSwitchBaseSize.y)/2, 0);
+        D.rectangularTransform.position = new Vector3(center.x, center.y+(LevelResizeGlobal.Instance.electricalStripSeparatorDistance + LevelResizeGlobal.Instance.powerSwitchBaseSize.y)/2, 0);
         MovePowerSwitch();
     }
 
     private void MovePowerSwitch() {
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
-        Vector2 topLeft = new Vector2(D.rectangularTransform.position.x - (D.rectangularTransform.sizeDelta.x/2*LevelResizeGlobal.instance.finalScale), D.rectangularTransform.position.y + (D.rectangularTransform.sizeDelta.y/2*LevelResizeGlobal.instance.finalScale));
-        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - (LevelResizeGlobal.instance.powerSwitchBaseSize.y/2 + LevelResizeGlobal.instance.electricalStripSeparatorDistance));
+        Vector2 topLeft = new Vector2(D.rectangularTransform.position.x - (D.rectangularTransform.sizeDelta.x/2*LevelResizeGlobal.Instance.finalScale), D.rectangularTransform.position.y + (D.rectangularTransform.sizeDelta.y/2*LevelResizeGlobal.Instance.finalScale));
+        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - (LevelResizeGlobal.Instance.powerSwitchBaseSize.y/2 + LevelResizeGlobal.Instance.electricalStripSeparatorDistance));
     }
     /*
     public void RenewSockets() {

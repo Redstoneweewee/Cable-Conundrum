@@ -12,12 +12,10 @@ public class ButtonsAttributes : MonoBehaviour {
     [SerializeField]  public int         levelIndex = 0;
     [HideInInspector] public Button      button;
     [HideInInspector] public GameObject  buttonGameObject;
-    [HideInInspector] public SoundsData  soundsData;
     
     void Awake() {
         buttonGameObject = gameObject;
         buttonsHandler = Utilities.TryGetComponent<ButtonsHandler>(gameObject);
         button = Utilities.TryGetComponentInChildren<Button>(gameObject);
-        soundsData = FindFirstObjectByType<SoundsData>();
     }
 }

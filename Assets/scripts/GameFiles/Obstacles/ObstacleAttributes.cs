@@ -10,12 +10,8 @@ using UnityEngine.UI;
 public class ObstacleAttributes : MonoBehaviour {
     [HideInInspector] public ObstacleHandler        obstacleHandler;
     [HideInInspector] public Mouse                  mouse = Mouse.current;
-    [HideInInspector] public IntersectionController intersectionController;
     [SerializeField]  public bool                   temporarilyModifiable;
 
-    [SerializeField]  public GridsSkeleton   gridsSkeleton;
-    [SerializeField]  public GridsData       gridsData;
-    [SerializeField]  public GridsController gridsController;
     [SerializeField]  public ObstacleTypes   obstacleType;
     [HideInInspector] public bool            isDragging;
     [HideInInspector] public bool[,]         obstacleGrid;
@@ -26,10 +22,6 @@ public class ObstacleAttributes : MonoBehaviour {
 
     void Awake() {
         obstacleHandler        = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
-        gridsSkeleton          = FindFirstObjectByType<GridsSkeleton>();
-        gridsData              = FindFirstObjectByType<GridsData>();
-        gridsController        = FindFirstObjectByType<GridsController>();
-        intersectionController = FindFirstObjectByType<IntersectionController>();
         rectTransform          = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
     }
 }

@@ -9,7 +9,7 @@ using System.Linq;
 // |----- Save and LoadData does NOT work with PlugSelector dragged in plugs!!!! -----|
 // |----------------------------------------------------------------------------------|
 // |----------------------------------------------------------------------------------|
-public class DataPersistenceManager : MonoBehaviour {
+public class DataPersistenceManager : Singleton<DataPersistenceManager> {
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
 
@@ -17,18 +17,10 @@ public class DataPersistenceManager : MonoBehaviour {
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    public static DataPersistenceManager instance { get; private set; }
 
-    void Awake() {
-        if(instance != null && instance != this) {
-            Destroy(this.gameObject);
-        }
-        else {
-            instance = this;
-
-            this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-            LoadGame();
-        }
+    public override void OnAwake() {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        LoadGame();
     }
 
     private void OnApplicationQuit() {
@@ -49,7 +41,7 @@ public class DataPersistenceManager : MonoBehaviour {
     
         //If no data can be loaded, initialize to a new game
         if(this.gameData == null) {
-            DebugC.Get()?.Log("No data was found. Initializing data to defaults.");
+            DebugC.Instance?.Log("No data was found. Initializing data to defaults.");
             NewGame();
         }
         

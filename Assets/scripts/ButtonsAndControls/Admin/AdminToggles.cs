@@ -5,11 +5,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AdminToggles : MonoBehaviour {
+public class AdminToggles : Singleton<AdminToggles> {
     [SerializeField] public bool editorMode;
     public bool cachedEditorMode;
 
-    void Awake() {
+    public override void OnAwake() {
         cachedEditorMode = !editorMode;
     }
 }

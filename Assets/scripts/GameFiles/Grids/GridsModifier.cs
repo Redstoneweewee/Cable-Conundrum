@@ -6,9 +6,7 @@ using UnityEngine.UI;
 //Can be altered in Edit Mode
 //A script that can alter all grids.
 //[ExecuteInEditMode]
-public class GridsModifier : MonoBehaviour {
-    [HideInInspector] public GridsSkeleton gridsSkeleton;
-    
+public class GridsModifier : Singleton<GridsModifier> {
     [SerializeField] [Range(1, 10)] public int width = 1;
     [SerializeField] [Range(1, 10)] public int height = 2;
     [SerializeField] public bool renewGrids;
@@ -20,14 +18,12 @@ public class GridsModifier : MonoBehaviour {
     private int cachedHeight;
 
 
-    void Awake() {
-        gridsSkeleton = Utilities.TryGetComponent<GridsSkeleton>(gameObject);
-        gridsSkeleton.Initialize();
+    public override void OnAwake() {
+        GridsSkeleton.Instance.Initialize();
     }
     void Update() {
         if(renewGrids || testDotsActive != cachedtestDotsActive || width != cachedWidth || height != cachedHeight) {
-            gridsSkeleton = Utilities.TryGetComponent<GridsSkeleton>(gameObject);
-            gridsSkeleton.Initialize();
+            GridsSkeleton.Instance.Initialize();
             FindFirstObjectByType<GridsController>().Initialize();
             renewGrids = false;
             cachedtestDotsActive = testDotsActive;

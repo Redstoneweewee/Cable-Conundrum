@@ -6,7 +6,7 @@ using UnityEditor.Playables;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class CreditsPositioningGlobal : MonoBehaviour {
+public class CreditsPositioningGlobal : Singleton<CreditsPositioningGlobal> {
     [Header("Only used renew with a screen size of 1920x1080")]
     [SerializeField] private bool renew = false;
     [SerializeField] private GameObject creditsTextPrefab;
@@ -25,8 +25,7 @@ public class CreditsPositioningGlobal : MonoBehaviour {
 
     [HideInInspector] private Vector3 textPosition;
 
-    void Awake() {
-    }
+    public override void OnAwake() { }
     
     void Update() {
         if(renew) {

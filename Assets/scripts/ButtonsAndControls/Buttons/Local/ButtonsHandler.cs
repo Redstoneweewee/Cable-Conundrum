@@ -11,17 +11,17 @@ public class ButtonsHandler : MonoBehaviour, IPointerEnterHandler {
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
+        foreach(SoundsAttributes soundsAttribute in SoundsData.Instance.soundEffects) {
             if(soundsAttribute.soundType == SoundTypes.HoverOverButton) {
-                SoundPlayer.PlaySound(soundsAttribute, A.soundsData.soundVolume);
+                SoundPlayer.PlaySound(soundsAttribute, SoundsData.Instance.soundVolume);
             }
         }
     }
 
     public void OnPressButton() {
-        foreach(SoundsAttributes soundsAttribute in A.soundsData.soundEffects) {
+        foreach(SoundsAttributes soundsAttribute in SoundsData.Instance.soundEffects) {
             if(soundsAttribute.soundType == SoundTypes.ClickOnButton) {
-                SoundPlayer.PlaySound(soundsAttribute, A.soundsData.soundVolume);
+                SoundPlayer.PlaySound(soundsAttribute, SoundsData.Instance.soundVolume);
             }
         }
     }

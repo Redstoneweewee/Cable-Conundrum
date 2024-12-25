@@ -6,11 +6,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialController : MonoBehaviour {
+public class TutorialController : Singleton<TutorialController> {
     TutorialData D;
 
-    void Awake() {
-        D = Utilities.TryGetComponent<TutorialData>(gameObject);
+    public override void OnAwake() {
+        D = TutorialData.Instance;
     }
 
     //is initialized in the initalizerBase

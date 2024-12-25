@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridsData : MonoBehaviour {
+public class GridsData : Singleton<GridsData> {
     [HideInInspector] public bool initialized = false;
-    [HideInInspector] public GridsController gridsController;
 
-    [HideInInspector] public ElectricalStripSizeController electricalStripSizeController;
-    [HideInInspector] public ElectricalStripData electricalStripData;
-    //[HideInInspector] public List<SocketsRow> cachedSocketsActiveGrid = new List<SocketsRow>(); //From ELectricalStripSizeController
     [SerializeField]  public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
     [HideInInspector] public Transform[,]     jointsGrid;          //From JointsController
     [HideInInspector] public Transform[,]     socketsGrid;         //From ELectricalStripController
@@ -29,9 +25,5 @@ public class GridsData : MonoBehaviour {
     //public CablesGridAttributes[,]  CablesGrid        {get{return cablesGrid;       } set{cablesGrid        = value;}}
     //public bool[,]                 ObstaclesGrid     {get{return obstaclesGrid;    } set{obstaclesGrid     = value;}}
 
-    public void Awake() {
-        electricalStripSizeController = FindFirstObjectByType<ElectricalStripSizeController>();
-        electricalStripData           = FindFirstObjectByType<ElectricalStripData>();
-        gridsController = Utilities.TryGetComponent<GridsController>(gameObject);
-    }
+    public override void OnAwake() { }
 }

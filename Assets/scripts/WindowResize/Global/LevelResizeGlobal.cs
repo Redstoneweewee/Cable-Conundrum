@@ -2,12 +2,11 @@ using UnityEngine;
 
 
 [HideInInspector] 
-public class LevelResizeGlobal : MonoBehaviour {
+public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
 
     [SerializeField] private float cachedScaleFactor = 1;
     [SerializeField] private float scaleFactor       = 1;
     [SerializeField] public Canvas gameCanvas;
-    public static LevelResizeGlobal instance; 
     [SerializeField] public float scaleMultiplier = 1;
 
     [SerializeField] public float finalScale;
@@ -60,8 +59,7 @@ public class LevelResizeGlobal : MonoBehaviour {
     [HideInInspector] public Vector2 startingPlugOffset;
     [HideInInspector] public float   startingPlugOffsetRightSideAdd;
 
-    void Awake() {
-        instance = this;
+    public override void OnAwake() {
         RenewValues();
     }
     
@@ -100,9 +98,7 @@ public class LevelResizeGlobal : MonoBehaviour {
         //Debug.Log($"electricalStripSeparatorDistance: {electricalStripSeparatorDistance}");
         //TODO - call all calculations to recalculate offsets, distances, and sizes
         //including resizing plug, sockets, etc. sizes
-        FindFirstObjectByType<GridsController>()?.Initialize();
-        WinningMessageSizeGlobal winningMessageSizeGlobal = FindFirstObjectByType<WinningMessageSizeGlobal>();
-        if(winningMessageSizeGlobal) { winningMessageSizeGlobal.reinitialize = true; }
-
+        GridsController.Instance?.Initialize();
+        if(WinningMessageSizeGlobal.Instance != null) { WinningMessageSizeGlobal.Instance.reinitialize = true; }
     }
 }

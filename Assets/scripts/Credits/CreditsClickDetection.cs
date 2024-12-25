@@ -4,17 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CreditsClickDetection : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
-    private CreditsGlobal creditsGlobal;
-
-    void Awake() {
-        creditsGlobal = FindFirstObjectByType<CreditsGlobal>();
-    }
 
     public void OnPointerDown(PointerEventData eventData) {
-        creditsGlobal.OnPointerDown();
+        CreditsGlobal.Instance.OnPointerDown();
     }
     
     public void OnPointerUp(PointerEventData eventData) {
-        creditsGlobal.OnPointerUp();
+        CreditsGlobal.Instance.OnPointerUp();
     }
 }

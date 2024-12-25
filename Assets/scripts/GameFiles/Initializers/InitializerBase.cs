@@ -3,24 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitializerBase : MonoBehaviour {
+public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour {
     public bool finishedWithAllTasks = false;
     public bool allButtonsLoaded = false;
-    [HideInInspector] public ScenesController           scenesController;
-    [HideInInspector] public ExitGameConfirmationGlobal exitGameConfirmationGlobal;
-    [HideInInspector] public SettingsGlobal             settingsGlobal;
-    [HideInInspector] public TutorialController         tutorialController;
-    [HideInInspector] public TutorialData               tutorialData;
-    [HideInInspector] public CreditsGlobal              creditsGlobal;
-    [HideInInspector] public ControlsController         controlsController;
-    [HideInInspector] public SoundsController           soundsController;
-    [HideInInspector] public ResizeGlobal               resizeGlobal;
-
     [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
 
-    public void Awake() {
-        
-    }
+    //ublic override void OnAwake() { }
 
     public void Start() {
         StartCoroutine(WaitToInitializeButtons());
@@ -28,15 +16,6 @@ public class InitializerBase : MonoBehaviour {
 
     private IEnumerator WaitToInitializeButtons() {
         yield return new WaitUntil(() => finishedWithAllTasks);
-        scenesController = FindFirstObjectByType<ScenesController>();
-        settingsGlobal   = FindFirstObjectByType<SettingsGlobal>(FindObjectsInactive.Include);
-        exitGameConfirmationGlobal = FindFirstObjectByType<ExitGameConfirmationGlobal>(FindObjectsInactive.Include);
-        tutorialController = FindFirstObjectByType<TutorialController>();
-        tutorialData       = FindFirstObjectByType<TutorialData>();
-        creditsGlobal      = FindFirstObjectByType<CreditsGlobal>();
-        controlsController = FindFirstObjectByType<ControlsController>();
-        soundsController   = FindFirstObjectByType<SoundsController>();
-        resizeGlobal       = FindFirstObjectByType<ResizeGlobal>();
         StartCoroutine(InitializeItems());
     }
 
@@ -52,8 +31,8 @@ public class InitializerBase : MonoBehaviour {
         }
         */
 
-        controlsController.Initialize();
-        soundsController.InitializeSliders();
+        ControlsController.Instance.Initialize();
+        SoundsController.Instance.InitializeSliders();
         InitializeButtons();
 
         // |--------------------------------------------------------------------------|
@@ -62,16 +41,16 @@ public class InitializerBase : MonoBehaviour {
         // |--------------------------------------------------------------------------|
         // |--------------------------------------------------------------------------|
         
-        if(!tutorialData.isInitialized) { 
+        if(!TutorialData.Instance.isInitialized) { 
             //StartCoroutine(tutorialController.Initialize());
             
-            try { StartCoroutine(tutorialController.Initialize()); Debug.Log("initializing tutorial");}
+            try { StartCoroutine(TutorialController.Instance.Initialize()); Debug.Log("initializing tutorial");}
             catch(Exception e) {
                 Debug.LogWarning("tutorial was unable to load. Error: "+e);
             }
             
         }
-        yield return new WaitUntil(() => tutorialData.isInitialized);
+        yield return new WaitUntil(() => TutorialData.Instance.isInitialized);
         
         //EndInitialization(gameObjectActivities);
         //yield return null;
@@ -88,52 +67,52 @@ public class InitializerBase : MonoBehaviour {
             Utilities.SubscribeToButton(buttonsAttribute.button, buttonsAttribute.buttonsHandler.OnPressButton);
             switch(buttonsAttribute.buttonType) {
                 case ButtonTypes.EnterLevel:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterLevelButton, buttonsAttribute.levelIndex);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ScenesController.Instance.OnPressEnterLevelButton, buttonsAttribute.levelIndex);
                     break;
                 case ButtonTypes.NextLevel:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterNextLevelButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ScenesController.Instance.OnPressEnterNextLevelButton);
                     break;
                 case ButtonTypes.PreviousLevel:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterPreviousLevelButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ScenesController.Instance.OnPressEnterPreviousLevelButton);
                     break;
                 case ButtonTypes.EnterLevelSelector:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterLevelSelectorButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ScenesController.Instance.OnPressEnterLevelSelectorButton);
                     break;
                 case ButtonTypes.EnterMenu:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, scenesController.OnPressEnterMenuButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ScenesController.Instance.OnPressEnterMenuButton);
                     break;
                 case ButtonTypes.EnterSettings:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, settingsGlobal.OnPressEnterSettingsButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, SettingsGlobal.Instance.OnPressEnterSettingsButton);
                     break;
                 case ButtonTypes.ExitSettings:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, settingsGlobal.OnPressExitSettingsButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, SettingsGlobal.Instance.OnPressExitSettingsButton);
                     break;
                 case ButtonTypes.EnterExitConfirmation:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, exitGameConfirmationGlobal.OnPressEnterExitConfirmationButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ExitGameConfirmationGlobal.Instance.OnPressEnterExitConfirmationButton);
                     break;
                 case ButtonTypes.ExitExitConfirmation:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, exitGameConfirmationGlobal.OnPressExitExitConfirmationButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ExitGameConfirmationGlobal.Instance.OnPressExitExitConfirmationButton);
                     break;
                 case ButtonTypes.ExitGame:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, exitGameConfirmationGlobal.OnPressExitGameButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, ExitGameConfirmationGlobal.Instance.OnPressExitGameButton);
                     break;
                 case ButtonTypes.EnterTutorialPage:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressEnterTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, TutorialController.Instance.OnPressEnterTutorialPageButton);
                     break;
                 case ButtonTypes.ExitTutorialPage:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressExitTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, TutorialController.Instance.OnPressExitTutorialPageButton);
                     break;
                 case ButtonTypes.NextTutorialPage:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressNextTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, TutorialController.Instance.OnPressNextTutorialPageButton);
                     break;
                 case ButtonTypes.PreviousTutorialPage:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, tutorialController.OnPressPreviousTutorialPageButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, TutorialController.Instance.OnPressPreviousTutorialPageButton);
                     break;
                 case ButtonTypes.EnterCredits:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, creditsGlobal.OnPressEnterCreditsButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, CreditsGlobal.Instance.OnPressEnterCreditsButton);
                     break;
                 case ButtonTypes.ExitCredits:
-                    Utilities.SubscribeToButton(buttonsAttribute.button, creditsGlobal.OnPressExitCreditsButton);
+                    Utilities.SubscribeToButton(buttonsAttribute.button, CreditsGlobal.Instance.OnPressExitCreditsButton);
                     break;
                 default:
                     Debug.LogError($"Undefined button type: {buttonsAttribute.buttonType}");
@@ -177,10 +156,10 @@ public class InitializerBase : MonoBehaviour {
 
     public void FinishedWithAllTasks() {
         finishedWithAllTasks = true;
-        DebugC.Get()?.Log("set finishedWithAllTasks to True");
+        DebugC.Instance?.Log("set finishedWithAllTasks to True");
     }
     public void AllButtonsLoaded() {
         allButtonsLoaded = true;
-        DebugC.Get()?.Log("set allButtonsLoaded to True");
+        DebugC.Instance?.Log("set allButtonsLoaded to True");
     }
 }

@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class ScenesData : MonoBehaviour {
-    public ScenesController scenesController;
+public class ScenesData : Singleton<ScenesData> {
     public Animator         crossFadeTransition;
     public float            crossFadeAnimationStartDuration;
     public float            crossFadeAnimationEndDuration;
@@ -16,8 +15,6 @@ public class ScenesData : MonoBehaviour {
 
 
 
-    void Awake() {
-        scenesController = Utilities.TryGetComponent<ScenesController>(gameObject);
-    }
+    public override void OnAwake() { }
 }
 
