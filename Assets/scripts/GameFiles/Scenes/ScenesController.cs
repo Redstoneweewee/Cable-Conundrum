@@ -68,7 +68,7 @@ public class ScenesController : Singleton<ScenesController> {
         yield return new WaitUntil(() => D.sceneFinishedLoading);
         
         //Renew Resizes
-        FindFirstObjectByType<ResizeGlobal>().RenewAll();
+        StartCoroutine(ResizeGlobal.Instance.RenewAll());
         Debug.Log("AAAAAAAAAAAAAAAAAAAA renewed resizes");
 
         //Load the game
@@ -101,7 +101,7 @@ public class ScenesController : Singleton<ScenesController> {
     private IEnumerator InitialSceneLoad() {
         yield return new WaitUntil(() => D.initialFinishedLoading);
         SceneManager.sceneLoaded += OnSceneLoad;
-        
+
         if(MenuInitializerGlobal.Instance != null) {
             yield return new WaitUntil(() => MenuInitializerGlobal.Instance.finishedWithAllTasks);
             yield return new WaitUntil(() => MenuInitializerGlobal.Instance.allButtonsLoaded);

@@ -36,12 +36,12 @@ public class TutorialController : Singleton<TutorialController> {
 
 
     public void OnPressEnterTutorialPageButton() {
-        FindFirstObjectByType<ResizeGlobal>().RenewAll();
+        StartCoroutine(ResizeGlobal.Instance.RenewAll());
         Utilities.TryGetComponent<Canvas>(D.tutorialCanvas).sortingOrder = Constants.tutorialCanvasSortOrder;
         StartCoroutine(SetVideoDisplayAndDescription(D.currentPageIndex, D.currentPageIndex));
     }
     public void OnPressExitTutorialPageButton() {
-        FindFirstObjectByType<ResizeGlobal>().RenewAll();
+        StartCoroutine(ResizeGlobal.Instance.RenewAll());
         Utilities.TryGetComponent<Canvas>(D.tutorialCanvas).sortingOrder = Constants.deactivatedCanvasSortOrder;
     }
 

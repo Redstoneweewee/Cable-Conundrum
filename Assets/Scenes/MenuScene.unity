@@ -132,8 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2255809}
   - component: {fileID: 2255813}
-  - component: {fileID: 2255812}
-  - component: {fileID: 2255811}
   - component: {fileID: 2255810}
   m_Layer: 5
   m_Name: CreditsTitle
@@ -250,52 +248,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2255811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &2255812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &2255813
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -314,8 +266,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9216229}
   - component: {fileID: 9216233}
-  - component: {fileID: 9216232}
-  - component: {fileID: 9216231}
   - component: {fileID: 9216230}
   m_Layer: 5
   m_Name: Contributor2
@@ -432,52 +382,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &9216231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9216228}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &9216232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9216228}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &9216233
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -496,8 +400,6 @@ GameObject:
   m_Component:
   - component: {fileID: 27217933}
   - component: {fileID: 27217937}
-  - component: {fileID: 27217936}
-  - component: {fileID: 27217935}
   - component: {fileID: 27217934}
   m_Layer: 5
   m_Name: Contributor6
@@ -614,52 +516,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &27217935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27217932}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &27217936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27217932}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &27217937
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -710,8 +566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 60638989}
   - component: {fileID: 60638993}
-  - component: {fileID: 60638992}
-  - component: {fileID: 60638991}
   - component: {fileID: 60638990}
   m_Layer: 5
   m_Name: Contributor1
@@ -828,52 +682,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &60638991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60638988}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &60638992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60638988}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &60638993
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -938,8 +746,6 @@ GameObject:
   m_Component:
   - component: {fileID: 87398362}
   - component: {fileID: 87398366}
-  - component: {fileID: 87398365}
-  - component: {fileID: 87398364}
   - component: {fileID: 87398363}
   m_Layer: 5
   m_Name: Contributor1
@@ -1056,52 +862,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &87398364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87398361}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &87398365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87398361}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &87398366
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1120,7 +880,6 @@ GameObject:
   m_Component:
   - component: {fileID: 183478551}
   - component: {fileID: 183478557}
-  - component: {fileID: 183478556}
   - component: {fileID: 183478555}
   - component: {fileID: 183478554}
   - component: {fileID: 183478553}
@@ -1236,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 217486576}
+  m_Material: {fileID: 2067880100}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1254,29 +1013,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &183478556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183478550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!222 &183478557
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1296,8 +1032,6 @@ GameObject:
   - component: {fileID: 188989746}
   - component: {fileID: 188989747}
   - component: {fileID: 188989748}
-  - component: {fileID: 188989749}
-  - component: {fileID: 188989750}
   m_Layer: 0
   m_Name: ExitGameButton
   m_TagString: Untagged
@@ -1352,52 +1086,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &188989749
-MonoBehaviour:
+--- !u!21 &201123576
+Material:
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188989745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 0
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: 0, y: -220}
---- !u!114 &188989750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188989745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 410, g: 110, b: 55, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &205596577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,7 +1230,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -1
   m_TargetDisplay: 0
---- !u!21 &217486576
+--- !u!21 &249089009
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -1540,46 +1267,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 400, g: 100, b: 50, a: 0}
-  m_BuildTextureStacks: []
---- !u!21 &231140860
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 410, g: 110, b: 55, a: 0}
+    - _WidthHeightRadius: {r: 310, g: 110, b: 55, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &308526493
 GameObject:
@@ -1591,7 +1279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 308526494}
   - component: {fileID: 308526500}
-  - component: {fileID: 308526499}
   - component: {fileID: 308526498}
   - component: {fileID: 308526497}
   - component: {fileID: 308526496}
@@ -1707,7 +1394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1891512813}
+  m_Material: {fileID: 1207478878}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1725,29 +1412,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &308526499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308526493}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.8
-  scaleType: 3
 --- !u!222 &308526500
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1756,45 +1420,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308526493}
   m_CullTransparentMesh: 1
---- !u!21 &351428605
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 1000, g: 500, b: 80, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &374962131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,45 +1533,6 @@ MonoBehaviour:
   scrollSpeed: 3
   pauseTime: 1
   stopTime: 0.3
---- !u!21 &423309663
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 1020, g: 520, b: 83.2, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &427941332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +1543,6 @@ GameObject:
   m_Component:
   - component: {fileID: 427941333}
   - component: {fileID: 427941338}
-  - component: {fileID: 427941339}
   - component: {fileID: 427941337}
   - component: {fileID: 427941336}
   - component: {fileID: 427941335}
@@ -2073,7 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 918874943}
+  m_Material: {fileID: 1635538798}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2099,29 +1684,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427941332}
   m_CullTransparentMesh: 1
---- !u!114 &427941339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427941332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!1 &439080271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,8 +1694,6 @@ GameObject:
   m_Component:
   - component: {fileID: 439080272}
   - component: {fileID: 439080276}
-  - component: {fileID: 439080275}
-  - component: {fileID: 439080274}
   - component: {fileID: 439080273}
   m_Layer: 5
   m_Name: Contributor5
@@ -2250,52 +1810,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &439080274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439080271}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &439080275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439080271}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &439080276
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2315,8 +1829,6 @@ GameObject:
   - component: {fileID: 514754208}
   - component: {fileID: 514754212}
   - component: {fileID: 514754211}
-  - component: {fileID: 514754210}
-  - component: {fileID: 514754209}
   m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
@@ -2340,52 +1852,6 @@ Transform:
   - {fileID: 1952868607}
   m_Father: {fileID: 205596578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &514754209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514754207}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
---- !u!114 &514754210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514754207}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 1363139711}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 5
-  offset: {x: 15, y: -15}
 --- !u!114 &514754211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2416,84 +1882,6 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 0}
---- !u!21 &519350690
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 310, g: 110, b: 55, a: 0}
-  m_BuildTextureStacks: []
---- !u!21 &618221486
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 300, g: 100, b: 50, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &623711933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,7 +1927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1133060265}
+  m_Material: {fileID: 2030809303}
   m_Color: {r: 0.1882353, g: 0.16862746, b: 0.10980392, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2581,7 +1969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 310, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &703822663
@@ -2629,7 +2017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 231140860}
+  m_Material: {fileID: 201123576}
   m_Color: {r: 0.1882353, g: 0.16862746, b: 0.10980392, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2671,10 +2059,10 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!21 &818894700
+--- !u!21 &731609809
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -2711,7 +2099,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 410, g: 110, b: 55, a: 0}
+    - _WidthHeightRadius: {r: 1000, g: 500, b: 80, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &847714572
 GameObject:
@@ -2857,7 +2245,6 @@ GameObject:
   m_Component:
   - component: {fileID: 896364308}
   - component: {fileID: 896364313}
-  - component: {fileID: 896364312}
   - component: {fileID: 896364311}
   - component: {fileID: 896364310}
   - component: {fileID: 896364309}
@@ -2927,7 +2314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 351428605}
+  m_Material: {fileID: 731609809}
   m_Color: {r: 0.94509804, g: 0.8862745, b: 0.84313726, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2945,29 +2332,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &896364312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896364307}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  sizeReduction: {x: 920, y: 580}
-  offset: {x: 0, y: 0}
 --- !u!222 &896364313
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3021,7 +2385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 519350690}
+  m_Material: {fileID: 249089009}
   m_Color: {r: 0.1882353, g: 0.16862746, b: 0.10980392, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3063,48 +2427,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 310, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!21 &918874943
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 400, g: 100, b: 50, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &944810826
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,8 +2441,6 @@ GameObject:
   - component: {fileID: 944810827}
   - component: {fileID: 944810831}
   - component: {fileID: 944810830}
-  - component: {fileID: 944810829}
-  - component: {fileID: 944810828}
   m_Layer: 0
   m_Name: CancelButton
   m_TagString: Untagged
@@ -3142,52 +2465,6 @@ Transform:
   - {fileID: 308526494}
   m_Father: {fileID: 1732631270}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &944810828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944810826}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.8
-  scaleType: 3
---- !u!114 &944810829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944810826}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 0
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 896364308}
-  relativeToSize: {x: 1000, y: 500}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: -220, y: -80}
 --- !u!114 &944810830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3228,8 +2505,6 @@ GameObject:
   m_Component:
   - component: {fileID: 979846425}
   - component: {fileID: 979846429}
-  - component: {fileID: 979846428}
-  - component: {fileID: 979846427}
   - component: {fileID: 979846426}
   m_Layer: 5
   m_Name: Category5
@@ -3346,52 +2621,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &979846427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979846424}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &979846428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979846424}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &979846429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3449,8 +2678,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1016690634}
   - component: {fileID: 1016690636}
-  - component: {fileID: 1016690637}
-  - component: {fileID: 1016690638}
   - component: {fileID: 1016690635}
   m_Layer: 5
   m_Name: Text1
@@ -3575,52 +2802,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016690633}
   m_CullTransparentMesh: 1
---- !u!114 &1016690637
-MonoBehaviour:
+--- !u!21 &1024159975
+Material:
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016690633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 2
-  offset: {x: 0, y: 10}
---- !u!114 &1016690638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016690633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 410, g: 110, b: 55, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &1048517034
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,6 +2916,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048517034}
   m_CullTransparentMesh: 1
+--- !u!21 &1053787919
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 400, g: 100, b: 50, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &1066940695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3706,8 +2965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1066940696}
   - component: {fileID: 1066940700}
-  - component: {fileID: 1066940699}
-  - component: {fileID: 1066940698}
   - component: {fileID: 1066940697}
   m_Layer: 5
   m_Name: Contributor4
@@ -3824,52 +3081,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1066940698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066940695}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1066940699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066940695}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1066940700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3878,6 +3089,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066940695}
   m_CullTransparentMesh: 1
+--- !u!21 &1067381654
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 300, g: 100, b: 50, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &1092031281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3888,8 +3138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1092031282}
   - component: {fileID: 1092031286}
-  - component: {fileID: 1092031285}
-  - component: {fileID: 1092031284}
   - component: {fileID: 1092031283}
   m_Layer: 5
   m_Name: Category3
@@ -4006,52 +3254,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1092031284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092031281}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1092031285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092031281}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1092031286
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4060,45 +3262,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092031281}
   m_CullTransparentMesh: 1
---- !u!21 &1133060265
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 310, g: 110, b: 55, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &1154059287
 GameObject:
   m_ObjectHideFlags: 0
@@ -4109,8 +3272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1154059288}
   - component: {fileID: 1154059292}
-  - component: {fileID: 1154059291}
-  - component: {fileID: 1154059290}
   - component: {fileID: 1154059289}
   m_Layer: 5
   m_Name: Contributor1
@@ -4227,52 +3388,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1154059290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154059287}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1154059291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154059287}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1154059292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4291,8 +3406,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1169915353}
   - component: {fileID: 1169915357}
-  - component: {fileID: 1169915356}
-  - component: {fileID: 1169915355}
   - component: {fileID: 1169915354}
   m_Layer: 5
   m_Name: Category2
@@ -4409,52 +3522,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1169915355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169915352}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1169915356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169915352}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1169915357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4463,7 +3530,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169915352}
   m_CullTransparentMesh: 1
---- !u!21 &1187563061
+--- !u!21 &1207478878
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -4500,7 +3567,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 410, g: 110, b: 55, a: 0}
+    - _WidthHeightRadius: {r: 300, g: 100, b: 50, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &1363139710
 GameObject:
@@ -4513,7 +3580,6 @@ GameObject:
   - component: {fileID: 1363139711}
   - component: {fileID: 1363139714}
   - component: {fileID: 1363139715}
-  - component: {fileID: 1363139713}
   - component: {fileID: 1363139712}
   m_Layer: 5
   m_Name: Background
@@ -4571,29 +3637,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1363139713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363139710}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  sizeReduction: {x: 480, y: 248}
-  offset: {x: 0, y: 0}
 --- !u!222 &1363139714
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4699,8 +3742,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1378009804}
   - component: {fileID: 1378009808}
-  - component: {fileID: 1378009807}
-  - component: {fileID: 1378009806}
   - component: {fileID: 1378009805}
   m_Layer: 5
   m_Name: Contributor7
@@ -4817,52 +3858,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1378009806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378009803}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1378009807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378009803}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1378009808
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5048,45 +4043,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418144932}
   m_CullTransparentMesh: 1
---- !u!21 &1464094912
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 400, g: 100, b: 50, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &1508158291
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,7 +4053,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1508158292}
   - component: {fileID: 1508158298}
-  - component: {fileID: 1508158297}
   - component: {fileID: 1508158296}
   - component: {fileID: 1508158295}
   - component: {fileID: 1508158294}
@@ -5213,7 +4168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 618221486}
+  m_Material: {fileID: 1067381654}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -5231,29 +4186,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1508158297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508158291}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.8
-  scaleType: 3
 --- !u!222 &1508158298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5273,8 +4205,6 @@ GameObject:
   - component: {fileID: 1548730441}
   - component: {fileID: 1548730445}
   - component: {fileID: 1548730444}
-  - component: {fileID: 1548730443}
-  - component: {fileID: 1548730442}
   m_Layer: 0
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -5299,52 +4229,6 @@ Transform:
   - {fileID: 183478551}
   m_Father: {fileID: 1741492271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1548730442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548730440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
---- !u!114 &1548730443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548730440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 0
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: 0, y: -90}
 --- !u!114 &1548730444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5552,8 +4436,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1625000988}
   - component: {fileID: 1625000992}
-  - component: {fileID: 1625000991}
-  - component: {fileID: 1625000990}
   - component: {fileID: 1625000989}
   m_Layer: 5
   m_Name: Category4
@@ -5670,52 +4552,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1625000990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625000987}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1625000991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625000987}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1625000992
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5724,6 +4560,123 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625000987}
   m_CullTransparentMesh: 1
+--- !u!21 &1635538798
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 400, g: 100, b: 50, a: 0}
+  m_BuildTextureStacks: []
+--- !u!21 &1674655614
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 1020, g: 520, b: 83.2, a: 0}
+  m_BuildTextureStacks: []
+--- !u!21 &1674885904
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 410, g: 110, b: 55, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &1721882798
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,8 +5033,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1756744354}
   - component: {fileID: 1756744358}
-  - component: {fileID: 1756744357}
-  - component: {fileID: 1756744356}
   - component: {fileID: 1756744355}
   m_Layer: 5
   m_Name: Contributor1
@@ -6198,52 +5149,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1756744356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756744353}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1756744357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756744353}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1756744358
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6262,8 +5167,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1761217828}
   - component: {fileID: 1761217832}
-  - component: {fileID: 1761217831}
-  - component: {fileID: 1761217830}
   - component: {fileID: 1761217829}
   m_Layer: 5
   m_Name: Contributor2
@@ -6380,52 +5283,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1761217830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761217827}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1761217831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761217827}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1761217832
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6613,7 +5470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 423309663}
+  m_Material: {fileID: 1674655614}
   m_Color: {r: 0.3137255, g: 0.2784314, b: 0.17254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -6668,8 +5525,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1868122613}
   - component: {fileID: 1868122617}
-  - component: {fileID: 1868122616}
-  - component: {fileID: 1868122615}
   - component: {fileID: 1868122614}
   m_Layer: 5
   m_Name: Contributor8
@@ -6786,52 +5641,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1868122615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868122612}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &1868122616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868122612}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &1868122617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6840,45 +5649,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868122612}
   m_CullTransparentMesh: 1
---- !u!21 &1891512813
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 300, g: 100, b: 50, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &1948494714
 GameObject:
   m_ObjectHideFlags: 0
@@ -6924,7 +5694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 818894700}
+  m_Material: {fileID: 1674885904}
   m_Color: {r: 0.1882353, g: 0.16862746, b: 0.10980392, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -6966,7 +5736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1952868606
@@ -7100,8 +5870,6 @@ GameObject:
   - component: {fileID: 2016941656}
   - component: {fileID: 2016941660}
   - component: {fileID: 2016941659}
-  - component: {fileID: 2016941658}
-  - component: {fileID: 2016941657}
   m_Layer: 0
   m_Name: ExitGameButton
   m_TagString: Untagged
@@ -7126,52 +5894,6 @@ Transform:
   - {fileID: 1508158292}
   m_Father: {fileID: 1732631270}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2016941657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016941655}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.8
-  scaleType: 3
---- !u!114 &2016941658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016941655}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 0
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 896364308}
-  relativeToSize: {x: 1000, y: 500}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: 220, y: -80}
 --- !u!114 &2016941659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7202,6 +5924,45 @@ MonoBehaviour:
   levelIndex: 0
   button: {fileID: 0}
   buttonGameObject: {fileID: 2016941655}
+--- !u!21 &2030809303
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 310, g: 110, b: 55, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &2062176981
 GameObject:
   m_ObjectHideFlags: 0
@@ -7212,8 +5973,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2062176982}
   - component: {fileID: 2062176986}
-  - component: {fileID: 2062176985}
-  - component: {fileID: 2062176984}
   - component: {fileID: 2062176983}
   m_Layer: 5
   m_Name: Category1
@@ -7330,52 +6089,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2062176984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062176981}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &2062176985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062176981}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &2062176986
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7384,6 +6097,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062176981}
   m_CullTransparentMesh: 1
+--- !u!21 &2067880100
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 400, g: 100, b: 50, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &2067992554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,8 +6146,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2067992555}
   - component: {fileID: 2067992559}
-  - component: {fileID: 2067992558}
-  - component: {fileID: 2067992557}
   - component: {fileID: 2067992556}
   m_Layer: 5
   m_Name: Title
@@ -7512,52 +6262,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2067992557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067992554}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.8
-  scaleType: 3
---- !u!114 &2067992558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067992554}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 896364308}
-  relativeToSize: {x: 1000, y: 500}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: 0, y: 90}
 --- !u!222 &2067992559
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7576,8 +6280,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2070450358}
   - component: {fileID: 2070450362}
-  - component: {fileID: 2070450361}
-  - component: {fileID: 2070450360}
   - component: {fileID: 2070450359}
   m_Layer: 5
   m_Name: Contributor3
@@ -7694,52 +6396,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2070450360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070450357}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &2070450361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070450357}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &2070450362
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7758,8 +6414,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2086776587}
   - component: {fileID: 2086776589}
-  - component: {fileID: 2086776590}
-  - component: {fileID: 2086776591}
   - component: {fileID: 2086776588}
   m_Layer: 5
   m_Name: Title
@@ -7884,52 +6538,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086776586}
   m_CullTransparentMesh: 1
---- !u!114 &2086776590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086776586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 1
-  offset: {x: 0, y: -20}
---- !u!114 &2086776591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086776586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!1 &2106651740
 GameObject:
   m_ObjectHideFlags: 0
@@ -7940,8 +6548,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2106651741}
   - component: {fileID: 2106651745}
-  - component: {fileID: 2106651744}
-  - component: {fileID: 2106651743}
   - component: {fileID: 2106651742}
   m_Layer: 5
   m_Name: Contributor1
@@ -8058,52 +6664,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2106651743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106651740}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
---- !u!114 &2106651744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106651740}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
 --- !u!222 &2106651745
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8290,7 +6850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4086769838378385461
@@ -8324,8 +6884,6 @@ GameObject:
   - component: {fileID: 5489373132620042844}
   - component: {fileID: 5489373132620042845}
   - component: {fileID: 5489373132620042846}
-  - component: {fileID: 5489373132620042847}
-  - component: {fileID: 5489373132620042848}
   m_Layer: 0
   m_Name: StartButton
   m_TagString: Untagged
@@ -8343,7 +6901,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4086769838378385461}
   - component: {fileID: 3276707426189049232}
-  - component: {fileID: 8969162616818270878}
   - component: {fileID: 8079899752127157892}
   - component: {fileID: 8969162616818270877}
   - component: {fileID: 787174300269164395}
@@ -8367,7 +6924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1187563061}
+  m_Material: {fileID: 1024159975}
   m_Color: {r: 0.1882353, g: 0.16862746, b: 0.10980392, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -8432,52 +6989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &5489373132620042847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5116569560843358040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 0
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: 0, y: 40}
---- !u!114 &5489373132620042848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5116569560843358040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!114 &6543731730041044284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8598,7 +7109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1464094912}
+  m_Material: {fileID: 1053787919}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -8660,29 +7171,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8969162616818270878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5174064910664391878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

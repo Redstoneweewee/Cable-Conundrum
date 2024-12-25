@@ -493,8 +493,6 @@ GameObject:
   m_Component:
   - component: {fileID: 82113511134771785}
   - component: {fileID: 5551394911537555504}
-  - component: {fileID: 5729030735869504006}
-  - component: {fileID: 8960510266817599426}
   - component: {fileID: 8244500954141496601}
   - component: {fileID: 6361530121998239777}
   m_Layer: 5
@@ -531,52 +529,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998912897290528660}
   m_CullTransparentMesh: 1
---- !u!114 &5729030735869504006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998912897290528660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 0
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: 0, y: 0}
---- !u!114 &8960510266817599426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998912897290528660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1
-  scaleType: 3
 --- !u!114 &8244500954141496601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,8 +614,6 @@ GameObject:
   - component: {fileID: 4021148429848433600}
   - component: {fileID: 243052602200405241}
   - component: {fileID: 2331849988930120223}
-  - component: {fileID: 3040868442205487410}
-  - component: {fileID: 4785844555190618185}
   m_Layer: 0
   m_Name: LevelSelectorButton
   m_TagString: Untagged
@@ -717,52 +667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &3040868442205487410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095868277896878884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 6
-  offset: {x: -20, y: -140}
---- !u!114 &4785844555190618185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095868277896878884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!1 &1145777595662058544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,8 +913,6 @@ GameObject:
   - component: {fileID: 3561366995511878052}
   - component: {fileID: 4883303371476140375}
   - component: {fileID: 4550268980353653275}
-  - component: {fileID: 220093970116837390}
-  - component: {fileID: 538809874590928887}
   m_Layer: 0
   m_Name: TutorialHelpButton
   m_TagString: Untagged
@@ -1064,52 +966,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &220093970116837390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382962094621092414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 6
-  offset: {x: -20, y: -250}
---- !u!114 &538809874590928887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382962094621092414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!1 &1405640080990895383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,6 +1499,7 @@ MonoBehaviour:
   crossFadeTransition: {fileID: 7301717057473133773}
   crossFadeAnimationStartDuration: 1
   crossFadeAnimationEndDuration: 1
+  initialFinishedLoading: 0
   sceneFinishedLoading: 0
   animationIsFinished: 0
 --- !u!1 &2418879449336320089
@@ -1865,8 +1722,6 @@ GameObject:
   m_Component:
   - component: {fileID: 81997922888702967}
   - component: {fileID: 1699700325929708378}
-  - component: {fileID: 4944785628871954010}
-  - component: {fileID: 8310085437924497978}
   - component: {fileID: 8942575712627905324}
   m_Layer: 5
   m_Name: Sound
@@ -1902,52 +1757,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2572611076816520316}
   m_CullTransparentMesh: 1
---- !u!114 &4944785628871954010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2572611076816520316}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 75, y: 175}
---- !u!114 &8310085437924497978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2572611076816520316}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
 --- !u!114 &8942575712627905324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,8 +2018,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8396500226212500263}
   - component: {fileID: 1476192944387205729}
-  - component: {fileID: 3468153087783503480}
-  - component: {fileID: 3137062534500262232}
   - component: {fileID: 2306088480208358221}
   - component: {fileID: 6671566898420347758}
   m_Layer: 5
@@ -2247,52 +2054,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2843192546835337391}
   m_CullTransparentMesh: 1
---- !u!114 &3468153087783503480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2843192546835337391}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 0
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 0
-  offset: {x: 0, y: 0}
---- !u!114 &3137062534500262232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2843192546835337391}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1
-  scaleType: 3
 --- !u!114 &2306088480208358221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2544,8 +2305,6 @@ GameObject:
   - component: {fileID: 185957281070653375}
   - component: {fileID: 3906811249960221941}
   - component: {fileID: 5242285560534319689}
-  - component: {fileID: 443764400300496758}
-  - component: {fileID: 4752248616920943291}
   m_Layer: 0
   m_Name: MenuButton
   m_TagString: Untagged
@@ -2599,52 +2358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &443764400300496758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3210358559162109223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 6
-  offset: {x: -20, y: -140}
---- !u!114 &4752248616920943291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3210358559162109223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!1 &3235961038183251128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,8 +2367,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099538014260178626}
-  - component: {fileID: 6431562692761401940}
-  - component: {fileID: 8156692413865602618}
   - component: {fileID: 5039895589593142051}
   - component: {fileID: 2007643323220528396}
   m_Layer: 5
@@ -2687,52 +2398,6 @@ RectTransform:
   m_AnchoredPosition: {x: 185, y: 82}
   m_SizeDelta: {x: 960, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6431562692761401940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3235961038183251128}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 4
-  offset: {x: -55, y: 82}
---- !u!114 &8156692413865602618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3235961038183251128}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1.13
-  scaleType: 0
 --- !u!114 &5039895589593142051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2808,8 +2473,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7280441362322930748}
   - component: {fileID: 8571694768167368979}
-  - component: {fileID: 8098566489167370279}
-  - component: {fileID: 2104755631050576174}
   - component: {fileID: 4359684753495182815}
   m_Layer: 5
   m_Name: Title
@@ -2845,52 +2508,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3537515607532927223}
   m_CullTransparentMesh: 1
---- !u!114 &8098566489167370279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3537515607532927223}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 1
-  offset: {x: 0, y: -20}
---- !u!114 &2104755631050576174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3537515607532927223}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
 --- !u!114 &4359684753495182815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,8 +2643,6 @@ GameObject:
   - component: {fileID: 1636497214828976625}
   - component: {fileID: 1273540165822670136}
   - component: {fileID: 2398233755100458277}
-  - component: {fileID: 7092997732871748092}
-  - component: {fileID: 2966463447295547049}
   m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
@@ -3081,52 +2696,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &7092997732871748092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4030554990027296467}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 5
-  offset: {x: 15, y: -15}
---- !u!114 &2966463447295547049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4030554990027296467}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
 --- !u!1 &4674530987975774433
 GameObject:
   m_ObjectHideFlags: 0
@@ -4754,8 +4323,6 @@ GameObject:
   - component: {fileID: 7667686445607475364}
   - component: {fileID: 3757398221826569904}
   - component: {fileID: 5652275260980594980}
-  - component: {fileID: 2485054427854851615}
-  - component: {fileID: 947594678784725255}
   m_Layer: 0
   m_Name: PreviousTutorialPageButton
   m_TagString: Untagged
@@ -4810,52 +4377,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &2485054427854851615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6652914872775933548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 7
-  offset: {x: 25, y: 25}
---- !u!114 &947594678784725255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6652914872775933548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
 --- !u!1 &6661461700191289339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4912,7 +4433,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2564967930999308828}
   - component: {fileID: 2801999399900947919}
-  - component: {fileID: 4307283293749839364}
   - component: {fileID: 3228528321447466368}
   - component: {fileID: 1181917917509812619}
   - component: {fileID: 2778222375210827203}
@@ -4950,29 +4470,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6671290371973341665}
   m_CullTransparentMesh: 1
---- !u!114 &4307283293749839364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6671290371973341665}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  sizeReduction: {x: 480, y: 248}
-  offset: {x: 0, y: 0}
 --- !u!114 &3228528321447466368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5077,8 +4574,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7920326713385343849}
   - component: {fileID: 1626474364121271423}
-  - component: {fileID: 7492371360998009830}
-  - component: {fileID: 842531870834167242}
   - component: {fileID: 3265472781206313313}
   m_Layer: 5
   m_Name: Description
@@ -5114,52 +4609,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6682577565710610668}
   m_CullTransparentMesh: 1
---- !u!114 &7492371360998009830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682577565710610668}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 2
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 8396500226212500263}
-  relativeToSize: {x: 720, y: 405}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 10
-  offset: {x: 0, y: 0}
---- !u!114 &842531870834167242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682577565710610668}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 1
-  scaleType: 3
 --- !u!114 &3265472781206313313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5656,8 +5105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7528438326372191435}
   - component: {fileID: 6180616757504608499}
-  - component: {fileID: 5838885411559938267}
-  - component: {fileID: 6022672789814792259}
   - component: {fileID: 7508824393418117721}
   m_Layer: 5
   m_Name: Music
@@ -5693,52 +5140,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7921973208075580478}
   m_CullTransparentMesh: 1
---- !u!114 &5838885411559938267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921973208075580478}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 3
-  offset: {x: 90, y: 85}
---- !u!114 &6022672789814792259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921973208075580478}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.5
-  scaleType: 3
 --- !u!114 &7508824393418117721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5838,7 +5239,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3224093363350921164}
   - component: {fileID: 3448401407402307542}
-  - component: {fileID: 4108624292503237151}
   - component: {fileID: 2122744089546976093}
   - component: {fileID: 6366406609988686998}
   - component: {fileID: 8454379189257714656}
@@ -5876,29 +5276,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7982506068944984106}
   m_CullTransparentMesh: 1
---- !u!114 &4108624292503237151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7982506068944984106}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
 --- !u!114 &2122744089546976093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5966,8 +5343,6 @@ GameObject:
   - component: {fileID: 817357739269315577}
   - component: {fileID: 308164767827734547}
   - component: {fileID: 706462779685553213}
-  - component: {fileID: 7200074004084061506}
-  - component: {fileID: 186213403814031207}
   m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
@@ -6021,52 +5396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &7200074004084061506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8034904368426454084}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 5
-  offset: {x: 15, y: -15}
---- !u!114 &186213403814031207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8034904368426454084}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
 --- !u!1 &8083107085740606855
 GameObject:
   m_ObjectHideFlags: 0
@@ -6379,7 +5708,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3291340296303018918}
   - component: {fileID: 3437599521340570725}
-  - component: {fileID: 1300924759813396227}
   - component: {fileID: 7630179771251485114}
   - component: {fileID: 6672510744882079561}
   - component: {fileID: 8356451713564520051}
@@ -6417,29 +5745,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8777336814462748497}
   m_CullTransparentMesh: 1
---- !u!114 &1300924759813396227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8777336814462748497}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27813bb0ba23b64cae154dd001f15c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  sizeReduction: {x: 480, y: 248}
-  offset: {x: 0, y: 0}
 --- !u!114 &7630179771251485114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6565,7 +5870,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2667628756786318848}
   - component: {fileID: 1119457746630266621}
-  - component: {fileID: 7923548107485342722}
   - component: {fileID: 4571116552645437994}
   - component: {fileID: 7818114432506670579}
   - component: {fileID: 4302672059964425111}
@@ -6603,29 +5907,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8886039974580707838}
   m_CullTransparentMesh: 1
---- !u!114 &7923548107485342722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8886039974580707838}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
 --- !u!114 &4571116552645437994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6728,11 +6009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7819391078940353335}
   - component: {fileID: 4266221139124373439}
-  - component: {fileID: 1166298175110144511}
-  - component: {fileID: 751409950207887593}
   - component: {fileID: 503182838533075283}
-  - component: {fileID: 8898828438261189603}
-  - component: {fileID: 1496619603833943688}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -6767,52 +6044,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9012913232977416485}
   m_CullTransparentMesh: 1
---- !u!114 &1166298175110144511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012913232977416485}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 1
-  offset: {x: 0, y: -20}
---- !u!114 &751409950207887593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012913232977416485}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.8
-  scaleType: 3
 --- !u!114 &503182838533075283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6902,52 +6133,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8898828438261189603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012913232977416485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 1
-  offset: {x: 0, y: -20}
---- !u!114 &1496619603833943688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9012913232977416485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 3291340296303018918}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 1
-  offset: {x: 0, y: -20}
 --- !u!1 &9073732490463690087
 GameObject:
   m_ObjectHideFlags: 0
@@ -7045,8 +6230,6 @@ GameObject:
   - component: {fileID: 2198514140725816086}
   - component: {fileID: 5838574557586830284}
   - component: {fileID: 7282155195033530694}
-  - component: {fileID: 6191411604375690527}
-  - component: {fileID: 4861543972854891577}
   m_Layer: 0
   m_Name: NextTutorialPageButton
   m_TagString: Untagged
@@ -7101,52 +6284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &6191411604375690527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9095871765366007073}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 1
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 2564967930999308828}
-  relativeToSize: {x: 1440, y: 832}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 8
-  offset: {x: -25, y: 25}
---- !u!114 &4861543972854891577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9095871765366007073}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: 0.6
-  scaleType: 3
 --- !u!1 &9199441673116312022
 GameObject:
   m_ObjectHideFlags: 0
@@ -7158,8 +6295,6 @@ GameObject:
   - component: {fileID: 4953116061218081117}
   - component: {fileID: 609858854562360556}
   - component: {fileID: 7798200810134131816}
-  - component: {fileID: 7728470116854334508}
-  - component: {fileID: 9006379635427836869}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -7213,52 +6348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {fileID: 0}
---- !u!114 &7728470116854334508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9199441673116312022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca18ccf7ba5d75468e7356a0003d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  anchor: 6
-  offset: {x: -20, y: -20}
---- !u!114 &9006379635427836869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9199441673116312022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309dc75c0f883e41bb4a16bbb86d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedScreenSize: {x: 1920, y: 1080}
-  renewIndex: 0
-  relativeResize: 1
-  accountForObjectSize: 1
-  absoluteScreenSize: {x: 1920, y: 1080}
-  relativeScreenSize: {x: 1920, y: 1080}
-  relativeTo: {fileID: 0}
-  relativeToSize: {x: 1920, y: 1080}
-  relativeToCenter: {x: 960, y: 540}
-  scaleMultiplier: -1
-  scaleType: 3
 --- !u!1001 &6496387426736844404
 PrefabInstance:
   m_ObjectHideFlags: 0
