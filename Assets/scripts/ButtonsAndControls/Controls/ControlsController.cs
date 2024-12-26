@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -84,7 +85,9 @@ public class ControlsController : Singleton<ControlsController> {
         }
     }
 
-
+    public Vector2 GetPointerPosition() {
+        return GetActionInputValue<Vector2>(D.pointAction);
+    }
 
 
 

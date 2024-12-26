@@ -8,8 +8,6 @@ using UnityEngine.UI;
 [Serializable]
 public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public CableHandler cableHandler;
-
-    [HideInInspector] public Mouse mouse = Mouse.current;
     
     [HideInInspector] public PlugAttributes            plugAttributes;
 

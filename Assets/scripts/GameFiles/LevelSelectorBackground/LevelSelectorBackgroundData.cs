@@ -7,7 +7,6 @@ public class LevelSelectorBackgroundData : Singleton<LevelSelectorBackgroundData
 
     [SerializeField]  public GameObject backgroundImageOnly;
     [SerializeField]  public GameObject buttonsImageOnly;
-    [HideInInspector] public Mouse mouse;
     public Vector2 center;
     [HideInInspector] public Vector2 deltaMousePosition;
     
@@ -20,7 +19,6 @@ public class LevelSelectorBackgroundData : Singleton<LevelSelectorBackgroundData
 
 
     public override void OnAwake() {
-        mouse = Mouse.current;
         center = transform.position;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,9 +11,8 @@ public class WinningControllerGlobal : Singleton<WinningControllerGlobal>, IData
     private Vector2 targetMessagePosition;
 
 
-    public IEnumerator LoadData(GameData data) {
-        yield return new WaitUntil(() => LevelInitializerGlobal.Instance.finishedWithAllTasks);
-        hasWon = data.levelCompletion[LevelInitializerGlobal.Instance.levelIndex];
+    public IEnumerator LoadData(GameData data) { 
+        yield return null;
     }
 
     public void SaveData(GameData data) {}
@@ -32,6 +32,7 @@ public class WinningControllerGlobal : Singleton<WinningControllerGlobal>, IData
     }
 
     public void OnWin() {
+        Debug.Log("OnWIn");
         if(!hasWon) {
             foreach(SoundsAttributes soundsAttribute in SoundsData.Instance.soundEffects) {
                 if(soundsAttribute.soundType == SoundTypes.Victory) {

@@ -9,7 +9,7 @@
                     "name": "JointAction",
                     "type": "Button",
                     "id": "1f7448aa-7de2-4c78-a7f3-7bfff409f5a6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

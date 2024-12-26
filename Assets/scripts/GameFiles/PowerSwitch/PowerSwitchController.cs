@@ -7,7 +7,7 @@ public class PowerSwitchController : Singleton<PowerSwitchController>, IPointerC
     private PowerSwitchData D;
 
     public IEnumerator LoadData(GameData data) {
-        yield return null;
+        yield return new WaitUntil(() => LevelInitializerGlobal.Instance.finishedWithAllTasks);
         if(data.levelCompletion[LevelInitializerGlobal.Instance.levelIndex]) {
             Win();
         }

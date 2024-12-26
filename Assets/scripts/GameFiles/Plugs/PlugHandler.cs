@@ -68,7 +68,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
     }
 
     private void StartDrag() {
-        A.offset = new Vector2(transform.position.x, transform.position.y) - A.mouse.position.value;
+        A.offset = new Vector2(transform.position.x, transform.position.y) - ControlsController.Instance.GetPointerPosition();
         //transform.localScale = new Vector3(1f, 1f, 1f);
         //transform.localScale = new Vector3(0.96f, 0.96f, 0.96f);
         Utilities.TryGetComponent<RectTransform>(A.plugVisual).localScale = new Vector3(0.97f, 0.97f, 0.97f);
@@ -77,10 +77,9 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
         A.dragCoroutine = DragPlug();
         StartCoroutine(A.dragCoroutine);
     }
-
     private IEnumerator DragPlug() {
         yield return new WaitForEndOfFrame();
-        if(A.isDragging) { A.targetPosition = A.mouse.position.value + A.offset; }
+        if(A.isDragging) { A.targetPosition = ControlsController.Instance.GetPointerPosition() + A.offset; }
         
         if(!Utilities.IsApproximate(A.targetPosition, A.cachedPlugPositionDynamic - A.offset, 0.01f)) {
             A.cachedPlugPositionDynamic = Vector2.Lerp(A.cachedPlugPositionDynamic, A.targetPosition, Constants.plugInterpolation);
@@ -202,7 +201,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
     public void InitialCreateDrag() {
         DebugC.Instance?.Log($"InitialCreateDrag: {A.name}");
-        A.offset = new Vector2(transform.position.x, transform.position.y) - A.mouse.position.value;
+        A.offset = new Vector2(transform.position.x, transform.position.y) - ControlsController.Instance.GetPointerPosition();
         //transform.localScale = new Vector3(1f, 1f, 1f);
         //transform.localScale = new Vector3(0.96f, 0.96f, 0.96f);
         Utilities.TryGetComponent<RectTransform>(A.plugVisual).localScale = new Vector3(0.97f, 0.97f, 0.97f);
@@ -215,7 +214,7 @@ public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHand
     private IEnumerator InitialCreateDragPlug() {
         yield return new WaitForEndOfFrame();
         if(!Input.GetMouseButton(0)) { A.isDragging = false; }
-        if(A.isDragging) { A.targetPosition = A.mouse.position.value + A.offset; }
+        if(A.isDragging) { A.targetPosition = ControlsController.Instance.GetPointerPosition() + A.offset; }
         DebugC.Instance?.Log($"isDragging: {A.isDragging}, mouse: {Input.GetMouseButton(0)}");
         if(!Utilities.IsApproximate(A.targetPosition, A.cachedPlugPositionDynamic - A.offset, 0.01f)) {
             A.cachedPlugPositionDynamic = Vector2.Lerp(A.cachedPlugPositionDynamic, A.targetPosition, Constants.plugInterpolation);

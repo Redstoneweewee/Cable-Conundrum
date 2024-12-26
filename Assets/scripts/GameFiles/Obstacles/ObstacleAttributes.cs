@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class ObstacleAttributes : MonoBehaviour {
     [HideInInspector] public ObstacleHandler        obstacleHandler;
-    [HideInInspector] public Mouse                  mouse = Mouse.current;
     [SerializeField]  public bool                   temporarilyModifiable;
 
     [SerializeField]  public ObstacleTypes   obstacleType;

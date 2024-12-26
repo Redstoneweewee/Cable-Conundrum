@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 //[ExecuteInEditMode]
 public class ElectricalStripData : Singleton<ElectricalStripData> {
-    [HideInInspector] public Mouse   mouse = Mouse.current;
-
     [HideInInspector] public float r;
     [HideInInspector] public float s;
     [SerializeField] public GameObject backgroundVisual;

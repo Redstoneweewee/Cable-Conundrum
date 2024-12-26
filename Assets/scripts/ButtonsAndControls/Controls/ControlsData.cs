@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ControlsData : Singleton<ControlsData> {
+    public InputActionReference pointAction;
 
     public InputActionReference exitAction;
     public InputActionReference jointAction;
@@ -29,6 +30,10 @@ public class ControlsData : Singleton<ControlsData> {
 
 
     void OnEnable() {
+        //from EventSystem UI
+        pointAction.action.Enable();
+
+        //from custom controls
         exitAction.action.Enable();
         jointAction.action.Enable();
         obstaclesAction.action.Enable();

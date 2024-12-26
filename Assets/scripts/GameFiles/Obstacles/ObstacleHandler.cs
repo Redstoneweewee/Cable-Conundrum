@@ -91,27 +91,27 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     
     public void OnBeginDrag(PointerEventData eventData) {
         if(!A.temporarilyModifiable) { return; }
-        A.cachedMousePosition = A.mouse.position.value;
+        A.cachedMousePosition = ControlsController.Instance.GetPointerPosition();
     }
     public void OnDrag(PointerEventData eventData) {
         if(!A.temporarilyModifiable) { return; }
         if(A.obstacleType == ObstacleTypes.LeftTableLeg || A.obstacleType == ObstacleTypes.RightTableLeg || A.obstacleType == ObstacleTypes.TableTop) { 
-            if(math.abs(A.cachedMousePosition.x - A.mouse.position.value.x) > LevelResizeGlobal.Instance.tableSnapDistance) {
-                if(A.mouse.position.value.x > A.cachedMousePosition.x) { ModifyTablePosition(Directions.Right); }
+            if(math.abs(A.cachedMousePosition.x - ControlsController.Instance.GetPointerPosition().x) > LevelResizeGlobal.Instance.tableSnapDistance) {
+                if(ControlsController.Instance.GetPointerPosition().x > A.cachedMousePosition.x) { ModifyTablePosition(Directions.Right); }
                 else                                               { ModifyTablePosition(Directions.Left); }
-                A.cachedMousePosition = A.mouse.position.value;
+                A.cachedMousePosition = ControlsController.Instance.GetPointerPosition();
             }
         }
         else if(A.obstacleType == ObstacleTypes.Screw) {
-            Vector2 deltaPosition = new Vector2(math.abs(transform.position.x - A.mouse.position.value.x), math.abs(transform.position.y - A.mouse.position.value.y));
+            Vector2 deltaPosition = new Vector2(math.abs(transform.position.x - ControlsController.Instance.GetPointerPosition().x), math.abs(transform.position.y - ControlsController.Instance.GetPointerPosition().y));
             if(deltaPosition.x > LevelResizeGlobal.Instance.jointDistance) {
                 int repeat = (int)(deltaPosition.x/LevelResizeGlobal.Instance.jointDistance);
                 for(int i=0; i<1; i++) {
-                    if     (A.mouse.position.value.x < transform.position.x) {
+                    if     (ControlsController.Instance.GetPointerPosition().x < transform.position.x) {
                         ModifyScrewPosition(Directions.Left);
                         //A.cachedMousePosition = new Vector2(A.cachedMousePosition.x-LevelResizeGlobal.Instance.jointDistance, A.cachedMousePosition.y);
                     }
-                    else if(A.mouse.position.value.x > transform.position.x) {
+                    else if(ControlsController.Instance.GetPointerPosition().x > transform.position.x) {
                         ModifyScrewPosition(Directions.Right);
                         //A.cachedMousePosition = new Vector2(A.cachedMousePosition.x+LevelResizeGlobal.Instance.jointDistance, A.cachedMousePosition.y);
                     }
@@ -120,11 +120,11 @@ public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
             else if(deltaPosition.y > LevelResizeGlobal.Instance.jointDistance) {
                 int repeat = (int)(deltaPosition.y/LevelResizeGlobal.Instance.jointDistance);
                 for(int i=0; i<1; i++) {
-                    if     (A.mouse.position.value.y > transform.position.y) { 
+                    if     (ControlsController.Instance.GetPointerPosition().y > transform.position.y) { 
                         ModifyScrewPosition(Directions.Up);
                         //A.cachedMousePosition = new Vector2(A.cachedMousePosition.x, A.cachedMousePosition.y+LevelResizeGlobal.Instance.jointDistance);
                     }
-                    else if(A.mouse.position.value.y < transform.position.y) {
+                    else if(ControlsController.Instance.GetPointerPosition().y < transform.position.y) {
                         ModifyScrewPosition(Directions.Down);
                         //A.cachedMousePosition = new Vector2(A.cachedMousePosition.x, A.cachedMousePosition.y-LevelResizeGlobal.Instance.jointDistance);
                     }

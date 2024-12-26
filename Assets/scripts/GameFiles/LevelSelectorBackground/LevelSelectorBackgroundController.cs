@@ -15,7 +15,7 @@ public class LevelSelectorBackgroundController : Singleton<LevelSelectorBackgrou
         if(D.center.x != transform.position.x || D.center.y != transform.position.y) {
             D.center = transform.position;
         }
-        D.deltaMousePosition = D.mouse.position.value - D.center;
+        D.deltaMousePosition = ControlsController.Instance.GetPointerPosition() - D.center;
         D.deltaMousePosition = math.clamp(D.deltaMousePosition, new Vector2(-Screen.width/2, -Screen.height/2), new Vector2(Screen.width/2, Screen.height/2));
         D.targetBackgroundImagePosition = D.center + (D.deltaMousePosition * D.backgroundMovementMultiplier);
         D.targetButtonsImagePosition = D.center + (D.deltaMousePosition * D.buttonsMovementMultiplier);

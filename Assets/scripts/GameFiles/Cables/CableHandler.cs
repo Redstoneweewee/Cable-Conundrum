@@ -95,7 +95,7 @@ public class CableHandler : MonoBehaviour {
     public void InitializeCachedMouseGridIndex() {
         Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
         float   subJointLength  = LevelResizeGlobal.Instance.jointDistance/2;
-        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
+        Vector2 distanceFromTopLeftJoint = new Vector2(ControlsController.Instance.GetPointerPosition().x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - ControlsController.Instance.GetPointerPosition().y);
         A.cachedMouseGridIndex = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         A.cachedMouseGridIndex = new Index2D(Math.Clamp(A.cachedMouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(A.cachedMouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
     }
@@ -105,7 +105,7 @@ public class CableHandler : MonoBehaviour {
 
         Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
         float   subJointLength  = LevelResizeGlobal.Instance.jointDistance/2;
-        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
+        Vector2 distanceFromTopLeftJoint = new Vector2(ControlsController.Instance.GetPointerPosition().x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - ControlsController.Instance.GetPointerPosition().y);
         Index2D mouseGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         mouseGridIndex          = new Index2D(Math.Clamp(mouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(mouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
 

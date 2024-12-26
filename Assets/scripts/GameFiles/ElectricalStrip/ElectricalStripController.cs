@@ -22,22 +22,25 @@ public class ElectricalStripController : Singleton<ElectricalStripController>, I
 
     public void OnBeginDrag(PointerEventData eventData) {
         if(!D.temporarilyModifiable) { return; }
-        D.cachedMousePosition = D.mouse.position.value;
+        D.cachedMousePosition = ControlsController.Instance.GetPointerPosition();
     }
     public void OnDrag(PointerEventData eventData) {
         if(!D.temporarilyModifiable) { return; }
-        if(math.abs(D.cachedMousePosition.x - D.mouse.position.value.x) > LevelResizeGlobal.Instance.electricalStripBaseSize.x) {
-            if(D.mouse.position.value.x > D.cachedMousePosition.x) { ModifySize(Directions.Right); }
+        if(math.abs(D.cachedMousePosition.x - ControlsController.Instance.GetPointerPosition().x) > LevelResizeGlobal.Instance.electricalStripBaseSize.x) {
+            if(ControlsController.Instance.GetPointerPosition().x > D.cachedMousePosition.x) { ModifySize(Directions.Right); }
             else                                               { ModifySize(Directions.Left); }
-            D.cachedMousePosition.x = D.mouse.position.value.x;
+            D.cachedMousePosition.x = ControlsController.Instance.GetPointerPosition().x;
         }
-        else if(math.abs(D.cachedMousePosition.y - D.mouse.position.value.y) > LevelResizeGlobal.Instance.electricalStripBaseSize.y) {
-            if(D.mouse.position.value.y > D.cachedMousePosition.y) { ModifySize(Directions.Up); }
+        else if(math.abs(D.cachedMousePosition.y - ControlsController.Instance.GetPointerPosition().y) > LevelResizeGlobal.Instance.electricalStripBaseSize.y) {
+            if(ControlsController.Instance.GetPointerPosition().y > D.cachedMousePosition.y) { ModifySize(Directions.Up); }
             else                                               { ModifySize(Directions.Down); }
-            D.cachedMousePosition.y = D.mouse.position.value.y;
+            D.cachedMousePosition.y = ControlsController.Instance.GetPointerPosition().y;
         }
     }
 
+    private void CreateBackgroundVisual() {
+
+    }
 
     private void ModifySize(Directions direction) {
         switch(direction) {

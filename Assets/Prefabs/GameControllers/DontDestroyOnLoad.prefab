@@ -712,6 +712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a201615e5b8ebe041b93b1f279bd22fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testingTextBox: {fileID: 0}
+  pointAction: {fileID: 4912580871311998843, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   exitAction: {fileID: -3481171659038101867, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   jointAction: {fileID: 2717749234729071578, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
   obstaclesAction: {fileID: 7372259704417167488, guid: 3f38f1c0c4ef90a4d91c29295dd0f2ac, type: 3}
@@ -6483,6 +6485,10 @@ PrefabInstance:
     - target: {fileID: 5350714457923173422, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030840176690283400, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8129694724301251504, guid: 8e386cc62eca7f54fad3f785ce7b2560, type: 3}
       propertyPath: m_Name

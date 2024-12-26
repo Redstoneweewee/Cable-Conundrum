@@ -103,12 +103,12 @@ public class PlugSelectorController : Singleton<PlugSelectorController>, IPointe
         PlugSelectorAtributes attribute = D.allSelectablePlugs[buttonId];
         if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
-            plug.transform.position = Mouse.current.position.value;
+            plug.transform.position = ControlsController.Instance.GetPointerPosition();
             Utilities.TryGetComponent<PlugHandler>(plug).InitialCreateDrag();
         }
         else if(attribute.Type == PlugSelectorTypes.PermaPlug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);
-            plug.transform.position = Mouse.current.position.value;
+            plug.transform.position = ControlsController.Instance.GetPointerPosition();
             Utilities.TryGetComponent<ObstacleAttributes>(plug).temporarilyModifiable = ControlsData.Instance.obstaclesModifiable;
             Utilities.TryGetComponent<PlugHandler>(plug).InitialCreateDrag();
         }

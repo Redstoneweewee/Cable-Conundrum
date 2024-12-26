@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 
 public class PlugAttributes : MonoBehaviour {
     public static int idIncrement = 1;
-    [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public int id;
 
     [HideInInspector] public PlugHandler               plugHandler;
