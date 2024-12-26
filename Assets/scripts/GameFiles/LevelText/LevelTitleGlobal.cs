@@ -6,8 +6,8 @@ using UnityEngine;
 public class LevelTitleGlobal : Singleton<LevelTitleGlobal> {
     public override void OnAwake() { }
 
-    void Update() {
+    void Start() {
         TextMeshProUGUI text = Utilities.TryGetComponent<TextMeshProUGUI>(gameObject);
-        text.text = "LEVEL "+(LevelInitializerGlobal.Instance.levelIndex + Constants.firstLevelBuidIndex - 1);
+        text.text = "LEVEL "+(LevelInitializerGlobal.Instance.levelIndex + 1);
     }
 }

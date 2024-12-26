@@ -20,10 +20,11 @@ public class WinningControllerGlobal : Singleton<WinningControllerGlobal>, IData
         data.levelCompletion[LevelInitializerGlobal.Instance.levelIndex] = hasWon;
     }
 
+    public override void OnAwake() {}
 
-    public override void OnAwake() {
+    void Start() {
         //used temporarily to figure out what level it is. Later should take from AllLevelsData or smth)
-        int level = SceneManager.GetActiveScene().buildIndex - 1;
+        int level = LevelInitializerGlobal.Instance.levelIndex + 1;
         string text = "Level " + level + " Complete!";
         Utilities.SetText(WinningMessageSizeGlobal.Instance.text.gameObject, text);
 
