@@ -8,15 +8,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class CableHandler : MonoBehaviour {
-    private GridsController gridsController;
-    private LevelInitializerGlobal levelInitializerGlobal;
     private CableParentAttributes A;
 
     void Awake() {
-        gridsController = FindObjectOfType<GridsController>();
-        levelInitializerGlobal = FindObjectOfType<LevelInitializerGlobal>();
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
     }
+
 
     void Start() {
         Initialize();
@@ -30,6 +27,11 @@ public class CableHandler : MonoBehaviour {
             A.cachedPosition = transform.position;
             A.cachedStartingDirection = A.startingDirection;
             A.cachedEndingDirection = A.endingDirection;
+            if(A.plugAttributes.isObstacle) {
+                InitializeCableGrid();
+                GridsController.Instance.RenewAllCablesGrid();
+                IntersectionController.Instance.TestForCableIntersection();
+            }
         }
     }
     void LateUpdate() {
@@ -47,8 +49,8 @@ public class CableHandler : MonoBehaviour {
         A.finishedInitialization = true;
         if(A.plugAttributes.isObstacle) {
             InitializeCableGrid();
-            gridsController.RenewAllCablesGrid();
-            A.intersectionController.TestForCableIntersection();
+            GridsController.Instance.RenewAllCablesGrid();
+            IntersectionController.Instance.TestForCableIntersection();
         }
     }
 
@@ -62,12 +64,12 @@ public class CableHandler : MonoBehaviour {
         }
     }
     public void InitializeCableGrid() {
-        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = FindFirstObjectByType<GridsSkeleton>().jointsSkeletonGrid;
         A.cableGrid = new CablesGridAttributes[skeletonGrid.GetLength(0), skeletonGrid.GetLength(1)];
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
             for(int j=0; j<A.cableGrid.GetLength(1); j++) { A.cableGrid[i,j] = new CablesGridAttributes(); }
         }
-        float   subJointLength  = Constants.jointDistance/2;
+        float   subJointLength  = LevelResizeGlobal.Instance.jointDistance/2;
         for(int i=0; i<A.cables.Count; i++) {
             if(A.cables[i].gameObject.activeSelf == false) { continue; }
             Vector2 distanceFromTopLeftJoint = new Vector2(A.cables[i].position.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.cables[i].position.y);
@@ -91,9 +93,9 @@ public class CableHandler : MonoBehaviour {
 
     }
     public void InitializeCachedMouseGridIndex() {
-        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
-        float   subJointLength  = Constants.jointDistance/2;
-        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
+        Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
+        float   subJointLength  = LevelResizeGlobal.Instance.jointDistance/2;
+        Vector2 distanceFromTopLeftJoint = new Vector2(ControlsController.Instance.GetPointerPosition().x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - ControlsController.Instance.GetPointerPosition().y);
         A.cachedMouseGridIndex = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         A.cachedMouseGridIndex = new Index2D(Math.Clamp(A.cachedMouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(A.cachedMouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
     }
@@ -101,9 +103,9 @@ public class CableHandler : MonoBehaviour {
     public IEnumerator ModifyCablesOnInteract() {
         yield return new WaitForSeconds(0.01f);
 
-        Vector2[,] skeletonGrid = A.gridsSkeleton.jointsSkeletonGrid;
-        float   subJointLength  = Constants.jointDistance/2;
-        Vector2 distanceFromTopLeftJoint = new Vector2(A.mouse.position.value.x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - A.mouse.position.value.y);
+        Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
+        float   subJointLength  = LevelResizeGlobal.Instance.jointDistance/2;
+        Vector2 distanceFromTopLeftJoint = new Vector2(ControlsController.Instance.GetPointerPosition().x - skeletonGrid[0,0].x, skeletonGrid[0,0].y - ControlsController.Instance.GetPointerPosition().y);
         Index2D mouseGridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
         mouseGridIndex          = new Index2D(Math.Clamp(mouseGridIndex.y, 0, skeletonGrid.GetLength(0)-1), Math.Clamp(mouseGridIndex.x, 0, skeletonGrid.GetLength(1)-1));
 
@@ -111,8 +113,7 @@ public class CableHandler : MonoBehaviour {
             InitializeCableGrid();
             if(A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers != null && A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers.Count > 0) {
                 int cachedIndex = A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers[0];
-                Debug.Log("cachedIndex: "+cachedIndex);
-                if(cachedIndex < A.initialCables.Count) { Debug.Log("trying to change an initial cable. Stopped loop."); yield break; }
+                if(cachedIndex < A.initialCables.Count) { DebugC.Instance?.Log("trying to change an initial cable. Stopped loop."); yield break; }
                 Index2D deltaGridIndex = new Index2D(mouseGridIndex.x - A.cachedMouseGridIndex.x, mouseGridIndex.y - A.cachedMouseGridIndex.y);
                 int previousIndex = cachedIndex - 1;
                 if(previousIndex < 0) { previousIndex = 0; }
@@ -123,7 +124,7 @@ public class CableHandler : MonoBehaviour {
                 Directions startDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[previousIndex].gameObject).endingDirection;
                 Index2D gridIntersectionIndex = TestForIntersections(A.cachedMouseGridIndex, A.endingDirection);
                 if(gridIntersectionIndex != new Index2D(-1, -1)) {
-                    A.debugC.Log($"tried to create a loop. stopping cable generation. starting index: ({mouseGridIndex.x}, {mouseGridIndex.y}), direction: {A.endingDirection}, intersectionindex: ({gridIntersectionIndex.x}, {gridIntersectionIndex.y})");
+                    DebugC.Instance?.Log($"tried to create a loop. stopping cable generation. starting index: ({mouseGridIndex.x}, {mouseGridIndex.y}), direction: {A.endingDirection}, intersectionindex: ({gridIntersectionIndex.x}, {gridIntersectionIndex.y})");
                     int resetToIndex = A.cableGrid[gridIntersectionIndex.x, gridIntersectionIndex.y].numbers[0];
                     if(resetToIndex < A.initialCables.Count) { resetToIndex = A.initialCables.Count; }
                     Transform resetToCable = A.cables[resetToIndex];
@@ -134,28 +135,28 @@ public class CableHandler : MonoBehaviour {
                 }
                 else if(!DirectionsHaveError(startDirection, A.endingDirection)) {
                     if(deltaGridIndex.x == -1) { //moved up
-                        A.debugC.Log("moved up");
+                        DebugC.Instance?.Log("moved up");
                         TryGenerateCable(previousIndex, Directions.Up);
                     }
                     else if(deltaGridIndex.x == 1) { //moved down
-                        A.debugC.Log("moved down");
+                        DebugC.Instance?.Log("moved down");
                         TryGenerateCable(previousIndex, Directions.Down);
                     }
                     else if(deltaGridIndex.y == -1) { //moved left
-                        A.debugC.Log("moved left");
+                        DebugC.Instance?.Log("moved left");
                         TryGenerateCable(previousIndex, Directions.Left);
                     }
                     else if(deltaGridIndex.y == 1) { //moved right
-                        A.debugC.Log("moved right");
+                        DebugC.Instance?.Log("moved right");
                         TryGenerateCable(previousIndex, Directions.Right);
                     }
                     else {
-                        Debug.LogWarning("Moved mouse too quickly");
+                        DebugC.Instance?.LogWarning("Moved mouse too quickly");
                     }
                     A.cachedMouseGridIndex = mouseGridIndex;
                 }
                 else {
-                    Debug.LogWarning($"Impossible directions. Starting: {startDirection}, Ending: {A.endingDirection}");
+                    DebugC.Instance?.LogWarning($"Impossible directions. Starting: {startDirection}, Ending: {A.endingDirection}");
                     for(int i=A.cables.Count-1; i>=0; i--) {
                         if(A.cables[i].gameObject.activeSelf) { 
                             A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(A.cables[i].gameObject).endingDirection; 
@@ -169,16 +170,15 @@ public class CableHandler : MonoBehaviour {
             }
             InitializeCableGrid();
             //A.electricalStripController.RenewAllCableGrids();
-            gridsController.RenewAllCablesGrid();
-            A.intersectionController.TestForCableIntersection();
+            GridsController.Instance.RenewAllCablesGrid();
+            IntersectionController.Instance.TestForCableIntersection();
         }
         //moving into an already defined cable
         else if(A.cachedMouseGridIndex != mouseGridIndex && A.cableGrid[mouseGridIndex.x, mouseGridIndex.y].hasCable) {
 
                 if(A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers != null && A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers.Count > 0) {
                     int index = A.cableGrid[A.cachedMouseGridIndex.x, A.cachedMouseGridIndex.y].numbers[0];
-                    if(index < A.initialCables.Count) { Debug.Log("trying to change an initial cable. Stopped loop.");yield break; }
-                    Debug.Log("index: "+index);
+                    if(index < A.initialCables.Count) { DebugC.Instance?.Log("trying to change an initial cable. Stopped loop.");yield break; }
                     Transform previousCable = A.cables[index-1];
                     A.endingDirection = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject).endingDirection;
                     GenerateEndingCables(index);
@@ -187,8 +187,8 @@ public class CableHandler : MonoBehaviour {
                 A.cachedMouseGridIndex = mouseGridIndex;
             InitializeCableGrid();
             //A.electricalStripController.RenewAllCableGrids();
-            gridsController.RenewAllCablesGrid();
-            A.intersectionController.TestForCableIntersection();
+            GridsController.Instance.RenewAllCablesGrid();
+            IntersectionController.Instance.TestForCableIntersection();
         }
         
 
@@ -204,7 +204,7 @@ public class CableHandler : MonoBehaviour {
     }
 
     private Index2D TestForIntersections(Index2D index2D, Directions direction) {
-        int[,] plugsGrid = A.gridsData.plugsGrid;
+        int[,] plugsGrid = GridsData.Instance.plugsGrid;
         switch(direction) {
             case Directions.Up:
                 for(int i=index2D.x-1; i>=0; i--) {
@@ -246,7 +246,7 @@ public class CableHandler : MonoBehaviour {
     private void InitializeInitialCables() {
         foreach(GameObject initialCable in A.initialCables) {
             A.cables.Add(initialCable.transform);
-            A.debugC.Log($"{initialCable.name} added to cables list for {transform.name}");
+            DebugC.Instance?.Log($"{initialCable.name} added to cables list for {transform.name}");
         }
     }
     private void RenewInitialCable() {
@@ -254,41 +254,41 @@ public class CableHandler : MonoBehaviour {
             CableChildAttributes prefabAttributes;
             switch(A.startingDirection) {
                 case Directions.Up:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[6]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[6]); break;
                 case Directions.Down:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[7]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[7]); break;
                 case Directions.Left:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[2]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[2]); break;
                 case Directions.Right:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[3]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[3]); break;
                 default:
-                    Debug.LogError("RenewInitialCable function did not work correctly. None of the conditions were met.");
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(A.cablePrefabs.cablePrefabs[3]); break;
+                    Debug.LogWarning("RenewInitialCable function did not work correctly. None of the conditions were met.");
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[3]); break;
             }
 
-            Sprite  prefabSprite    = A.cablePrefabs.cableSprites[prefabAttributes.cableSpriteIndex];
+            Sprite  prefabSprite    = CablePrefabs.Instance.cableSprites[prefabAttributes.cableSpriteIndex];
             float   prefabZRotation = prefabAttributes.zRotation;
             Vector2 prefabPivot     = prefabAttributes.pivot;
             Utilities.ModifyCableValues(A.cables[0], prefabAttributes, false, 
-                                        prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
+                                        prefabZRotation, LevelResizeGlobal.Instance.straightCableSize, prefabPivot, prefabSprite);
         }
         else {
             Transform newCable;
             switch(A.startingDirection) {
                 case Directions.Up:
-                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[6], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[6], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Down:
-                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[7], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[7], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Left:
-                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[2], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[2], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Right:
-                    newCable = Instantiate(A.cablePrefabs.cablePrefabs[3], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[3], transform).transform;
                     A.cables.Add(newCable);
                     break;
             }
@@ -302,7 +302,7 @@ public class CableHandler : MonoBehaviour {
             A.cables[i].SetSiblingIndex(i);
         }
         int index = A.initialCables.Count;
-        A.lastRotationCableIndex = A.initialCables.Count;
+        A.lastRotationCableIndex = A.initialCables.Count-1;
         
         while(index < A.cables.Count) {
             int nextRotationCableIndex = index;
@@ -324,17 +324,24 @@ public class CableHandler : MonoBehaviour {
     }
 
 
+    //Used to relocate cables when the screen size changes
+    //public void RegenerateAllCablePositions() {
+    //    List<IndexAndDirection> indexAndDirections = new List<IndexAndDirection>();
+    //    foreach(Transform cable in A.cables) {
+//
+    //    }
+    //}
 
     //Used in loading data stored in hardware
     public void TryGenerateCableFromList(List<IndexAndDirection> indexAndDirections) {
-        A.debugC.Log("Generating Cables from List:");
+        DebugC.Instance?.Log("Generating Cables from List:");
         for(int i=0; i<indexAndDirections.Count; i++){
-            A.debugC.Log($"Generating cable at index {indexAndDirections[i].previousIndex+1}, direction: {indexAndDirections[i].endingDirection}");
+            DebugC.Instance?.Log($"Generating cable at index {indexAndDirections[i].previousIndex+1}, direction: {indexAndDirections[i].endingDirection}");
             TryGenerateCable(indexAndDirections[i].previousIndex, indexAndDirections[i].endingDirection);
         }
         InitializeCableGrid();
-        gridsController.RenewAllCablesGrid();
-        A.intersectionController.TestForCableIntersection();
+        GridsController.Instance.RenewAllCablesGrid();
+        IntersectionController.Instance.TestForCableIntersection();
     }
 
     //Generates a straight cable (and a rotation cable if necessary) based on the grid attribute of the previous joint that the player was hovering over.
@@ -358,7 +365,7 @@ public class CableHandler : MonoBehaviour {
         //turning
         else if(previousAttributes.endingDirection != newDirection) {
             TryRenewRotationCable(previousIndex+1, previousAttributes.endingDirection, newDirection);
-            A.debugC.Log("renewed rotation cable, direction: "+newDirection);
+            DebugC.Instance?.Log("renewed rotation cable, direction: "+newDirection);
         }
         GenerateEndingCables(previousIndex+2);
         A.renewSiblingCableIndices = true;
@@ -373,28 +380,28 @@ public class CableHandler : MonoBehaviour {
             case Directions.Up:
                 while(currentPosition.y < Screen.height) {
                     TryRenewStraightCable(index); 
-                    currentPosition.y += Constants.jointDistance;
+                    currentPosition.y += LevelResizeGlobal.Instance.jointDistance;
                     index++;
                 }
                 break;
             case Directions.Down:
                 while(currentPosition.y > 0) {
                     TryRenewStraightCable(index);
-                    currentPosition.y -= Constants.jointDistance;
+                    currentPosition.y -= LevelResizeGlobal.Instance.jointDistance;
                     index++;
                 }
                 break;
             case Directions.Left:
                 while(currentPosition.x > 0) {
                     TryRenewStraightCable(index);
-                    currentPosition.x -= Constants.jointDistance;
+                    currentPosition.x -= LevelResizeGlobal.Instance.jointDistance;
                     index++;
                 }
                 break;
             case Directions.Right:
                 while(currentPosition.x < Screen.width) {
                     TryRenewStraightCable(index);
-                    currentPosition.x += Constants.jointDistance;
+                    currentPosition.x += LevelResizeGlobal.Instance.jointDistance;
                     index++;
                 }
                 break;
@@ -420,20 +427,20 @@ public class CableHandler : MonoBehaviour {
         Directions previousEndingDirection = previousAttributes.endingDirection;
         ShadowDirections shadowDirection = Utilities.GetShadowDirectionForStraightCables(previousAttributes.shadowDirection, previousAttributes.startingDirection, previousAttributes.isRotationCable);
         
-        GameObject cablePrefab = Utilities.GetStraightCablePrefab(A.cablePrefabs, shadowDirection, previousEndingDirection);
+        GameObject cablePrefab = Utilities.GetStraightCablePrefab(CablePrefabs.Instance, shadowDirection, previousEndingDirection);
         CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(cablePrefab);
         Vector3    deltaPosition;
-        if(!previousAttributes.isRotationCable) { A.debugC.Log("previous is not rotation node"); deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
-        else                                   { A.debugC.Log("previous is rotation node"); deltaPosition = Vector3.zero; }
+        if(!previousAttributes.isRotationCable) { deltaPosition = LevelResizeGlobal.Instance.jointDistance*prefabAttributes.directionMultiple; }
+        else                                   { deltaPosition = Vector3.zero; }
         
         
         if(A.cables.Count > index) {
             A.cables[index].position = previousCable.position + deltaPosition;
-            Sprite     prefabSprite = A.cablePrefabs.cableSprites[prefabAttributes.cableSpriteIndex];
+            Sprite     prefabSprite = CablePrefabs.Instance.cableSprites[prefabAttributes.cableSpriteIndex];
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
             Utilities.ModifyCableValues(A.cables[index], prefabAttributes, false, 
-                                        prefabZRotation, Constants.straightCableSize, prefabPivot, prefabSprite);
+                                        prefabZRotation, LevelResizeGlobal.Instance.straightCableSize, prefabPivot, prefabSprite);
             A.cables[index].gameObject.SetActive(true);
         }
         else {
@@ -447,18 +454,18 @@ public class CableHandler : MonoBehaviour {
         Transform previousCable = A.cables[index-1];
         CableChildAttributes previousAttributes = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject);
         ShadowDirections shadowDirection = Utilities.GetShadowDirectionForRotationCables(previousAttributes.shadowDirection, endingDirection);
-        GameObject rotationCablePrefab = Utilities.GetRotationCablePrefab(A.cablePrefabs, shadowDirection, startingDirection, endingDirection);
-        Vector3 deltaPosition = Constants.jointDistance*previousAttributes.directionMultiple;
+        GameObject rotationCablePrefab = Utilities.GetRotationCablePrefab(CablePrefabs.Instance, shadowDirection, startingDirection, endingDirection);
+        Vector3 deltaPosition = LevelResizeGlobal.Instance.jointDistance*previousAttributes.directionMultiple;
         Vector2 placePosition = previousCable.position + deltaPosition;
         if(A.cables.Count > index) {
             CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(rotationCablePrefab);
-            Sprite     prefabSprite = A.cablePrefabs.cableSprites[prefabAttributes.cableSpriteIndex];
+            Sprite     prefabSprite = CablePrefabs.Instance.cableSprites[prefabAttributes.cableSpriteIndex];
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
 
             A.cables[index].position = placePosition;
             Utilities.ModifyCableValues(A.cables[index], prefabAttributes, true, 
-                                        prefabZRotation, Constants.rotationCableSize, prefabPivot, prefabSprite);
+                                        prefabZRotation, LevelResizeGlobal.Instance.rotationCableSize, prefabPivot, prefabSprite);
         }
         else {
             Transform newCable = Instantiate(rotationCablePrefab, transform).transform;

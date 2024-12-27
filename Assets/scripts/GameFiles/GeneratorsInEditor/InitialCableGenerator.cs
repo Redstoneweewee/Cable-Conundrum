@@ -6,20 +6,16 @@ using UnityEngine;
 
 //Note: Place this script next to CableParentAttributes
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class InitialCableGenerator : MonoBehaviour {
     [Header("Place this script next to CableParentAttributes.\n"+
-            "Make sure to update the initial cables list in the editor before entering play mode.\n"+
-            "For example, add and remove an extra element to update it.\n")]
+            "**Make sure to remove this script before entering play mode.**")]
     [SerializeField] CableParentAttributes cableParentAttributes;
     [SerializeField] Directions generateDirection;
     [SerializeField] bool generateCable = false;
 
-    [HideInInspector] CablePrefabs cablePrefabs;
-
     void Update() {
         if(cableParentAttributes != null && generateCable) { 
-            cablePrefabs = FindObjectOfType<CablePrefabs>();
             int previousIndex = cableParentAttributes.initialCables.Count-1;
             GenerateCable(previousIndex, generateDirection);
             RenewRotationAndIntersectionCables();
@@ -32,7 +28,6 @@ public class InitialCableGenerator : MonoBehaviour {
     private void GenerateCable(int previousIndex, Directions newDirection) {
         Transform previousCable;
         CableChildAttributes previousAttributes;
-        Debug.Log("previousIndex: "+previousIndex);
         previousCable = cableParentAttributes.initialCables[previousIndex].transform;
         previousAttributes = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject);
         
@@ -44,7 +39,7 @@ public class InitialCableGenerator : MonoBehaviour {
         else if(previousAttributes.endingDirection != newDirection) {
             GenerateRotationCable(previousIndex+1, previousAttributes.endingDirection, newDirection);
         }
-        DebugC.Get().LogListAlways("initialCables: ", cableParentAttributes.initialCables);
+        DebugC.Instance?.LogList("initialCables: ", cableParentAttributes.initialCables);
     }
 
 
@@ -54,11 +49,11 @@ public class InitialCableGenerator : MonoBehaviour {
         Directions previousEndingDirection = previousAttributes.endingDirection;
         ShadowDirections shadowDirection = Utilities.GetShadowDirectionForStraightCables(previousAttributes.shadowDirection, previousAttributes.startingDirection, previousAttributes.isRotationCable);
         
-        GameObject cablePrefab = Utilities.GetStraightCablePrefab(cablePrefabs, shadowDirection, previousEndingDirection);
+        GameObject cablePrefab = Utilities.GetStraightCablePrefab(CablePrefabs.Instance, shadowDirection, previousEndingDirection);
         CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(cablePrefab);
         Vector3    deltaPosition;
-        if(!previousAttributes.isRotationCable) { DebugC.Get().Log("previous is not rotation node"); deltaPosition = Constants.jointDistance*prefabAttributes.directionMultiple; }
-        else                                   { DebugC.Get().Log("previous is rotation node"); deltaPosition = Vector3.zero; }
+        if(!previousAttributes.isRotationCable) { deltaPosition = LevelResizeGlobal.Instance.jointDistance*prefabAttributes.directionMultiple; }
+        else                                    { deltaPosition = Vector3.zero; }
         
         cableParentAttributes.initialCables.Add(Instantiate(cablePrefab, transform));
         cableParentAttributes.initialCables[index].transform.position = cableParentAttributes.initialCables[index-1].transform.position + deltaPosition;
@@ -72,8 +67,8 @@ public class InitialCableGenerator : MonoBehaviour {
         Transform previousCable = cableParentAttributes.initialCables[index-1].transform;
         CableChildAttributes previousAttributes = Utilities.TryGetComponent<CableChildAttributes>(previousCable.gameObject);
         ShadowDirections shadowDirection = Utilities.GetShadowDirectionForRotationCables(previousAttributes.shadowDirection, endingDirection);
-        GameObject rotationCablePrefab = Utilities.GetRotationCablePrefab(cablePrefabs, shadowDirection, startingDirection, endingDirection);
-        Vector3 deltaPosition = Constants.jointDistance*previousAttributes.directionMultiple;
+        GameObject rotationCablePrefab = Utilities.GetRotationCablePrefab(CablePrefabs.Instance, shadowDirection, startingDirection, endingDirection);
+        Vector3 deltaPosition = LevelResizeGlobal.Instance.jointDistance*previousAttributes.directionMultiple;
         Vector2 placePosition = previousCable.position + deltaPosition;
 
         Transform newCable = Instantiate(rotationCablePrefab, transform).transform;

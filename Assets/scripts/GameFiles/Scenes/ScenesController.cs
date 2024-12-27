@@ -6,31 +6,34 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class ScenesController : MonoBehaviour {
+public class ScenesController : Singleton<ScenesController> {
     private ScenesData D;
 
-    void Awake() {
-        D = Utilities.TryGetComponent<ScenesData>(gameObject);
-
-        SceneManager.sceneLoaded += OnSceneLoad;
+    public override void OnAwake() {
+        D = ScenesData.Instance;
+        SceneManager.sceneLoaded += OnInitialSceneLoad;
+        SceneManager.LoadScene(1);
         StartCoroutine(InitialSceneLoad());
     }
 
+    private void OnInitialSceneLoad(Scene scene, LoadSceneMode mode) {
+        D.initialFinishedLoading = true;
+    }
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
         D.sceneFinishedLoading = true;
     }
 
-    public void TryLoadScene(LoadSceneTypes loadSceneType, int levelIndex = 0) {
+    public void TryLoadScene(LoadSceneTypes loadSceneType, int levelNumber = 0) {
         int buildIndex;
         switch(loadSceneType) {
             case LoadSceneTypes.Menu:
-                buildIndex = 0;
-                break;
-            case LoadSceneTypes.LevelSelector:
                 buildIndex = 1;
                 break;
+            case LoadSceneTypes.LevelSelector:
+                buildIndex = 2;
+                break;
             case LoadSceneTypes.Level:
-                buildIndex = levelIndex + Constants.firstLevelBuidIndex - 1;
+                buildIndex = levelNumber + Constants.firstLevelBuidIndex - 1;
                 break;
             case LoadSceneTypes.NextLevel:
                 buildIndex = SceneManager.GetActiveScene().buildIndex + 1;
@@ -39,7 +42,7 @@ public class ScenesController : MonoBehaviour {
                 buildIndex = SceneManager.GetActiveScene().buildIndex - 1;
                 break;
             default:
-                buildIndex = 0;
+                buildIndex = 1;
                 break;
         }
 
@@ -64,50 +67,80 @@ public class ScenesController : MonoBehaviour {
         //Wait until the scene is finished loading to continue.
         yield return new WaitUntil(() => D.sceneFinishedLoading);
         
-        //Load the game
-        DataPersistenceManager.instance.LoadGame();
+        //Renew Resizes
+        StartCoroutine(ResizeGlobal.Instance.RenewAll());
+        Debug.Log("AAAAAAAAAAAAAAAAAAAA renewed resizes");
 
-        //If the scene has a LevelStart component, wait until everything is loaded before ending the crossfade transition.
-        if(FindObjectOfType<InitializerBase>()) {
-            yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().finishedWithAllTasks);
-            yield return new WaitUntil(() => FindObjectOfType<InitializerBase>().allButtonsLoaded);
+        //Load the game
+        DataPersistenceManager.Instance.LoadGame();
+
+        if(MenuInitializerGlobal.Instance != null) {
+            yield return new WaitUntil(() => MenuInitializerGlobal.Instance.finishedWithAllTasks);
+            yield return new WaitUntil(() => MenuInitializerGlobal.Instance.allButtonsLoaded);
+        }
+        else if(LevelSelectorInitializerGlobal.Instance != null) {
+            yield return new WaitUntil(() => LevelSelectorInitializerGlobal.Instance.finishedWithAllTasks);
+            yield return new WaitUntil(() => LevelSelectorInitializerGlobal.Instance.allButtonsLoaded);
+        }
+        else if(LevelInitializerGlobal.Instance != null) {
+            yield return new WaitUntil(() => LevelInitializerGlobal.Instance.finishedWithAllTasks);
+            yield return new WaitUntil(() => LevelInitializerGlobal.Instance.allButtonsLoaded);
         }
         
         //End the crossfade transition.
         D.crossFadeTransition.SetTrigger("EndCrossFade");
-        Debug.Log("Is finished with all tasks. Ending Fade.");
+        DebugC.Instance?.Log("Is finished with all tasks. Ending Fade.");
 
         //Set animationIsFinished to true after the animation is finished.
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;
-        Debug.Log("end");
+        DebugC.Instance?.Log("Animation ended.");
     }
 
 
     private IEnumerator InitialSceneLoad() {
+        yield return new WaitUntil(() => D.initialFinishedLoading);
+        SceneManager.sceneLoaded += OnSceneLoad;
+
+        if(MenuInitializerGlobal.Instance != null) {
+            yield return new WaitUntil(() => MenuInitializerGlobal.Instance.finishedWithAllTasks);
+            yield return new WaitUntil(() => MenuInitializerGlobal.Instance.allButtonsLoaded);
+        }
+        else if(LevelSelectorInitializerGlobal.Instance != null) {
+            yield return new WaitUntil(() => LevelSelectorInitializerGlobal.Instance.finishedWithAllTasks);
+            yield return new WaitUntil(() => LevelSelectorInitializerGlobal.Instance.allButtonsLoaded);
+        }
+        else if(LevelInitializerGlobal.Instance != null) {
+            yield return new WaitUntil(() => LevelInitializerGlobal.Instance.finishedWithAllTasks);
+            yield return new WaitUntil(() => LevelInitializerGlobal.Instance.allButtonsLoaded);
+        }
+        D.crossFadeTransition.SetTrigger("InitialCrossFade");
+        DebugC.Instance?.Log("Is finished with all tasks. Ending Fade. ");
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;
     }
 
 
 
-    public void OnPressEnterLevelButton(int levelIndex) {
-        TryLoadScene(LoadSceneTypes.Level, levelIndex);
+    public void OnPressEnterLevelButton(int levelNumber) {
+        DataPersistenceManager.Instance.SaveGame();
+        TryLoadScene(LoadSceneTypes.Level, levelNumber);
     }
     public void OnPressEnterNextLevelButton() {
+        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.NextLevel);
-        DataPersistenceManager.instance.SaveGame();
     }
     public void OnPressEnterPreviousLevelButton() {
+        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.PreviousLevel);
-        DataPersistenceManager.instance.SaveGame();
     }
 
     public void OnPressEnterLevelSelectorButton() {
+        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.LevelSelector);
-        DataPersistenceManager.instance.SaveGame();
     }
     public void OnPressEnterMenuButton() {
+        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.Menu);
     }
 }

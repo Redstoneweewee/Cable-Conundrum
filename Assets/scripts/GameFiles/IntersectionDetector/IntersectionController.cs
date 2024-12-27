@@ -1,61 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class IntersectionController : MonoBehaviour {
+public class IntersectionController : Singleton<IntersectionController> {
     IntersectionData D;
 
-    void Awake() {
-        D = Utilities.TryGetComponent<IntersectionData>(gameObject);
+    public override void OnAwake() {
+        D = IntersectionData.Instance;
     }
 
     void Start() {
-        StartCoroutine(InitialWaitUntilUpdate(0.02f));
+        StartCoroutine(InitialWaitUntilUpdate());
     }
-
-    private IEnumerator InitialWaitUntilUpdate(float time) {
-        yield return new WaitForSeconds(time);
+    private IEnumerator InitialWaitUntilUpdate() {
+        yield return new WaitUntil(() => GridsData.Instance.initialized);
         //RenewAllObstaclesGrid();
         TestForCableIntersection();
     }
-    /*
-    public void RenewAllObstaclesGrid() {
-        gridsData.allObstaclesGrid = new bool[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
-        ObstacleAttributes[] obstacleAttributes = FindObjectsOfType<ObstacleAttributes>();
-        foreach(ObstacleAttributes obstacleAttribute in obstacleAttributes) {
-            if(obstacleAttribute.obstacleType == ObstacleTypes.Plug) { continue; }
-            if(obstacleAttribute.obstacleGrid == null) { Debug.LogWarning($"{obstacleAttribute.name}'s obstaclesGrid not defined."); continue; }
 
-            for(int i=0; i<gridsData.allObstaclesGrid.GetLength(0); i++) {
-                for(int j=0; j<gridsData.allObstaclesGrid.GetLength(1); j++) {
-                    if(obstacleAttribute.obstacleGrid[i,j] == true) {
-                        gridsData.allObstaclesGrid[i,j] = true;
-                    }
-                }
-            }
-        }
-        string text = "";
-        for(int i=0; i<gridsData.allObstaclesGrid.GetLength(0); i++) {
-            text += "| ";
-            for(int j=0; j<gridsData.allObstaclesGrid.GetLength(1); j++) {
-                if(gridsData.allObstaclesGrid[i,j] == true) { text += "*  "; }
-                else { text += "-  "; }
-            }
-            text += " |\n";
-        }
-        Debug.Log("allObstaclesGrid: \n"+text);
-    }
-    */
     public void TestForCableIntersection() {
         ClearAllCableIntersections();
-        for(int i=0; i<D.gridsData.allCablesGrid.GetLength(0); i++) {
-            for(int j=0; j<D.gridsData.allCablesGrid.GetLength(1); j++) {
+        for(int i=0; i<GridsData.Instance.allCablesGrid.GetLength(0); i++) {
+            for(int j=0; j<GridsData.Instance.allCablesGrid.GetLength(1); j++) {
                 //if it is greater or equal to 2, there are intersections at that joint position
-                if(D.gridsData.plugsGrid[i,j] > 0) {
-                    DetermineTypeOfIntersection(i, j, D.gridsData.plugsGrid[i,j]);
+                if(GridsData.Instance.plugsGrid[i,j] > 0) {
+                    DetermineTypeOfIntersection(i, j, GridsData.Instance.plugsGrid[i,j]);
                 }
-                else if(D.gridsData.allCablesGrid[i,j] >= 2 || D.gridsData.allObstaclesGrid[i,j] == true) {
+                else if(GridsData.Instance.allCablesGrid[i,j] >= 2 || GridsData.Instance.allObstaclesGrid[i,j] == true) {
                     DetermineTypeOfIntersection(i, j, 0);
                 }
             }
@@ -63,24 +36,33 @@ public class IntersectionController : MonoBehaviour {
     }
 
     public void ClearAllCableIntersections() {
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
-            CableParentAttributes cableParentAttributes = plugAttribute.cableParentAttributes;
-            foreach(Transform cable in cableParentAttributes.cables) {
-                Image cableImage = Utilities.TryGetComponentInChildren<Image>(cable.gameObject);
-                if(!plugAttribute.isObstacle) { cableImage.color = new Color(1, 1, 1, cableImage.color.a); }
-                else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
-            }
+            ClearCableIntersections(plugAttribute);
         }
         D.hasIntersection = false;
     }
 
+    public void ClearCableIntersections(PlugAttributes plugAttribute) {
+        CableParentAttributes cableParentAttributes = plugAttribute.cableParentAttributes;
+        int count = 1;
+        foreach(Transform cable in cableParentAttributes.cables) {
+            Image cableImage = Utilities.TryGetComponentInChildren<Image>(cable.gameObject);
+            if(!plugAttribute.isObstacle) { 
+                cableImage.color = new Color(1, 1, 1, cableImage.color.a); 
+            }
+            else { cableImage.color = new Color(Constants.obstacleCableColor.r, Constants.obstacleCableColor.g, Constants.obstacleCableColor.b, cableImage.color.a); }
+            count++;
+        }
+    }
+
     private void DetermineTypeOfIntersection(int i, int j, int plugId) {
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
+        PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         //CableGridAttributes[] allCablesAtPosition = new CableGridAttributes[cableGenerations.Length];
         //populates allCablesAtPosition to find out how the cables are overlapping
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             CableParentAttributes cableParentAttributes = plugAttribute.cableParentAttributes;
+            if(!plugAttribute.isPluggedIn) { continue; }
             if(cableParentAttributes.cableGrid == null) { continue; }
             if(!cableParentAttributes.cableGrid[i,j].hasCable) { continue; }
             if(plugId != 0 && plugAttribute.id == plugId) { continue; }

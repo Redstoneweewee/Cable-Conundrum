@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
-public class InitializeBackground : MonoBehaviour {
+//[ExecuteInEditMode]
+public class InitializeBackground : Singleton<InitializeBackground> {
     RectTransform rectangularTransform;
 
+    public override void OnAwake() { }
+    
     void Start() {
         rectangularTransform = Utilities.TryGetComponent<RectTransform>(gameObject);
     }

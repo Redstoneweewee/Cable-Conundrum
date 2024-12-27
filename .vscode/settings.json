@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ElectricalOutletsGame.sln",
+    "dotnet.defaultSolution": "Cable Conundrum.sln",
     "files.associations": {
         "iostream": "cpp"
     }

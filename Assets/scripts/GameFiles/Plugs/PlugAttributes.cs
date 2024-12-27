@@ -8,25 +8,17 @@ using UnityEngine.InputSystem;
 
 public class PlugAttributes : MonoBehaviour {
     public static int idIncrement = 1;
-    [HideInInspector] public DebugC debugC;
-    [HideInInspector] public Mouse mouse = Mouse.current;
     [HideInInspector] public int id;
 
-    [HideInInspector] public GridsData                 gridsData;
-    [HideInInspector] public GridsController           gridsController;
     [HideInInspector] public PlugHandler               plugHandler;
-    [HideInInspector] public ControlsData              controlsData;
-    [HideInInspector] public ElectricalStripData       electricalStripData;
-    [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public IntersectionData          intersectionData;
-    [HideInInspector] public IntersectionController    intersectionController;
-    [HideInInspector] public JointsData                jointsData;
     [HideInInspector] public CableParentAttributes     cableParentAttributes;
     [HideInInspector] public CableHandler              cableHandler;
 
     [SerializeField] public bool isPluggedIn = false;
     [SerializeField] public bool isObstacle = false;
     [SerializeField] public ObstacleAttributes obstacleAttributes;
+    [Tooltip("PlugPriority is determined by how \"new\" the plug is in terms of game chapters. Higher number = higher priority")]
+    [SerializeField] [Min(0)] public int plugPriority;
     [SerializeField] public Vector2 plugSize = new Vector2(1, 1);
     [Tooltip("This is all the space on the joints grid that this plug takes up. These values are used in IntersectionDetector. The first position should be the left-most position.")]
     [SerializeField] public List<Vector2> localJointPositionsTakenUp = new List<Vector2>();
@@ -51,16 +43,7 @@ public class PlugAttributes : MonoBehaviour {
 
     // Start is called before the first frame update
     void Awake() {
-        debugC = DebugC.Get();
         plugHandler               = Utilities.TryGetComponent<PlugHandler>(gameObject);
-        gridsData                 = FindObjectOfType<GridsData>();
-        gridsController           = FindObjectOfType<GridsController>();
-        controlsData              = FindObjectOfType<ControlsData>();
-        electricalStripData       = FindObjectOfType<ElectricalStripData>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
-        intersectionData          = FindObjectOfType<IntersectionData>();
-        intersectionController    = FindObjectOfType<IntersectionController>();
-        jointsData                = FindObjectOfType<JointsData>();
         cableParentAttributes     = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
         cableHandler              = Utilities.TryGetComponentInChildren<CableHandler>(gameObject);
 
@@ -68,8 +51,8 @@ public class PlugAttributes : MonoBehaviour {
         id = idIncrement;
         idIncrement++;
 
-        debugC.Log("initialized "+transform.name);
-        debugC.Log($"{transform.name}'s id: {id}");
+        DebugC.Instance?.Log("initialized "+transform.name);
+        DebugC.Instance?.Log($"{transform.name}'s id: {id}");
     }
 
 }

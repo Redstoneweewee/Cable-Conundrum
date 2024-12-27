@@ -7,11 +7,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //[ExecuteInEditMode]
-public class JointsController : MonoBehaviour {
+public class JointsController : Singleton<JointsController> {
     private JointsData D;
 
-    void Awake() {
-        D = Utilities.TryGetComponent<JointsData>(gameObject);
+    public override void OnAwake() {
+        D = JointsData.Instance;
     }
     
     void Start() {
@@ -21,7 +21,7 @@ public class JointsController : MonoBehaviour {
     private IEnumerator startDelayed() {
         yield return new WaitForEndOfFrame();
         //RenewJoints();
-        D.jointsEnabled = D.controlsData.masterJointsEnabled;
+        D.jointsEnabled = ControlsData.Instance.masterJointsEnabled;
     }
 
     // Update is called once per frame
@@ -36,18 +36,17 @@ public class JointsController : MonoBehaviour {
             D.cachedJointsEnabled = D.jointsEnabled;
         }
         else if(D.cachedJointsEnabled != D.jointsEnabled && D.jointsEnabled == true) {
-            if(D.jointsOpacityGlobal.OpacityCoroutine == null) {
-                D.jointsOpacityGlobal.OpacityCoroutine = D.jointsOpacityGlobal.ModifyJointsOpacity();
-                StartCoroutine(D.jointsOpacityGlobal.OpacityCoroutine);
-                Debug.Log("restarted");
+            if(JointsOpacityGlobal.Instance.OpacityCoroutine == null) {
+                JointsOpacityGlobal.Instance.OpacityCoroutine = JointsOpacityGlobal.Instance.ModifyJointsOpacity();
+                StartCoroutine(JointsOpacityGlobal.Instance.OpacityCoroutine);
             }
             else {
-                D.jointsOpacityGlobal.IsFirstLoop = false;
+                JointsOpacityGlobal.Instance.IsFirstLoop = false;
             }
             //jointsOpacityController.tfd = 0;
-            D.jointsOpacityGlobal.PreviousIsFirstOpacity = D.jointsOpacityGlobal.IsFirstOpacity;
-            D.jointsOpacityGlobal.IsFirstOpacity = true;
-            D.jointsOpacityGlobal.CalculateDValues();
+            JointsOpacityGlobal.Instance.PreviousIsFirstOpacity = JointsOpacityGlobal.Instance.IsFirstOpacity;
+            JointsOpacityGlobal.Instance.IsFirstOpacity = true;
+            JointsOpacityGlobal.Instance.CalculateDValues();
             D.cachedJointsEnabled = D.jointsEnabled;
         }
     }

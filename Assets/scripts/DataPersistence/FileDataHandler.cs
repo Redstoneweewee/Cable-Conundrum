@@ -29,7 +29,7 @@ public class FileDataHandler {
                 }
 
                 //Deserialize the data from Json back into the C# object
-                //loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
+                ////loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
                 loadedData = JsonConvert.DeserializeObject<GameData>(dataToLoad);
             }
             catch(Exception e) {
@@ -41,18 +41,21 @@ public class FileDataHandler {
 
     public void Save(GameData data) {
         //Use Path.Combine to account for different OS's having different path separators.
+        Debug.Log("Savedd:: ");
+        data.Log();
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try {
             //Create the directory the file will be written to if it doesn't already exist
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
-
             //Serialize the C# game data object into Json
-            ////string dataToStore = JsonUtility.ToJson(data, true);
-            //string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented);
+            //string dataToStore = JsonUtility.ToJson(gameDataSerializable, true);
+
+
+            ////string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented);
             string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
-
+            Debug.Log($"dataToStore: {dataToStore}");
             //Write the serialized data to the file
             using (FileStream stream = new FileStream(fullPath, FileMode.Create)) {
                 using(StreamWriter writer = new StreamWriter(stream)) {

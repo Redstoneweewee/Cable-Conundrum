@@ -7,13 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //[ExecuteInEditMode]
-public class JointsData : MonoBehaviour {
-    [HideInInspector] public JointsController jointsController;
-
-    [HideInInspector] public DebugC debugC;
-    [HideInInspector] public ControlsData controlsData;
-    [HideInInspector] public JointsOpacityGlobal jointsOpacityGlobal;
-    [HideInInspector] public ElectricalStripData electricalStripData;
+public class JointsData : Singleton<JointsData> {
     [SerializeField]  public GameObject jointPrefab;
     [HideInInspector] public bool cachedJointsEnabled = false;
     [SerializeField]  public bool jointsEnabled = false;
@@ -21,16 +15,12 @@ public class JointsData : MonoBehaviour {
     //[HideInInspector] public Transform[,] jointsGrid;
     
     [SerializeField]  public Material jointMaterial;
-    [HideInInspector] public float r = Constants.electricalStripBaseSize.x;
-    [HideInInspector] public float s = Constants.electricalStripSeparatorSize;
+    [HideInInspector] public float r;
+    [HideInInspector] public float s;
 
-    // Start is called before the first frame update
-    void Awake() {
-        debugC = DebugC.Get();
-        jointsController    = Utilities.TryGetComponent<JointsController>(gameObject);
-        controlsData        = FindObjectOfType<ControlsData>();
-        jointsOpacityGlobal = Utilities.TryGetComponent<JointsOpacityGlobal>(gameObject);
-        electricalStripData = FindObjectOfType<ElectricalStripData>();
+    public override void OnAwake() {
+        r = LevelResizeGlobal.Instance.electricalStripBaseSize.x;
+        s = LevelResizeGlobal.Instance.electricalStripSeparatorDistance;
         cachedScreenSize    = new Vector2(Screen.width, Screen.height);
         jointMaterial.color = Constants.jointColor;
     }

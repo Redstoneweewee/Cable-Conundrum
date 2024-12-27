@@ -3,16 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Will be deprecated soon
 public class SavePlug {
-    public Vector3 plugPosition;
+    public Index2D socketIndex;
     public bool isPluggedIn;
     public List<IndexAndDirection> indexAndDirections;
 
 
-    public SavePlug(Vector3 plugPosition, bool isPluggedIn, List<IndexAndDirection> indexAndDirections) {
-        this.plugPosition = plugPosition;
+    public SavePlug(Index2D socketIndex, bool isPluggedIn, List<IndexAndDirection> indexAndDirections) {
+        this.socketIndex = socketIndex;
         this.isPluggedIn = isPluggedIn;
         this.indexAndDirections = indexAndDirections;
+    }
+    public SavePlug(bool isPluggedIn, List<IndexAndDirection> indexAndDirections) {
+        this.socketIndex = new Index2D(-1, -1);
+        this.isPluggedIn = isPluggedIn;
+        this.indexAndDirections = indexAndDirections;
+    }
+    public SavePlug() {
+        this.socketIndex = new Index2D(-1, -1);
+        this.isPluggedIn = false;
+        this.indexAndDirections = new List<IndexAndDirection>();
     }
 }
 

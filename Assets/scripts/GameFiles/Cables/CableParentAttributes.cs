@@ -8,19 +8,8 @@ using UnityEngine.UI;
 [Serializable]
 public class CableParentAttributes : MonoBehaviour {
     [HideInInspector] public CableHandler cableHandler;
-
-    [HideInInspector] public Mouse mouse = Mouse.current;
-    [HideInInspector] public DebugC debugC;
-
     
-    [HideInInspector] public CablePrefabs              cablePrefabs;
-    [HideInInspector] public GridsData                 gridsData;
-    [HideInInspector] public GridsSkeleton             gridsSkeleton;
     [HideInInspector] public PlugAttributes            plugAttributes;
-    [HideInInspector] public IntersectionController    intersectionController;
-    [HideInInspector] public ElectricalStripData       electricalStripData;
-    [HideInInspector] public ElectricalStripController electricalStripController;
-    [HideInInspector] public JointsData                jointsData;
 
     /* Cables:
     * [ [0 ]UpLeft,    [1 ]UpRight,    [2 ]DownLeft,    [3 ]DownRight,    [4 ]LeftUp,    [5 ]LeftDown,    [6 ]RightUp,    [7 ]RightDown,   ]
@@ -31,7 +20,7 @@ public class CableParentAttributes : MonoBehaviour {
     
     [SerializeField]  public List<GameObject> initialCables;// = new List<GameObject>();
     [HideInInspector] public Vector3         cachedPosition;
-    [HideInInspector] public List<Transform> cables = new List<Transform>();
+    [SerializeField] public List<Transform> cables = new List<Transform>();
     //doesn't get used/generated until the player plugs the plug into a socket
     //numbers always contain 0; keep going up to find the next cable until the size of the grid
     [HideInInspector] public CablesGridAttributes[,] cableGrid; 
@@ -49,15 +38,7 @@ public class CableParentAttributes : MonoBehaviour {
     [SerializeField]  public Directions       endingDirection;
 
     void Awake() {
-        debugC = DebugC.Get();
         cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
         plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
-        cablePrefabs              = FindObjectOfType<CablePrefabs>();
-        gridsData                 = FindObjectOfType<GridsData>();
-        gridsSkeleton             = FindObjectOfType<GridsSkeleton>();
-        intersectionController    = FindObjectOfType<IntersectionController>();
-        electricalStripData       = FindObjectOfType<ElectricalStripData>();
-        electricalStripController = FindObjectOfType<ElectricalStripController>();
-        jointsData                = FindObjectOfType<JointsData>();
     }
 }

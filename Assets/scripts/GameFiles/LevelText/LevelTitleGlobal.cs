@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class LevelTitleGlobal : MonoBehaviour {
-    LevelInitializerGlobal levelInitializerGlobal;
-    void Awake() {
-        levelInitializerGlobal = FindObjectOfType<LevelInitializerGlobal>();
+public class LevelTitleGlobal : Singleton<LevelTitleGlobal> {
+    public override void OnAwake() { }
+
+    void Start() {
         TextMeshProUGUI text = Utilities.TryGetComponent<TextMeshProUGUI>(gameObject);
-        text.text = "LEVEL "+(levelInitializerGlobal.levelIndex + Constants.firstLevelBuidIndex - 1);
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        text.text = "LEVEL "+(LevelInitializerGlobal.Instance.levelIndex + 1);
     }
 }

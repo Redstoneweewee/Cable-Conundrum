@@ -10,20 +10,20 @@ public class SocketHandler : MonoBehaviour, IPointerDownHandler {
 
     void Awake() {
         A = Utilities.TryGetComponent<SocketAttributes>(gameObject);
-        gridsController = FindObjectOfType<GridsController>();
+        gridsController = FindFirstObjectByType<GridsController>();
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        if(!A.electricalStripData.temporarilyModifiable) { return; }
+        if(!ElectricalStripData.Instance.temporarilyModifiable) { return; }
         A.isActive = !A.isActive;
         if(A.isActive) { 
             foreach(Transform child in A.childrenTransforms) { child.gameObject.SetActive(true); }
-            A.gridsData.socketsActiveGrid[A.id.x].row[A.id.y] = true;
+            GridsData.Instance.socketsActiveGrid[A.id.x].row[A.id.y] = true;
         }
         else { 
             foreach(Transform child in A.childrenTransforms) { child.gameObject.SetActive(false); }
             gameObject.SetActive(true);
-            A.gridsData.socketsActiveGrid[A.id.x].row[A.id.y] = false;
+            GridsData.Instance.socketsActiveGrid[A.id.x].row[A.id.y] = false;
         }
         //A.electricalStripData.electricalStripSizeController.RenewSockets();
         gridsController.RenewSocketsGrid();

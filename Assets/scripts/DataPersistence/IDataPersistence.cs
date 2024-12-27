@@ -8,4 +8,5 @@ public interface IDataPersistence {
     IEnumerator LoadData(GameData data);
 
     void SaveData(GameData data);
+    void SaveDataLate(GameData data);
 }

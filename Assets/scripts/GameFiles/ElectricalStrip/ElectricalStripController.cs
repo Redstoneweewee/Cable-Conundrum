@@ -1,82 +1,76 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class ElectricalStripController : MonoBehaviour {
+
+//[ExecuteInEditMode]
+public class ElectricalStripController : Singleton<ElectricalStripController>, IDragHandler, IBeginDragHandler {
     private ElectricalStripData D;
 
-    void Awake() {
-        D = Utilities.TryGetComponent<ElectricalStripData>(gameObject);
+    // Start is called before the first frame update
+    public override void OnAwake() {
+        D = ElectricalStripData.Instance;
     }
 
-    /*
-    void Start() {
-        D.electricalStripSizeController.RenewSockets();
-        StartCoroutine(InitializeAllCableGrids());
-        StartCoroutine(InitializePlugsGrid());
+    void Update() {
+        D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
     }
-    public void RenewPlugsGrid() {
-        Transform[,] jointsGrid = D.jointsData.jointsGrid;
-        D.plugsGrid = new int[jointsGrid.GetLength(0), jointsGrid.GetLength(1)];
-        PlugAttributes[] allPlugAttributes = FindObjectsOfType<PlugAttributes>();
-        foreach(PlugAttributes plugAttribute in allPlugAttributes) {
-            if(plugAttribute.isPluggedIn) {
-                foreach(Vector2 localPlugPositionsTakenUp in plugAttribute.localJointPositionsTakenUp) {
-                    Vector3 actualPosition = plugAttribute.transform.position + new Vector3(localPlugPositionsTakenUp.x, localPlugPositionsTakenUp.y, 0);
-                    float   subJointLength  = Constants.jointDistance/2;
-                    Vector2 distanceFromTopLeftJoint = new Vector2(actualPosition.x - jointsGrid[0,0].position.x, jointsGrid[0,0].position.y - actualPosition.y);
-                    Index2D gridIndex  = new Index2D(((int)(distanceFromTopLeftJoint.x/subJointLength)+1)/2, ((int)(distanceFromTopLeftJoint.y/subJointLength)+1)/2);
-                    gridIndex          = new Index2D(Math.Clamp(gridIndex.y, 0, jointsGrid.GetLength(0)-1), Math.Clamp(gridIndex.x, 0, jointsGrid.GetLength(1)-1));
-                    D.plugsGrid[gridIndex.x, gridIndex.y] = plugAttribute.id;
-                }
-            }
+
+
+    public void OnBeginDrag(PointerEventData eventData) {
+        if(!D.temporarilyModifiable) { return; }
+        D.cachedMousePosition = ControlsController.Instance.GetPointerPosition();
+    }
+    public void OnDrag(PointerEventData eventData) {
+        if(!D.temporarilyModifiable) { return; }
+        if(math.abs(D.cachedMousePosition.x - ControlsController.Instance.GetPointerPosition().x) > LevelResizeGlobal.Instance.electricalStripBaseSize.x) {
+            if(ControlsController.Instance.GetPointerPosition().x > D.cachedMousePosition.x) { ModifySize(Directions.Right); }
+            else                                               { ModifySize(Directions.Left); }
+            D.cachedMousePosition.x = ControlsController.Instance.GetPointerPosition().x;
         }
-        
-        string text = "";
-        for(int i=0; i<D.plugsGrid.GetLength(0); i++) {
-            text += "| ";
-            for(int j=0; j<D.plugsGrid.GetLength(1); j++) {
-                if(D.plugsGrid[i,j] > 0) { text += "*  "; }
-                else { text += "-  "; }
-            }
-            text += " |\n";
+        else if(math.abs(D.cachedMousePosition.y - ControlsController.Instance.GetPointerPosition().y) > LevelResizeGlobal.Instance.electricalStripBaseSize.y) {
+            if(ControlsController.Instance.GetPointerPosition().y > D.cachedMousePosition.y) { ModifySize(Directions.Up); }
+            else                                               { ModifySize(Directions.Down); }
+            D.cachedMousePosition.y = ControlsController.Instance.GetPointerPosition().y;
         }
-        Debug.Log("PlugsGrid: \n"+text);
     }
 
-    private IEnumerator InitializeAllCableGrids() {
-        yield return new WaitForSeconds(0.01f);
-        RenewAllCableGrids();
-    }
-    private IEnumerator InitializePlugsGrid() {
-        yield return new WaitForSeconds(0.01f);
-        RenewPlugsGrid();
+    private void CreateBackgroundVisual() {
+
     }
 
-    public void RenewAllCableGrids() {
-        CableParentAttributes[] allCableAttributes = FindObjectsOfType<CableParentAttributes>();
-
-        D.allCablesGrid = new int[D.jointsData.jointsGrid.GetLength(0), D.jointsData.jointsGrid.GetLength(1)];
-        foreach(CableParentAttributes cableParentAttribute in allCableAttributes) {
-            if(cableParentAttribute.cableGrid == null) { D.debugC.Log($"CableGrid of {cableParentAttribute.transform.name} is null."); continue; }
-            if(cableParentAttribute.cableGrid[0,0] == null) { D.debugC.Log($"CableGrid of {cableParentAttribute.transform.name} is null."); continue; }
-            for(int i=0; i<cableParentAttribute.cableGrid.GetLength(0); i++) {
-                for(int j=0; j<cableParentAttribute.cableGrid.GetLength(1); j++) {
-                    if(cableParentAttribute.cableGrid[i,j].hasCable) { D.allCablesGrid[i,j] += 1; }
-                }
-            }
+    private void ModifySize(Directions direction) {
+        switch(direction) {
+            case Directions.Up:
+                if(GridsModifier.Instance.height < 6) { GridsModifier.Instance.height++; }
+                break;
+            case Directions.Down:
+                if(GridsModifier.Instance.height > 1) { GridsModifier.Instance.height--; }
+                break;
+            case Directions.Left:
+                if(GridsModifier.Instance.width > 1) { GridsModifier.Instance.width--; }
+                break;
+            case Directions.Right:
+                if(GridsModifier.Instance.width < 10) { GridsModifier.Instance.width++; }
+                break;
         }
-        string text = "";
-        for(int i=0; i<D.allCablesGrid.GetLength(0); i++) {
-            text += "| ";
-            for(int j=0; j<D.allCablesGrid.GetLength(1); j++) {
-                text += D.allCablesGrid[i,j]+" ";
-            }
-            text += " |\n";
-        }
-        Debug.Log("AllCablesGrid: \n"+text);
     }
 
-    */
+    public void ModifyBackgroundVisual() {
+        Vector2 newSize = new Vector2((LevelResizeGlobal.staticElectricalStripBaseSize.x + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.width  + LevelResizeGlobal.staticElectricalStripSeparatorDistance, 
+                                      (LevelResizeGlobal.staticElectricalStripBaseSize.y + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.height + 2*LevelResizeGlobal.staticElectricalStripSeparatorDistance + LevelResizeGlobal.staticPowerSwitchBaseSize.y);
+        Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
+        D.rectangularTransform.sizeDelta = newSize;
+        D.rectangularTransform.position = new Vector3(center.x, center.y+(LevelResizeGlobal.Instance.electricalStripSeparatorDistance + LevelResizeGlobal.Instance.powerSwitchBaseSize.y)/2, 0);
+        MovePowerSwitch();
+    }
 
+    private void MovePowerSwitch() {
+        Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
+        Vector2 topLeft = new Vector2(D.rectangularTransform.position.x - (D.rectangularTransform.sizeDelta.x/2*LevelResizeGlobal.Instance.finalScale), D.rectangularTransform.position.y + (D.rectangularTransform.sizeDelta.y/2*LevelResizeGlobal.Instance.finalScale));
+        D.powerSwitch.transform.position = new Vector2(center.x, topLeft.y - (LevelResizeGlobal.Instance.powerSwitchBaseSize.y/2 + LevelResizeGlobal.Instance.electricalStripSeparatorDistance));
+    }
 }

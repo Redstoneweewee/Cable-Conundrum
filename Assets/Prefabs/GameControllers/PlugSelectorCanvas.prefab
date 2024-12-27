@@ -108,17 +108,41 @@ MonoBehaviour:
   - plugPrefab: {fileID: 6120150273503886943, guid: 1cc8c4e56bc532145890bc8f60799ffe, type: 3}
     plugImage: {fileID: 738524196999593853, guid: 2659cf3c46e4ee34f9f9a1995512d431, type: 3}
     type: 0
+  - plugPrefab: {fileID: 2016956842198958674, guid: 4fb607b8eb6ea544babbd497f625e7aa, type: 3}
+    plugImage: {fileID: 2864331490234668612, guid: d5193598c8dfbf84c969072651dfb2a2, type: 3}
+    type: 0
   - plugPrefab: {fileID: 870742541920479131, guid: 049d81474655760448377bcf6cd8e01d, type: 3}
     plugImage: {fileID: 5640852025123319479, guid: 0d4fa9311b0f97648b580acbab17f9e9, type: 3}
     type: 0
+  - plugPrefab: {fileID: 1670863178977284802, guid: 1abf7f892a950db48bc5bde2f5738a1d, type: 3}
+    plugImage: {fileID: 3629451046183449891, guid: f7fa12079c691ca4f8341aced03caf34, type: 3}
+    type: 0
+  - plugPrefab: {fileID: 9169878290748572670, guid: c07b433378bbe454e9d0c008993f2adc, type: 3}
+    plugImage: {fileID: 4251690920738988784, guid: 0bcbcb4048459994b85f49ea5586b521, type: 3}
+    type: 0
+  - plugPrefab: {fileID: 8994034202944007498, guid: e60ac169dcede244f8ba99bd50c7f6c3, type: 3}
+    plugImage: {fileID: 1099803037338295076, guid: 8a57a363d42e30f41bba00d889047765, type: 3}
+    type: 0
   - plugPrefab: {fileID: 7151729919157773566, guid: 8a260c060bd4a9d4d8de2849ad1adb72, type: 3}
     plugImage: {fileID: 205247595318293885, guid: fe6c39caf3185654f8c7691942cd16aa, type: 3}
+    type: 1
+  - plugPrefab: {fileID: 3255384603146431149, guid: 5c67f811658fcca4bb2263370e0bfdc5, type: 3}
+    plugImage: {fileID: 4067384908306807252, guid: 2fdc5314d9cd2d44785bc8e7c7a9200c, type: 3}
+    type: 1
+  - plugPrefab: {fileID: 1246259009404044325, guid: 6b649edc7dd810645a58b9e63a9a484a, type: 3}
+    plugImage: {fileID: 2090173492288908447, guid: c1d2c4f547325cf44861a6cd02928688, type: 3}
+    type: 1
+  - plugPrefab: {fileID: 4758436925684028708, guid: 58521c9fbe86cbf48ac3d99a255e8f70, type: 3}
+    plugImage: {fileID: 2819754791993305827, guid: ca23d21f3b5d24d4fb1c4488484f1419, type: 3}
     type: 1
   - plugPrefab: {fileID: 6676913604227909174, guid: a029c6b1a8085f8499584dd792c5d04e, type: 3}
     plugImage: {fileID: 132023771225278579, guid: 8d061df6f4c8e7641b668d6c677c8839, type: 3}
     type: 2
   - plugPrefab: {fileID: 2838612600630721834, guid: 0ea4a0a4804ed744288a27fb5fc6feab, type: 3}
     plugImage: {fileID: 6080052846999048383, guid: bb9765d06adacad4cad62943bab8c48b, type: 3}
+    type: 2
+  - plugPrefab: {fileID: 9153061093583571092, guid: 23fe47cf90e1e2942b847915f749bf2c, type: 3}
+    plugImage: {fileID: 7036784033430658899, guid: 5debb037ef1d881488b2ea8950847f05, type: 3}
     type: 2
   startingOffset: {x: 30, y: 15}
   buttonSize: {x: 220, y: 220}
@@ -139,7 +163,7 @@ GameObject:
   - component: {fileID: 3440316859535335895}
   m_Layer: 5
   m_Name: PlugSelectorCanvas
-  m_TagString: DontDisable
+  m_TagString: PlugSelectorCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,10 +206,10 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &6968655252111013706
 MonoBehaviour:
