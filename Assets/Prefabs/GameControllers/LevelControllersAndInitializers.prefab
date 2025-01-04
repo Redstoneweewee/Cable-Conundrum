@@ -90,11 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ddacb0897d4fc43a9ca59ef032d957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intersectionController: {fileID: 0}
-  gridsData: {fileID: 0}
   hasIntersection: 0
-  electricalStripData: {fileID: 0}
-  jointsData: {fileID: 0}
 --- !u!114 &4523746872244228437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,14 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finishedWithAllTasks: 0
   allButtonsLoaded: 0
-  scenesController: {fileID: 0}
-  exitGameConfirmationGlobal: {fileID: 0}
-  settingsGlobal: {fileID: 0}
-  tutorialController: {fileID: 0}
-  tutorialData: {fileID: 0}
-  controlsController: {fileID: 0}
-  soundsController: {fileID: 0}
-  resizeGlobal: {fileID: 0}
   buttonsAttributes: []
   levelIndex: 0
 --- !u!1 &5747367134399350812
@@ -383,9 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e54b0ab6829d64184c843c1618597c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridsController: {fileID: 5621454654667765456}
-  electricalStripSizeController: {fileID: 0}
-  electricalStripData: {fileID: 0}
+  initialized: 0
   socketsActiveGrid:
   - row: 01
   - row: 01
@@ -405,9 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442468e07af89314f835bb4e1186f078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridsSkeleton: {fileID: 2878317954705832343}
   width: 1
   height: 2
+  electricalStripSize: {x: 2, y: 1}
   renewGrids: 0
   testDotsActive: 0
   testingDot: {fileID: 821297795710962805, guid: a209f00210e4eeb47aa652dc628cfb43, type: 3}
@@ -424,4 +410,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcde2ccd9e53b0d4ea558a39aca21188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridsModifier: {fileID: 2509890435734276145}
