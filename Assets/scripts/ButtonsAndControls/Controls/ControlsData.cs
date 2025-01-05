@@ -6,19 +6,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ControlsData : Singleton<ControlsData> {
-    public InputActionReference pointAction;
+    [SerializeField] public InputActionReference pointAction;
 
-    public InputActionReference exitAction;
-    public InputActionReference jointAction;
-    public InputActionReference obstaclesAction;
+    [SerializeField] public InputActionReference exitAction;
+    [SerializeField] public InputActionReference jointAction;
+    [SerializeField] public InputActionReference obstaclesAction;
 
     //These are only available for the editor, not the actual game
-    public InputActionReference plugSelectorAction;
-    public InputActionReference electricalStripAction;
-    public InputActionReference mouseScrollAction;
-    public InputActionReference deleteAction;
+    [SerializeField] public InputActionReference plugSelectorAction;
+    [SerializeField] public InputActionReference electricalStripAction;
+    [SerializeField] public InputActionReference mouseScrollAction;
+    [SerializeField] public InputActionReference deleteAction;
 
-    public GameObject plugSelectorCanvas;
+    [SerializeField] public GameObject plugSelectorCanvas;
 
     [HideInInspector] public bool masterJointsEnabled    = false;
     [HideInInspector] public bool obstaclesModifiable    = false;

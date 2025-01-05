@@ -88,10 +88,9 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
                 Debug.Log($"socketSnapPosition: {socketSnapPosition}, socketIndex: [{socketIndex.x}, {socketIndex.y}], isPluggedIn: {isPluggedIn}, indexAndDirections: {indexAndDirections}");
             }
             else {
-                data.levelsSavePlugs[levelIndex].Add(new SavePlug(isPluggedIn, indexAndDirections));
+                data.levelsSavePlugs[levelIndex].Add(new SavePlug(isPluggedIn));
             }
         }
-        DebugC.Instance.LogListAlways("levelsSavePlugs: ", data.levelsSavePlugs[levelIndex][0].indexAndDirections);
     }
     public void SaveDataLate(GameData data) {}
 

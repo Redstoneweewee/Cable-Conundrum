@@ -30,7 +30,7 @@ public class ControlsController : Singleton<ControlsController> {
     }
 
     public void Initialize() {
-        D.plugSelectorCanvas        = GameObject.FindGameObjectWithTag("PlugSelectorCanvas");
+        D.plugSelectorCanvas = GameObject.FindGameObjectWithTag("PlugSelectorCanvas");
         D.isUsed = true;
         if(D.plugSelectorCanvas == null || GridsController.Instance == null || IntersectionController.Instance == null || 
            ElectricalStripData.Instance == null || ElectricalStripController.Instance == null) {

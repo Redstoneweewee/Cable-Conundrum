@@ -7,8 +7,9 @@ using UnityEngine.UI;
 //A script that can alter all grids.
 //[ExecuteInEditMode]
 public class GridsModifier : Singleton<GridsModifier> {
-    [SerializeField] [Range(1, 10)] public int width = 1;
-    [SerializeField] [Range(1, 10)] public int height = 2;
+    [SerializeField] [Range(1, 10)] public int width = 1;  //will de deprecated soon
+    [SerializeField] [Range(1, 10)] public int height = 2;  //will de deprecated soon
+    [SerializeField] public IntSize electricalStripSize = new(2, 1);
     [SerializeField] public bool renewGrids;
     [SerializeField] public bool testDotsActive;
     [SerializeField] public GameObject testingDot;
@@ -22,13 +23,13 @@ public class GridsModifier : Singleton<GridsModifier> {
         GridsSkeleton.Instance.Initialize();
     }
     void Update() {
-        if(renewGrids || testDotsActive != cachedtestDotsActive || width != cachedWidth || height != cachedHeight) {
+        if(renewGrids || testDotsActive != cachedtestDotsActive || electricalStripSize.width != cachedWidth || electricalStripSize.height != cachedHeight) {
             GridsSkeleton.Instance.Initialize();
-            FindFirstObjectByType<GridsController>().Initialize();
+            GridsController.Instance.Initialize();
             renewGrids = false;
             cachedtestDotsActive = testDotsActive;
-            cachedWidth = width;
-            cachedHeight = height;
+            cachedWidth = (int)electricalStripSize.width;
+            cachedHeight = (int)electricalStripSize.height;
         }
     }
 

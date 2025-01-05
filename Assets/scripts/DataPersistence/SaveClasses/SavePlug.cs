@@ -15,10 +15,12 @@ public class SavePlug {
         this.isPluggedIn = isPluggedIn;
         this.indexAndDirections = indexAndDirections;
     }
-    public SavePlug(bool isPluggedIn, List<IndexAndDirection> indexAndDirections) {
-        this.socketIndex = new Index2D(-1, -1);
+    //Only use this constructor if isPluggedIn is false
+    public SavePlug(bool isPluggedIn) {
+        if(isPluggedIn) { Debug.LogWarning("The wrong SavePlug constructor was used. A plug that is plugged in should use the constructor with 3 parameters."); }
         this.isPluggedIn = isPluggedIn;
-        this.indexAndDirections = indexAndDirections;
+        this.socketIndex = new Index2D(-1, -1);
+        this.indexAndDirections = new List<IndexAndDirection>();
     }
     public SavePlug() {
         this.socketIndex = new Index2D(-1, -1);

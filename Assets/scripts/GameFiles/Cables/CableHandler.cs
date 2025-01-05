@@ -64,7 +64,7 @@ public class CableHandler : MonoBehaviour {
         }
     }
     public void InitializeCableGrid() {
-        Vector2[,] skeletonGrid = FindFirstObjectByType<GridsSkeleton>().jointsSkeletonGrid;
+        Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
         A.cableGrid = new CablesGridAttributes[skeletonGrid.GetLength(0), skeletonGrid.GetLength(1)];
         for(int i=0; i<A.cableGrid.GetLength(0); i++) {
             for(int j=0; j<A.cableGrid.GetLength(1); j++) { A.cableGrid[i,j] = new CablesGridAttributes(); }

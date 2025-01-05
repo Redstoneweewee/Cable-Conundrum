@@ -38,9 +38,11 @@ public class GameData {
             foreach(SavePlug savePlug in list) {
                 output += $"   socketIndex: {savePlug.socketIndex}, "+
                           $"isPluggedIn: {savePlug.isPluggedIn}";
-                foreach(IndexAndDirection indexAndDirection in savePlug.indexAndDirections) {
-                    output += $"\n      IandD prev: {indexAndDirection.previousIndex}, "+
-                              $"IandD endDir: {indexAndDirection.endingDirection}";
+                if(savePlug.indexAndDirections != null) {
+                    foreach(IndexAndDirection indexAndDirection in savePlug.indexAndDirections) {
+                        output += $"\n      IandD prev: {indexAndDirection.previousIndex}, "+
+                                $"IandD endDir: {indexAndDirection.endingDirection}";
+                    }
                 }
                 output += "\n";
             }

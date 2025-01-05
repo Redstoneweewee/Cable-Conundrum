@@ -5,12 +5,10 @@ using UnityEngine.EventSystems;
 
 
 public class SocketHandler : MonoBehaviour, IPointerDownHandler {
-    private GridsController gridsController;
     SocketAttributes A;
 
     void Awake() {
         A = Utilities.TryGetComponent<SocketAttributes>(gameObject);
-        gridsController = FindFirstObjectByType<GridsController>();
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -26,7 +24,7 @@ public class SocketHandler : MonoBehaviour, IPointerDownHandler {
             GridsData.Instance.socketsActiveGrid[A.id.x].row[A.id.y] = false;
         }
         //A.electricalStripData.electricalStripSizeController.RenewSockets();
-        gridsController.RenewSocketsGrid();
+        GridsController.Instance.RenewSocketsGrid();
     }
 
 }

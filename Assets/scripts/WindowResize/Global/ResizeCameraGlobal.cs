@@ -11,7 +11,7 @@ public class ResizeCameraGlobal : WindowSizeChange<ResizeCameraGlobal> {
 
     public void ResizeCamera() {
         float newSize = Screen.height/2;
-        Camera.main.orthographicSize = newSize;
+        Utilities.TryGetComponent<Camera>(gameObject).orthographicSize = newSize;
         transform.position = new Vector3(Screen.width/2, Screen.height/2, -10);
     }
 }

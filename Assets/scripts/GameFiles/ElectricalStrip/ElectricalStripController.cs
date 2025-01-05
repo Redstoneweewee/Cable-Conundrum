@@ -38,30 +38,26 @@ public class ElectricalStripController : Singleton<ElectricalStripController>, I
         }
     }
 
-    private void CreateBackgroundVisual() {
-
-    }
-
     private void ModifySize(Directions direction) {
         switch(direction) {
             case Directions.Up:
-                if(GridsModifier.Instance.height < 6) { GridsModifier.Instance.height++; }
+                if(GridsModifier.Instance.electricalStripSize.height < 6) { GridsModifier.Instance.electricalStripSize.height++; }
                 break;
             case Directions.Down:
-                if(GridsModifier.Instance.height > 1) { GridsModifier.Instance.height--; }
+                if(GridsModifier.Instance.electricalStripSize.height > 1) { GridsModifier.Instance.electricalStripSize.height--; }
                 break;
             case Directions.Left:
-                if(GridsModifier.Instance.width > 1) { GridsModifier.Instance.width--; }
+                if(GridsModifier.Instance.electricalStripSize.width > 1) { GridsModifier.Instance.electricalStripSize.width--; }
                 break;
             case Directions.Right:
-                if(GridsModifier.Instance.width < 10) { GridsModifier.Instance.width++; }
+                if(GridsModifier.Instance.electricalStripSize.width < 10) { GridsModifier.Instance.electricalStripSize.width++; }
                 break;
         }
     }
 
     public void ModifyBackgroundVisual() {
-        Vector2 newSize = new Vector2((LevelResizeGlobal.staticElectricalStripBaseSize.x + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.width  + LevelResizeGlobal.staticElectricalStripSeparatorDistance, 
-                                      (LevelResizeGlobal.staticElectricalStripBaseSize.y + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.height + 2*LevelResizeGlobal.staticElectricalStripSeparatorDistance + LevelResizeGlobal.staticPowerSwitchBaseSize.y);
+        Vector2 newSize = new Vector2((LevelResizeGlobal.staticElectricalStripBaseSize.x + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.electricalStripSize.width  + LevelResizeGlobal.staticElectricalStripSeparatorDistance, 
+                                      (LevelResizeGlobal.staticElectricalStripBaseSize.y + LevelResizeGlobal.staticElectricalStripSeparatorDistance)*GridsModifier.Instance.electricalStripSize.height + 2*LevelResizeGlobal.staticElectricalStripSeparatorDistance + LevelResizeGlobal.staticPowerSwitchBaseSize.y);
         Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
         D.rectangularTransform.sizeDelta = newSize;
         D.rectangularTransform.position = new Vector3(center.x, center.y+(LevelResizeGlobal.Instance.electricalStripSeparatorDistance + LevelResizeGlobal.Instance.powerSwitchBaseSize.y)/2, 0);

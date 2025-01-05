@@ -15,7 +15,7 @@ public class GridsSkeleton : Singleton<GridsSkeleton> {
     public void Initialize() {
         GridsModifier.Instance.DeleteAllTestDots();
         InitializeJointsSkeletonGrid();
-        InitializeSocketsSkeletonGrid(GridsModifier.Instance.height, GridsModifier.Instance.width);
+        InitializeSocketsSkeletonGrid(GridsModifier.Instance.electricalStripSize.height, GridsModifier.Instance.electricalStripSize.width);
     }
 
     private void InitializeJointsSkeletonGrid() {

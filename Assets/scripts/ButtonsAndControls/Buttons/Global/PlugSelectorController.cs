@@ -13,7 +13,7 @@ public class PlugSelectorController : Singleton<PlugSelectorController>, IPointe
     private PlugSelectorData D;
 
     public override void OnAwake() {
-        D = Utilities.TryGetComponent<PlugSelectorData>(gameObject);
+        D = PlugSelectorData.Instance;
         InitializeButtons();
     }
 
