@@ -43,5 +43,8 @@ public class ControlsData : Singleton<ControlsData> {
         deleteAction.action.Enable();
     }
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 }

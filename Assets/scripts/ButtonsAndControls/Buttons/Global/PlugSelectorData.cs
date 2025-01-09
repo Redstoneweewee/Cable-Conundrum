@@ -26,6 +26,9 @@ public class PlugSelectorData : Singleton<PlugSelectorData> {
     [HideInInspector] public bool        isHoveringOver     = false;
     [HideInInspector] public IEnumerator scrollCoroutine;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         mouseScrollAction = ControlsData.Instance.mouseScrollAction;
     }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class SoundsController : Singleton<SoundsController> {
     private SoundsData D;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = SoundsData.Instance;
     }

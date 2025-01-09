@@ -18,5 +18,8 @@ public class TutorialData : Singleton<TutorialData> {
     [HideInInspector] public int currentPageIndex = 0;
 
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 }

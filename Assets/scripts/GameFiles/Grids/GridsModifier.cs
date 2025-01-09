@@ -18,14 +18,17 @@ public class GridsModifier : Singleton<GridsModifier> {
     private int cachedWidth;
     private int cachedHeight;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
 
     public override void OnAwake() {
-        GridsSkeleton.Instance.Initialize();
+        GridsSkeleton.Instance.InitializeOld();
     }
     void Update() {
         if(renewGrids || testDotsActive != cachedtestDotsActive || electricalStripSize.width != cachedWidth || electricalStripSize.height != cachedHeight) {
-            GridsSkeleton.Instance.Initialize();
-            GridsController.Instance.Initialize();
+            GridsSkeleton.Instance.InitializeOld();
+            GridsController.Instance.InitializeOld();
             renewGrids = false;
             cachedtestDotsActive = testDotsActive;
             cachedWidth = (int)electricalStripSize.width;

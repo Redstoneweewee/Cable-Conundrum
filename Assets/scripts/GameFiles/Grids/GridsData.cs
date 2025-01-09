@@ -25,5 +25,8 @@ public class GridsData : Singleton<GridsData> {
     //public CablesGridAttributes[,]  CablesGrid        {get{return cablesGrid;       } set{cablesGrid        = value;}}
     //public bool[,]                 ObstaclesGrid     {get{return obstaclesGrid;    } set{obstaclesGrid     = value;}}
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 }

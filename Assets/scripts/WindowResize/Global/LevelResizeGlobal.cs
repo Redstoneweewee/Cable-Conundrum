@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -59,6 +60,9 @@ public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
     [HideInInspector] public Vector2 startingPlugOffset;
     [HideInInspector] public float   startingPlugOffsetRightSideAdd;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         RenewValues();
     }
@@ -98,7 +102,7 @@ public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
         //Debug.Log($"electricalStripSeparatorDistance: {electricalStripSeparatorDistance}");
         //TODO - call all calculations to recalculate offsets, distances, and sizes
         //including resizing plug, sockets, etc. sizes
-        GridsController.Instance?.Initialize();
+        GridsController.Instance?.InitializeOld();
         if(WinningMessageSizeGlobal.Instance != null) { WinningMessageSizeGlobal.Instance.reinitialize = true; }
     }
 }

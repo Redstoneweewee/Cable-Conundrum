@@ -7,6 +7,9 @@ public class SoundsEditor : Singleton<SoundsEditor> {
     public List<SoundsAttributes> soundEffects;
     public List<SoundsAttributes> music;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 
     void Update() {

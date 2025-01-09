@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CablePrefabs : Singleton<CablePrefabs> {
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
     /* Cables:
     * [ [0 ]UpLeft,    [1 ]UpRight,    [2 ]DownLeft,    [3 ]DownRight,    [4 ]LeftUp,    [5 ]LeftDown,    [6 ]RightUp,    [7 ]RightDown,   ]

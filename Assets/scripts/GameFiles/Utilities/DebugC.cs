@@ -7,6 +7,9 @@ public class DebugC : Singleton<DebugC> {
     [SerializeField] public bool logCustomDebugMessages = true;
     [SerializeField] public bool logMathMessages = true;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 
     public void Log<T>(T text) {

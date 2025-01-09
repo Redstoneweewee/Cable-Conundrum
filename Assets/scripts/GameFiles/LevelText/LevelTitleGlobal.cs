@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 
 public class LevelTitleGlobal : Singleton<LevelTitleGlobal> {
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 
     void Start() {

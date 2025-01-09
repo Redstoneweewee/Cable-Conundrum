@@ -31,6 +31,9 @@ public class JointsOpacityGlobal : Singleton<JointsOpacityGlobal> {
     public bool        IsFirstOpacity   {get{return isFirstOpacity;}   set{isFirstOpacity   = value;}}
     public bool        IsFirstLoop   {get{return isFirstLoop;}   set{isFirstLoop   = value;}}
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
     
     void Start() {

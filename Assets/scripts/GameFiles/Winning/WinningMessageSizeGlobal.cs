@@ -24,18 +24,21 @@ public class WinningMessageSizeGlobal : Singleton<WinningMessageSizeGlobal> {
     //Two-numbered text is 1038 pixels
     //etc.
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
-        Initialize();
+        InitializeOld();
     }
 
-    private void Initialize() {
+    private void InitializeOld() {
         backgroundRectTransform = Utilities.TryGetComponent<RectTransform>(background);
         buttonRectTransform     = Utilities.TryGetComponentInChildren<RectTransform>(button);
     }
 
     void Update() {
         if(reinitialize) {
-            Initialize();
+            InitializeOld();
         }
         if(cachedNumberOfNumbers != CountNumberOfNumbers(Utilities.GetText(text)) || reinitialize) {
             

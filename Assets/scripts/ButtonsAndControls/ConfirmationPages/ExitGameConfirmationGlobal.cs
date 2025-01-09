@@ -5,6 +5,9 @@ using UnityEngine;
 public class ExitGameConfirmationGlobal : Singleton<ExitGameConfirmationGlobal> {
     [SerializeField] private GameObject exitConfirmationCanvas;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 
 

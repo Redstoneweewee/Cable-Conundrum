@@ -9,12 +9,15 @@ using UnityEngine.UI;
 public class TutorialController : Singleton<TutorialController> {
     TutorialData D;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = TutorialData.Instance;
     }
 
     //is initialized in the initalizerBase
-    public IEnumerator Initialize() {
+    public IEnumerator InitializeOld() {
             if(Application.platform == RuntimePlatform.WebGLPlayer) {
                 D.useNormalVideoPlayers = 0;
             }

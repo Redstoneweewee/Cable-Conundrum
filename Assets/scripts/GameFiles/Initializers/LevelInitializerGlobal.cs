@@ -14,6 +14,9 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     private bool initializationFinished = false;
     //public bool allCableHandlersInitializationFinished = false;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
 
 
     // |----------------------------------------------------------------------------------|

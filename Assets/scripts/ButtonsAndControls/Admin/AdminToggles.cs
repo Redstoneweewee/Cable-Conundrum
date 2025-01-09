@@ -9,6 +9,9 @@ public class AdminToggles : Singleton<AdminToggles> {
     [SerializeField] public bool editorMode;
     public bool cachedEditorMode;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         cachedEditorMode = !editorMode;
     }

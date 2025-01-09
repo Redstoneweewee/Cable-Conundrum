@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class ElectricalStripController : Singleton<ElectricalStripController>, I
     // Start is called before the first frame update
     public override void OnAwake() {
         D = ElectricalStripData.Instance;
+    }
+    public override IEnumerator Initialize() {
+        yield return null;
     }
 
     void Update() {

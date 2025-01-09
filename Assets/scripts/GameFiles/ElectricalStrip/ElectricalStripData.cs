@@ -16,6 +16,9 @@ public class ElectricalStripData : Singleton<ElectricalStripData> {
     [HideInInspector] public Vector2 cachedMousePosition;
     [HideInInspector] public RectTransform rectangularTransform;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         r = LevelResizeGlobal.Instance.electricalStripBaseSize.x;
         s = LevelResizeGlobal.Instance.electricalStripSeparatorDistance;

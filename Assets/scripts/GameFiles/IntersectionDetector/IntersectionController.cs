@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class IntersectionController : Singleton<IntersectionController> {
     IntersectionData D;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = IntersectionData.Instance;
     }

@@ -7,6 +7,9 @@ public class LevelSelectorBackgroundController : Singleton<LevelSelectorBackgrou
     private LevelSelectorBackgroundData D;
 
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = LevelSelectorBackgroundData.Instance;
     }

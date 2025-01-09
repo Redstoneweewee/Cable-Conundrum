@@ -20,6 +20,9 @@ public class WinningControllerGlobal : Singleton<WinningControllerGlobal>, IData
         data.levelCompletion[LevelInitializerGlobal.Instance.levelIndex] = hasWon;
     }
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {}
 
     void Start() {

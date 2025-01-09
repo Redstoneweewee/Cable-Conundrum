@@ -1,8 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 [ExecuteInEditMode]
 public class ResizeCameraGlobal : WindowSizeChange<ResizeCameraGlobal> {
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
     
     void Update() {

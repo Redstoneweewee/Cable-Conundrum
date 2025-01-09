@@ -16,6 +16,9 @@ public class CreditsGlobal : Singleton<CreditsGlobal> {
     private float lowestPosition;
     private IEnumerator startScrollCoroutine;
     
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         mouseScrollAction = ControlsData.Instance.mouseScrollAction;
     }

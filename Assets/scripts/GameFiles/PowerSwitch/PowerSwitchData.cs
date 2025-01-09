@@ -7,5 +7,8 @@ public class PowerSwitchData : Singleton<PowerSwitchData> {
     [SerializeField]  public GameObject                offVisual;
     [SerializeField]  public GameObject                onVisual;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 }

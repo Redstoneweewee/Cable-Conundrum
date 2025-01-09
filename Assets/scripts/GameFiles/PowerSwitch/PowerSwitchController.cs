@@ -17,6 +17,9 @@ public class PowerSwitchController : Singleton<PowerSwitchController>, IPointerC
     public void SaveDataLate(GameData data) {}
 
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = Utilities.TryGetComponent<PowerSwitchData>(gameObject);
     }

@@ -10,9 +10,12 @@ public class GridsSkeleton : Singleton<GridsSkeleton> {
     [HideInInspector] public Vector2[,] jointsSkeletonGrid;
     [HideInInspector] public Vector2[,] socketsSkeletonGrid;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 
-    public void Initialize() {
+    public void InitializeOld() {
         GridsModifier.Instance.DeleteAllTestDots();
         InitializeJointsSkeletonGrid();
         InitializeSocketsSkeletonGrid(GridsModifier.Instance.electricalStripSize.height, GridsModifier.Instance.electricalStripSize.width);

@@ -5,6 +5,9 @@ using UnityEngine;
 public class SettingsGlobal : Singleton<SettingsGlobal>, IDataPersistence {
     [SerializeField] private GameObject settingsCanvas;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {}
 
     public IEnumerator LoadData(GameData data) {

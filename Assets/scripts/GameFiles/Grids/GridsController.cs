@@ -7,14 +7,17 @@ public class GridsController : Singleton<GridsController> {
     private GridsData D;
     private GridsSkeleton S;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
-        Initialize();
+        InitializeOld();
     }
 
-    public void Initialize() {
+    public void InitializeOld() {
         D = Utilities.TryGetComponent<GridsData>(gameObject);
         S = Utilities.TryGetComponent<GridsSkeleton>(gameObject);
-        S.Initialize();
+        S.InitializeOld();
         InitializeJointsGrid();
         InitializeSocketsActiveGrid();
         StartCoroutine(RenewGrids());

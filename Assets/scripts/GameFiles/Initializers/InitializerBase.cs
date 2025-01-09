@@ -31,7 +31,7 @@ public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour 
         }
         */
 
-        ControlsController.Instance.Initialize();
+        ControlsController.Instance.InitializeOld();
         SoundsController.Instance.InitializeSliders();
         InitializeButtons();
 
@@ -44,7 +44,7 @@ public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour 
         if(!TutorialData.Instance.isInitialized) { 
             //StartCoroutine(tutorialController.Initialize());
             
-            try { StartCoroutine(TutorialController.Instance.Initialize()); Debug.Log("initializing tutorial");}
+            try { StartCoroutine(TutorialController.Instance.InitializeOld()); Debug.Log("initializing tutorial");}
             catch(Exception e) {
                 Debug.LogWarning("tutorial was unable to load. Error: "+e);
             }

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorInitializerGlobal>, IDataPersistence {
     List<ButtonsAttributes> enterLevelButtons = new List<ButtonsAttributes>();
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         ButtonsAttributes[] temp = FindObjectsByType<ButtonsAttributes>(FindObjectsSortMode.None);
         foreach(ButtonsAttributes buttonAttribute in temp) {

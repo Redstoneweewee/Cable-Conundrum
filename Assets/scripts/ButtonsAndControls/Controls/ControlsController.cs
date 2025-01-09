@@ -11,6 +11,9 @@ using UnityEngine.SceneManagement;
 public class ControlsController : Singleton<ControlsController> {
     ControlsData D;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = ControlsData.Instance;
     }
@@ -29,7 +32,7 @@ public class ControlsController : Singleton<ControlsController> {
         ChangeEditorMode();
     }
 
-    public void Initialize() {
+    public void InitializeOld() {
         D.plugSelectorCanvas = GameObject.FindGameObjectWithTag("PlugSelectorCanvas");
         D.isUsed = true;
         if(D.plugSelectorCanvas == null || GridsController.Instance == null || IntersectionController.Instance == null || 

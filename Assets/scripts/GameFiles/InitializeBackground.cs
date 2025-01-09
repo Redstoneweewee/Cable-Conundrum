@@ -6,6 +6,9 @@ using UnityEngine;
 public class InitializeBackground : Singleton<InitializeBackground> {
     RectTransform rectangularTransform;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
     
     void Start() {

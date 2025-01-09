@@ -7,5 +7,8 @@ public class IntersectionData : Singleton<IntersectionData> {
     [HideInInspector] public bool hasIntersection = false;
 
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 }

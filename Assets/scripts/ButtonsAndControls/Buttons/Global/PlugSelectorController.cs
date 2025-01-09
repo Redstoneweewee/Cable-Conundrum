@@ -12,6 +12,9 @@ using UnityEngine.UI;
 public class PlugSelectorController : Singleton<PlugSelectorController>, IPointerEnterHandler, IPointerExitHandler {
     private PlugSelectorData D;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = PlugSelectorData.Instance;
         InitializeButtons();

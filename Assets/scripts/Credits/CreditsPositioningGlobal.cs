@@ -24,6 +24,9 @@ public class CreditsPositioningGlobal : Singleton<CreditsPositioningGlobal> {
 
     [HideInInspector] private Vector3 textPosition;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
     
     void Update() {

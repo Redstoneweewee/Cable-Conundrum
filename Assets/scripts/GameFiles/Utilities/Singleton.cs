@@ -46,7 +46,11 @@ public abstract class Singleton<T> : Singleton where T : MonoBehaviour {
     #endregion
 
     #region  Methods
-    private void Awake() {
+    //old & soon to be deprecated
+    public abstract void OnAwake();
+    //
+
+    public override void SingletonInitialization() {
         lock (Lock) {
             var instances = FindObjectsOfType<T>();
             var count = instances.Length;
@@ -66,14 +70,12 @@ public abstract class Singleton<T> : Singleton where T : MonoBehaviour {
                 _instance = new GameObject($"({nameof(Singleton)}){typeof(T)}").AddComponent<T>();
             }
         }
-        OnAwake();
+        Debug.Log("initialized ["+typeof(T)+"]'s Singleton");
     }
-
-    public abstract void OnAwake();
     #endregion
 }
 
-public abstract class Singleton : MonoBehaviour {
+public abstract class Singleton : ScriptInitializerBase {
     #region  Properties
     public static bool Quitting { get; private set; }
     #endregion
@@ -82,5 +84,7 @@ public abstract class Singleton : MonoBehaviour {
     private void OnApplicationQuit() {
         Quitting = true;
     }
+
+    public abstract void SingletonInitialization();
     #endregion
 }

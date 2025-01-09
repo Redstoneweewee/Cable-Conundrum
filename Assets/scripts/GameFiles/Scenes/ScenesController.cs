@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class ScenesController : Singleton<ScenesController> {
     private ScenesData D;
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() {
         D = ScenesData.Instance;
         SceneManager.sceneLoaded += OnInitialSceneLoad;

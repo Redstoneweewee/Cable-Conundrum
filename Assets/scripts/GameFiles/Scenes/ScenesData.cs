@@ -16,6 +16,9 @@ public class ScenesData : Singleton<ScenesData> {
 
 
 
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 }
 

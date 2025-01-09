@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlugOffScreenGlobal : Singleton<PlugOffScreenGlobal> {
     [SerializeField] [Range(0, 1)] private float lerpValue;
     
+    public override IEnumerator Initialize() {
+        yield return null;
+    }
     public override void OnAwake() { }
 
     void Update() {
