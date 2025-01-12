@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
-public class ButtonsAttributes : MonoBehaviour {
+public class ButtonsAttributes : ScriptInitializerBase {
     [SerializeField]  public ButtonsHandler buttonsHandler;
     [SerializeField]  public ButtonTypes buttonType;
     [Tooltip("Level will only be used if buttonType is set to EnterLevel.")]
@@ -13,9 +13,10 @@ public class ButtonsAttributes : MonoBehaviour {
     [HideInInspector] public Button      button;
     [HideInInspector] public GameObject  buttonGameObject;
     
-    void Awake() {
+    public override IEnumerator Initialize() {
         buttonGameObject = gameObject;
         buttonsHandler = Utilities.TryGetComponent<ButtonsHandler>(gameObject);
         button = Utilities.TryGetComponentInChildren<Button>(gameObject);
+        yield return null;
     }
 }

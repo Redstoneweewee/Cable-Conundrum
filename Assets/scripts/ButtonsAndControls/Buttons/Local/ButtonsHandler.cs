@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonsHandler : MonoBehaviour, IPointerEnterHandler {
+public class ButtonsHandler : ScriptInitializerBase, IPointerEnterHandler {
     [HideInInspector] public ButtonsAttributes A;
 
-    void Awake() {
+    public override IEnumerator Initialize() {
         A = Utilities.TryGetComponent<ButtonsAttributes>(gameObject);
+        yield return null;
     }
 
     public void OnPointerEnter(PointerEventData eventData) {

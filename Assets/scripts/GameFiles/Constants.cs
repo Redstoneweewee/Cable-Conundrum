@@ -7,6 +7,9 @@ public enum InteractableType { Plug, Cable, PowerSwitch };
 
 public class Constants {
     //Levels
+    public static int startBuildIndex = 0;
+    public static int menuBuildIndex = 1;
+    public static int levelSelectorBuildIndex = 2;
     public static int firstLevelBuidIndex = 3;
     public static int numberOfLevels = 10;
 
