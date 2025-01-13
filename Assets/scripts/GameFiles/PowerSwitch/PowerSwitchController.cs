@@ -18,10 +18,8 @@ public class PowerSwitchController : Singleton<PowerSwitchController>, IPointerC
 
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         D = Utilities.TryGetComponent<PowerSwitchData>(gameObject);
+        yield return null;
     }
 
     public void OnPointerClick(PointerEventData eventData) {

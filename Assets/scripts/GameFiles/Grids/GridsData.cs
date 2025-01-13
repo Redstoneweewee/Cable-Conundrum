@@ -28,5 +28,4 @@ public class GridsData : Singleton<GridsData> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 }

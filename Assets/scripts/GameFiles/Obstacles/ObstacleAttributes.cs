@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class ObstacleAttributes : MonoBehaviour {
+public class ObstacleAttributes : ScriptInitializerBase {
     [HideInInspector] public ObstacleHandler        obstacleHandler;
     [SerializeField]  public bool                   temporarilyModifiable;
 
@@ -19,8 +19,9 @@ public class ObstacleAttributes : MonoBehaviour {
     [HideInInspector] public float           cachedLeftMostX;
     [HideInInspector] public float           cachedRightMostX;
 
-    void Awake() {
-        obstacleHandler        = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
-        rectTransform          = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
+    public override IEnumerator Initialize() {
+        obstacleHandler = Utilities.TryGetComponent<ObstacleHandler>(gameObject);
+        rectTransform   = Utilities.TryGetComponentInChildren<RectTransform>(gameObject);
+        yield return null;
     }
 }

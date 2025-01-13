@@ -61,10 +61,8 @@ public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
     [HideInInspector] public float   startingPlugOffsetRightSideAdd;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         RenewValues();
+        yield return null;
     }
     
  

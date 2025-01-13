@@ -25,20 +25,15 @@ public class WinningMessageSizeGlobal : Singleton<WinningMessageSizeGlobal> {
     //etc.
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
-        InitializeOld();
-    }
-
-    private void InitializeOld() {
         backgroundRectTransform = Utilities.TryGetComponent<RectTransform>(background);
         buttonRectTransform     = Utilities.TryGetComponentInChildren<RectTransform>(button);
+        yield return null;
     }
 
     void Update() {
         if(reinitialize) {
-            InitializeOld();
+            backgroundRectTransform = Utilities.TryGetComponent<RectTransform>(background);
+            buttonRectTransform     = Utilities.TryGetComponentInChildren<RectTransform>(button);
         }
         if(cachedNumberOfNumbers != CountNumberOfNumbers(Utilities.GetText(text)) || reinitialize) {
             

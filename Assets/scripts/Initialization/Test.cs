@@ -7,6 +7,4 @@ public class Test : Singleton<Test> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() {}
-
 }

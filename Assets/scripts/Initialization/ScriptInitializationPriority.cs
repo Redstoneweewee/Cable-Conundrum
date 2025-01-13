@@ -34,10 +34,12 @@ public class ScriptInitializationPriority {
             new ScriptTypeAndPlace(typeof(SliderAttributes),            InitPlace.All), 
             new ScriptTypeAndPlace(typeof(SoundsController),            InitPlace.All), 
             new ScriptTypeAndPlace(typeof(TutorialController),          InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(DataPersistenceManager),      InitPlace.Start), 
             new ScriptTypeAndPlace(typeof(SocketAttributes),            InitPlace.All), 
             new ScriptTypeAndPlace(typeof(SocketHandler),               InitPlace.All), 
             new ScriptTypeAndPlace(typeof(JointsOpacityGlobal),         InitPlace.All), 
             new ScriptTypeAndPlace(typeof(LevelSelectorBackgroundData), InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(DontDestroyOnLoad),           InitPlace.Start), 
             new ScriptTypeAndPlace(typeof(WinningMessageSizeGlobal),    InitPlace.All), 
             new ScriptTypeAndPlace(typeof(InitializeBackground),        InitPlace.All)
             //scripts and place ----------------------
@@ -157,9 +159,9 @@ public class ScriptTypeAndPlace {
 }
 
 public enum InitPlace {
-    All,
-    Start,
-    Menu,
-    LevelSelector,
-    Level
+    All,             //Will initialize every time the scene is changed
+    Start,           //Will only initialize once at the start game launch
+    Menu,            //Will initialize every time the player enters the menu
+    LevelSelector,   //Will initialize every time the player enters the level selector
+    Level            //Will initialize every time the player enters any level
 }

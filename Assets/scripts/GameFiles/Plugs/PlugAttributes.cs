@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
-public class PlugAttributes : MonoBehaviour {
+public class PlugAttributes : ScriptInitializerBase {
     public static int idIncrement = 1;
     [HideInInspector] public int id;
 
@@ -42,7 +42,7 @@ public class PlugAttributes : MonoBehaviour {
 
 
     // Start is called before the first frame update
-    void Awake() {
+    public override IEnumerator Initialize() {
         plugHandler               = Utilities.TryGetComponent<PlugHandler>(gameObject);
         cableParentAttributes     = Utilities.TryGetComponentInChildren<CableParentAttributes>(gameObject);
         cableHandler              = Utilities.TryGetComponentInChildren<CableHandler>(gameObject);
@@ -53,6 +53,7 @@ public class PlugAttributes : MonoBehaviour {
 
         DebugC.Instance?.Log("initialized "+transform.name);
         DebugC.Instance?.Log($"{transform.name}'s id: {id}");
+        yield return null;
     }
 
 }

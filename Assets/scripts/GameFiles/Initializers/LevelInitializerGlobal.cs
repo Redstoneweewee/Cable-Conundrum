@@ -14,7 +14,9 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     private bool initializationFinished = false;
     //public bool allCableHandlersInitializationFinished = false;
 
-    public override IEnumerator Initialize() {
+    new public IEnumerator Initialize() {
+        levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
+        StartCoroutine(base.Initialize());
         yield return null;
     }
 
@@ -27,7 +29,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     
     //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
-        Initialize(data);
+        InitializeOld(data);
         yield return new WaitUntil(() => initializationFinished);
         //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
         //Debug.Log(data.levelsSavePlugs[levelIndex]);
@@ -106,16 +108,6 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     //    }
     //}
 
-
-
-    public override void OnAwake() {
-        levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
-    }
-
-    new void Start() {
-        base.Start();
-    }
-
     void Update() {
         /*
         if(!allCableHandlersInitializationFinished) {
@@ -130,7 +122,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
         */
     }
 
-    private void Initialize(GameData data) {
+    private void InitializeOld(GameData data) {
         bool shouldMovePlugs = data.levelsSavePlugs[levelIndex] == null || data.levelsSavePlugs[levelIndex].Count == 0;
         ResetPlugs(shouldMovePlugs);
         //Log();

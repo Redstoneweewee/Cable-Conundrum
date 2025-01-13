@@ -21,17 +21,13 @@ public class WinningControllerGlobal : Singleton<WinningControllerGlobal>, IData
     }
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {}
-
-    void Start() {
         //used temporarily to figure out what level it is. Later should take from AllLevelsData or smth)
         int level = LevelInitializerGlobal.Instance.levelIndex + 1;
         string text = "Level " + level + " Complete!";
         Utilities.SetText(WinningMessageSizeGlobal.Instance.text.gameObject, text);
 
         StationaryWinningMessage();
+        yield return null;
     }
 
     public void OnWin() {

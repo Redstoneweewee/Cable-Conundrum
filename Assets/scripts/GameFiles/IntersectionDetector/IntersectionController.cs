@@ -8,15 +8,11 @@ public class IntersectionController : Singleton<IntersectionController> {
     IntersectionData D;
 
     public override IEnumerator Initialize() {
+        D = IntersectionData.Instance;
+        StartCoroutine(InitialWaitUntilUpdate());
         yield return null;
     }
-    public override void OnAwake() {
-        D = IntersectionData.Instance;
-    }
 
-    void Start() {
-        StartCoroutine(InitialWaitUntilUpdate());
-    }
     private IEnumerator InitialWaitUntilUpdate() {
         yield return new WaitUntil(() => GridsData.Instance.initialized);
         //RenewAllObstaclesGrid();

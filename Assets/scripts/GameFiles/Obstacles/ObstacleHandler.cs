@@ -7,21 +7,20 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class ObstacleHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointerDownHandler, IPointerUpHandler {
+public class ObstacleHandler : ScriptInitializerBase, IDragHandler, IBeginDragHandler, IPointerDownHandler, IPointerUpHandler {
     private ObstacleAttributes A;
 
-    void Awake() {
+    public override IEnumerator Initialize() {
         A = Utilities.TryGetComponent<ObstacleAttributes>(gameObject);
-    }
-
-    void Start() {
         if(A.obstacleType == ObstacleTypes.LeftTableLeg ||
            A.obstacleType == ObstacleTypes.RightTableLeg ||
            A.obstacleType == ObstacleTypes.TableTop) { StartCoroutine(InitializeTable()); }
         else if(A.obstacleType == ObstacleTypes.Screw) {
             StartCoroutine(InitializeScrew());
         }
-    }   
+        yield return null;
+    }
+
 
     void Update() {
         if(A.obstacleType != ObstacleTypes.TableTop) { return; }

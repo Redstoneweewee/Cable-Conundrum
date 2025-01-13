@@ -32,14 +32,9 @@ public class JointsOpacityGlobal : Singleton<JointsOpacityGlobal> {
     public bool        IsFirstLoop   {get{return isFirstLoop;}   set{isFirstLoop   = value;}}
 
     public override IEnumerator Initialize() {
+        ResetAllVariables();
         yield return null;
     }
-    public override void OnAwake() { }
-    
-    void Start() {
-        ResetAllVariables();
-    }
-
 
     private void ResetAllVariables() {
         p = opacityLoopPeriod;

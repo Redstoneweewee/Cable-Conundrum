@@ -9,12 +9,10 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
     [SerializeField] public bool renew = false;
     
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         //if(PrefabStageUtility.GetCurrentPrefabStage() != null) { return; }
-        if(!Application.isPlaying) { return; }
+        if(!Application.isPlaying) { yield return null; }
         StartCoroutine(RenewAll());
+        yield return null;
     }
     
     void Update() {

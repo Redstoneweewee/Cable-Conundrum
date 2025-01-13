@@ -28,8 +28,7 @@ public class ControlsData : Singleton<ControlsData> {
     public bool isUsed = true;
 
 
-
-    void OnEnable() {
+    public override IEnumerator Initialize() {
         //from EventSystem UI
         pointAction.action.Enable();
 
@@ -41,10 +40,6 @@ public class ControlsData : Singleton<ControlsData> {
         electricalStripAction.action.Enable();
         mouseScrollAction.action.Enable();
         deleteAction.action.Enable();
-    }
-
-    public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 }

@@ -13,7 +13,6 @@ public class GridsSkeleton : Singleton<GridsSkeleton> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 
     public void InitializeOld() {
         GridsModifier.Instance.DeleteAllTestDots();

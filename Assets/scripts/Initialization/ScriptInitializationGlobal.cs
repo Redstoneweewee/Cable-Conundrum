@@ -5,22 +5,19 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScriptInitializationGlobal : MonoBehaviour {
-    //|--------------------------------------------------------------|
-    //|                                                              |
-    //| This is the only script that should have an Awake function!! |
-    //|                                                              |
-    //|--------------------------------------------------------------|
-    
-    List<ScriptInitializerBase> sortedScriptInitializers;
+public class ScriptInitializationGlobal : Singleton<ScriptInitializationGlobal> {
+    public bool FinshedInitialization { get; private set; } = false;
 
-    void Awake() {
-        StartCoroutine(InitializeAll());
+    public override IEnumerator Initialize() {
+        yield return null;
     }
 
-    private IEnumerator InitializeAll() {
+    public IEnumerator InitializeAll() {
+        FinshedInitialization = false;
+        float startTime = Time.time;
+        string debugText = "Initialization Log for Scene ["+SceneManager.GetActiveScene().name+"]:\n";
+        
         List<ScriptInitializerBase> temp = FindObjectsByType<ScriptInitializerBase>(FindObjectsSortMode.None).ToList();
-
         //Initialize Singletons first
         Singleton[] tests = FindObjectsByType<Singleton>(FindObjectsSortMode.None);
         foreach(Singleton obj in tests) {
@@ -38,20 +35,27 @@ public class ScriptInitializationGlobal : MonoBehaviour {
 
                     UnityEngine.Object[] objs = FindObjectsOfType(scriptTypeAndPlace.GetScriptType());
                     
-                    Debug.Log("Found "+objs.Length+" instance(s) of ["+scriptTypeAndPlace.GetScriptType().Name+"]");
+                    float deltaTime = Time.time - startTime;
+                    debugText += "\n["+deltaTime+" sec] Found "+objs.Length+" instance(s) of ["+scriptTypeAndPlace.GetScriptType().Name+"]\n";
 
                     foreach(UnityEngine.Object obj in objs) {
                         ScriptInitializerBase scriptInitializerBase = (ScriptInitializerBase)obj;
                         StartCoroutine(scriptInitializerBase.TrackCoroutine(scriptInitializerBase.Initialize()));
                     }
+                    int num = 1;
                     foreach(UnityEngine.Object obj in objs) {
                         ScriptInitializerBase scriptInitializerBase = (ScriptInitializerBase)obj;
                         yield return new WaitUntil(() => scriptInitializerBase.Initialized);
+                        deltaTime = Time.time - startTime;
+                        debugText += "["+deltaTime+" sec] Finished Initializing #"+num+" ["+scriptTypeAndPlace.GetScriptType().Name+"]\n";
+                        num++;
                     }
                 }
             }
-            Debug.Log(">>>>> Initialized priority "+priority.GetPriority()+" finished <<<<<");
+            debugText += "\n-------------------------------------------\n>>>>> Initialized priority "+priority.GetPriority()+" finished <<<<<\n-------------------------------------------\n";
         }
+        FinshedInitialization = true;
+        Debug.Log(debugText);
         yield return null;
     }
 }

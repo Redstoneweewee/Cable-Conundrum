@@ -8,10 +8,8 @@ public class GridsController : Singleton<GridsController> {
     private GridsSkeleton S;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         InitializeOld();
+        yield return null;
     }
 
     public void InitializeOld() {
@@ -22,9 +20,9 @@ public class GridsController : Singleton<GridsController> {
         InitializeSocketsActiveGrid();
         StartCoroutine(RenewGrids());
 
-        D.OnAwake();
-        ElectricalStripData.Instance.OnAwake();
-        ElectricalStripController.Instance.OnAwake();
+        StartCoroutine(D.Initialize());
+        //StartCoroutine(ElectricalStripData.Instance.Initialize());
+        //StartCoroutine(ElectricalStripController.Instance.Initialize());
         ElectricalStripController.Instance.ModifyBackgroundVisual();
     }
 

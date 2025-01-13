@@ -11,10 +11,17 @@ public abstract class ScriptInitializerBase : MonoBehaviour {
 
     public abstract IEnumerator Initialize();
 
-    //don't use awake
+    //|----------------------------------------------|
+    //| the only awake should be in ScenesController |
+    //|----------------------------------------------|
     public void Awake() {
-        //don't use awake
+        //|----------------------------------------------|
+        //| the only awake should be in ScenesController |
+        //|----------------------------------------------|
     }
+    //|----------------------------------------------|
+    //| the only awake should be in ScenesController |
+    //|----------------------------------------------|
 
     
     public IEnumerator TrackCoroutine(IEnumerator coroutine) {

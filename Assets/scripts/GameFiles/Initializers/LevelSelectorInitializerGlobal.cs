@@ -7,9 +7,6 @@ public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorIniti
     List<ButtonsAttributes> enterLevelButtons = new List<ButtonsAttributes>();
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         ButtonsAttributes[] temp = FindObjectsByType<ButtonsAttributes>(FindObjectsSortMode.None);
         foreach(ButtonsAttributes buttonAttribute in temp) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevel) {
@@ -21,6 +18,7 @@ public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorIniti
         StartCoroutine(base.SetMenuButton(true));
         StartCoroutine(base.SetLevelSelectorButton(false));
         StartCoroutine(base.SetTutorialHelpButton(false));
+        yield return null;
     }
 
     public IEnumerator LoadData(GameData data) {

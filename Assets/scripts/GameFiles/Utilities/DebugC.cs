@@ -10,7 +10,6 @@ public class DebugC : Singleton<DebugC> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 
     public void Log<T>(T text) {
         if(!logCustomDebugMessages) { return; }

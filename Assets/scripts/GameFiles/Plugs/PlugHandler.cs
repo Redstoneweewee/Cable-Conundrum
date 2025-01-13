@@ -6,13 +6,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class PlugHandler : MonoBehaviour, IPointerDownHandler, IPointerClickHandler,
+public class PlugHandler : ScriptInitializerBase, IPointerDownHandler, IPointerClickHandler,
     IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler,
     IBeginDragHandler, IDragHandler, IEndDragHandler {
     private PlugAttributes A;
 
-    void Awake() {
+    public override IEnumerator Initialize() {
         A = Utilities.TryGetComponent<PlugAttributes>(gameObject);
+        yield return null;
     }
 
     public void OnBeginDrag(PointerEventData eventData) {

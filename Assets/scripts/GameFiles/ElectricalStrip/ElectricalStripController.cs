@@ -11,11 +11,8 @@ using UnityEngine.InputSystem;
 public class ElectricalStripController : Singleton<ElectricalStripController>, IDragHandler, IBeginDragHandler {
     private ElectricalStripData D;
 
-    // Start is called before the first frame update
-    public override void OnAwake() {
-        D = ElectricalStripData.Instance;
-    }
     public override IEnumerator Initialize() {
+        D = ElectricalStripData.Instance;
         yield return null;
     }
 

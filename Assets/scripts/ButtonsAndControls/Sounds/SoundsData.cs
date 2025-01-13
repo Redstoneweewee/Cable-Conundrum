@@ -11,5 +11,4 @@ public class SoundsData : Singleton<SoundsData> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 }

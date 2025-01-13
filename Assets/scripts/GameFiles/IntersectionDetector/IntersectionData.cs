@@ -10,5 +10,4 @@ public class IntersectionData : Singleton<IntersectionData> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 }

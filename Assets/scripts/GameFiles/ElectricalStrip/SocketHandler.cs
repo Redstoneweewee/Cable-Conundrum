@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class SocketHandler : MonoBehaviour, IPointerDownHandler {
+public class SocketHandler : ScriptInitializerBase, IPointerDownHandler {
     SocketAttributes A;
 
-    void Awake() {
+    public override IEnumerator Initialize() {
         A = Utilities.TryGetComponent<SocketAttributes>(gameObject);
+        yield return null;
     }
 
     public void OnPointerDown(PointerEventData eventData) {

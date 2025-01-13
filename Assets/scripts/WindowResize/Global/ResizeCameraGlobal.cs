@@ -7,7 +7,6 @@ public class ResizeCameraGlobal : WindowSizeChange<ResizeCameraGlobal> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
     
     void Update() {
         if(base.GetScreenSizeChange()) { ResizeCamera(); }

@@ -14,7 +14,7 @@ public class TutorialVideoAttributes : MonoBehaviour {
     [HideInInspector] public bool        initialLoad = false;
 
     //Initialized in TutorialController
-    public IEnumerator Initialize() {
+    public IEnumerator InitializeOld() {
         bool caught = false;
         try {
             videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);

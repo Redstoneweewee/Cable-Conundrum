@@ -8,7 +8,6 @@ public class SettingsGlobal : Singleton<SettingsGlobal>, IDataPersistence {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() {}
 
     public IEnumerator LoadData(GameData data) {
         yield return null;

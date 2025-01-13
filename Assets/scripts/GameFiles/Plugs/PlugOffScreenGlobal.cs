@@ -8,7 +8,6 @@ public class PlugOffScreenGlobal : Singleton<PlugOffScreenGlobal> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 
     void Update() {
         PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);

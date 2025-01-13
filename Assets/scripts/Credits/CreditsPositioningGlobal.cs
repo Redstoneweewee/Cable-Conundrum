@@ -27,7 +27,6 @@ public class CreditsPositioningGlobal : Singleton<CreditsPositioningGlobal> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
     
     void Update() {
         if(renew) {

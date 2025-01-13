@@ -10,9 +10,7 @@ public class AdminToggles : Singleton<AdminToggles> {
     public bool cachedEditorMode;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         cachedEditorMode = !editorMode;
+        yield return null;
     }
 }

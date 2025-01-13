@@ -21,5 +21,4 @@ public class TutorialData : Singleton<TutorialData> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 }

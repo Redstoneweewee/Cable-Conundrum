@@ -65,10 +65,10 @@ namespace CameraProjectionRenderingToolkit {
 			/// This perspective projection is more suited to FPS and other "natural", frequently moving, not 
 			/// horizon-aligned views. 
 			/// It keeps the horizon of the projection conform to the X-Z plane. The Pannini projection create a singularity
-			/// just below the camera (which is never visible unless the Y field of view is over 180°), so the 
+			/// just below the camera (which is never visible unless the Y field of view is over 180ï¿½), so the 
 			/// AdaptivePannini will attenuate itself when the camera will be able to see it. 
-			/// It needs some adjustments,but the default values are quite good for a ~120° maximum Y field of view. 
-			/// Personally I recommend not exceeding 90° field of view for a FPS camera, with intensity set to ~0,47.
+			/// It needs some adjustments,but the default values are quite good for a ~120ï¿½ maximum Y field of view. 
+			/// Personally I recommend not exceeding 90ï¿½ field of view for a FPS camera, with intensity set to ~0,47.
 			/// </summary>
 			AdaptivePannini,
 			/// <summary>
@@ -116,8 +116,8 @@ namespace CameraProjectionRenderingToolkit {
 			/// </summary>
 			NearestNeightboor,
 			/// <summary>
-			/// This filter just mixes the 4 nearest samples. Sometimes a “blurring” pattern can appear. The projection 
-			/// distortion isn’t taken into account. 
+			/// This filter just mixes the 4 nearest samples. Sometimes a ï¿½blurringï¿½ pattern can appear. The projection 
+			/// distortion isnï¿½t taken into account. 
 			/// </summary>
 			SimpleBilinear,
 			/// <summary>
@@ -459,7 +459,7 @@ namespace CameraProjectionRenderingToolkit {
 		private float renderingTimeStep;
 		private Vector2 projectionBias;//biais dans un pixel, entre -1.0f et 1.0f
 
-		private float prelockNearPlane=0.0f,prelockFarPlane=0.0f;//si non 0, on a influé artificiellement le near / far plane
+		private float prelockNearPlane=0.0f,prelockFarPlane=0.0f;//si non 0, on a influï¿½ artificiellement le near / far plane
 		private Transform prelockTransform;
 		private bool CamSettingsLocked { get { return prelockNearPlane!=0.0f; } }
 
@@ -878,10 +878,6 @@ namespace CameraProjectionRenderingToolkit {
 						isSupported=false;
 					}
 #endif
-					if (!SystemInfo.supportsImageEffects) {
-						Debug.LogError("CPRT : current system doesn't supports ImageEffects.");
-						isSupported=false;
-					}
 				}
 
 				if (isSupported) {//control shader and create material 
@@ -1080,7 +1076,7 @@ namespace CameraProjectionRenderingToolkit {
 				Graphics.Blit(source,targetTexture);
 			}
 
-			//réactive le contrôle des réglage de camera de unity
+			//rï¿½active le contrï¿½le des rï¿½glage de camera de unity
 			ResetCameraSettings();
 
 			UnlockTemporary();
@@ -1603,7 +1599,7 @@ namespace CameraProjectionRenderingToolkit {
 						Matrix4x4 observervpmatrix;
 
 						observervpmatrix=CPRTToolkit.LookAtRH(new Vector3(0.0f,0.0f,-offz),Vector3.forward,Vector3.up);
-						observerFOV=Mathf.Rad2Deg*CPRTToolkit.ComputeStereosphericalProjFOV(widthAperture,fieldOfViewY*Mathf.Deg2Rad,Aspect,-offz);//*Mathf.Deg2Rad ajouté le 06/05/2021
+						observerFOV=Mathf.Rad2Deg*CPRTToolkit.ComputeStereosphericalProjFOV(widthAperture,fieldOfViewY*Mathf.Deg2Rad,Aspect,-offz);//*Mathf.Deg2Rad ajoutï¿½ le 06/05/2021
 							observervpmatrix=Matrix4x4.Perspective(observerFOV,Aspect,0.0625f,observerFarClipPlane)*observervpmatrix;//viewproj = proj * view
 
 						{//observer now paints on a sphere
@@ -1727,10 +1723,10 @@ namespace CameraProjectionRenderingToolkit {
 		#endregion
 
 		#region AASAMPLES
-		private readonly Vector2[] screenshotSamplesX2=new Vector2[2] {//+30° segment
+		private readonly Vector2[] screenshotSamplesX2=new Vector2[2] {//+30ï¿½ segment
 			new Vector2(0.5f,0.8660254f)*0.5f,new Vector2(-0.5f,-0.8660254f)*0.5f,
 		};
-		private readonly Vector2[] screenshotSamplesX4=new Vector2[4] {//+15° square
+		private readonly Vector2[] screenshotSamplesX4=new Vector2[4] {//+15ï¿½ square
 			new Vector2(0.304810f,0.952412f)*0.5f,new Vector2(-0.304810f,-0.952412f)*0.5f,
 			new Vector2(-0.952412f,0.304810f)*0.5f,new Vector2(0.952412f,-0.304810f)*0.5f,
 		};

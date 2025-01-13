@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class MenuInitializerGlobal : InitializerBase<MenuInitializerGlobal> {
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         finishedWithAllTasks = true;
         StartCoroutine(base.SetMenuButton(false));
         StartCoroutine(base.SetLevelSelectorButton(false));
         StartCoroutine(base.SetTutorialHelpButton(false));
+        yield return null;
     }
 }

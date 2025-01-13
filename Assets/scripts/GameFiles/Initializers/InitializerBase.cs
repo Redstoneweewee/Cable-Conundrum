@@ -9,9 +9,9 @@ public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour 
     [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
 
     //ublic override void OnAwake() { }
-
-    public void Start() {
+    public override IEnumerator Initialize() {
         StartCoroutine(WaitToInitializeButtons());
+        yield return null;
     }
 
     private IEnumerator WaitToInitializeButtons() {

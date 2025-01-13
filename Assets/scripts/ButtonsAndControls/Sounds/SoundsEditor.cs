@@ -10,7 +10,6 @@ public class SoundsEditor : Singleton<SoundsEditor> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 
     void Update() {
         if(Application.isPlaying) { return; }

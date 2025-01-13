@@ -10,10 +10,8 @@ public class TutorialController : Singleton<TutorialController> {
     TutorialData D;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         D = TutorialData.Instance;
+        yield return null;
     }
 
     //is initialized in the initalizerBase
@@ -27,7 +25,7 @@ public class TutorialController : Singleton<TutorialController> {
             //Debug.Log(temp.Length);
             foreach(TutorialVideoAttributes tutorialVideoAttributes in allTutorialVideoAttributes) {
                 //If videos don't load, gets stuck here
-                StartCoroutine(tutorialVideoAttributes.Initialize());
+                StartCoroutine(tutorialVideoAttributes.InitializeOld());
                 yield return new WaitUntil(() => tutorialVideoAttributes.initialLoad);
                 D.videoPlayers[tutorialVideoAttributes.tutorialPageIndex] = tutorialVideoAttributes;
             }

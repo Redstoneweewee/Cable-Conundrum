@@ -11,14 +11,9 @@ public class JointsController : Singleton<JointsController> {
     private JointsData D;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         D = JointsData.Instance;
-    }
-    
-    void Start() {
         StartCoroutine(startDelayed());
+        yield return null;
     }
 
     private IEnumerator startDelayed() {

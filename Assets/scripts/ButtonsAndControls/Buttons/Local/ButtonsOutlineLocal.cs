@@ -4,7 +4,7 @@ using Nobi.UiRoundedCorners;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ButtonsOutlineLocal : MonoBehaviour {
+public class ButtonsOutlineLocal : ScriptInitializerBase {
     [SerializeField]          private GameObject outline;
     [SerializeField] [Min(0)] private float width = 10f;
 
@@ -16,9 +16,10 @@ public class ButtonsOutlineLocal : MonoBehaviour {
     private Vector2 cachedSize     = Vector2.zero;
     private float   cachedRadius   = 0f;
 
-    void Awake() {
+    public override IEnumerator Initialize() {
         imageWithRoundedCorners = Utilities.TryGetComponent<ImageWithRoundedCorners>(gameObject);
         rectTransform = Utilities.TryGetComponent<RectTransform>(gameObject);
+        yield return null;
     }
 
     void Update() {

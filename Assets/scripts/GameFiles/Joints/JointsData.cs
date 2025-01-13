@@ -19,12 +19,10 @@ public class JointsData : Singleton<JointsData> {
     [HideInInspector] public float s;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         r = LevelResizeGlobal.Instance.electricalStripBaseSize.x;
         s = LevelResizeGlobal.Instance.electricalStripSeparatorDistance;
         cachedScreenSize    = new Vector2(Screen.width, Screen.height);
         jointMaterial.color = Constants.jointColor;
+        yield return null;
     }
 }

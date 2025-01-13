@@ -8,10 +8,8 @@ public class LevelSelectorBackgroundController : Singleton<LevelSelectorBackgrou
 
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         D = LevelSelectorBackgroundData.Instance;
+        yield return null;
     }
 
     void Update() {

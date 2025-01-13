@@ -7,12 +7,8 @@ public class InitializeBackground : Singleton<InitializeBackground> {
     RectTransform rectangularTransform;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() { }
-    
-    void Start() {
         rectangularTransform = Utilities.TryGetComponent<RectTransform>(gameObject);
+        yield return null;
     }
 
     // Start is called before the first frame update

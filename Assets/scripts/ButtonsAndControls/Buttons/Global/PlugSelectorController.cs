@@ -13,11 +13,9 @@ public class PlugSelectorController : Singleton<PlugSelectorController>, IPointe
     private PlugSelectorData D;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         D = PlugSelectorData.Instance;
         InitializeButtons();
+        yield return null;
     }
 
     // |----------------------------------------------------------------------------------|

@@ -7,17 +7,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CableHandler : MonoBehaviour {
+public class CableHandler : ScriptInitializerBase {
     private CableParentAttributes A;
 
-    void Awake() {
+    public override IEnumerator Initialize() {
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
-    }
-
-
-    void Start() {
-        Initialize();
+        InitializeOld();
         RenewRotationAndIntersectionCables();
+        yield return null;
     }
 
     // Update is called once per frame
@@ -41,7 +38,7 @@ public class CableHandler : MonoBehaviour {
         }
     }
 
-    private void Initialize() {
+    private void InitializeOld() {
         int endingCablesIndex = A.initialCables.Count;
         InitializeInitialCables();
         if(A.startingDirection != A.endingDirection) { TryRenewRotationCable(A.initialCables.Count, A.startingDirection, A.endingDirection); endingCablesIndex++; }

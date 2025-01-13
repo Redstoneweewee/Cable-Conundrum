@@ -17,12 +17,9 @@ public class ElectricalStripData : Singleton<ElectricalStripData> {
     [HideInInspector] public RectTransform rectangularTransform;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         r = LevelResizeGlobal.Instance.electricalStripBaseSize.x;
         s = LevelResizeGlobal.Instance.electricalStripSeparatorDistance;
         rectangularTransform = Utilities.TryGetComponent<RectTransform>(backgroundVisual);
-
+        yield return null;
     }
 }

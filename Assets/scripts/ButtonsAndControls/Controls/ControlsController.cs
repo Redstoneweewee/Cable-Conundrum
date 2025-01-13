@@ -12,12 +12,7 @@ public class ControlsController : Singleton<ControlsController> {
     ControlsData D;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         D = ControlsData.Instance;
-    }
-    void Start() {
         SubscribeToActionStart(D.exitAction, OnExit);
         SubscribeToActionStart(D.jointAction, OnJointsToggle);
         SubscribeToActionStart(D.obstaclesAction, OnObstaclesToggle);
@@ -26,6 +21,7 @@ public class ControlsController : Singleton<ControlsController> {
         SubscribeToActionStart(D.deleteAction, OnTryDeletePlug);
         SubscribeToActionStart(D.deleteAction, OnTryDeleteObstacle);
         ChangeEditorMode();
+        yield return null;
     }
 
     void Update() {

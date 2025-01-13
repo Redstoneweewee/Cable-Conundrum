@@ -47,7 +47,7 @@ public abstract class Singleton<T> : Singleton where T : MonoBehaviour {
 
     #region  Methods
     //old & soon to be deprecated
-    public abstract void OnAwake();
+    //public abstract void OnAwake();
     //
 
     public override void SingletonInitialization() {

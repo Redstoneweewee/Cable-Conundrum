@@ -19,11 +19,8 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager> {
     private FileDataHandler dataHandler;
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        LoadGame();
+        yield return null;
     }
 
     private void OnApplicationQuit() {

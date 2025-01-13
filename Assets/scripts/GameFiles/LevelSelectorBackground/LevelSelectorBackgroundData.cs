@@ -19,9 +19,7 @@ public class LevelSelectorBackgroundData : Singleton<LevelSelectorBackgroundData
 
 
     public override IEnumerator Initialize() {
-        yield return null;
-    }
-    public override void OnAwake() {
         center = transform.position;
+        yield return null;
     }
 }

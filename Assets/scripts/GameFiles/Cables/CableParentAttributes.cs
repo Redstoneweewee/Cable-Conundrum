@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [Serializable]
-public class CableParentAttributes : MonoBehaviour {
+public class CableParentAttributes : ScriptInitializerBase {
     [HideInInspector] public CableHandler cableHandler;
     
     [HideInInspector] public PlugAttributes            plugAttributes;
@@ -37,8 +37,9 @@ public class CableParentAttributes : MonoBehaviour {
     [SerializeField]  public Directions       startingDirection;
     [SerializeField]  public Directions       endingDirection;
 
-    void Awake() {
-        cableHandler              = Utilities.TryGetComponent<CableHandler>(gameObject);
-        plugAttributes            = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
+    public override IEnumerator Initialize() {
+        cableHandler   = Utilities.TryGetComponent<CableHandler>(gameObject);
+        plugAttributes = Utilities.TryGetComponentInParent<PlugAttributes>(gameObject);
+        yield return null;
     }
 }

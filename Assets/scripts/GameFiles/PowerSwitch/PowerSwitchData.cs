@@ -10,5 +10,4 @@ public class PowerSwitchData : Singleton<PowerSwitchData> {
     public override IEnumerator Initialize() {
         yield return null;
     }
-    public override void OnAwake() { }
 }
