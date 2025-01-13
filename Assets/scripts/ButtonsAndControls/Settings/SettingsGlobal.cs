@@ -13,6 +13,7 @@ public class SettingsGlobal : Singleton<SettingsGlobal>, IDataPersistence {
         yield return null;
         SoundsData.Instance.soundVolume = data.settings.soundVolume;
         SoundsData.Instance.musicVolume = data.settings.musicVolume;
+        SoundsController.Instance.InitializeSliders();
     }
 
     public void SaveData(GameData data) {

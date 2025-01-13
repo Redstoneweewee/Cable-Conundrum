@@ -494,8 +494,8 @@ GameObject:
   - component: {fileID: 8442776438731153899}
   - component: {fileID: 7080145446415541509}
   - component: {fileID: 5771616117124862294}
-  - component: {fileID: 7429924515308037743}
   - component: {fileID: 5195139274725827182}
+  - component: {fileID: 7435439279109482367}
   m_Layer: 0
   m_Name: Cavalier Camera
   m_TagString: Untagged
@@ -577,18 +577,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973755968765372905}
   m_Enabled: 1
---- !u!114 &7429924515308037743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973755968765372905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967a86991a9a2d447bcbe8ff5fe6a315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5195139274725827182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,6 +622,18 @@ MonoBehaviour:
   shaderOverSampling: {fileID: 4800000, guid: 3a23ee0b3d58aae46826bb2e22ea14c7, type: 3}
   shaderStereoShapeProj: {fileID: 4800000, guid: 99a35421d3bedaf42bb9871c77b8d6fa, type: 3}
   shaderUnityFishEye: {fileID: 4800000, guid: b802320095d7b8f4dad6142b36df90ff, type: 3}
+--- !u!114 &7435439279109482367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973755968765372905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967a86991a9a2d447bcbe8ff5fe6a315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &998912897290528660
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,10 +5925,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8442776438731153899}
+  - {fileID: 848495113571101089}
   - {fileID: 6984809583263740201}
   - {fileID: 871173992917385374}
   - {fileID: 4818819866299155740}
-  - {fileID: 848495113571101089}
   - {fileID: 7551142015480209883}
   - {fileID: 7030501685345241910}
   - {fileID: 4055471001295841755}

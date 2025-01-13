@@ -10,6 +10,7 @@ public class PlugOffScreenGlobal : Singleton<PlugOffScreenGlobal> {
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         PlugAttributes[] allPlugAttributes = FindObjectsByType<PlugAttributes>(FindObjectsSortMode.None);
         foreach(PlugAttributes plugAttribute in allPlugAttributes) {
             if(plugAttribute.isObstacle) { continue; }

@@ -23,6 +23,7 @@ public class ButtonsOutlineLocal : ScriptInitializerBase {
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         Renew();
     }
 

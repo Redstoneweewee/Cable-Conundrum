@@ -23,6 +23,7 @@ public class CreditsGlobal : Singleton<CreditsGlobal> {
 
     void Update() {
         if(!isActivated) { return; }
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         Vector2 mouseScroll = ControlsController.Instance.GetActionInputValue<Vector2>(mouseScrollAction);
         if(mouseScroll.y > 0) { 
             transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y-scrollSpeed*25*Utilities.TryGetComponent<Canvas>(creditsCanvas).scaleFactor, transform.position.z), 0.5f);

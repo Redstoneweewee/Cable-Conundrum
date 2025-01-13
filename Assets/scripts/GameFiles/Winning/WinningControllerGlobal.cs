@@ -44,6 +44,7 @@ public class WinningControllerGlobal : Singleton<WinningControllerGlobal>, IData
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(hasWon) {
             AnimateWinningMessage();
         }

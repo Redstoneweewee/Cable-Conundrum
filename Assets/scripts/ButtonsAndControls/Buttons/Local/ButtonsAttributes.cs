@@ -16,7 +16,7 @@ public class ButtonsAttributes : ScriptInitializerBase {
     public override IEnumerator Initialize() {
         buttonGameObject = gameObject;
         buttonsHandler = Utilities.TryGetComponent<ButtonsHandler>(gameObject);
-        button = Utilities.TryGetComponentInChildren<Button>(gameObject);
+        button = Utilities.TryGetComponentInChildren<Button>(gameObject, true);
         yield return null;
     }
 }

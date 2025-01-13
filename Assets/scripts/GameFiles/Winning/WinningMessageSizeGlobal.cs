@@ -31,6 +31,7 @@ public class WinningMessageSizeGlobal : Singleton<WinningMessageSizeGlobal> {
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(reinitialize) {
             backgroundRectTransform = Utilities.TryGetComponent<RectTransform>(background);
             buttonRectTransform     = Utilities.TryGetComponentInChildren<RectTransform>(button);

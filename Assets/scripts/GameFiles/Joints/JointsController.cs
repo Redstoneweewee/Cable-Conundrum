@@ -24,7 +24,7 @@ public class JointsController : Singleton<JointsController> {
 
     // Update is called once per frame
     void Update() {
-
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         //Debug.Log("isFirstOpacity: "+isFirstOpacity);
         if((D.jointsEnabled == true && D.cachedScreenSize.x != Screen.width || D.cachedScreenSize.y != Screen.height) || D.cachedJointsEnabled != D.jointsEnabled) {
             //RenewJoints();

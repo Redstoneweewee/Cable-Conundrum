@@ -8,12 +8,32 @@ using UnityEngine.UI;
 
 public class TutorialController : Singleton<TutorialController> {
     TutorialData D;
-
+    // |--------------------------------------------------------------------------|
+    // |--------------------------------------------------------------------------|
+    // |-------------- WARNING - Videos cannot load without WIFI!! ---------------|
+    // |--------------------------------------------------------------------------|
+    // |--------------------------------------------------------------------------|
     public override IEnumerator Initialize() {
         D = TutorialData.Instance;
+        if(Application.platform == RuntimePlatform.WebGLPlayer) {
+            D.useNormalVideoPlayers = 0;
+        }
+        TutorialVideoAttributes[] allTutorialVideoAttributes = Utilities.TryGetComponentsInChildren<TutorialVideoAttributes>(D.videoPlayerParents[D.useNormalVideoPlayers]);
+        D.videoPlayers = new TutorialVideoAttributes[allTutorialVideoAttributes.Length];
+
+        //Debug.Log(temp.Length);
+        foreach(TutorialVideoAttributes tutorialVideoAttributes in allTutorialVideoAttributes) {
+            //If videos don't load, gets stuck here
+            StartCoroutine(tutorialVideoAttributes.InitializeOld());
+            yield return new WaitUntil(() => tutorialVideoAttributes.initialLoad);
+            D.videoPlayers[tutorialVideoAttributes.tutorialPageIndex] = tutorialVideoAttributes;
+        }
+        StartCoroutine(SetVideoDisplayAndDescription(0, 0));
+        yield return new WaitUntil(() => D.initialVideoInitialized);
+        Debug.Log("initial videos initialized");
         yield return null;
     }
-
+    /*
     //is initialized in the initalizerBase
     public IEnumerator InitializeOld() {
             if(Application.platform == RuntimePlatform.WebGLPlayer) {
@@ -34,6 +54,7 @@ public class TutorialController : Singleton<TutorialController> {
             Debug.Log("initial videos initialized");
             D.isInitialized = true;
     }
+    */
 
 
     public void OnPressEnterTutorialPageButton() {

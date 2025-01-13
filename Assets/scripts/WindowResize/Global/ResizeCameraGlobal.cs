@@ -9,6 +9,7 @@ public class ResizeCameraGlobal : WindowSizeChange<ResizeCameraGlobal> {
     }
     
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(base.GetScreenSizeChange()) { ResizeCamera(); }
     }
 

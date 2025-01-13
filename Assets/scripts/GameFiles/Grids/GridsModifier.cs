@@ -19,11 +19,11 @@ public class GridsModifier : Singleton<GridsModifier> {
     private int cachedHeight;
 
     public override IEnumerator Initialize() {
-        GridsSkeleton.Instance.InitializeOld();
         yield return null;
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(renewGrids || testDotsActive != cachedtestDotsActive || electricalStripSize.width != cachedWidth || electricalStripSize.height != cachedHeight) {
             GridsSkeleton.Instance.InitializeOld();
             GridsController.Instance.InitializeOld();

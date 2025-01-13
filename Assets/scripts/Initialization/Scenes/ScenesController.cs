@@ -63,6 +63,7 @@ public class ScenesController : Singleton<ScenesController> {
             Debug.LogWarning($"No scene at buildIndex {buildIndex}"); 
             return; 
         }
+        ScriptInitializationGlobal.Instance.SetUpdate(false);
         D.sceneFinishedLoading = false;
         D.animationIsFinished = false;
         StartCoroutine(LoadLevelCoroutine(buildIndex));
@@ -75,6 +76,7 @@ public class ScenesController : Singleton<ScenesController> {
 
         //Wait for the crossfade to finish (all black screen) to load in the next scene.
         yield return new WaitForSeconds(D.crossFadeAnimationStartDuration);
+
         SceneManager.LoadScene(buildIndex);
 
         //Wait until the scene is finished loading to continue.
@@ -86,7 +88,6 @@ public class ScenesController : Singleton<ScenesController> {
 
         //Renew Resizes
         StartCoroutine(ResizeGlobal.Instance.RenewAll());
-        Debug.Log("AAAAAAAAAAAAAAAAAAAA renewed resizes");
 
         //Load the game
         DataPersistenceManager.Instance.LoadGame();
@@ -124,13 +125,10 @@ public class ScenesController : Singleton<ScenesController> {
         
         //Initialize all necessary scripts
         StartCoroutine(ScriptInitializationGlobal.Instance.InitializeAll());
-        Debug.Log("Initializing all scripts");
         yield return new WaitUntil(() => ScriptInitializationGlobal.Instance.FinshedInitialization);
-        Debug.Log("finished initializing all scripts");
 
         //Renew Resizes
         StartCoroutine(ResizeGlobal.Instance.RenewAll());
-        Debug.Log("AAAAAAAAAAAAAAAAAAAA renewed resizes");
 
 
         SceneManager.LoadScene(Constants.menuBuildIndex);
@@ -138,18 +136,14 @@ public class ScenesController : Singleton<ScenesController> {
     }
 
     private IEnumerator MenuSceneLoad() {
-        Debug.Log("JWEIJWIRGIROGJO");
         yield return new WaitUntil(() => D.sceneFinishedLoading);
 
         //Initialize all necessary scripts
         StartCoroutine(ScriptInitializationGlobal.Instance.InitializeAll());
-        Debug.Log("Initializing all scripts");
         yield return new WaitUntil(() => ScriptInitializationGlobal.Instance.FinshedInitialization);
-        Debug.Log("finished initializing all scripts");
 
         //Renew Resizes
         StartCoroutine(ResizeGlobal.Instance.RenewAll());
-        Debug.Log("AAAAAAAAAAAAAAAAAAAA renewed resizes");
 
         //Load the game
         DataPersistenceManager.Instance.LoadGame();

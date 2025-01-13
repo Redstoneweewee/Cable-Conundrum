@@ -13,6 +13,7 @@ public class SoundsEditor : Singleton<SoundsEditor> {
 
     void Update() {
         if(Application.isPlaying) { return; }
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         foreach(SoundsAttributes soundsAttribute in soundEffects) {
             if(soundsAttribute.minPitch > soundsAttribute.maxPitch) {
                 soundsAttribute.minPitch = soundsAttribute.maxPitch;

@@ -61,14 +61,15 @@ public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
     [HideInInspector] public float   startingPlugOffsetRightSideAdd;
 
     public override IEnumerator Initialize() {
+        gameCanvas = Utilities.TryGetComponent<Canvas>(GameObject.FindGameObjectWithTag("GameCanvas"));
         RenewValues();
         yield return null;
     }
     
  
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(!GameObject.FindGameObjectWithTag("GameCanvas")) { return; }
-        gameCanvas = Utilities.TryGetComponent<Canvas>(GameObject.FindGameObjectWithTag("GameCanvas"));
         if(gameCanvas && gameCanvas.scaleFactor != cachedScaleFactor) { 
             Debug.Log("renew");
             RenewValues();
@@ -100,7 +101,7 @@ public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
         //Debug.Log($"electricalStripSeparatorDistance: {electricalStripSeparatorDistance}");
         //TODO - call all calculations to recalculate offsets, distances, and sizes
         //including resizing plug, sockets, etc. sizes
-        GridsController.Instance?.InitializeOld();
+        //GridsController.Instance?.InitializeOld();
         if(WinningMessageSizeGlobal.Instance != null) { WinningMessageSizeGlobal.Instance.reinitialize = true; }
     }
 }

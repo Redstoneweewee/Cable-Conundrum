@@ -7,6 +7,8 @@ public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorIniti
     List<ButtonsAttributes> enterLevelButtons = new List<ButtonsAttributes>();
 
     public override IEnumerator Initialize() {
+        StartCoroutine(base.Initialize());
+        
         ButtonsAttributes[] temp = FindObjectsByType<ButtonsAttributes>(FindObjectsSortMode.None);
         foreach(ButtonsAttributes buttonAttribute in temp) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevel) {
@@ -14,7 +16,7 @@ public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorIniti
             }
         }
 
-        finishedWithAllTasks = true;
+        //finishedWithAllTasks = true;
         StartCoroutine(base.SetMenuButton(true));
         StartCoroutine(base.SetLevelSelectorButton(false));
         StartCoroutine(base.SetTutorialHelpButton(false));
@@ -22,8 +24,9 @@ public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorIniti
     }
 
     public IEnumerator LoadData(GameData data) {
-        yield return new WaitUntil(() => finishedWithAllTasks);
+        //yield return new WaitUntil(() => finishedWithAllTasks);
         RecolorButtons(data);
+        yield return null;
     }
 
     public void SaveData(GameData data) {}

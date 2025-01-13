@@ -19,6 +19,7 @@ public class CableHandler : ScriptInitializerBase {
 
     // Update is called once per frame
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(transform.position != A.cachedPosition || A.startingDirection != A.cachedStartingDirection || A.endingDirection != A.cachedEndingDirection) {
             GenerateEndingCables(A.lastRotationCableIndex+1);
             A.cachedPosition = transform.position;
@@ -32,6 +33,7 @@ public class CableHandler : ScriptInitializerBase {
         }
     }
     void LateUpdate() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(A.renewSiblingCableIndices) {
             RenewRotationAndIntersectionCables();
             A.renewSiblingCableIndices = false;
@@ -46,8 +48,8 @@ public class CableHandler : ScriptInitializerBase {
         A.finishedInitialization = true;
         if(A.plugAttributes.isObstacle) {
             InitializeCableGrid();
-            GridsController.Instance.RenewAllCablesGrid();
-            IntersectionController.Instance.TestForCableIntersection();
+            //GridsController.Instance.RenewAllCablesGrid();
+            //IntersectionController.Instance.TestForCableIntersection();
         }
     }
 
@@ -403,6 +405,8 @@ public class CableHandler : ScriptInitializerBase {
                 }
                 break;
         }
+        Debug.Log("isObstacle: ["+A.plugAttributes.isObstacle+"]");
+        Debug.Log("obstacleAttributes: ["+A.plugAttributes.obstacleAttributes+"]");
         if((!A.plugAttributes.isObstacle && A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && !A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { Utilities.SetCablesOpacity(gameObject, 1f); }
         else if((!A.plugAttributes.isObstacle && !A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { Utilities.SetCablesOpacity(gameObject, Constants.cableOpacity); }
         for(int i=A.cables.Count-1; i>=0; i--) {

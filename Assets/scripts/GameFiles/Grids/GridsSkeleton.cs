@@ -11,6 +11,7 @@ public class GridsSkeleton : Singleton<GridsSkeleton> {
     [HideInInspector] public Vector2[,] socketsSkeletonGrid;
 
     public override IEnumerator Initialize() {
+        InitializeOld();
         yield return null;
     }
 

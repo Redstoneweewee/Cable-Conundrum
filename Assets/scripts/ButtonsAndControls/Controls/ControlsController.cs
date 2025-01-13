@@ -25,6 +25,7 @@ public class ControlsController : Singleton<ControlsController> {
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         ChangeEditorMode();
     }
 

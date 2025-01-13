@@ -34,12 +34,13 @@ public class ScriptInitializationPriority {
             new ScriptTypeAndPlace(typeof(SliderAttributes),            InitPlace.All), 
             new ScriptTypeAndPlace(typeof(SoundsController),            InitPlace.All), 
             new ScriptTypeAndPlace(typeof(TutorialController),          InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(DataPersistenceManager),      InitPlace.Start), 
+            new ScriptTypeAndPlace(typeof(DataPersistenceManager),      InitPlace.Start),
+            new ScriptTypeAndPlace(typeof(CableParentAttributes),       InitPlace.All),
             new ScriptTypeAndPlace(typeof(SocketAttributes),            InitPlace.All), 
             new ScriptTypeAndPlace(typeof(SocketHandler),               InitPlace.All), 
             new ScriptTypeAndPlace(typeof(JointsOpacityGlobal),         InitPlace.All), 
             new ScriptTypeAndPlace(typeof(LevelSelectorBackgroundData), InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(DontDestroyOnLoad),           InitPlace.Start), 
+            new ScriptTypeAndPlace(typeof(DontDestroyOnLoad),           InitPlace.Start),
             new ScriptTypeAndPlace(typeof(WinningMessageSizeGlobal),    InitPlace.All), 
             new ScriptTypeAndPlace(typeof(InitializeBackground),        InitPlace.All)
             //scripts and place ----------------------
@@ -63,13 +64,13 @@ public class ScriptInitializationPriority {
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
             new ScriptTypeAndPlace(typeof(PlugSelectorController),    InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(CableHandler),              InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(CableParentAttributes),     InitPlace.All), 
             new ScriptTypeAndPlace(typeof(ElectricalStripController), InitPlace.All), 
             new ScriptTypeAndPlace(typeof(ElectricalStripData),       InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(GridsModifier),             InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(GridsSkeleton),             InitPlace.All), 
             new ScriptTypeAndPlace(typeof(JointsController),          InitPlace.All), 
             new ScriptTypeAndPlace(typeof(JointsData),                InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(PlugAttributes),            InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(PlugHandler),               InitPlace.All),
             new ScriptTypeAndPlace(typeof(WinningControllerGlobal),   InitPlace.All)
             //scripts and place ----------------------
         }),
@@ -77,15 +78,13 @@ public class ScriptInitializationPriority {
         new InitializationPriority( 3, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(PlugAttributes), InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(PlugHandler),    InitPlace.All)
+            new ScriptTypeAndPlace(typeof(CableHandler),          InitPlace.All)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 4, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(IntersectionController), InitPlace.All)
             //scripts and place ----------------------
         }),
 
@@ -100,7 +99,8 @@ public class ScriptInitializationPriority {
         new InitializationPriority( 6, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(GridsController), InitPlace.All)
+            new ScriptTypeAndPlace(typeof(GridsController),        InitPlace.All),
+            new ScriptTypeAndPlace(typeof(IntersectionController), InitPlace.All)
             //scripts and place ----------------------
         }),
 

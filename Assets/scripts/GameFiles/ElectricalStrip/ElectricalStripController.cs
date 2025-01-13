@@ -17,6 +17,7 @@ public class ElectricalStripController : Singleton<ElectricalStripController>, I
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         D.rectangularTransform = Utilities.TryGetComponent<RectTransform>(D.backgroundVisual);
     }
 

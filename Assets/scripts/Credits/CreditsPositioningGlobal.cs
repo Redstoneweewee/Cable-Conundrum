@@ -29,6 +29,7 @@ public class CreditsPositioningGlobal : Singleton<CreditsPositioningGlobal> {
     }
     
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(renew) {
             RenewCredits();
             renew = false;

@@ -14,9 +14,9 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     private bool initializationFinished = false;
     //public bool allCableHandlersInitializationFinished = false;
 
-    new public IEnumerator Initialize() {
-        levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
+    public override IEnumerator Initialize() {
         StartCoroutine(base.Initialize());
+        levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
         yield return null;
     }
 
@@ -31,12 +31,8 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     public IEnumerator LoadData(GameData data) {
         InitializeOld(data);
         yield return new WaitUntil(() => initializationFinished);
-        //yield return new WaitUntil(() => allCableHandlersInitializationFinished);
-        //Debug.Log(data.levelsSavePlugs[levelIndex]);
-        //Debug.Log(data.levelsSavePlugs[levelIndex].Count);
         if(data.levelsSavePlugs[levelIndex] != null && data.levelsSavePlugs[levelIndex].Count != 0) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
-            //Set all the necessary data for a plug
             for(int i=0; i<levelData.Count; i++) {
                 if(levelData[i] == null) { continue; }
                 if(sortedPlugs.Count <= i) { continue; }
@@ -46,7 +42,6 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
 
                 GameObject plug = sortedPlugs[i].gameObject;
                 DebugC.Instance?.Log($"Inheriting values - receiver: {plug.name}");
-                //DebugC.Instance?.Log($"plugPosition changed: {plug.name} from ({plug.transform.position}) to ({savePlug.plugPosition})");
                 Vector3 socketPosition = GridsSkeleton.Instance.socketsSkeletonGrid[savePlug.socketIndex.x,savePlug.socketIndex.y];
                 plug.transform.position = socketPosition-((Vector3)Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]*LevelResizeGlobal.Instance.finalScale);
                 DebugC.Instance?.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
@@ -58,9 +53,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
             }
         }
 
-        //Once all data is loaded, we are finished with all tasks
-        base.FinishedWithAllTasks();
-        //And renew level grids
+        //base.FinishedWithAllTasks();
         StartCoroutine(FindFirstObjectByType<GridsController>().RenewGrids());
         MoveAllPlugsToInitialPositions();
     }
@@ -99,28 +92,6 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     }
     public void SaveDataLate(GameData data) {}
 
-    //private IEnumerator TestForLoadData() {
-    //    yield return new WaitForSeconds(1.5f);
-    //    if(!finishedWithAllTasks) {
-    //        Debug.LogWarning("Level failed to load. trying again.");
-    //        DataPersistenceManager.Instance.LoadGame();
-    //        StartCoroutine(TestForLoadData());
-    //    }
-    //}
-
-    void Update() {
-        /*
-        if(!allCableHandlersInitializationFinished) {
-            CableParentAttributes[] cableParentAttributes = FindObjectsByType<CableParentAttributes>();
-            for(int i=0; i<cableParentAttributes.Length; i++) {
-                if(!cableParentAttributes[i].finishedInitialization) {
-                    return;
-                }
-            }
-            allCableHandlersInitializationFinished = true;
-        }
-        */
-    }
 
     private void InitializeOld(GameData data) {
         bool shouldMovePlugs = data.levelsSavePlugs[levelIndex] == null || data.levelsSavePlugs[levelIndex].Count == 0;
@@ -130,7 +101,6 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
         StartCoroutine(base.SetLevelSelectorButton(true));
         StartCoroutine(base.SetTutorialHelpButton(true));
         initializationFinished = true;
-        //StartCoroutine(TestForLoadData());
     }
 
     public void ResetPlugs(bool shouldMovePlugs) {
@@ -156,12 +126,13 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
 
 
     private IEnumerator EnableMenuButtons() {
-        yield return new WaitUntil(() => allButtonsLoaded);
+        //yield return new WaitUntil(() => allButtonsLoaded);
         foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterMenu) {
                 buttonAttribute.button.gameObject.SetActive(true);
             }
         }
+        yield return null;
     }
 
     private void RenewAllLevelPlugsList() {

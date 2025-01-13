@@ -13,6 +13,7 @@ public class InitializeBackground : Singleton<InitializeBackground> {
 
     // Start is called before the first frame update
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(rectangularTransform.sizeDelta != new Vector2(Screen.width, Screen.height)) {
             rectangularTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
         }

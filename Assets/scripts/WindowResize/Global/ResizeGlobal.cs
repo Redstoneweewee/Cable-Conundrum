@@ -16,6 +16,7 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
     }
     
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(base.GetScreenSizeChange()) { 
             //Debug.Log($"new window size: {Screen.width}, {Screen.height}");
             StartCoroutine(RenewAll());

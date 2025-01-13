@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScriptInitializationGlobal : Singleton<ScriptInitializationGlobal> {
+    public bool ShouldUpdate { get; private set; } = false;
     public bool FinshedInitialization { get; private set; } = false;
 
     public override IEnumerator Initialize() {
@@ -16,6 +17,7 @@ public class ScriptInitializationGlobal : Singleton<ScriptInitializationGlobal> 
         FinshedInitialization = false;
         float startTime = Time.time;
         string debugText = "Initialization Log for Scene ["+SceneManager.GetActiveScene().name+"]:\n";
+        Debug.Log("Initialization Log for Scene ["+SceneManager.GetActiveScene().name+"]:\n");
         
         List<ScriptInitializerBase> temp = FindObjectsByType<ScriptInitializerBase>(FindObjectsSortMode.None).ToList();
         //Initialize Singletons first
@@ -37,6 +39,7 @@ public class ScriptInitializationGlobal : Singleton<ScriptInitializationGlobal> 
                     
                     float deltaTime = Time.time - startTime;
                     debugText += "\n["+deltaTime+" sec] Found "+objs.Length+" instance(s) of ["+scriptTypeAndPlace.GetScriptType().Name+"]\n";
+                    Debug.Log("["+deltaTime+" sec] Found "+objs.Length+" instance(s) of ["+scriptTypeAndPlace.GetScriptType().Name+"]");
 
                     foreach(UnityEngine.Object obj in objs) {
                         ScriptInitializerBase scriptInitializerBase = (ScriptInitializerBase)obj;
@@ -48,14 +51,22 @@ public class ScriptInitializationGlobal : Singleton<ScriptInitializationGlobal> 
                         yield return new WaitUntil(() => scriptInitializerBase.Initialized);
                         deltaTime = Time.time - startTime;
                         debugText += "["+deltaTime+" sec] Finished Initializing #"+num+" ["+scriptTypeAndPlace.GetScriptType().Name+"]\n";
+                        Debug.Log("["+deltaTime+" sec] Finished Initializing #"+num+" ["+scriptTypeAndPlace.GetScriptType().Name+"]");
                         num++;
                     }
                 }
             }
             debugText += "\n-------------------------------------------\n>>>>> Initialized priority "+priority.GetPriority()+" finished <<<<<\n-------------------------------------------\n";
+            Debug.Log(">>>>> Initialized priority "+priority.GetPriority()+" finished <<<<<");
         }
         FinshedInitialization = true;
+        ShouldUpdate = true;
         Debug.Log(debugText);
         yield return null;
+    }
+
+    public void SetUpdate(bool value) {
+        //this is set to false in ScenesController
+        ShouldUpdate = value;
     }
 }

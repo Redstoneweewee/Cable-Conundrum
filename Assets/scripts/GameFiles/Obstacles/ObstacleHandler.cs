@@ -23,6 +23,7 @@ public class ObstacleHandler : ScriptInitializerBase, IDragHandler, IBeginDragHa
 
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(A.obstacleType != ObstacleTypes.TableTop) { return; }
         RenewTableTopPosition();
     }

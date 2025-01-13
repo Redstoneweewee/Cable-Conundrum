@@ -13,6 +13,7 @@ public class LevelSelectorBackgroundController : Singleton<LevelSelectorBackgrou
     }
 
     void Update() {
+        if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(D.center.x != transform.position.x || D.center.y != transform.position.y) {
             D.center = transform.position;
         }

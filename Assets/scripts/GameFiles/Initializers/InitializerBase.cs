@@ -4,43 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour {
-    public bool finishedWithAllTasks = false;
-    public bool allButtonsLoaded = false;
+    //public bool finishedWithAllTasks = false;
+    //public bool allButtonsLoaded = false;
     [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
 
     //ublic override void OnAwake() { }
     public override IEnumerator Initialize() {
-        StartCoroutine(WaitToInitializeButtons());
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        InitializeItems();
         yield return null;
     }
 
-    private IEnumerator WaitToInitializeButtons() {
-        yield return new WaitUntil(() => finishedWithAllTasks);
-        StartCoroutine(InitializeItems());
-    }
-
-    private IEnumerator InitializeItems() {
-        /*
-        Transform[] allTransforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        GameObjectActivity[] gameObjectActivities = new GameObjectActivity[allTransforms.Length];
-        for(int i=0; i<allTransforms.Length; i++) {
-            gameObjectActivities[i] = new GameObjectActivity(allTransforms[i].gameObject, allTransforms[i].gameObject.activeSelf);
-        }
-        foreach(Transform transform in allTransforms) {
-            transform.gameObject.SetActive(true);
-        }
-        */
+    private void InitializeItems() {
 
         ControlsController.Instance.InitializeOld();
-        SoundsController.Instance.InitializeSliders();
         InitializeButtons();
 
-        // |--------------------------------------------------------------------------|
-        // |--------------------------------------------------------------------------|
-        // |-------------- WARNING - Videos cannot load without WIFI!! ---------------|
-        // |--------------------------------------------------------------------------|
-        // |--------------------------------------------------------------------------|
-        
+        /*
         if(!TutorialData.Instance.isInitialized) { 
             //StartCoroutine(tutorialController.Initialize());
             
@@ -51,10 +31,8 @@ public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour 
             
         }
         yield return new WaitUntil(() => TutorialData.Instance.isInitialized);
-        
-        //EndInitialization(gameObjectActivities);
-        //yield return null;
-        AllButtonsLoaded();
+        */
+        //AllButtonsLoaded();
     }
 
 
@@ -122,44 +100,50 @@ public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour 
     }
 
 
-    private void EndInitialization(GameObjectActivity[] gameObjectActivities) {
-        foreach(GameObjectActivity activity in gameObjectActivities) {
-            activity.gameObject.SetActive(activity.isInitiallyActive);
-        }
-    }
+    //private void EndInitialization(GameObjectActivity[] gameObjectActivities) {
+    //    foreach(GameObjectActivity activity in gameObjectActivities) {
+    //        activity.gameObject.SetActive(activity.isInitiallyActive);
+    //    }
+    //}
 
     public IEnumerator SetMenuButton(bool active) {
-        yield return new WaitUntil(() => allButtonsLoaded);
+        //yield return new WaitUntil(() => allButtonsLoaded);
         foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterMenu) {
                 buttonAttribute.button.gameObject.SetActive(active);
             }
         }
+        Debug.Log("Set menu button to "+active);
+        yield return null;
     }
     public IEnumerator SetLevelSelectorButton(bool active) {
-        yield return new WaitUntil(() => allButtonsLoaded);
+        //yield return new WaitUntil(() => allButtonsLoaded);
         foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterLevelSelector) {
                 buttonAttribute.button.gameObject.SetActive(active);
             }
         }
+        Debug.Log("Set level selector button to "+active);
+        yield return null;
     }
     public IEnumerator SetTutorialHelpButton(bool active) {
-        yield return new WaitUntil(() => allButtonsLoaded);
+        //yield return new WaitUntil(() => allButtonsLoaded);
         foreach(ButtonsAttributes buttonAttribute in buttonsAttributes) {
             if(buttonAttribute.buttonType == ButtonTypes.EnterTutorialPage) {
                 buttonAttribute.button.gameObject.SetActive(active);
             }
         }
+        Debug.Log("Set tutorial button to "+active);
+        yield return null;
     }
 
 
-    public void FinishedWithAllTasks() {
-        finishedWithAllTasks = true;
-        DebugC.Instance?.Log("set finishedWithAllTasks to True");
-    }
-    public void AllButtonsLoaded() {
-        allButtonsLoaded = true;
-        DebugC.Instance?.Log("set allButtonsLoaded to True");
-    }
+    //public void FinishedWithAllTasks() {
+    //    finishedWithAllTasks = true;
+    //    DebugC.Instance?.Log("set finishedWithAllTasks to True");
+    //}
+    //public void AllButtonsLoaded() {
+    //    allButtonsLoaded = true;
+    //    DebugC.Instance?.Log("set allButtonsLoaded to True");
+    //}
 }
