@@ -26,36 +26,35 @@ public class ScriptInitializationPriority {
         new InitializationPriority( 0, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(AdminToggles),                InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(AdminToggles),                InitPlace.Start), 
             new ScriptTypeAndPlace(typeof(ButtonsAttributes),           InitPlace.All), 
             new ScriptTypeAndPlace(typeof(ButtonsHandler),              InitPlace.All), 
             new ScriptTypeAndPlace(typeof(ButtonsOutlineLocal),         InitPlace.All), 
             new ScriptTypeAndPlace(typeof(ControlsData),                InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(SliderAttributes),            InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(SoundsController),            InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(SliderAttributes),            InitPlace.Start), 
+            new ScriptTypeAndPlace(typeof(SoundsController),            InitPlace.Start), 
             new ScriptTypeAndPlace(typeof(TutorialController),          InitPlace.Start), 
             new ScriptTypeAndPlace(typeof(DataPersistenceManager),      InitPlace.Start),
-            new ScriptTypeAndPlace(typeof(CableParentAttributes),       InitPlace.All),
-            new ScriptTypeAndPlace(typeof(SocketAttributes),            InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(SocketHandler),               InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(JointsOpacityGlobal),         InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(LevelSelectorBackgroundData), InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(CableParentAttributes),       InitPlace.Level),
+            new ScriptTypeAndPlace(typeof(SocketAttributes),            InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(SocketHandler),               InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(JointsOpacityGlobal),         InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(LevelSelectorBackgroundData), InitPlace.LevelSelector), 
             new ScriptTypeAndPlace(typeof(DontDestroyOnLoad),           InitPlace.Start),
-            new ScriptTypeAndPlace(typeof(WinningMessageSizeGlobal),    InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(InitializeBackground),        InitPlace.All)
+            new ScriptTypeAndPlace(typeof(WinningMessageSizeGlobal),    InitPlace.Level)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 1, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(PlugSelectorData),                  InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(PlugSelectorData),                  InitPlace.Level), 
             new ScriptTypeAndPlace(typeof(TutorialVideoAttributes),           InitPlace.Start), 
-            new ScriptTypeAndPlace(typeof(CreditsGlobal),                     InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(LevelSelectorInitializerGlobal),    InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(MenuInitializerGlobal),             InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(LevelSelectorBackgroundController), InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(LevelResizeGlobal),                 InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(CreditsGlobal),                     InitPlace.Menu), 
+            new ScriptTypeAndPlace(typeof(LevelSelectorInitializerGlobal),    InitPlace.LevelSelector), 
+            new ScriptTypeAndPlace(typeof(MenuInitializerGlobal),             InitPlace.Menu), 
+            new ScriptTypeAndPlace(typeof(LevelSelectorBackgroundController), InitPlace.LevelSelector), 
+            new ScriptTypeAndPlace(typeof(LevelResizeGlobal),                 InitPlace.Level), 
             new ScriptTypeAndPlace(typeof(ResizeGlobal),                      InitPlace.All)
             //scripts and place ----------------------
         }),
@@ -63,38 +62,38 @@ public class ScriptInitializationPriority {
         new InitializationPriority( 2, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(PlugSelectorController),    InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(ElectricalStripController), InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(ElectricalStripData),       InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(GridsSkeleton),             InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(JointsController),          InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(JointsData),                InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(PlugAttributes),            InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(PlugHandler),               InitPlace.All),
-            new ScriptTypeAndPlace(typeof(WinningControllerGlobal),   InitPlace.All)
+            new ScriptTypeAndPlace(typeof(PlugSelectorController),    InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(ElectricalStripController), InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(ElectricalStripData),       InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(GridsSkeleton),             InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(JointsController),          InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(JointsData),                InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(PlugAttributes),            InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(PlugHandler),               InitPlace.Level),
+            new ScriptTypeAndPlace(typeof(WinningControllerGlobal),   InitPlace.Level)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 3, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(CableHandler),          InitPlace.All)
+            new ScriptTypeAndPlace(typeof(CableHandler),          InitPlace.Level)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 4, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(ObstacleAttributes), InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(ObstacleHandler),    InitPlace.All)
+            new ScriptTypeAndPlace(typeof(ObstacleAttributes), InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(ObstacleHandler),    InitPlace.Level)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 5, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(GridsController),        InitPlace.All),
-            new ScriptTypeAndPlace(typeof(IntersectionController), InitPlace.All)
+            new ScriptTypeAndPlace(typeof(GridsController),        InitPlace.Level),
+            new ScriptTypeAndPlace(typeof(IntersectionController), InitPlace.Level)
             //scripts and place ----------------------
         }),
 
@@ -108,17 +107,16 @@ public class ScriptInitializationPriority {
         new InitializationPriority( 7, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(LevelInitializerGlobal), InitPlace.All)
+            new ScriptTypeAndPlace(typeof(LevelInitializerGlobal), InitPlace.Level)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 8, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(LevelTitleGlobal),      InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(PowerSwitchController), InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(ScenesController),      InitPlace.All),
-            new ScriptTypeAndPlace(typeof(Test),      InitPlace.All),
+            new ScriptTypeAndPlace(typeof(LevelTitleGlobal),      InitPlace.Level), 
+            new ScriptTypeAndPlace(typeof(PowerSwitchController), InitPlace.Level)
+            //new ScriptTypeAndPlace(typeof(ScenesController),      InitPlace.All)
             //scripts and place ----------------------
         })
     };

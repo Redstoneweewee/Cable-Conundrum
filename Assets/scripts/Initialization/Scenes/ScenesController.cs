@@ -86,8 +86,8 @@ public class ScenesController : Singleton<ScenesController> {
         StartCoroutine(ScriptInitializationGlobal.Instance.InitializeAll());
         yield return new WaitUntil(() => ScriptInitializationGlobal.Instance.FinshedInitialization);
 
-        //Renew Resizes
-        StartCoroutine(ResizeGlobal.Instance.RenewAll());
+        //Renew Resizes (DEPRECATED -- IS CALLED IN INITIALIZEALL())
+        //StartCoroutine(ResizeGlobal.Instance.RenewAll());
 
         //Load the game
         DataPersistenceManager.Instance.LoadGame();
@@ -127,8 +127,8 @@ public class ScenesController : Singleton<ScenesController> {
         StartCoroutine(ScriptInitializationGlobal.Instance.InitializeAll());
         yield return new WaitUntil(() => ScriptInitializationGlobal.Instance.FinshedInitialization);
 
-        //Renew Resizes
-        StartCoroutine(ResizeGlobal.Instance.RenewAll());
+        //Renew Resizes (DEPRECATED -- IS CALLED IN INITIALIZEALL())
+        //StartCoroutine(ResizeGlobal.Instance.RenewAll());
 
 
         SceneManager.LoadScene(Constants.menuBuildIndex);
@@ -142,8 +142,8 @@ public class ScenesController : Singleton<ScenesController> {
         StartCoroutine(ScriptInitializationGlobal.Instance.InitializeAll());
         yield return new WaitUntil(() => ScriptInitializationGlobal.Instance.FinshedInitialization);
 
-        //Renew Resizes
-        StartCoroutine(ResizeGlobal.Instance.RenewAll());
+        //Renew Resizes (DEPRECATED -- IS CALLED IN INITIALIZEALL())
+        //StartCoroutine(ResizeGlobal.Instance.RenewAll());
 
         //Load the game
         DataPersistenceManager.Instance.LoadGame();
