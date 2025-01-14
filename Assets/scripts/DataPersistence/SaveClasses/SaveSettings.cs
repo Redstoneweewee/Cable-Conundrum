@@ -10,7 +10,7 @@ public class SaveSettings {
     [Range(0, 1)] public float musicVolume;
 
     public SaveSettings() {
-        soundVolume = 0.8f;
-        musicVolume = 0.8f;
+        soundVolume = 0.75f;
+        musicVolume = 0.75f;
     }
 }
