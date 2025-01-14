@@ -32,13 +32,11 @@ public class ResizeGlobal : WindowSizeChange<ResizeGlobal> {
             //InitializeAll();
             StartCoroutine(RenewAll());
             renew = false;
-            Debug.Log("AAAAAA Renewed");
         }
     }
 
     public IEnumerator RenewAll() {
         yield return null;
-        Debug.Log("renewed EEEEEEEEEEEEEEEEEEE");
         RelativeBase[] allRelativeBases = FindObjectsByType<RelativeBase>(FindObjectsSortMode.None);
         int maxRenewIndex = 0;
         foreach(RelativeBase relativeBase in allRelativeBases) {

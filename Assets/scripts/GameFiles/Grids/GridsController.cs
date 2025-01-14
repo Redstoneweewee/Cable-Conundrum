@@ -8,14 +8,14 @@ public class GridsController : Singleton<GridsController> {
     private GridsSkeleton S;
 
     public override IEnumerator Initialize() {
-        InitializeOld();
+        Renew();
         yield return null;
     }
 
-    public void InitializeOld() {
+    public void Renew() {
         D = Utilities.TryGetComponent<GridsData>(gameObject);
         S = Utilities.TryGetComponent<GridsSkeleton>(gameObject);
-        S.InitializeOld();
+        S.Renew();
         InitializeJointsGrid();
         InitializeSocketsActiveGrid();
         StartCoroutine(RenewGrids());

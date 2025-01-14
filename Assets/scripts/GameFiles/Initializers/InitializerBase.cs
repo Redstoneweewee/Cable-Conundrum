@@ -10,14 +10,13 @@ public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour 
 
     //ublic override void OnAwake() { }
     public override IEnumerator Initialize() {
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         InitializeItems();
         yield return null;
     }
 
     private void InitializeItems() {
 
-        ControlsController.Instance.InitializeOld();
+        //ControlsController.Instance.InitializeOld();
         InitializeButtons();
 
         /*

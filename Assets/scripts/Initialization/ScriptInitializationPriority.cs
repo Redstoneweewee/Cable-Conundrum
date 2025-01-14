@@ -33,7 +33,7 @@ public class ScriptInitializationPriority {
             new ScriptTypeAndPlace(typeof(ControlsData),                InitPlace.All), 
             new ScriptTypeAndPlace(typeof(SliderAttributes),            InitPlace.All), 
             new ScriptTypeAndPlace(typeof(SoundsController),            InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(TutorialController),          InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(TutorialController),          InitPlace.Start), 
             new ScriptTypeAndPlace(typeof(DataPersistenceManager),      InitPlace.Start),
             new ScriptTypeAndPlace(typeof(CableParentAttributes),       InitPlace.All),
             new ScriptTypeAndPlace(typeof(SocketAttributes),            InitPlace.All), 
@@ -50,7 +50,7 @@ public class ScriptInitializationPriority {
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
             new ScriptTypeAndPlace(typeof(PlugSelectorData),                  InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(ControlsController),                InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(TutorialVideoAttributes),           InitPlace.Start), 
             new ScriptTypeAndPlace(typeof(CreditsGlobal),                     InitPlace.All), 
             new ScriptTypeAndPlace(typeof(LevelSelectorInitializerGlobal),    InitPlace.All), 
             new ScriptTypeAndPlace(typeof(MenuInitializerGlobal),             InitPlace.All), 
@@ -85,22 +85,23 @@ public class ScriptInitializationPriority {
         new InitializationPriority( 4, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
+            new ScriptTypeAndPlace(typeof(ObstacleAttributes), InitPlace.All), 
+            new ScriptTypeAndPlace(typeof(ObstacleHandler),    InitPlace.All)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 5, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(ObstacleAttributes), InitPlace.All), 
-            new ScriptTypeAndPlace(typeof(ObstacleHandler),    InitPlace.All)
+            new ScriptTypeAndPlace(typeof(GridsController),        InitPlace.All),
+            new ScriptTypeAndPlace(typeof(IntersectionController), InitPlace.All)
             //scripts and place ----------------------
         }),
 
         new InitializationPriority( 6, 
         new List<ScriptTypeAndPlace> {
             //scripts and place ----------------------
-            new ScriptTypeAndPlace(typeof(GridsController),        InitPlace.All),
-            new ScriptTypeAndPlace(typeof(IntersectionController), InitPlace.All)
+            new ScriptTypeAndPlace(typeof(ControlsController), InitPlace.All)
             //scripts and place ----------------------
         }),
 

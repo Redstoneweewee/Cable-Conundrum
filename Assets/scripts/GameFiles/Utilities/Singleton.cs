@@ -71,6 +71,7 @@ public abstract class Singleton<T> : Singleton where T : MonoBehaviour {
             }
         }
         Debug.Log("initialized ["+typeof(T)+"]'s Singleton");
+        IsSingletonInitialized = true;
     }
     #endregion
 }
@@ -78,6 +79,7 @@ public abstract class Singleton<T> : Singleton where T : MonoBehaviour {
 public abstract class Singleton : ScriptInitializerBase {
     #region  Properties
     public static bool Quitting { get; private set; }
+    public bool IsSingletonInitialized { get; protected set; } = false;
     #endregion
 
     #region  Methods

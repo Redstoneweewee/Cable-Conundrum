@@ -357,12 +357,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 0
   tutorialPageIndex: 0
   description: Left-Click and hold on each plug to move them around. Drag them onto
     sockets to complete puzzles.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &704746367397844498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,12 +2123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 1
   tutorialPageIndex: 2
   description: Once a plug is placed onto a socket, Left-Click and drag a plug's
     cables to manipulate its cables.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &2786439005395433891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,12 +3004,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 0
   tutorialPageIndex: 2
   description: Once a plug is placed onto a socket, Left-Click and drag a plug's
     cables to manipulate its cables.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &5079775394318809742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,11 +3089,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 0
   tutorialPageIndex: 1
   description: Press "G" to toggle the joints grid.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &5230577238684882518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,12 +3310,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 1
   tutorialPageIndex: 3
   description: Once you think you've finished a level, press the power switch. If
     it doesn't light green, you have not completed the puzzle yet.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &5778535090837299888
 GameObject:
   m_ObjectHideFlags: 0
@@ -5020,12 +5020,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 1
   tutorialPageIndex: 0
   description: Left-Click and hold on each plug to move them around. Drag them onto
     sockets to complete puzzles.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &7371645261796468586
 GameObject:
   m_ObjectHideFlags: 0
@@ -5180,12 +5180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 0
   tutorialPageIndex: 3
   description: Once you think you've finished a level, press the power switch. If
     it doesn't light green, you have not completed the puzzle yet.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &7921973208075580478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,11 +6306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ff886b58b65d4989a75827defa836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNormalVideoPlayer: 1
   tutorialPageIndex: 1
   description: Press "G" to toggle the joints grid.
   renderTexture: {fileID: 0}
   videoPlayer: {fileID: 0}
-  initialLoad: 0
 --- !u!1 &9095871765366007073
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,6 @@ public class TutorialData : Singleton<TutorialData> {
     [Header("videoPlayers contains the URL parent as the first element and \nNormal parent as the second element.")]
     [SerializeField] public GameObject[] videoPlayerParents = new GameObject[2];
     /*[HideInInspector] */public TutorialVideoAttributes[] videoPlayers;
-    /*[HideInInspector] */public bool isInitialized = false;
-    /*[HideInInspector] */public bool initialVideoInitialized = false;
     [HideInInspector] public int currentPageIndex = 0;
 
 

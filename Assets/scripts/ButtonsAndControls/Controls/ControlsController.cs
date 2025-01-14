@@ -21,6 +21,17 @@ public class ControlsController : Singleton<ControlsController> {
         SubscribeToActionStart(D.deleteAction, OnTryDeletePlug);
         SubscribeToActionStart(D.deleteAction, OnTryDeleteObstacle);
         ChangeEditorMode();
+        D.plugSelectorCanvas = null;
+        foreach(CanvasEnums canvasEnum in FindObjectsByType<CanvasEnums>(FindObjectsSortMode.None)) {
+            if(canvasEnum.CanvasType == CanvasType.PlugSelectorCanvas) {
+                D.plugSelectorCanvas = canvasEnum.gameObject;
+            }
+        }
+        D.isUsed = true;
+        if(D.plugSelectorCanvas == null || GridsController.Instance == null || IntersectionController.Instance == null || 
+           ElectricalStripData.Instance == null || ElectricalStripController.Instance == null) {
+            D.isUsed = false;
+        }
         yield return null;
     }
 
@@ -29,14 +40,21 @@ public class ControlsController : Singleton<ControlsController> {
         ChangeEditorMode();
     }
 
+    /*
     public void InitializeOld() {
-        D.plugSelectorCanvas = GameObject.FindGameObjectWithTag("PlugSelectorCanvas");
+        D.plugSelectorCanvas = null;
+        foreach(CanvasEnums canvasEnum in FindObjectsByType<CanvasEnums>(FindObjectsSortMode.None)) {
+            if(canvasEnum.CanvasType == CanvasType.PlugSelectorCanvas) {
+                D.plugSelectorCanvas = canvasEnum.gameObject;
+            }
+        }
         D.isUsed = true;
         if(D.plugSelectorCanvas == null || GridsController.Instance == null || IntersectionController.Instance == null || 
            ElectricalStripData.Instance == null || ElectricalStripController.Instance == null) {
             D.isUsed = false;
         }
     }
+    */
 
     private void ChangeEditorMode() {
         if(!AdminToggles.Instance.cachedEditorMode && AdminToggles.Instance.editorMode) {

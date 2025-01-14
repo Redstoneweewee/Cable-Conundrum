@@ -11,12 +11,14 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     public int levelIndex;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
-    private bool initializationFinished = false;
     //public bool allCableHandlersInitializationFinished = false;
 
     public override IEnumerator Initialize() {
         StartCoroutine(base.Initialize());
         levelIndex = SceneManager.GetActiveScene().buildIndex - Constants.firstLevelBuidIndex;
+        StartCoroutine(base.SetMenuButton(false));
+        StartCoroutine(base.SetLevelSelectorButton(true));
+        StartCoroutine(base.SetTutorialHelpButton(true));
         yield return null;
     }
 
@@ -29,8 +31,9 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     
     //TryGenerateCableFromList
     public IEnumerator LoadData(GameData data) {
-        InitializeOld(data);
-        yield return new WaitUntil(() => initializationFinished);
+        bool shouldMovePlugs = data.levelsSavePlugs[levelIndex] == null || data.levelsSavePlugs[levelIndex].Count == 0;
+        ResetPlugs(shouldMovePlugs);
+        
         if(data.levelsSavePlugs[levelIndex] != null && data.levelsSavePlugs[levelIndex].Count != 0) {
             List<SavePlug> levelData = data.levelsSavePlugs[levelIndex];
             for(int i=0; i<levelData.Count; i++) {
@@ -56,6 +59,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
         //base.FinishedWithAllTasks();
         StartCoroutine(FindFirstObjectByType<GridsController>().RenewGrids());
         MoveAllPlugsToInitialPositions();
+        yield return null;
     }
 
     
@@ -92,16 +96,6 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     }
     public void SaveDataLate(GameData data) {}
 
-
-    private void InitializeOld(GameData data) {
-        bool shouldMovePlugs = data.levelsSavePlugs[levelIndex] == null || data.levelsSavePlugs[levelIndex].Count == 0;
-        ResetPlugs(shouldMovePlugs);
-        //Log();
-        StartCoroutine(base.SetMenuButton(false));
-        StartCoroutine(base.SetLevelSelectorButton(true));
-        StartCoroutine(base.SetTutorialHelpButton(true));
-        initializationFinished = true;
-    }
 
     public void ResetPlugs(bool shouldMovePlugs) {
         RenewAllLevelPlugsList();

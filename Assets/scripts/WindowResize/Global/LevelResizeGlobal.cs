@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -61,7 +62,12 @@ public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
     [HideInInspector] public float   startingPlugOffsetRightSideAdd;
 
     public override IEnumerator Initialize() {
-        gameCanvas = Utilities.TryGetComponent<Canvas>(GameObject.FindGameObjectWithTag("GameCanvas"));
+        gameCanvas = null;
+        foreach(CanvasEnums canvasEnum in FindObjectsByType<CanvasEnums>(FindObjectsSortMode.None)) {
+            if(canvasEnum.CanvasType == CanvasType.GameCanvas) {
+                gameCanvas = Utilities.TryGetComponent<Canvas>(canvasEnum.gameObject);
+            }
+        }
         RenewValues();
         yield return null;
     }
@@ -69,7 +75,7 @@ public class LevelResizeGlobal : Singleton<LevelResizeGlobal> {
  
     void Update() {
         if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
-        if(!GameObject.FindGameObjectWithTag("GameCanvas")) { return; }
+        if(!gameCanvas) { return; }
         if(gameCanvas && gameCanvas.scaleFactor != cachedScaleFactor) { 
             Debug.Log("renew");
             RenewValues();

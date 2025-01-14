@@ -12,7 +12,16 @@ public class CableHandler : ScriptInitializerBase {
 
     public override IEnumerator Initialize() {
         A = Utilities.TryGetComponent<CableParentAttributes>(gameObject);
-        InitializeOld();
+        int endingCablesIndex = A.initialCables.Count;
+        InitializeInitialCables();
+        if(A.startingDirection != A.endingDirection) { TryRenewRotationCable(A.initialCables.Count, A.startingDirection, A.endingDirection); endingCablesIndex++; }
+        GenerateEndingCables(endingCablesIndex);
+        A.finishedInitialization = true;
+        if(A.plugAttributes.isObstacle) {
+            InitializeCableGrid();
+            //GridsController.Instance.RenewAllCablesGrid();
+            //IntersectionController.Instance.TestForCableIntersection();
+        }
         RenewRotationAndIntersectionCables();
         yield return null;
     }
@@ -40,18 +49,6 @@ public class CableHandler : ScriptInitializerBase {
         }
     }
 
-    private void InitializeOld() {
-        int endingCablesIndex = A.initialCables.Count;
-        InitializeInitialCables();
-        if(A.startingDirection != A.endingDirection) { TryRenewRotationCable(A.initialCables.Count, A.startingDirection, A.endingDirection); endingCablesIndex++; }
-        GenerateEndingCables(endingCablesIndex);
-        A.finishedInitialization = true;
-        if(A.plugAttributes.isObstacle) {
-            InitializeCableGrid();
-            //GridsController.Instance.RenewAllCablesGrid();
-            //IntersectionController.Instance.TestForCableIntersection();
-        }
-    }
 
     public void ResetCableGrid() {
         if(A.cableGrid == null) { return; }
@@ -405,8 +402,6 @@ public class CableHandler : ScriptInitializerBase {
                 }
                 break;
         }
-        Debug.Log("isObstacle: ["+A.plugAttributes.isObstacle+"]");
-        Debug.Log("obstacleAttributes: ["+A.plugAttributes.obstacleAttributes+"]");
         if((!A.plugAttributes.isObstacle && A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && !A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { Utilities.SetCablesOpacity(gameObject, 1f); }
         else if((!A.plugAttributes.isObstacle && !A.plugAttributes.isPluggedIn) || (A.plugAttributes.isObstacle && A.plugAttributes.obstacleAttributes.temporarilyModifiable)) { Utilities.SetCablesOpacity(gameObject, Constants.cableOpacity); }
         for(int i=A.cables.Count-1; i>=0; i--) {

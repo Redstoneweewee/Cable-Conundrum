@@ -4,31 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class TutorialVideoAttributes : MonoBehaviour {
+public class TutorialVideoAttributes : ScriptInitializerBase {
     [Tooltip("The page index of the video in the tutorial tab.")]
+    [SerializeField] [Range(0, 1)] public int isNormalVideoPlayer;
     [SerializeField] [Min(0)] public int tutorialPageIndex;
     [TextArea(5, 1)]
     [SerializeField] public string description;
     [HideInInspector] public RenderTexture renderTexture;
     [HideInInspector] public VideoPlayer videoPlayer;
-    [HideInInspector] public bool        initialLoad = false;
 
     //Initialized in TutorialController
-    public IEnumerator InitializeOld() {
-        bool caught = false;
-        try {
-            videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
-            renderTexture = videoPlayer.targetTexture;
-            videoPlayer.Pause();
-            videoPlayer.frame = 0;
-            videoPlayer.Prepare();
+    public override IEnumerator Initialize() {
+        if(TutorialData.Instance.useNormalVideoPlayers != isNormalVideoPlayer) {
+            yield break;
         }
-        catch(Exception) {
-            videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
-            renderTexture = videoPlayer.targetTexture;
-            caught = true;
-        }
-        yield return new WaitUntil(() => caught ? true : videoPlayer.isPrepared);
-        initialLoad = true;
+        videoPlayer = Utilities.TryGetComponent<VideoPlayer>(gameObject);
+        renderTexture = videoPlayer.targetTexture;
+        videoPlayer.Pause();
+        videoPlayer.frame = 0;
+        videoPlayer.Prepare();
+        yield return new WaitUntil(() => videoPlayer.isPrepared);
     }
 }

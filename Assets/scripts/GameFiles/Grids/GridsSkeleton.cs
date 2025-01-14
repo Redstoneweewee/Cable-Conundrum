@@ -11,11 +11,11 @@ public class GridsSkeleton : Singleton<GridsSkeleton> {
     [HideInInspector] public Vector2[,] socketsSkeletonGrid;
 
     public override IEnumerator Initialize() {
-        InitializeOld();
+        Renew();
         yield return null;
     }
 
-    public void InitializeOld() {
+    public void Renew() {
         GridsModifier.Instance.DeleteAllTestDots();
         InitializeJointsSkeletonGrid();
         InitializeSocketsSkeletonGrid(GridsModifier.Instance.electricalStripSize.height, GridsModifier.Instance.electricalStripSize.width);

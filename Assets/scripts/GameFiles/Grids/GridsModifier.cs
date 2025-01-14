@@ -25,8 +25,8 @@ public class GridsModifier : Singleton<GridsModifier> {
     void Update() {
         if(!ScriptInitializationGlobal.Instance.ShouldUpdate) { return; }
         if(renewGrids || testDotsActive != cachedtestDotsActive || electricalStripSize.width != cachedWidth || electricalStripSize.height != cachedHeight) {
-            GridsSkeleton.Instance.InitializeOld();
-            GridsController.Instance.InitializeOld();
+            GridsSkeleton.Instance.Renew();
+            GridsController.Instance.Renew();
             renewGrids = false;
             cachedtestDotsActive = testDotsActive;
             cachedWidth = (int)electricalStripSize.width;

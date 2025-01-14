@@ -71,11 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1fd28d00bdc24478c67f6618205c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plugSelectorController: {fileID: 0}
-  controlsData: {fileID: 0}
-  controlsController: {fileID: 0}
   mouseScrollAction: {fileID: 0}
-  levelInitializerGlobal: {fileID: 0}
   obstaclesParent: {fileID: 0}
   plugsParent: {fileID: 0}
   background: {fileID: 6769768448239211867}
@@ -161,9 +157,10 @@ GameObject:
   - component: {fileID: 7336723944095599399}
   - component: {fileID: 6968655252111013706}
   - component: {fileID: 3440316859535335895}
+  - component: {fileID: 1582013746467981040}
   m_Layer: 5
   m_Name: PlugSelectorCanvas
-  m_TagString: PlugSelectorCanvas
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,6 +248,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1582013746467981040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561369161265195370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d386efc07132f546a07784383e737fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasType: 2
 --- !u!1 &6769768448239211867
 GameObject:
   m_ObjectHideFlags: 0
