@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorInitializerGlobal>, IDataPersistence {
+public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorInitializerGlobal> {
     List<ButtonsAttributes> enterLevelButtons = new List<ButtonsAttributes>();
 
     public override IEnumerator Initialize() {
@@ -23,14 +23,12 @@ public class LevelSelectorInitializerGlobal : InitializerBase<LevelSelectorIniti
         yield return null;
     }
 
-    public IEnumerator LoadData(GameData data) {
+    public override void LoadData(GameData data) {
         //yield return new WaitUntil(() => finishedWithAllTasks);
         RecolorButtons(data);
-        yield return null;
     }
 
-    public void SaveData(GameData data) {}
-    public void SaveDataLate(GameData data) {}
+    public override void SaveData(GameData data) { }
 
 
     private void RecolorButtons(GameData data) {

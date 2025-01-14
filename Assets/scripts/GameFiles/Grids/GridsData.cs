@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridsData : Singleton<GridsData> {
-    [HideInInspector] public bool initialized = false;
-
     [SerializeField]  public List<SocketsRow> socketsActiveGrid = new List<SocketsRow>();
     [HideInInspector] public Transform[,]     jointsGrid;          //From JointsController
     [HideInInspector] public Transform[,]     socketsGrid;         //From ELectricalStripController

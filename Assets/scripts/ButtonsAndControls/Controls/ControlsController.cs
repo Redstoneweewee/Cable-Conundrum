@@ -123,7 +123,7 @@ public class ControlsController : Singleton<ControlsController> {
         if(!D.isUsed || IsNotInALevel()) { return; }
         D.masterJointsEnabled = !D.masterJointsEnabled;
         FindFirstObjectByType<JointsData>().jointsEnabled = D.masterJointsEnabled;
-        DebugC.Instance?.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
+        DebugC.Instance.Log("chaged masterJointsEnabled: "+D.masterJointsEnabled);
     }
 
     private void OnObstaclesToggle(InputAction.CallbackContext context) {
@@ -143,7 +143,7 @@ public class ControlsController : Singleton<ControlsController> {
                 obstacleAttribute.temporarilyModifiable = false;
             }   
         }
-        DebugC.Instance?.Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
+        DebugC.Instance.Log("chaged obstaclesModifiable: "+D.obstaclesModifiable);
     }
 
     private void OnPlugSelectorToggle(InputAction.CallbackContext context) {
@@ -166,7 +166,7 @@ public class ControlsController : Singleton<ControlsController> {
         if(!AdminToggles.Instance.editorMode) { return; }
         D.electricalStripEnabled = !D.electricalStripEnabled;
         GameObject electricalStrip = FindFirstObjectByType<ElectricalStripController>().gameObject;
-        DebugC.Instance?.Log("toggled electricla strip: "+D.electricalStripEnabled);
+        DebugC.Instance.Log("toggled electricla strip: "+D.electricalStripEnabled);
         
         if(D.electricalStripEnabled) {
             Utilities.TryGetComponent<CanvasGroup>(electricalStrip).alpha = 0.8f;

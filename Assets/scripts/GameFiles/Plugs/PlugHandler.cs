@@ -26,7 +26,7 @@ public class PlugHandler : ScriptInitializerBase, IPointerDownHandler, IPointerC
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        DebugC.Instance?.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        DebugC.Instance.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -201,7 +201,7 @@ public class PlugHandler : ScriptInitializerBase, IPointerDownHandler, IPointerC
 
 
     public void InitialCreateDrag() {
-        DebugC.Instance?.Log($"InitialCreateDrag: {A.name}");
+        DebugC.Instance.Log($"InitialCreateDrag: {A.name}");
         A.offset = new Vector2(transform.position.x, transform.position.y) - ControlsController.Instance.GetPointerPosition();
         //transform.localScale = new Vector3(1f, 1f, 1f);
         //transform.localScale = new Vector3(0.96f, 0.96f, 0.96f);
@@ -216,7 +216,7 @@ public class PlugHandler : ScriptInitializerBase, IPointerDownHandler, IPointerC
         yield return new WaitForEndOfFrame();
         if(!Input.GetMouseButton(0)) { A.isDragging = false; }
         if(A.isDragging) { A.targetPosition = ControlsController.Instance.GetPointerPosition() + A.offset; }
-        DebugC.Instance?.Log($"isDragging: {A.isDragging}, mouse: {Input.GetMouseButton(0)}");
+        DebugC.Instance.Log($"isDragging: {A.isDragging}, mouse: {Input.GetMouseButton(0)}");
         if(!Utilities.IsApproximate(A.targetPosition, A.cachedPlugPositionDynamic - A.offset, 0.01f)) {
             A.cachedPlugPositionDynamic = Vector2.Lerp(A.cachedPlugPositionDynamic, A.targetPosition, Constants.plugInterpolation);
             Transform firstNearestSocket = PlugIntoSocketTest();

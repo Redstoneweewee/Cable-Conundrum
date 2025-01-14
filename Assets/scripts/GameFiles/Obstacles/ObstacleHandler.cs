@@ -67,25 +67,27 @@ public class ObstacleHandler : ScriptInitializerBase, IDragHandler, IBeginDragHa
     }
 
     private IEnumerator InitializeTable() {
-        yield return new WaitUntil(() => GridsData.Instance.initialized);
+        //yield return new WaitUntil(() => GridsData.Instance.initialized);
         Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
         
         if(A.obstacleType == ObstacleTypes.LeftTableLeg) {
-            transform.position = new Vector3(skeletonGrid[0, 1].x + LevelResizeGlobal.Instance.jointDistance/2 + A.rectTransform.sizeDelta.x/2, A.rectTransform.sizeDelta.y/2, 0);
+            transform.position = new Vector3(skeletonGrid[0, 1].x + LevelResizeGlobal.Instance.jointDistance/2 + A.rectTransform.sizeDelta.x*LevelResizeGlobal.Instance.finalScale/2, A.rectTransform.sizeDelta.y*LevelResizeGlobal.Instance.finalScale/2, 0);
         }
         else if(A.obstacleType == ObstacleTypes.RightTableLeg) {
-            transform.position = new Vector3(skeletonGrid[0, skeletonGrid.GetLength(1)-2].x - LevelResizeGlobal.Instance.jointDistance/2 - A.rectTransform.sizeDelta.x/2, A.rectTransform.sizeDelta.y/2, 0);
+            transform.position = new Vector3(skeletonGrid[0, skeletonGrid.GetLength(1)-2].x - LevelResizeGlobal.Instance.jointDistance/2 - A.rectTransform.sizeDelta.x*LevelResizeGlobal.Instance.finalScale/2, A.rectTransform.sizeDelta.y*LevelResizeGlobal.Instance.finalScale/2, 0);
         }
         
         RenewObstacleGrid();
-        GridsController.Instance.RenewAllObstaclesGrid();
-        IntersectionController.Instance.TestForCableIntersection();
+        //GridsController.Instance.RenewAllObstaclesGrid();
+        //IntersectionController.Instance.TestForCableIntersection();
+        yield return null;
     }
     private IEnumerator InitializeScrew() {
-        yield return new WaitUntil(() => GridsData.Instance.initialized);
+        //yield return new WaitUntil(() => GridsData.Instance.initialized);
         RenewObstacleGrid();
-        GridsController.Instance.RenewAllObstaclesGrid();
-        IntersectionController.Instance.TestForCableIntersection();
+        //GridsController.Instance.RenewAllObstaclesGrid();
+        //IntersectionController.Instance.TestForCableIntersection();
+        yield return null;
     }
     
     
@@ -180,19 +182,24 @@ public class ObstacleHandler : ScriptInitializerBase, IDragHandler, IBeginDragHa
 
     private void RenewObstacleGrid() {
         //Plug obstacles do not use this
+        //|--------------------------------------------------------------------------------|
+        //|                                                                                |
+        //| Issue with table obstacle area being changed/offset when the window is resized |
+        //|                                                                                |
+        //|--------------------------------------------------------------------------------|
         Vector2[,] skeletonGrid = GridsSkeleton.Instance.jointsSkeletonGrid;
         A.obstacleGrid = new bool[skeletonGrid.GetLength(0), skeletonGrid.GetLength(1)];
 
         if(A.obstacleType == ObstacleTypes.LeftTableLeg || A.obstacleType == ObstacleTypes.RightTableLeg || A.obstacleType == ObstacleTypes.TableTop) {
-            Vector2 topLeft     = new Vector2(transform.position.x - A.rectTransform.sizeDelta.x/2, transform.position.y + A.rectTransform.sizeDelta.y/2);
-            Vector2 bottomRight = new Vector2(transform.position.x + A.rectTransform.sizeDelta.x/2, transform.position.y - A.rectTransform.sizeDelta.y/2);
+            Vector2 topLeft     = new Vector2(transform.position.x - A.rectTransform.sizeDelta.x*LevelResizeGlobal.Instance.finalScale/2, transform.position.y + A.rectTransform.sizeDelta.y*LevelResizeGlobal.Instance.finalScale/2);
+            Vector2 bottomRight = new Vector2(transform.position.x + A.rectTransform.sizeDelta.x*LevelResizeGlobal.Instance.finalScale/2, transform.position.y - A.rectTransform.sizeDelta.y*LevelResizeGlobal.Instance.finalScale/2);
             
             Index2D startingIndex = new Index2D(0, (int)((topLeft.x - skeletonGrid[0,0].x)/LevelResizeGlobal.Instance.jointDistance)+1);
-            Index2D endingIndex = new Index2D(A.obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-0.1f - skeletonGrid[0,0].x)/LevelResizeGlobal.Instance.jointDistance));
+            Index2D endingIndex = new Index2D(A.obstacleGrid.GetLength(0)-1, (int)((bottomRight.x-(LevelResizeGlobal.Instance.jointDistance/4) - skeletonGrid[0,0].x)/LevelResizeGlobal.Instance.jointDistance));
             startingIndex = Utilities.ClampIndex2D(startingIndex, 0, skeletonGrid.GetLength(0), 0, skeletonGrid.GetLength(1));
             endingIndex   = Utilities.ClampIndex2D(endingIndex, 0, skeletonGrid.GetLength(0), 0, skeletonGrid.GetLength(1));
-            DebugC.Instance?.Log($"startingIndex: ({startingIndex.x}, {startingIndex.y})");
-            DebugC.Instance?.Log($"endingIndex: ({endingIndex.x}, {endingIndex.y})");
+            DebugC.Instance.Log($"startingIndex: ({startingIndex.x}, {startingIndex.y})");
+            DebugC.Instance.Log($"endingIndex: ({endingIndex.x}, {endingIndex.y})");
 
             for(int i=startingIndex.x; i<=endingIndex.x; i++) {
                 for(int j=startingIndex.y; j<=endingIndex.y; j++) {

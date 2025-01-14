@@ -66,11 +66,14 @@ public class ScenesController : Singleton<ScenesController> {
         ScriptInitializationGlobal.Instance.SetUpdate(false);
         D.sceneFinishedLoading = false;
         D.animationIsFinished = false;
-        StartCoroutine(LoadLevelCoroutine(buildIndex));
+        StartCoroutine(LoadSceneCoroutine(buildIndex));
     }
 
 
-    private IEnumerator LoadLevelCoroutine(int buildIndex) {
+    private IEnumerator LoadSceneCoroutine(int buildIndex) {
+        //Save the game
+        DataPersistenceManager.Instance.SaveGame();
+
         //Play animation.
         D.crossFadeTransition.SetTrigger("StartCrossFade");
 
@@ -92,29 +95,15 @@ public class ScenesController : Singleton<ScenesController> {
         //Load the game
         DataPersistenceManager.Instance.LoadGame();
 
-        /*
-        if(MenuInitializerGlobal.Instance != null) {
-            yield return new WaitUntil(() => MenuInitializerGlobal.Instance.finishedWithAllTasks);
-            yield return new WaitUntil(() => MenuInitializerGlobal.Instance.allButtonsLoaded);
-        }
-        else if(LevelSelectorInitializerGlobal.Instance != null) {
-            yield return new WaitUntil(() => LevelSelectorInitializerGlobal.Instance.finishedWithAllTasks);
-            yield return new WaitUntil(() => LevelSelectorInitializerGlobal.Instance.allButtonsLoaded);
-        }
-        else if(LevelInitializerGlobal.Instance != null) {
-            yield return new WaitUntil(() => LevelInitializerGlobal.Instance.finishedWithAllTasks);
-            yield return new WaitUntil(() => LevelInitializerGlobal.Instance.allButtonsLoaded);
-        }
-        */
         
         //End the crossfade transition.
         D.crossFadeTransition.SetTrigger("EndCrossFade");
-        DebugC.Instance?.Log("Is finished with all tasks. Ending Fade.");
+        DebugC.Instance.Log("Is finished with all tasks. Ending Fade.");
 
         //Set animationIsFinished to true after the animation is finished.
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;
-        DebugC.Instance?.Log("Animation ended.");
+        DebugC.Instance.Log("Animation ended.");
     }
 
     private IEnumerator StartSceneLoad() {
@@ -130,6 +119,8 @@ public class ScenesController : Singleton<ScenesController> {
         //Renew Resizes (DEPRECATED -- IS CALLED IN INITIALIZEALL())
         //StartCoroutine(ResizeGlobal.Instance.RenewAll());
 
+        //Load the game
+        DataPersistenceManager.Instance.LoadGame();
 
         SceneManager.LoadScene(Constants.menuBuildIndex);
         StartCoroutine(MenuSceneLoad());
@@ -165,7 +156,7 @@ public class ScenesController : Singleton<ScenesController> {
         }
         */
         D.crossFadeTransition.SetTrigger("InitialCrossFade");
-        DebugC.Instance?.Log("Is finished with all tasks. Ending Fade. ");
+        DebugC.Instance.Log("Is finished with all tasks. Ending Fade. ");
         yield return new WaitForSeconds(D.crossFadeAnimationEndDuration);
         D.animationIsFinished = true;
     }
@@ -173,24 +164,19 @@ public class ScenesController : Singleton<ScenesController> {
 
 
     public void OnPressEnterLevelButton(int levelNumber) {
-        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.Level, levelNumber);
     }
     public void OnPressEnterNextLevelButton() {
-        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.NextLevel);
     }
     public void OnPressEnterPreviousLevelButton() {
-        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.PreviousLevel);
     }
 
     public void OnPressEnterLevelSelectorButton() {
-        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.LevelSelector);
     }
     public void OnPressEnterMenuButton() {
-        DataPersistenceManager.Instance.SaveGame();
         TryLoadScene(LoadSceneTypes.Menu);
     }
 }

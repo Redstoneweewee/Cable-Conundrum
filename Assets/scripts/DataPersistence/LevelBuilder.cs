@@ -13,18 +13,18 @@ public class LevelBuilder {
     }
 
     public static void BuildElectricalStrip(ElectricalStrip electricalStrip) {
-        if(!TestForBuildAbility()) { return; }
+        if(!TestForBuildability()) { return; }
         GridsModifier.Instance.electricalStripSize = electricalStrip.GetElectricalStripSize();
         ElectricalStripController.Instance.ModifyBackgroundVisual();
     }
     public static void BuildAllObstacles(List<Obstacle> allPlugs) {
-        if(!TestForBuildAbility()) { return; }
+        if(!TestForBuildability()) { return; }
     }
     public static void BuildAllPlugs(List<Plug> allPlugs) {
-        if(!TestForBuildAbility()) { return; }
+        if(!TestForBuildability()) { return; }
     }
 
-    private static bool TestForBuildAbility() {
+    private static bool TestForBuildability() {
         int issuesCount = 0;
         issuesCount += GridsModifier.Instance == null ? 1 : 0;
         issuesCount += ElectricalStripController.Instance == null ? 1 : 0;

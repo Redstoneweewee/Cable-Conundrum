@@ -100,7 +100,7 @@ public class PlugSelectorController : Singleton<PlugSelectorController>, IPointe
 
 
     public void OnClickPlugSelectorButton(int buttonId) {
-        DebugC.Instance?.Log($"A button was pressed. ButtonId: {buttonId}");
+        DebugC.Instance.Log($"A button was pressed. ButtonId: {buttonId}");
         PlugSelectorAtributes attribute = D.allSelectablePlugs[buttonId];
         if(attribute.Type == PlugSelectorTypes.Plug) {
             GameObject plug = Instantiate(attribute.PlugPrefab, D.plugsParent.transform);

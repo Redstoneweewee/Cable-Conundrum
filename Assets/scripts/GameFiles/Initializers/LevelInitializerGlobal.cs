@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, IDataPersistence {
+public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal> {
     public int levelIndex;
     [HideInInspector] private List<LevelPlugs> allLevelPlugs = new List<LevelPlugs>();
     [HideInInspector] private List<PlugAttributes> sortedPlugs = new List<PlugAttributes>();
@@ -30,7 +30,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
     // |----------------------------------------------------------------------------------|
     
     //TryGenerateCableFromList
-    public IEnumerator LoadData(GameData data) {
+    public override void LoadData(GameData data) {
         bool shouldMovePlugs = data.levelsSavePlugs[levelIndex] == null || data.levelsSavePlugs[levelIndex].Count == 0;
         ResetPlugs(shouldMovePlugs);
         
@@ -44,10 +44,10 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
                 if(!savePlug.isPluggedIn) { continue; }
 
                 GameObject plug = sortedPlugs[i].gameObject;
-                DebugC.Instance?.Log($"Inheriting values - receiver: {plug.name}");
+                DebugC.Instance.Log($"Inheriting values - receiver: {plug.name}");
                 Vector3 socketPosition = GridsSkeleton.Instance.socketsSkeletonGrid[savePlug.socketIndex.x,savePlug.socketIndex.y];
                 plug.transform.position = socketPosition-((Vector3)Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]*LevelResizeGlobal.Instance.finalScale);
-                DebugC.Instance?.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
+                DebugC.Instance.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
                 Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
 
                 if(savePlug.indexAndDirections == null) { continue; }
@@ -57,18 +57,17 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
         }
 
         //base.FinishedWithAllTasks();
-        StartCoroutine(FindFirstObjectByType<GridsController>().RenewGrids());
+        FindFirstObjectByType<GridsController>().RenewGrids();
         MoveAllPlugsToInitialPositions();
-        yield return null;
     }
 
     
-    public void SaveData(GameData data) {
+    public override void SaveData(GameData data) {
         //If the level has already been completed, do not save any new changes
         if(data.levelCompletion[levelIndex]) { return; }
 
         data.levelsSavePlugs[levelIndex].Clear();
-        DebugC.Instance?.LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
+        DebugC.Instance.LogListAlways("level savePlug: ", data.levelsSavePlugs[levelIndex]);
         foreach(PlugAttributes plugAttribute in sortedPlugs) {
             GameObject plug = plugAttribute.gameObject;
             Vector3 plugPosition = plug.transform.position;
@@ -94,7 +93,6 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
             }
         }
     }
-    public void SaveDataLate(GameData data) {}
 
 
     public void ResetPlugs(bool shouldMovePlugs) {
@@ -231,7 +229,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
                                                           plugPosition.y - LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Instance.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         plugPosition = new Vector3(plugPosition.x + ((int)plugAttributes.plugSize.y)*LevelResizeGlobal.Instance.jointDistance, plugPosition.y);
                     }
                     break;
@@ -244,7 +242,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
                                                           plugPosition.y + LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Instance.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         plugPosition = new Vector3(plugPosition.x + ((int)plugAttributes.plugSize.y)*LevelResizeGlobal.Instance.jointDistance, plugPosition.y);
                     }
                     break;
@@ -257,7 +255,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
                                                           plugPosition.y - LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Instance.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         plugPosition = new Vector3(plugPosition.x, plugPosition.y - ((int)plugAttributes.plugSize.x)*LevelResizeGlobal.Instance.jointDistance);
                     }
                     break;
@@ -270,7 +268,7 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal>, I
                                                           plugPosition.y - LevelResizeGlobal.Instance.jointDistance*((plugAttributes.plugSize.x-1)/2),
                                                           0);
                         plugAttributes.transform.position = newPosition - (Vector3)plugAttributes.center;
-                        DebugC.Instance?.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
+                        DebugC.Instance.Log($"Plug {plugAttributes.name} moved to: ({newPosition.x}, {newPosition.y}, {newPosition.z})");
                         plugPosition = new Vector3(plugPosition.x, plugPosition.y - ((int)plugAttributes.plugSize.x)*LevelResizeGlobal.Instance.jointDistance);
                     }
                     break;

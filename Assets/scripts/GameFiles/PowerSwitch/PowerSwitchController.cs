@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PowerSwitchController : Singleton<PowerSwitchController>, IPointerClickHandler, IDataPersistence {
+public class PowerSwitchController : DataPersistentSingleton<PowerSwitchController>, IPointerClickHandler {
     private PowerSwitchData D;
 
-    public IEnumerator LoadData(GameData data) {
+    public override void LoadData(GameData data) {
         //yield return new WaitUntil(() => LevelInitializerGlobal.Instance.finishedWithAllTasks);
         if(data.levelCompletion[LevelInitializerGlobal.Instance.levelIndex]) {
             Win();
         }
-        yield return null;
     }
 
-    public void SaveData(GameData data) {}
-    public void SaveDataLate(GameData data) {}
+    public override void SaveData(GameData data) { }
 
 
     public override IEnumerator Initialize() {
@@ -30,7 +28,7 @@ public class PowerSwitchController : Singleton<PowerSwitchController>, IPointerC
         else if(levelFailureTypes == LevelFailureTypes.Cables)    { Debug.Log("Some cables are overlapping!"); DidNotWin(); }
         else if(levelFailureTypes == LevelFailureTypes.None)      { Debug.Log("You win!"); Win(); }
         else   { Debug.LogError("Undefined level failure type."); }
-        DebugC.Instance?.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        DebugC.Instance.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     //conditions:

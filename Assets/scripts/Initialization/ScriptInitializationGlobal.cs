@@ -17,64 +17,62 @@ public class ScriptInitializationGlobal : Singleton<ScriptInitializationGlobal> 
         FinshedInitialization = false;
         int startFrame = Time.frameCount;
         float startTime = Time.time;
-        string debugText = "Initialization Log for Scene ["+SceneManager.GetActiveScene().name+"]:\n";
+        int deltaFrame = 0;
+        float deltaTime = 0;
+        string debugText = "";
+        string startText = "Initialization Log for Scene ["+SceneManager.GetActiveScene().name+"]:";
         //Debug.Log("Initialization Log for Scene ["+SceneManager.GetActiveScene().name+"]:\n");
-        
-        List<ScriptInitializerBase> temp = FindObjectsByType<ScriptInitializerBase>(FindObjectsSortMode.None).ToList();
+    
         //Initialize Singletons first
         Singleton[] tests = FindObjectsByType<Singleton>(FindObjectsSortMode.None);
         foreach(Singleton obj in tests) {
-            if(!obj.IsSingletonInitialized) { obj.SingletonInitialization(); }
+            if(!obj.IsSingletonInitialized) { debugText += obj.SingletonInitialization(); }
         }
+        debugText += "\n";
         //Initialize the rest of scripts
-        foreach(InitializationPriority priority in ScriptInitializationPriority.list) {
-            foreach(ScriptTypeAndPlace scriptTypeAndPlace in priority.ScriptTypeAndPlace()) {
-                if(scriptTypeAndPlace.GetScriptPlace() == InitPlace.All ||
-                   (SceneManager.GetActiveScene().buildIndex == Constants.startBuildIndex         && scriptTypeAndPlace.GetScriptPlace() == InitPlace.Start) ||
-                   (SceneManager.GetActiveScene().buildIndex == Constants.menuBuildIndex          && scriptTypeAndPlace.GetScriptPlace() == InitPlace.Menu) ||
-                   (SceneManager.GetActiveScene().buildIndex == Constants.levelSelectorBuildIndex && scriptTypeAndPlace.GetScriptPlace() == InitPlace.LevelSelector) ||
-                   (SceneManager.GetActiveScene().buildIndex >= Constants.firstLevelBuidIndex     && scriptTypeAndPlace.GetScriptPlace() == InitPlace.Level)) {
+        foreach(InitializationPriority priority in ScriptInitializationPriority.initList) {
+            foreach(ScriptInitAttributes ScriptInitAttributes in priority.GetScriptInitAttributes()) {
                 
+                if(!Utilities.ShouldExecute(ScriptInitAttributes.GetScriptExecuteOn())) { continue; }
 
-                    List<UnityEngine.Object> objs = FindObjectsOfType(scriptTypeAndPlace.GetScriptType()).ToList();
-                    List<bool> isEachInitialized = new List<bool>( new bool[objs.Count] );
-                    
-                    int deltaFrame = Time.frameCount - startFrame;
-                    float deltaTime = Time.time - startTime;
-                    debugText += "\n["+deltaFrame+"/"+deltaTime+" frm] Found "+objs.Count+" instance(s) of ["+scriptTypeAndPlace.GetScriptType().Name+"]\n";
-                    //Debug.Log("["+deltaFrame+"/"+deltaTime+" frm] Found "+objs.Count+" instance(s) of ["+scriptTypeAndPlace.GetScriptType().Name+"]");
+                List<UnityEngine.Object> objs = FindObjectsOfType(ScriptInitAttributes.GetScriptType()).ToList();
+                List<bool> isEachInitialized = new List<bool>( new bool[objs.Count] );
                 
-                    int num = 1;
-                    for(int i=objs.Count-1; i>=0; i--) {
-                        ScriptInitializerBase scriptInitializerBase = (ScriptInitializerBase)objs[i];
-                        //if(scriptInitializerBase.Initialized) {
-                        //    debugText += "["+deltaFrame+"/"+deltaTime+" frm] Already Initialized: #"+num+" ["+scriptTypeAndPlace.GetScriptType().Name+"]\n";
-                        //    Debug.Log("["+deltaFrame+"/"+deltaTime+" frm] Already Initialized: #"+num+" ["+scriptTypeAndPlace.GetScriptType().Name+"]");
-                        //    //objs.RemoveAt(i);
-                        //    num++;
-                        //    continue;
-                        //}
-                        StartCoroutine(scriptInitializerBase.TrackCoroutine(scriptInitializerBase.Initialize()));
-                        num++;
-                    }
-                    //num = 1;
-                    //for(int i=objs.Count-1; i>=0; i--) {
-                    //    ScriptInitializerBase scriptInitializerBase = (ScriptInitializerBase)objs[i];
-                    //    yield return new WaitUntil(() => scriptInitializerBase.Initialized);
-                    //    deltaFrame = Time.frameCount - startFrame;
-                    //    deltaTime = Time.time - startTime;
-                    //    debugText += "["+deltaFrame+"/"+deltaTime+" frm] Finished Initializing #"+num+" ["+scriptTypeAndPlace.GetScriptType().Name+"]\n";
-                    //    //Debug.Log("["+deltaFrame+"/"+deltaTime+" frm] Finished Initializing #"+num+" ["+scriptTypeAndPlace.GetScriptType().Name+"]");
+                deltaFrame = Time.frameCount - startFrame;
+                deltaTime = Time.time - startTime;
+                debugText += "\n["+deltaFrame+"/"+deltaTime+" frm] Found "+objs.Count+" instance(s) of ["+ScriptInitAttributes.GetScriptType().Name+"]\n";
+                //Debug.Log("["+deltaFrame+"/"+deltaTime+" frm] Found "+objs.Count+" instance(s) of ["+ScriptInitAttributes.GetScriptType().Name+"]");
+            
+                int num = 1;
+                for(int i=objs.Count-1; i>=0; i--) {
+                    ScriptInitializerBase scriptInitializerBase = (ScriptInitializerBase)objs[i];
+                    //if(scriptInitializerBase.Initialized) {
+                    //    debugText += "["+deltaFrame+"/"+deltaTime+" frm] Already Initialized: #"+num+" ["+ScriptInitAttributes.GetScriptType().Name+"]\n";
+                    //    Debug.Log("["+deltaFrame+"/"+deltaTime+" frm] Already Initialized: #"+num+" ["+ScriptInitAttributes.GetScriptType().Name+"]");
+                    //    //objs.RemoveAt(i);
                     //    num++;
+                    //    continue;
                     //}
-                    bool cont = true;
-                    while(cont) {
-                        if(!AllInitialized(objs, ref debugText, startFrame, startTime, isEachInitialized)) {
-                            yield return null;
-                        }
-                        else {
-                            cont = false;
-                        }
+                    StartCoroutine(scriptInitializerBase.TrackCoroutine(scriptInitializerBase.Initialize()));
+                    num++;
+                }
+                //num = 1;
+                //for(int i=objs.Count-1; i>=0; i--) {
+                //    ScriptInitializerBase scriptInitializerBase = (ScriptInitializerBase)objs[i];
+                //    yield return new WaitUntil(() => scriptInitializerBase.Initialized);
+                //    deltaFrame = Time.frameCount - startFrame;
+                //    deltaTime = Time.time - startTime;
+                //    debugText += "["+deltaFrame+"/"+deltaTime+" frm] Finished Initializing #"+num+" ["+ScriptInitAttributes.GetScriptType().Name+"]\n";
+                //    //Debug.Log("["+deltaFrame+"/"+deltaTime+" frm] Finished Initializing #"+num+" ["+ScriptInitAttributes.GetScriptType().Name+"]");
+                //    num++;
+                //}
+                bool cont = true;
+                while(cont) {
+                    if(!AllInitialized(objs, ref debugText, startFrame, startTime, isEachInitialized)) {
+                        yield return null;
+                    }
+                    else {
+                        cont = false;
                     }
                 }
             }
@@ -83,7 +81,10 @@ public class ScriptInitializationGlobal : Singleton<ScriptInitializationGlobal> 
         }
         FinshedInitialization = true;
         ShouldUpdate = true;
-        Debug.Log(debugText);
+        deltaFrame = Time.frameCount - startFrame;
+        deltaTime = Time.time - startTime;
+        startText += " [tot: "+deltaFrame+"/"+deltaTime+"]\n\n";
+        Debug.Log(startText + debugText);
         yield return null;
     }
 

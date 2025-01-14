@@ -9,14 +9,9 @@ public class IntersectionController : Singleton<IntersectionController> {
 
     public override IEnumerator Initialize() {
         D = IntersectionData.Instance;
-        StartCoroutine(InitialWaitUntilUpdate());
-        yield return null;
-    }
-
-    private IEnumerator InitialWaitUntilUpdate() {
-        yield return new WaitUntil(() => GridsData.Instance.initialized);
-        //RenewAllObstaclesGrid();
         TestForCableIntersection();
+        //StartCoroutine(InitialWaitUntilUpdate());
+        yield return null;
     }
 
     public void TestForCableIntersection() {

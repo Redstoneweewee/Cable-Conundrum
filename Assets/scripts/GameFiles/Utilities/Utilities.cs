@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //[ExecuteInEditMode]
@@ -80,6 +81,31 @@ public class Utilities {
             return default;
         }
         else { return objectTypeOut; }
+    }
+
+
+    public static bool ShouldExecute(ExecuteOn[] executeOns, bool isQuitting = false) {
+        foreach(ExecuteOn executeOn in executeOns) {
+            if(executeOn == ExecuteOn.All) {
+                return true;
+            }
+            else if(SceneManager.GetActiveScene().buildIndex == Constants.startBuildIndex && executeOn == ExecuteOn.Start) {
+                return true;
+            }
+            else if(SceneManager.GetActiveScene().buildIndex == Constants.menuBuildIndex && executeOn == ExecuteOn.Menu) {
+                return true;
+            }
+            else if(SceneManager.GetActiveScene().buildIndex == Constants.levelSelectorBuildIndex && executeOn == ExecuteOn.LevelSelector) {
+                return true;
+            }
+            else if(SceneManager.GetActiveScene().buildIndex >= Constants.firstLevelBuidIndex && executeOn == ExecuteOn.Level) {
+                return true;
+            }
+            else if(isQuitting && executeOn == ExecuteOn.Quit) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

@@ -41,7 +41,6 @@ public class FileDataHandler {
 
     public void Save(GameData data) {
         //Use Path.Combine to account for different OS's having different path separators.
-        Debug.Log("Savedd:: ");
         data.Log();
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try {

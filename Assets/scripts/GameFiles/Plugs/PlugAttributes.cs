@@ -51,8 +51,8 @@ public class PlugAttributes : ScriptInitializerBase {
         id = idIncrement;
         idIncrement++;
 
-        DebugC.Instance?.Log("initialized "+transform.name);
-        DebugC.Instance?.Log($"{transform.name}'s id: {id}");
+        DebugC.Instance.Log("initialized "+transform.name);
+        DebugC.Instance.Log($"{transform.name}'s id: {id}");
         yield return null;
     }
 

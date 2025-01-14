@@ -11,4 +11,9 @@ public class MenuInitializerGlobal : InitializerBase<MenuInitializerGlobal> {
         StartCoroutine(base.SetTutorialHelpButton(false));
         yield return null;
     }
+
+    public override void LoadData(GameData data) { }
+
+    public override void SaveData(GameData data) { }
+
 }

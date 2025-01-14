@@ -39,7 +39,7 @@ public class InitialCableGenerator : MonoBehaviour {
         else if(previousAttributes.endingDirection != newDirection) {
             GenerateRotationCable(previousIndex+1, previousAttributes.endingDirection, newDirection);
         }
-        DebugC.Instance?.LogList("initialCables: ", cableParentAttributes.initialCables);
+        DebugC.Instance.LogList("initialCables: ", cableParentAttributes.initialCables);
     }
 
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour {
+public abstract class InitializerBase<T> : DataPersistentSingleton<T> where T : MonoBehaviour {
     //public bool finishedWithAllTasks = false;
     //public bool allButtonsLoaded = false;
     [SerializeField]  public ButtonsAttributes[] buttonsAttributes;
@@ -139,10 +139,10 @@ public abstract class InitializerBase<T> : Singleton<T> where T : MonoBehaviour 
 
     //public void FinishedWithAllTasks() {
     //    finishedWithAllTasks = true;
-    //    DebugC.Instance?.Log("set finishedWithAllTasks to True");
+    //    DebugC.Instance.Log("set finishedWithAllTasks to True");
     //}
     //public void AllButtonsLoaded() {
     //    allButtonsLoaded = true;
-    //    DebugC.Instance?.Log("set allButtonsLoaded to True");
+    //    DebugC.Instance.Log("set allButtonsLoaded to True");
     //}
 }

@@ -4,19 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WinningControllerGlobal : Singleton<WinningControllerGlobal>, IDataPersistence {
+public class WinningControllerGlobal : DataPersistentSingleton<WinningControllerGlobal> {
     [SerializeField] [Range(0.01f, 1)] private float interpolationRatio = 0.05f;
     private bool hasWon = false;
 
     private Vector2 targetMessagePosition;
 
 
-    public IEnumerator LoadData(GameData data) { 
-        yield return null;
-    }
+    public override void LoadData(GameData data) { }
 
-    public void SaveData(GameData data) {}
-    public void SaveDataLate(GameData data) {
+    public override void SaveData(GameData data) {
         data.levelCompletion[LevelInitializerGlobal.Instance.levelIndex] = hasWon;
     }
 
