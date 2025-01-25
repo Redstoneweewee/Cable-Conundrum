@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
-public class PlugAttributes : ScriptInitializerBase {
+public class PlugAttributes : PrefabIdentifierBase {
     public static int idIncrement = 1;
     [HideInInspector] public int id;
 

@@ -187,6 +187,11 @@ public class Utilities {
         return socketsGridIndex;
     }
 
+    public static Vector3 CalculatePlugPosition(Index2D socketIndex, Vector2 firstLocalSnapPosition) {
+        Vector3 socketPosition = GridsSkeleton.Instance.socketsSkeletonGrid[socketIndex.x,socketIndex.y];
+        return socketPosition-((Vector3)firstLocalSnapPosition*LevelResizeGlobal.Instance.finalScale);
+    }
+
     public static void SetCablesOpacity(GameObject cableParent, float opacity) {
         CanvasGroup canvasGroup = TryGetComponent<CanvasGroup>(cableParent);
         canvasGroup.alpha = opacity;
@@ -271,68 +276,68 @@ public class Utilities {
         return ShadowDirections.In; //should never get here
     }
 
-    public static GameObject GetStraightCablePrefab(CablePrefabs cablePrefabs, ShadowDirections shadowDirection, Directions startDirection) {
+    public static GameObject GetStraightCablePrefab(CablePrefabs AllCablePrefabs, ShadowDirections shadowDirection, Directions startDirection) {
         if(shadowDirection == ShadowDirections.Up) {
-            if(startDirection == Directions.Left)       { return cablePrefabs.cablePrefabs[0]; }
-            else if(startDirection == Directions.Right) { return cablePrefabs.cablePrefabs[1]; }
+            if(startDirection == Directions.Left)       { return AllCablePrefabs.AllCablePrefabs[0]; }
+            else if(startDirection == Directions.Right) { return AllCablePrefabs.AllCablePrefabs[1]; }
         }
         else if(shadowDirection == ShadowDirections.Down) {
-            if(startDirection == Directions.Left)       { return cablePrefabs.cablePrefabs[2]; }
-            else if(startDirection == Directions.Right) { return cablePrefabs.cablePrefabs[3]; }
+            if(startDirection == Directions.Left)       { return AllCablePrefabs.AllCablePrefabs[2]; }
+            else if(startDirection == Directions.Right) { return AllCablePrefabs.AllCablePrefabs[3]; }
         }
         else if(shadowDirection == ShadowDirections.Left) {
-            if(startDirection == Directions.Up)        { return cablePrefabs.cablePrefabs[4]; }
-            else if(startDirection == Directions.Down) { return cablePrefabs.cablePrefabs[5]; }
+            if(startDirection == Directions.Up)        { return AllCablePrefabs.AllCablePrefabs[4]; }
+            else if(startDirection == Directions.Down) { return AllCablePrefabs.AllCablePrefabs[5]; }
         }
         else if(shadowDirection == ShadowDirections.Right) {
-            if(startDirection == Directions.Up)        { return cablePrefabs.cablePrefabs[6]; }
-            else if(startDirection == Directions.Down) { return cablePrefabs.cablePrefabs[7]; }
+            if(startDirection == Directions.Up)        { return AllCablePrefabs.AllCablePrefabs[6]; }
+            else if(startDirection == Directions.Down) { return AllCablePrefabs.AllCablePrefabs[7]; }
         }
         Debug.LogError("GetStraightCablePrefab function did not work correctly. None of the conditions were met.");
-        return cablePrefabs.cablePrefabs[0]; //should never get here
+        return AllCablePrefabs.AllCablePrefabs[0]; //should never get here
     }
     
-    public static GameObject GetRotationCablePrefab(CablePrefabs cablePrefabs, ShadowDirections shadowDirection, Directions startDirection, Directions endDirection) {
+    public static GameObject GetRotationCablePrefab(CablePrefabs AllCablePrefabs, ShadowDirections shadowDirection, Directions startDirection, Directions endDirection) {
         if(shadowDirection == ShadowDirections.In) {
             if(startDirection == Directions.Up) {
-                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[8]; }
-                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[9]; }
+                if     (endDirection == Directions.Left)  { return AllCablePrefabs.AllCablePrefabs[8]; }
+                else if(endDirection == Directions.Right) { return AllCablePrefabs.AllCablePrefabs[9]; }
             }
             else if(startDirection == Directions.Down) { 
-                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[10]; }
-                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[11]; }
+                if     (endDirection == Directions.Left)  { return AllCablePrefabs.AllCablePrefabs[10]; }
+                else if(endDirection == Directions.Right) { return AllCablePrefabs.AllCablePrefabs[11]; }
             }
             else if(startDirection == Directions.Left) { 
-                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[12]; }
-                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[13]; }
+                if     (endDirection == Directions.Up)  { return AllCablePrefabs.AllCablePrefabs[12]; }
+                else if(endDirection == Directions.Down) { return AllCablePrefabs.AllCablePrefabs[13]; }
             }
             else if(startDirection == Directions.Right) { 
-                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[14]; }
-                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[15]; }
+                if     (endDirection == Directions.Up)  { return AllCablePrefabs.AllCablePrefabs[14]; }
+                else if(endDirection == Directions.Down) { return AllCablePrefabs.AllCablePrefabs[15]; }
             }
         }
         else if(shadowDirection == ShadowDirections.Out) {
             if(startDirection == Directions.Up) {
-                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[16]; }
-                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[17]; }
+                if     (endDirection == Directions.Left)  { return AllCablePrefabs.AllCablePrefabs[16]; }
+                else if(endDirection == Directions.Right) { return AllCablePrefabs.AllCablePrefabs[17]; }
             }
             else if(startDirection == Directions.Down) { 
-                if     (endDirection == Directions.Left)  { return cablePrefabs.cablePrefabs[18]; }
-                else if(endDirection == Directions.Right) { return cablePrefabs.cablePrefabs[19]; }
+                if     (endDirection == Directions.Left)  { return AllCablePrefabs.AllCablePrefabs[18]; }
+                else if(endDirection == Directions.Right) { return AllCablePrefabs.AllCablePrefabs[19]; }
             }
             else if(startDirection == Directions.Left) { 
-                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[20]; }
-                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[21]; }
+                if     (endDirection == Directions.Up)  { return AllCablePrefabs.AllCablePrefabs[20]; }
+                else if(endDirection == Directions.Down) { return AllCablePrefabs.AllCablePrefabs[21]; }
             }
             else if(startDirection == Directions.Right) { 
-                if     (endDirection == Directions.Up)  { return cablePrefabs.cablePrefabs[22]; }
-                else if(endDirection == Directions.Down) { return cablePrefabs.cablePrefabs[23]; }
+                if     (endDirection == Directions.Up)  { return AllCablePrefabs.AllCablePrefabs[22]; }
+                else if(endDirection == Directions.Down) { return AllCablePrefabs.AllCablePrefabs[23]; }
             }
         }
         Debug.LogError("GetRotationCablePrefab function did not work correctly. None of the conditions were met."+
                        "\nstartDirection: "+startDirection+
                        "\nendingDirection: "+endDirection);
-        return cablePrefabs.cablePrefabs[8]; //should never get here
+        return AllCablePrefabs.AllCablePrefabs[8]; //should never get here
     }
 
 

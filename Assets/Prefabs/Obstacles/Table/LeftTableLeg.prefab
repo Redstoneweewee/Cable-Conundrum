@@ -146,12 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338d160b66711c845b5e37aa06f9a4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabId: 4
   obstacleHandler: {fileID: 0}
-  intersectionController: {fileID: 0}
   temporarilyModifiable: 0
-  gridsSkeleton: {fileID: 0}
-  gridsController: {fileID: 0}
   obstacleType: 1
   isDragging: 0
   rectTransform: {fileID: 0}
   cachedMousePosition: {x: 0, y: 0}
+  cachedLeftMostX: 0
+  cachedRightMostX: 0

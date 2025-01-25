@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class ObstacleAttributes : ScriptInitializerBase {
+public class ObstacleAttributes : PrefabIdentifierBase {
     [HideInInspector] public ObstacleHandler        obstacleHandler;
     [SerializeField]  public bool                   temporarilyModifiable;
 

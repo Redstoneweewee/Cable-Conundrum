@@ -45,8 +45,11 @@ public class LevelInitializerGlobal : InitializerBase<LevelInitializerGlobal> {
 
                 GameObject plug = sortedPlugs[i].gameObject;
                 DebugC.Instance.Log($"Inheriting values - receiver: {plug.name}");
-                Vector3 socketPosition = GridsSkeleton.Instance.socketsSkeletonGrid[savePlug.socketIndex.x,savePlug.socketIndex.y];
-                plug.transform.position = socketPosition-((Vector3)Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]*LevelResizeGlobal.Instance.finalScale);
+                
+                //Moves plug to correct socket
+                plug.transform.position = Utilities.CalculatePlugPosition(savePlug.socketIndex, Utilities.TryGetComponent<PlugAttributes>(plug).localSnapPositions[0]);
+                
+
                 DebugC.Instance.Log($"isPluggedIn changed: {plug.name} from ({Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn}) to ({savePlug.isPluggedIn})");
                 Utilities.TryGetComponent<PlugAttributes>(plug).isPluggedIn = savePlug.isPluggedIn;
 

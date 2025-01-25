@@ -250,19 +250,19 @@ public class CableHandler : ScriptInitializerBase {
             CableChildAttributes prefabAttributes;
             switch(A.startingDirection) {
                 case Directions.Up:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[6]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.AllCablePrefabs[6]); break;
                 case Directions.Down:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[7]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.AllCablePrefabs[7]); break;
                 case Directions.Left:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[2]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.AllCablePrefabs[2]); break;
                 case Directions.Right:
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[3]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.AllCablePrefabs[3]); break;
                 default:
                     Debug.LogWarning("RenewInitialCable function did not work correctly. None of the conditions were met.");
-                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.cablePrefabs[3]); break;
+                    prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(CablePrefabs.Instance.AllCablePrefabs[3]); break;
             }
 
-            Sprite  prefabSprite    = CablePrefabs.Instance.cableSprites[prefabAttributes.cableSpriteIndex];
+            Sprite  prefabSprite    = CablePrefabs.Instance.AllCableSprites[prefabAttributes.cableSpriteIndex];
             float   prefabZRotation = prefabAttributes.zRotation;
             Vector2 prefabPivot     = prefabAttributes.pivot;
             Utilities.ModifyCableValues(A.cables[0], prefabAttributes, false, 
@@ -272,19 +272,19 @@ public class CableHandler : ScriptInitializerBase {
             Transform newCable;
             switch(A.startingDirection) {
                 case Directions.Up:
-                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[6], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.AllCablePrefabs[6], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Down:
-                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[7], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.AllCablePrefabs[7], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Left:
-                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[2], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.AllCablePrefabs[2], transform).transform;
                     A.cables.Add(newCable);
                     break;
                 case Directions.Right:
-                    newCable = Instantiate(CablePrefabs.Instance.cablePrefabs[3], transform).transform;
+                    newCable = Instantiate(CablePrefabs.Instance.AllCablePrefabs[3], transform).transform;
                     A.cables.Add(newCable);
                     break;
             }
@@ -432,7 +432,7 @@ public class CableHandler : ScriptInitializerBase {
         
         if(A.cables.Count > index) {
             A.cables[index].position = previousCable.position + deltaPosition;
-            Sprite     prefabSprite = CablePrefabs.Instance.cableSprites[prefabAttributes.cableSpriteIndex];
+            Sprite     prefabSprite = CablePrefabs.Instance.AllCableSprites[prefabAttributes.cableSpriteIndex];
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
             Utilities.ModifyCableValues(A.cables[index], prefabAttributes, false, 
@@ -455,7 +455,7 @@ public class CableHandler : ScriptInitializerBase {
         Vector2 placePosition = previousCable.position + deltaPosition;
         if(A.cables.Count > index) {
             CableChildAttributes prefabAttributes = Utilities.TryGetComponent<CableChildAttributes>(rotationCablePrefab);
-            Sprite     prefabSprite = CablePrefabs.Instance.cableSprites[prefabAttributes.cableSpriteIndex];
+            Sprite     prefabSprite = CablePrefabs.Instance.AllCableSprites[prefabAttributes.cableSpriteIndex];
             float      prefabZRotation = prefabAttributes.zRotation;
             Vector2    prefabPivot = prefabAttributes.pivot;
 

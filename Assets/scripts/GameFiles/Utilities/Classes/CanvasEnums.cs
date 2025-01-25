@@ -12,5 +12,7 @@ public class CanvasEnums : MonoBehaviour {
 public enum CanvasType {
     None,
     GameCanvas,
-    PlugSelectorCanvas
+    PlugSelectorCanvas,
+    ObstaclesCanvas,
+    PlugsCanvas
 }

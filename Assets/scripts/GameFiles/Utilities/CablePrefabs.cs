@@ -12,9 +12,11 @@ public class CablePrefabs : Singleton<CablePrefabs> {
     * [ [16]OutUpLeft, [17]OutUpRight, [18]OutDownLeft, [19]OutDownRight, [20]OutLeftUp, [21]OutLeftDown, [22]OutRightUp, [23]OutRightDown ]
     * Link: https://docs.google.com/document/d/1-T7I-lNiF93s7gjlgOsbJBzwmPMfbWuQ_Jdx-Hd63DM/edit?usp=sharing
     */
-    [SerializeField] public List<GameObject> cablePrefabs;
+    [SerializeField] public List<GameObject> allCablePrefabs;
+    [SerializeField] public List<GameObject> AllCablePrefabs {get {return allCablePrefabs;} private set{}}
     /* Sprites:
     * [0]Out, [1]Out Turn, [2]In Turn
     */
-    [SerializeField] public List<Sprite> cableSprites;
+    [SerializeField] public List<Sprite> allCableSprites;
+    [SerializeField] public List<Sprite> AllCableSprites {get {return allCableSprites;} private set{}}
 }

@@ -12,14 +12,8 @@ public class JointsController : Singleton<JointsController> {
 
     public override IEnumerator Initialize() {
         D = JointsData.Instance;
-        StartCoroutine(startDelayed());
-        yield return null;
-    }
-
-    private IEnumerator startDelayed() {
-        yield return new WaitForEndOfFrame();
-        //RenewJoints();
         D.jointsEnabled = ControlsData.Instance.masterJointsEnabled;
+        yield return null;
     }
 
     // Update is called once per frame

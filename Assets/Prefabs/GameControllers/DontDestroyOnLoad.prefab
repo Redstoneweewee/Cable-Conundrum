@@ -3808,8 +3808,6 @@ MonoBehaviour:
   - {fileID: 55132918936073089}
   - {fileID: 1405640080990895383}
   videoPlayers: []
-  isInitialized: 0
-  initialVideoInitialized: 0
   currentPageIndex: 0
 --- !u!1 &6519728567036138082
 GameObject:
@@ -5725,9 +5723,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2323572954022764769}
+  - component: {fileID: 3669680341128733007}
   - component: {fileID: 6836644798868525014}
   m_Layer: 0
-  m_Name: CablePrefabs
+  m_Name: PrefabsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5748,6 +5747,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2963101829746856845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3669680341128733007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8717281299144646220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1843df75ad40f48930880283b9fc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renew: 0
+  allPlugPrefabs:
+  - {fileID: 2728803679448067612, guid: 2d00812b362794345bec4970da7383fe, type: 3}
+  - {fileID: 114831127664373166, guid: c3c8487281ef052498dcdd43626fe4f5, type: 3}
+  - {fileID: 7881760440778679210, guid: 8683d8de8e3bf744ca39c8c29ac95951, type: 3}
+  - {fileID: 3884327652099552025, guid: 42eae69d1a2b4ac4d96d7a0040d33fed, type: 3}
+  - {fileID: 2497081995643210825, guid: c272d568674dac1408019274b9c60bd7, type: 3}
+  - {fileID: 7730600882863549511, guid: 98e69ca71efe32c46a3e48a0bd7345b0, type: 3}
+  - {fileID: 73472558084677604, guid: 4f5ee1973f5bdef4db1c5600c9b6af6c, type: 3}
+  - {fileID: 3499715989824386501, guid: 4d7e762a178c6704792ab02b75e9f351, type: 3}
+  - {fileID: 6120150273503886943, guid: 1cc8c4e56bc532145890bc8f60799ffe, type: 3}
+  - {fileID: 2016956842198958674, guid: 4fb607b8eb6ea544babbd497f625e7aa, type: 3}
+  - {fileID: 870742541920479131, guid: 049d81474655760448377bcf6cd8e01d, type: 3}
+  - {fileID: 1670863178977284802, guid: 1abf7f892a950db48bc5bde2f5738a1d, type: 3}
+  - {fileID: 9169878290748572670, guid: c07b433378bbe454e9d0c008993f2adc, type: 3}
+  - {fileID: 8994034202944007498, guid: e60ac169dcede244f8ba99bd50c7f6c3, type: 3}
+  allObstaclePrefabs:
+  - {fileID: 7151729919157773566, guid: 8a260c060bd4a9d4d8de2849ad1adb72, type: 3}
+  - {fileID: 3255384603146431149, guid: 5c67f811658fcca4bb2263370e0bfdc5, type: 3}
+  - {fileID: 1246259009404044325, guid: 6b649edc7dd810645a58b9e63a9a484a, type: 3}
+  - {fileID: 4758436925684028708, guid: 58521c9fbe86cbf48ac3d99a255e8f70, type: 3}
+  - {fileID: 6676913604227909174, guid: a029c6b1a8085f8499584dd792c5d04e, type: 3}
+  - {fileID: 2838612600630721834, guid: 0ea4a0a4804ed744288a27fb5fc6feab, type: 3}
+  - {fileID: 9153061093583571092, guid: 23fe47cf90e1e2942b847915f749bf2c, type: 3}
+  - {fileID: 6944178290610424845, guid: f212b4e015e62df40b940cf24eeb585e, type: 3}
 --- !u!114 &6836644798868525014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5760,7 +5796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af151b630f158a842bdcb36cc9b6a814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cablePrefabs:
+  allCablePrefabs:
   - {fileID: 5551953224207516642, guid: e27c0bdf972d4cc43a45b32d9d0f6779, type: 3}
   - {fileID: 5551953224207516642, guid: ce6892d5ddd566d4cb5217f6d4a03653, type: 3}
   - {fileID: 4702777388921839916, guid: 96790dd2f4ffaca449ff36e2fb8dea18, type: 3}
@@ -5785,7 +5821,7 @@ MonoBehaviour:
   - {fileID: 1135255591117203442, guid: f1213eab3be31b042a32c89a49a3c9ed, type: 3}
   - {fileID: 2698305703646795225, guid: e6543f9a7117b734882cf3e1fb2acf6a, type: 3}
   - {fileID: 3325671832225026162, guid: 08920192d842760478bf6d57e3acc8fc, type: 3}
-  cableSprites:
+  allCableSprites:
   - {fileID: 21300000, guid: 07913305f32024d419d1ef812599c3fd, type: 3}
   - {fileID: 21300000, guid: 44295740b3de5a846a4f2beacebc089f, type: 3}
   - {fileID: 21300000, guid: d109e9f15ac57d34285ea8f8bbe9a8aa, type: 3}
